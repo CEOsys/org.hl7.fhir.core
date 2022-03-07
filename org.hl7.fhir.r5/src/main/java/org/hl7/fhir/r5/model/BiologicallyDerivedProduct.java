@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,6 +103,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
             case FLUID: return "fluid";
             case CELLS: return "cells";
             case BIOLOGICALAGENT: return "biologicalAgent";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +114,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
             case FLUID: return "http://hl7.org/fhir/product-category";
             case CELLS: return "http://hl7.org/fhir/product-category";
             case BIOLOGICALAGENT: return "http://hl7.org/fhir/product-category";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -123,6 +125,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
             case FLUID: return "Body fluid.";
             case CELLS: return "Collection of cells.";
             case BIOLOGICALAGENT: return "Biological agent of unspecified type.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -133,6 +136,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
             case FLUID: return "Fluid";
             case CELLS: return "Cells";
             case BIOLOGICALAGENT: return "BiologicalAgent";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -222,6 +226,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
           switch (this) {
             case AVAILABLE: return "available";
             case UNAVAILABLE: return "unavailable";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -229,6 +234,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
           switch (this) {
             case AVAILABLE: return "http://hl7.org/fhir/biological-product-status";
             case UNAVAILABLE: return "http://hl7.org/fhir/biological-product-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -236,6 +242,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
           switch (this) {
             case AVAILABLE: return "Product is currently available for use.";
             case UNAVAILABLE: return "Product is not currently available for use.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -243,6 +250,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
           switch (this) {
             case AVAILABLE: return "Available";
             case UNAVAILABLE: return "Unavailable";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -582,7 +590,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
         /**
          * Property values.
          */
-        @Child(name = "value", type = {BooleanType.class, IntegerType.class, CodeableConcept.class, Quantity.class, Range.class, StringType.class, Attachment.class}, order=2, min=1, max=1, modifier=false, summary=false)
+        @Child(name = "value", type = {BooleanType.class, IntegerType.class, CodeableConcept.class, Period.class, Quantity.class, Range.class, Ratio.class, StringType.class, Attachment.class}, order=2, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Property values", formalDefinition="Property values." )
         protected DataType value;
 
@@ -683,6 +691,21 @@ public class BiologicallyDerivedProduct extends DomainResource {
         /**
          * @return {@link #value} (Property values.)
          */
+        public Period getValuePeriod() throws FHIRException { 
+          if (this.value == null)
+            this.value = new Period();
+          if (!(this.value instanceof Period))
+            throw new FHIRException("Type mismatch: the type Period was expected, but "+this.value.getClass().getName()+" was encountered");
+          return (Period) this.value;
+        }
+
+        public boolean hasValuePeriod() { 
+          return this != null && this.value instanceof Period;
+        }
+
+        /**
+         * @return {@link #value} (Property values.)
+         */
         public Quantity getValueQuantity() throws FHIRException { 
           if (this.value == null)
             this.value = new Quantity();
@@ -708,6 +731,21 @@ public class BiologicallyDerivedProduct extends DomainResource {
 
         public boolean hasValueRange() { 
           return this != null && this.value instanceof Range;
+        }
+
+        /**
+         * @return {@link #value} (Property values.)
+         */
+        public Ratio getValueRatio() throws FHIRException { 
+          if (this.value == null)
+            this.value = new Ratio();
+          if (!(this.value instanceof Ratio))
+            throw new FHIRException("Type mismatch: the type Ratio was expected, but "+this.value.getClass().getName()+" was encountered");
+          return (Ratio) this.value;
+        }
+
+        public boolean hasValueRatio() { 
+          return this != null && this.value instanceof Ratio;
         }
 
         /**
@@ -748,7 +786,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
          * @param value {@link #value} (Property values.)
          */
         public BiologicallyDerivedProductPropertyComponent setValue(DataType value) { 
-          if (value != null && !(value instanceof BooleanType || value instanceof IntegerType || value instanceof CodeableConcept || value instanceof Quantity || value instanceof Range || value instanceof StringType || value instanceof Attachment))
+          if (value != null && !(value instanceof BooleanType || value instanceof IntegerType || value instanceof CodeableConcept || value instanceof Period || value instanceof Quantity || value instanceof Range || value instanceof Ratio || value instanceof StringType || value instanceof Attachment))
             throw new Error("Not the right type for BiologicallyDerivedProduct.property.value[x]: "+value.fhirType());
           this.value = value;
           return this;
@@ -757,20 +795,22 @@ public class BiologicallyDerivedProduct extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("type", "CodeableConcept", "Code that specifies the property.", 0, 1, type));
-          children.add(new Property("value[x]", "boolean|integer|CodeableConcept|Quantity|Range|string|Attachment", "Property values.", 0, 1, value));
+          children.add(new Property("value[x]", "boolean|integer|CodeableConcept|Period|Quantity|Range|Ratio|string|Attachment", "Property values.", 0, 1, value));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 3575610: /*type*/  return new Property("type", "CodeableConcept", "Code that specifies the property.", 0, 1, type);
-          case -1410166417: /*value[x]*/  return new Property("value[x]", "boolean|integer|CodeableConcept|Quantity|Range|string|Attachment", "Property values.", 0, 1, value);
-          case 111972721: /*value*/  return new Property("value[x]", "boolean|integer|CodeableConcept|Quantity|Range|string|Attachment", "Property values.", 0, 1, value);
+          case -1410166417: /*value[x]*/  return new Property("value[x]", "boolean|integer|CodeableConcept|Period|Quantity|Range|Ratio|string|Attachment", "Property values.", 0, 1, value);
+          case 111972721: /*value*/  return new Property("value[x]", "boolean|integer|CodeableConcept|Period|Quantity|Range|Ratio|string|Attachment", "Property values.", 0, 1, value);
           case 733421943: /*valueBoolean*/  return new Property("value[x]", "boolean", "Property values.", 0, 1, value);
           case -1668204915: /*valueInteger*/  return new Property("value[x]", "integer", "Property values.", 0, 1, value);
           case 924902896: /*valueCodeableConcept*/  return new Property("value[x]", "CodeableConcept", "Property values.", 0, 1, value);
+          case -1524344174: /*valuePeriod*/  return new Property("value[x]", "Period", "Property values.", 0, 1, value);
           case -2029823716: /*valueQuantity*/  return new Property("value[x]", "Quantity", "Property values.", 0, 1, value);
           case 2030761548: /*valueRange*/  return new Property("value[x]", "Range", "Property values.", 0, 1, value);
+          case 2030767386: /*valueRatio*/  return new Property("value[x]", "Ratio", "Property values.", 0, 1, value);
           case -1424603934: /*valueString*/  return new Property("value[x]", "string", "Property values.", 0, 1, value);
           case -475566732: /*valueAttachment*/  return new Property("value[x]", "Attachment", "Property values.", 0, 1, value);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -828,7 +868,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 3575610: /*type*/ return new String[] {"CodeableConcept"};
-        case 111972721: /*value*/ return new String[] {"boolean", "integer", "CodeableConcept", "Quantity", "Range", "string", "Attachment"};
+        case 111972721: /*value*/ return new String[] {"boolean", "integer", "CodeableConcept", "Period", "Quantity", "Range", "Ratio", "string", "Attachment"};
         default: return super.getTypesForProperty(hash, name);
         }
 
@@ -852,12 +892,20 @@ public class BiologicallyDerivedProduct extends DomainResource {
           this.value = new CodeableConcept();
           return this.value;
         }
+        else if (name.equals("valuePeriod")) {
+          this.value = new Period();
+          return this.value;
+        }
         else if (name.equals("valueQuantity")) {
           this.value = new Quantity();
           return this.value;
         }
         else if (name.equals("valueRange")) {
           this.value = new Range();
+          return this.value;
+        }
+        else if (name.equals("valueRatio")) {
+          this.value = new Ratio();
           return this.value;
         }
         else if (name.equals("valueString")) {
@@ -1916,6 +1964,118 @@ public class BiologicallyDerivedProduct extends DomainResource {
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam BIOLOGICAL_SOURCE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_BIOLOGICAL_SOURCE);
+
+ /**
+   * Search parameter: <b>collector</b>
+   * <p>
+   * Description: <b>Procedure request to obtain this biologically derived product.</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>BiologicallyDerivedProduct.collection.collector</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="collector", path="BiologicallyDerivedProduct.collection.collector", description="Procedure request to obtain this biologically derived product.", type="reference", target={Practitioner.class, PractitionerRole.class } )
+  public static final String SP_COLLECTOR = "collector";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>collector</b>
+   * <p>
+   * Description: <b>Procedure request to obtain this biologically derived product.</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>BiologicallyDerivedProduct.collection.collector</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam COLLECTOR = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_COLLECTOR);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>BiologicallyDerivedProduct:collector</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_COLLECTOR = new ca.uhn.fhir.model.api.Include("BiologicallyDerivedProduct:collector").toLocked();
+
+ /**
+   * Search parameter: <b>product-category</b>
+   * <p>
+   * Description: <b>Broad category of this product.</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>BiologicallyDerivedProduct.productCategory</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="product-category", path="BiologicallyDerivedProduct.productCategory", description="Broad category of this product.", type="token" )
+  public static final String SP_PRODUCT_CATEGORY = "product-category";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>product-category</b>
+   * <p>
+   * Description: <b>Broad category of this product.</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>BiologicallyDerivedProduct.productCategory</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam PRODUCT_CATEGORY = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_PRODUCT_CATEGORY);
+
+ /**
+   * Search parameter: <b>product-code</b>
+   * <p>
+   * Description: <b>A code that identifies the kind of this biologically derived product (SNOMED CT code).</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>BiologicallyDerivedProduct.productCode</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="product-code", path="BiologicallyDerivedProduct.productCode", description="A code that identifies the kind of this biologically derived product (SNOMED CT code).", type="token" )
+  public static final String SP_PRODUCT_CODE = "product-code";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>product-code</b>
+   * <p>
+   * Description: <b>A code that identifies the kind of this biologically derived product (SNOMED CT code).</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>BiologicallyDerivedProduct.productCode</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam PRODUCT_CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_PRODUCT_CODE);
+
+ /**
+   * Search parameter: <b>request</b>
+   * <p>
+   * Description: <b>Procedure request to obtain this biologically derived product.</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>BiologicallyDerivedProduct.request</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="request", path="BiologicallyDerivedProduct.request", description="Procedure request to obtain this biologically derived product.", type="reference", target={ServiceRequest.class } )
+  public static final String SP_REQUEST = "request";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>request</b>
+   * <p>
+   * Description: <b>Procedure request to obtain this biologically derived product.</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>BiologicallyDerivedProduct.request</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REQUEST = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REQUEST);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>BiologicallyDerivedProduct:request</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_REQUEST = new ca.uhn.fhir.model.api.Include("BiologicallyDerivedProduct:request").toLocked();
+
+ /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>Whether the product is currently available.</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>BiologicallyDerivedProduct.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="status", path="BiologicallyDerivedProduct.status", description="Whether the product is currently available.", type="token" )
+  public static final String SP_STATUS = "status";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>status</b>
+   * <p>
+   * Description: <b>Whether the product is currently available.</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>BiologicallyDerivedProduct.status</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
 
 
 }

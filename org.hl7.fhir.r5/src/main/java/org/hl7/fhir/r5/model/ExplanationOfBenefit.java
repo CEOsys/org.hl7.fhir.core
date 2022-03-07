@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -97,6 +97,7 @@ public class ExplanationOfBenefit extends DomainResource {
             case CANCELLED: return "cancelled";
             case DRAFT: return "draft";
             case ENTEREDINERROR: return "entered-in-error";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -106,6 +107,7 @@ public class ExplanationOfBenefit extends DomainResource {
             case CANCELLED: return "http://hl7.org/fhir/explanationofbenefit-status";
             case DRAFT: return "http://hl7.org/fhir/explanationofbenefit-status";
             case ENTEREDINERROR: return "http://hl7.org/fhir/explanationofbenefit-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -115,6 +117,7 @@ public class ExplanationOfBenefit extends DomainResource {
             case CANCELLED: return "The resource instance is withdrawn, rescinded or reversed.";
             case DRAFT: return "A new resource instance the contents of which is not complete.";
             case ENTEREDINERROR: return "The resource instance was entered in error.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -124,6 +127,7 @@ public class ExplanationOfBenefit extends DomainResource {
             case CANCELLED: return "Cancelled";
             case DRAFT: return "Draft";
             case ENTEREDINERROR: return "Entered In Error";
+            case NULL: return null;
             default: return "?";
           }
         }

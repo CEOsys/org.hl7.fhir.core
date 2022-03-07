@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,6 +103,7 @@ public class ArtifactAssessment extends MetadataResource {
             case PERSUASIVE: return "persuasive";
             case PERSUASIVEWITHMODIFICATION: return "persuasive-with-modification";
             case NOTPERSUASIVEWITHMODIFICATION: return "not-persuasive-with-modification";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +114,7 @@ public class ArtifactAssessment extends MetadataResource {
             case PERSUASIVE: return "http://hl7.org/fhir/artifactassessment-disposition";
             case PERSUASIVEWITHMODIFICATION: return "http://hl7.org/fhir/artifactassessment-disposition";
             case NOTPERSUASIVEWITHMODIFICATION: return "http://hl7.org/fhir/artifactassessment-disposition";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -123,6 +125,7 @@ public class ArtifactAssessment extends MetadataResource {
             case PERSUASIVE: return "The comment is persuasive (accepted in full)";
             case PERSUASIVEWITHMODIFICATION: return "The comment is persuasive with modification (partially accepted)";
             case NOTPERSUASIVEWITHMODIFICATION: return "The comment is not persuasive with modification (partially rejected)";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -133,6 +136,7 @@ public class ArtifactAssessment extends MetadataResource {
             case PERSUASIVE: return "Persuasive";
             case PERSUASIVEWITHMODIFICATION: return "Persuasive with Modification";
             case NOTPERSUASIVEWITHMODIFICATION: return "Not Persuasive with Modification";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -250,6 +254,7 @@ public class ArtifactAssessment extends MetadataResource {
             case CONTAINER: return "container";
             case RESPONSE: return "response";
             case CHANGEREQUEST: return "change-request";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -261,6 +266,7 @@ public class ArtifactAssessment extends MetadataResource {
             case CONTAINER: return "http://hl7.org/fhir/artifactassessment-information-type";
             case RESPONSE: return "http://hl7.org/fhir/artifactassessment-information-type";
             case CHANGEREQUEST: return "http://hl7.org/fhir/artifactassessment-information-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -272,6 +278,7 @@ public class ArtifactAssessment extends MetadataResource {
             case CONTAINER: return "A container for multiple components";
             case RESPONSE: return "A response to a comment";
             case CHANGEREQUEST: return "A change request for the artifact";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -283,6 +290,7 @@ public class ArtifactAssessment extends MetadataResource {
             case CONTAINER: return "Container";
             case RESPONSE: return "Response";
             case CHANGEREQUEST: return "Change Request";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -427,6 +435,7 @@ public class ArtifactAssessment extends MetadataResource {
             case DUPLICATE: return "duplicate";
             case APPLIED: return "applied";
             case PUBLISHED: return "published";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -441,6 +450,7 @@ public class ArtifactAssessment extends MetadataResource {
             case DUPLICATE: return "http://hl7.org/fhir/artifactassessment-workflow-status";
             case APPLIED: return "http://hl7.org/fhir/artifactassessment-workflow-status";
             case PUBLISHED: return "http://hl7.org/fhir/artifactassessment-workflow-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -455,6 +465,7 @@ public class ArtifactAssessment extends MetadataResource {
             case DUPLICATE: return "The comment is a duplicate of another comment already received";
             case APPLIED: return "The comment is resolved and any necessary changes have been applied";
             case PUBLISHED: return "The necessary changes to the artifact have been published in a new version of the artifact";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -469,6 +480,7 @@ public class ArtifactAssessment extends MetadataResource {
             case DUPLICATE: return "Duplicate";
             case APPLIED: return "Applied";
             case PUBLISHED: return "Published";
+            case NULL: return null;
             default: return "?";
           }
         }

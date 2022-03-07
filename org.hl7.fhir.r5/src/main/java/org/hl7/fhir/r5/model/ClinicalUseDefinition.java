@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,6 +52,150 @@ import ca.uhn.fhir.model.api.annotation.Block;
  */
 @ResourceDef(name="ClinicalUseDefinition", profile="http://hl7.org/fhir/StructureDefinition/ClinicalUseDefinition")
 public class ClinicalUseDefinition extends DomainResource {
+
+    public enum ClinicalUseDefinitionType {
+        /**
+         * A reason for giving the medication.
+         */
+        INDICATION, 
+        /**
+         * A reason for not giving the medication.
+         */
+        CONTRAINDICATION, 
+        /**
+         * Interactions between the medication and other substances.
+         */
+        INTERACTION, 
+        /**
+         * Side effects or adverse effects associated with the medication.
+         */
+        UNDESIRABLEEFFECT, 
+        /**
+         * A general warning or issue that is not specifically one of the other types.
+         */
+        WARNING, 
+        /**
+         * added to help the parsers with the generic types
+         */
+        NULL;
+        public static ClinicalUseDefinitionType fromCode(String codeString) throws FHIRException {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("indication".equals(codeString))
+          return INDICATION;
+        if ("contraindication".equals(codeString))
+          return CONTRAINDICATION;
+        if ("interaction".equals(codeString))
+          return INTERACTION;
+        if ("undesirable-effect".equals(codeString))
+          return UNDESIRABLEEFFECT;
+        if ("warning".equals(codeString))
+          return WARNING;
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown ClinicalUseDefinitionType code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case INDICATION: return "indication";
+            case CONTRAINDICATION: return "contraindication";
+            case INTERACTION: return "interaction";
+            case UNDESIRABLEEFFECT: return "undesirable-effect";
+            case WARNING: return "warning";
+            case NULL: return null;
+            default: return "?";
+          }
+        }
+        public String getSystem() {
+          switch (this) {
+            case INDICATION: return "http://hl7.org/fhir/clinical-use-definition-type";
+            case CONTRAINDICATION: return "http://hl7.org/fhir/clinical-use-definition-type";
+            case INTERACTION: return "http://hl7.org/fhir/clinical-use-definition-type";
+            case UNDESIRABLEEFFECT: return "http://hl7.org/fhir/clinical-use-definition-type";
+            case WARNING: return "http://hl7.org/fhir/clinical-use-definition-type";
+            case NULL: return null;
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case INDICATION: return "A reason for giving the medication.";
+            case CONTRAINDICATION: return "A reason for not giving the medication.";
+            case INTERACTION: return "Interactions between the medication and other substances.";
+            case UNDESIRABLEEFFECT: return "Side effects or adverse effects associated with the medication.";
+            case WARNING: return "A general warning or issue that is not specifically one of the other types.";
+            case NULL: return null;
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case INDICATION: return "Indication";
+            case CONTRAINDICATION: return "Contraindication";
+            case INTERACTION: return "Interaction";
+            case UNDESIRABLEEFFECT: return "Undesirable Effect";
+            case WARNING: return "Warning";
+            case NULL: return null;
+            default: return "?";
+          }
+        }
+    }
+
+  public static class ClinicalUseDefinitionTypeEnumFactory implements EnumFactory<ClinicalUseDefinitionType> {
+    public ClinicalUseDefinitionType fromCode(String codeString) throws IllegalArgumentException {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("indication".equals(codeString))
+          return ClinicalUseDefinitionType.INDICATION;
+        if ("contraindication".equals(codeString))
+          return ClinicalUseDefinitionType.CONTRAINDICATION;
+        if ("interaction".equals(codeString))
+          return ClinicalUseDefinitionType.INTERACTION;
+        if ("undesirable-effect".equals(codeString))
+          return ClinicalUseDefinitionType.UNDESIRABLEEFFECT;
+        if ("warning".equals(codeString))
+          return ClinicalUseDefinitionType.WARNING;
+        throw new IllegalArgumentException("Unknown ClinicalUseDefinitionType code '"+codeString+"'");
+        }
+        public Enumeration<ClinicalUseDefinitionType> fromType(Base code) throws FHIRException {
+          if (code == null)
+            return null;
+          if (code.isEmpty())
+            return new Enumeration<ClinicalUseDefinitionType>(this);
+          String codeString = ((PrimitiveType) code).asStringValue();
+          if (codeString == null || "".equals(codeString))
+            return null;
+        if ("indication".equals(codeString))
+          return new Enumeration<ClinicalUseDefinitionType>(this, ClinicalUseDefinitionType.INDICATION);
+        if ("contraindication".equals(codeString))
+          return new Enumeration<ClinicalUseDefinitionType>(this, ClinicalUseDefinitionType.CONTRAINDICATION);
+        if ("interaction".equals(codeString))
+          return new Enumeration<ClinicalUseDefinitionType>(this, ClinicalUseDefinitionType.INTERACTION);
+        if ("undesirable-effect".equals(codeString))
+          return new Enumeration<ClinicalUseDefinitionType>(this, ClinicalUseDefinitionType.UNDESIRABLEEFFECT);
+        if ("warning".equals(codeString))
+          return new Enumeration<ClinicalUseDefinitionType>(this, ClinicalUseDefinitionType.WARNING);
+        throw new FHIRException("Unknown ClinicalUseDefinitionType code '"+codeString+"'");
+        }
+    public String toCode(ClinicalUseDefinitionType code) {
+      if (code == ClinicalUseDefinitionType.INDICATION)
+        return "indication";
+      if (code == ClinicalUseDefinitionType.CONTRAINDICATION)
+        return "contraindication";
+      if (code == ClinicalUseDefinitionType.INTERACTION)
+        return "interaction";
+      if (code == ClinicalUseDefinitionType.UNDESIRABLEEFFECT)
+        return "undesirable-effect";
+      if (code == ClinicalUseDefinitionType.WARNING)
+        return "warning";
+      return "?";
+      }
+    public String toSystem(ClinicalUseDefinitionType code) {
+      return code.getSystem();
+      }
+    }
 
     @Block()
     public static class ClinicalUseDefinitionContraindicationComponent extends BackboneElement implements IBaseBackboneElement {
@@ -2325,8 +2469,8 @@ public class ClinicalUseDefinition extends DomainResource {
      */
     @Child(name = "type", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="indication | contraindication | interaction | undesirable-effect | warning", formalDefinition="indication | contraindication | interaction | undesirable-effect | warning." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/clinical-use-issue-type")
-    protected Enumeration<ClinicalUseIssueType> type;
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/clinical-use-definition-type")
+    protected Enumeration<ClinicalUseDefinitionType> type;
 
     /**
      * A categorisation of the issue, primarily for dividing warnings into subject heading areas such as "Pregnancy and Lactation", "Overdose", "Effects on Ability to Drive and Use Machines".
@@ -2391,7 +2535,7 @@ public class ClinicalUseDefinition extends DomainResource {
     @Description(shortDefinition="A critical piece of information about environmental, health or physical risks or hazards that serve as caution to the user. For example 'Do not operate heavy machinery', 'May cause drowsiness' or 'Get medical advice/attention if you feel unwell'", formalDefinition="A critical piece of information about environmental, health or physical risks or hazards that serve as caution to the user. For example 'Do not operate heavy machinery', 'May cause drowsiness', or 'Get medical advice/attention if you feel unwell'." )
     protected ClinicalUseDefinitionWarningComponent warning;
 
-    private static final long serialVersionUID = 258286207L;
+    private static final long serialVersionUID = -634107389L;
 
   /**
    * Constructor
@@ -2403,7 +2547,7 @@ public class ClinicalUseDefinition extends DomainResource {
   /**
    * Constructor
    */
-    public ClinicalUseDefinition(ClinicalUseIssueType type) {
+    public ClinicalUseDefinition(ClinicalUseDefinitionType type) {
       super();
       this.setType(type);
     }
@@ -2464,12 +2608,12 @@ public class ClinicalUseDefinition extends DomainResource {
     /**
      * @return {@link #type} (indication | contraindication | interaction | undesirable-effect | warning.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
      */
-    public Enumeration<ClinicalUseIssueType> getTypeElement() { 
+    public Enumeration<ClinicalUseDefinitionType> getTypeElement() { 
       if (this.type == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClinicalUseDefinition.type");
         else if (Configuration.doAutoCreate())
-          this.type = new Enumeration<ClinicalUseIssueType>(new ClinicalUseIssueTypeEnumFactory()); // bb
+          this.type = new Enumeration<ClinicalUseDefinitionType>(new ClinicalUseDefinitionTypeEnumFactory()); // bb
       return this.type;
     }
 
@@ -2484,7 +2628,7 @@ public class ClinicalUseDefinition extends DomainResource {
     /**
      * @param value {@link #type} (indication | contraindication | interaction | undesirable-effect | warning.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
      */
-    public ClinicalUseDefinition setTypeElement(Enumeration<ClinicalUseIssueType> value) { 
+    public ClinicalUseDefinition setTypeElement(Enumeration<ClinicalUseDefinitionType> value) { 
       this.type = value;
       return this;
     }
@@ -2492,16 +2636,16 @@ public class ClinicalUseDefinition extends DomainResource {
     /**
      * @return indication | contraindication | interaction | undesirable-effect | warning.
      */
-    public ClinicalUseIssueType getType() { 
+    public ClinicalUseDefinitionType getType() { 
       return this.type == null ? null : this.type.getValue();
     }
 
     /**
      * @param value indication | contraindication | interaction | undesirable-effect | warning.
      */
-    public ClinicalUseDefinition setType(ClinicalUseIssueType value) { 
+    public ClinicalUseDefinition setType(ClinicalUseDefinitionType value) { 
         if (this.type == null)
-          this.type = new Enumeration<ClinicalUseIssueType>(new ClinicalUseIssueTypeEnumFactory());
+          this.type = new Enumeration<ClinicalUseDefinitionType>(new ClinicalUseDefinitionTypeEnumFactory());
         this.type.setValue(value);
       return this;
     }
@@ -2847,7 +2991,7 @@ public class ClinicalUseDefinition extends DomainResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
-        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Enumeration<ClinicalUseIssueType>
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Enumeration<ClinicalUseDefinitionType>
         case 50511102: /*category*/ return this.category == null ? new Base[0] : this.category.toArray(new Base[this.category.size()]); // CodeableConcept
         case -1867885268: /*subject*/ return this.subject == null ? new Base[0] : this.subject.toArray(new Base[this.subject.size()]); // Reference
         case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // CodeableConcept
@@ -2869,8 +3013,8 @@ public class ClinicalUseDefinition extends DomainResource {
           this.getIdentifier().add(TypeConvertor.castToIdentifier(value)); // Identifier
           return value;
         case 3575610: // type
-          value = new ClinicalUseIssueTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
-          this.type = (Enumeration) value; // Enumeration<ClinicalUseIssueType>
+          value = new ClinicalUseDefinitionTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
+          this.type = (Enumeration) value; // Enumeration<ClinicalUseDefinitionType>
           return value;
         case 50511102: // category
           this.getCategory().add(TypeConvertor.castToCodeableConcept(value)); // CodeableConcept
@@ -2909,8 +3053,8 @@ public class ClinicalUseDefinition extends DomainResource {
         if (name.equals("identifier")) {
           this.getIdentifier().add(TypeConvertor.castToIdentifier(value));
         } else if (name.equals("type")) {
-          value = new ClinicalUseIssueTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
-          this.type = (Enumeration) value; // Enumeration<ClinicalUseIssueType>
+          value = new ClinicalUseDefinitionTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
+          this.type = (Enumeration) value; // Enumeration<ClinicalUseDefinitionType>
         } else if (name.equals("category")) {
           this.getCategory().add(TypeConvertor.castToCodeableConcept(value));
         } else if (name.equals("subject")) {

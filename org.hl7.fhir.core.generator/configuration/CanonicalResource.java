@@ -1,24 +1,28 @@
-  @Override
-  public String toString() {
-    return fhirType()+"["+getUrl()+"]";
+@Override
+public String toString() {
+  return fhirType()+"["+getUrl()+"]";
   }
-  
-  public String present() {
-    if (hasTitle())
-      return getTitle();
-    if (hasName())
-      return getName();
-    return toString();
+
+public String present() {
+  if (hasTitle())
+  return getTitle();
+  if (hasName())
+  return getName();
+  return toString();
   }
-  
-  public String getVUrl() {
-    return getUrl() + (hasVersion() ? "|"+getVersion() : "");
-  }      
-  
-  public boolean supportsCopyright() {
-    return true;
+
+public String getVUrl() {
+  return getUrl() + (hasVersion() ? "|"+getVersion() : "");
   }
-  
-  public String getVersionedUrl() {
-    return hasVersion() ? getUrl()+"|"+getVersion() : getUrl();
-  }  
+
+public boolean supportsCopyright() {
+  return true;
+  }
+
+public boolean supportsExperimental() {
+  return true;
+  }
+
+public String getVersionedUrl() {
+  return hasVersion() ? getUrl()+"|"+getVersion() : getUrl();
+  }

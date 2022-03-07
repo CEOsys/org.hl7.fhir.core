@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -60,6 +60,7 @@ public class ManufacturedItemDefinition extends DomainResource {
          */
         @Child(name = "type", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="A code expressing the type of characteristic", formalDefinition="A code expressing the type of characteristic." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/product-characteristic-codes")
         protected CodeableConcept type;
 
         /**
@@ -376,14 +377,16 @@ public class ManufacturedItemDefinition extends DomainResource {
      * Dose form as manufactured and before any transformation into the pharmaceutical product.
      */
     @Child(name = "manufacturedDoseForm", type = {CodeableConcept.class}, order=2, min=1, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Dose form as manufactured and before any transformation into the pharmaceutical product", formalDefinition="Dose form as manufactured and before any transformation into the pharmaceutical product." )
+    @Description(shortDefinition="Dose form as manufactured (before any necessary transformation)", formalDefinition="Dose form as manufactured and before any transformation into the pharmaceutical product." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/manufactured-dose-form")
     protected CodeableConcept manufacturedDoseForm;
 
     /**
      * The “real world” units in which the quantity of the manufactured item is described.
      */
     @Child(name = "unitOfPresentation", type = {CodeableConcept.class}, order=3, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="The “real world” units in which the quantity of the manufactured item is described", formalDefinition="The “real world” units in which the quantity of the manufactured item is described." )
+    @Description(shortDefinition="The “real world” units in which the quantity of the item is described", formalDefinition="The “real world” units in which the quantity of the manufactured item is described." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/unit-of-presentation")
     protected CodeableConcept unitOfPresentation;
 
     /**
@@ -397,7 +400,8 @@ public class ManufacturedItemDefinition extends DomainResource {
      * The ingredients of this manufactured item. This is only needed if the ingredients are not specified by incoming references from the Ingredient resource.
      */
     @Child(name = "ingredient", type = {CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="The ingredients of this manufactured item. This is only needed if the ingredients are not specified by incoming references from the Ingredient resource", formalDefinition="The ingredients of this manufactured item. This is only needed if the ingredients are not specified by incoming references from the Ingredient resource." )
+    @Description(shortDefinition="The ingredients of this manufactured item. Only needed if these are not specified by incoming references from the Ingredient resource", formalDefinition="The ingredients of this manufactured item. This is only needed if the ingredients are not specified by incoming references from the Ingredient resource." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-codes")
     protected List<CodeableConcept> ingredient;
 
     /**

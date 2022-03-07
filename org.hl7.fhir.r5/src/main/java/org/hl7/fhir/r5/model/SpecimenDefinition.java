@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -82,6 +82,7 @@ public class SpecimenDefinition extends DomainResource {
           switch (this) {
             case PREFERRED: return "preferred";
             case ALTERNATE: return "alternate";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -89,6 +90,7 @@ public class SpecimenDefinition extends DomainResource {
           switch (this) {
             case PREFERRED: return "http://hl7.org/fhir/specimen-contained-preference";
             case ALTERNATE: return "http://hl7.org/fhir/specimen-contained-preference";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -96,6 +98,7 @@ public class SpecimenDefinition extends DomainResource {
           switch (this) {
             case PREFERRED: return "This type of contained specimen is preferred to collect this kind of specimen.";
             case ALTERNATE: return "This type of conditioned specimen is an alternate.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -103,6 +106,7 @@ public class SpecimenDefinition extends DomainResource {
           switch (this) {
             case PREFERRED: return "Preferred";
             case ALTERNATE: return "Alternate";
+            case NULL: return null;
             default: return "?";
           }
         }

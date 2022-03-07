@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -64,10 +64,10 @@ public class PractitionerRole extends DomainResource {
         protected List<Enumeration<DaysOfWeek>> daysOfWeek;
 
         /**
-         * Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).
+         * Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).
          */
         @Child(name = "allDay", type = {BooleanType.class}, order=2, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Always available? e.g. 24 hour service", formalDefinition="Indicates always available, hence times are irrelevant.  (e.g. 24-hour service)." )
+        @Description(shortDefinition="Always available? i.e. 24 hour service", formalDefinition="Indicates always available, hence times are irrelevant.  (i.e. 24-hour service)." )
         protected BooleanType allDay;
 
         /**
@@ -155,7 +155,7 @@ public class PractitionerRole extends DomainResource {
         }
 
         /**
-         * @return {@link #allDay} (Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
+         * @return {@link #allDay} (Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
          */
         public BooleanType getAllDayElement() { 
           if (this.allDay == null)
@@ -175,7 +175,7 @@ public class PractitionerRole extends DomainResource {
         }
 
         /**
-         * @param value {@link #allDay} (Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
+         * @param value {@link #allDay} (Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
          */
         public PractitionerRoleAvailableTimeComponent setAllDayElement(BooleanType value) { 
           this.allDay = value;
@@ -183,14 +183,14 @@ public class PractitionerRole extends DomainResource {
         }
 
         /**
-         * @return Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).
+         * @return Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).
          */
         public boolean getAllDay() { 
           return this.allDay == null || this.allDay.isEmpty() ? false : this.allDay.getValue();
         }
 
         /**
-         * @param value Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).
+         * @param value Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).
          */
         public PractitionerRoleAvailableTimeComponent setAllDay(boolean value) { 
             if (this.allDay == null)
@@ -300,7 +300,7 @@ public class PractitionerRole extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("daysOfWeek", "code", "Indicates which days of the week are available between the start and end times.", 0, java.lang.Integer.MAX_VALUE, daysOfWeek));
-          children.add(new Property("allDay", "boolean", "Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).", 0, 1, allDay));
+          children.add(new Property("allDay", "boolean", "Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).", 0, 1, allDay));
           children.add(new Property("availableStartTime", "time", "The opening time of day. Note: If the AllDay flag is set, then this time is ignored.", 0, 1, availableStartTime));
           children.add(new Property("availableEndTime", "time", "The closing time of day. Note: If the AllDay flag is set, then this time is ignored.", 0, 1, availableEndTime));
         }
@@ -309,7 +309,7 @@ public class PractitionerRole extends DomainResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 68050338: /*daysOfWeek*/  return new Property("daysOfWeek", "code", "Indicates which days of the week are available between the start and end times.", 0, java.lang.Integer.MAX_VALUE, daysOfWeek);
-          case -1414913477: /*allDay*/  return new Property("allDay", "boolean", "Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).", 0, 1, allDay);
+          case -1414913477: /*allDay*/  return new Property("allDay", "boolean", "Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).", 0, 1, allDay);
           case -1039453818: /*availableStartTime*/  return new Property("availableStartTime", "time", "The opening time of day. Note: If the AllDay flag is set, then this time is ignored.", 0, 1, availableStartTime);
           case 101151551: /*availableEndTime*/  return new Property("availableEndTime", "time", "The closing time of day. Note: If the AllDay flag is set, then this time is ignored.", 0, 1, availableEndTime);
           default: return super.getNamedProperty(_hash, _name, _checkValid);

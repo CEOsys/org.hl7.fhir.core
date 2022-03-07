@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -89,6 +89,7 @@ public class Immunization extends DomainResource {
             case COMPLETED: return "completed";
             case ENTEREDINERROR: return "entered-in-error";
             case NOTDONE: return "not-done";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +98,7 @@ public class Immunization extends DomainResource {
             case COMPLETED: return "http://hl7.org/fhir/event-status";
             case ENTEREDINERROR: return "http://hl7.org/fhir/event-status";
             case NOTDONE: return "http://hl7.org/fhir/event-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -105,6 +107,7 @@ public class Immunization extends DomainResource {
             case COMPLETED: return "The event has now concluded.";
             case ENTEREDINERROR: return "This electronic record should never have existed, though it is possible that real-world decisions were based on it.  (If real-world activity has occurred, the status should be \"stopped\" rather than \"entered-in-error\".).";
             case NOTDONE: return "The event was terminated prior to any activity beyond preparation.  I.e. The 'main' activity has not yet begun.  The boundary between preparatory and the 'main' activity is context-specific.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +116,7 @@ public class Immunization extends DomainResource {
             case COMPLETED: return "Completed";
             case ENTEREDINERROR: return "Entered in Error";
             case NOTDONE: return "Not Done";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -777,9 +781,9 @@ public class Immunization extends DomainResource {
         /**
          * Details of the reaction.
          */
-        @Child(name = "detail", type = {Observation.class}, order=2, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "manifestation", type = {CodeableReference.class}, order=2, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Additional information on reaction", formalDefinition="Details of the reaction." )
-        protected Reference detail;
+        protected CodeableReference manifestation;
 
         /**
          * Self-reported indicator.
@@ -788,7 +792,7 @@ public class Immunization extends DomainResource {
         @Description(shortDefinition="Indicates self-reported reaction", formalDefinition="Self-reported indicator." )
         protected BooleanType reported;
 
-        private static final long serialVersionUID = -655647546L;
+        private static final long serialVersionUID = 1181151012L;
 
     /**
      * Constructor
@@ -847,26 +851,26 @@ public class Immunization extends DomainResource {
         }
 
         /**
-         * @return {@link #detail} (Details of the reaction.)
+         * @return {@link #manifestation} (Details of the reaction.)
          */
-        public Reference getDetail() { 
-          if (this.detail == null)
+        public CodeableReference getManifestation() { 
+          if (this.manifestation == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create ImmunizationReactionComponent.detail");
+              throw new Error("Attempt to auto-create ImmunizationReactionComponent.manifestation");
             else if (Configuration.doAutoCreate())
-              this.detail = new Reference(); // cc
-          return this.detail;
+              this.manifestation = new CodeableReference(); // cc
+          return this.manifestation;
         }
 
-        public boolean hasDetail() { 
-          return this.detail != null && !this.detail.isEmpty();
+        public boolean hasManifestation() { 
+          return this.manifestation != null && !this.manifestation.isEmpty();
         }
 
         /**
-         * @param value {@link #detail} (Details of the reaction.)
+         * @param value {@link #manifestation} (Details of the reaction.)
          */
-        public ImmunizationReactionComponent setDetail(Reference value) { 
-          this.detail = value;
+        public ImmunizationReactionComponent setManifestation(CodeableReference value) { 
+          this.manifestation = value;
           return this;
         }
 
@@ -918,7 +922,7 @@ public class Immunization extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("date", "dateTime", "Date of reaction to the immunization.", 0, 1, date));
-          children.add(new Property("detail", "Reference(Observation)", "Details of the reaction.", 0, 1, detail));
+          children.add(new Property("manifestation", "CodeableReference(Observation)", "Details of the reaction.", 0, 1, manifestation));
           children.add(new Property("reported", "boolean", "Self-reported indicator.", 0, 1, reported));
         }
 
@@ -926,7 +930,7 @@ public class Immunization extends DomainResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 3076014: /*date*/  return new Property("date", "dateTime", "Date of reaction to the immunization.", 0, 1, date);
-          case -1335224239: /*detail*/  return new Property("detail", "Reference(Observation)", "Details of the reaction.", 0, 1, detail);
+          case 1115984422: /*manifestation*/  return new Property("manifestation", "CodeableReference(Observation)", "Details of the reaction.", 0, 1, manifestation);
           case -427039533: /*reported*/  return new Property("reported", "boolean", "Self-reported indicator.", 0, 1, reported);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
@@ -937,7 +941,7 @@ public class Immunization extends DomainResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case 3076014: /*date*/ return this.date == null ? new Base[0] : new Base[] {this.date}; // DateTimeType
-        case -1335224239: /*detail*/ return this.detail == null ? new Base[0] : new Base[] {this.detail}; // Reference
+        case 1115984422: /*manifestation*/ return this.manifestation == null ? new Base[0] : new Base[] {this.manifestation}; // CodeableReference
         case -427039533: /*reported*/ return this.reported == null ? new Base[0] : new Base[] {this.reported}; // BooleanType
         default: return super.getProperty(hash, name, checkValid);
         }
@@ -950,8 +954,8 @@ public class Immunization extends DomainResource {
         case 3076014: // date
           this.date = TypeConvertor.castToDateTime(value); // DateTimeType
           return value;
-        case -1335224239: // detail
-          this.detail = TypeConvertor.castToReference(value); // Reference
+        case 1115984422: // manifestation
+          this.manifestation = TypeConvertor.castToCodeableReference(value); // CodeableReference
           return value;
         case -427039533: // reported
           this.reported = TypeConvertor.castToBoolean(value); // BooleanType
@@ -965,8 +969,8 @@ public class Immunization extends DomainResource {
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("date")) {
           this.date = TypeConvertor.castToDateTime(value); // DateTimeType
-        } else if (name.equals("detail")) {
-          this.detail = TypeConvertor.castToReference(value); // Reference
+        } else if (name.equals("manifestation")) {
+          this.manifestation = TypeConvertor.castToCodeableReference(value); // CodeableReference
         } else if (name.equals("reported")) {
           this.reported = TypeConvertor.castToBoolean(value); // BooleanType
         } else
@@ -978,7 +982,7 @@ public class Immunization extends DomainResource {
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 3076014:  return getDateElement();
-        case -1335224239:  return getDetail();
+        case 1115984422:  return getManifestation();
         case -427039533:  return getReportedElement();
         default: return super.makeProperty(hash, name);
         }
@@ -989,7 +993,7 @@ public class Immunization extends DomainResource {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 3076014: /*date*/ return new String[] {"dateTime"};
-        case -1335224239: /*detail*/ return new String[] {"Reference"};
+        case 1115984422: /*manifestation*/ return new String[] {"CodeableReference"};
         case -427039533: /*reported*/ return new String[] {"boolean"};
         default: return super.getTypesForProperty(hash, name);
         }
@@ -1001,9 +1005,9 @@ public class Immunization extends DomainResource {
         if (name.equals("date")) {
           throw new FHIRException("Cannot call addChild on a primitive type Immunization.reaction.date");
         }
-        else if (name.equals("detail")) {
-          this.detail = new Reference();
-          return this.detail;
+        else if (name.equals("manifestation")) {
+          this.manifestation = new CodeableReference();
+          return this.manifestation;
         }
         else if (name.equals("reported")) {
           throw new FHIRException("Cannot call addChild on a primitive type Immunization.reaction.reported");
@@ -1021,7 +1025,7 @@ public class Immunization extends DomainResource {
       public void copyValues(ImmunizationReactionComponent dst) {
         super.copyValues(dst);
         dst.date = date == null ? null : date.copy();
-        dst.detail = detail == null ? null : detail.copy();
+        dst.manifestation = manifestation == null ? null : manifestation.copy();
         dst.reported = reported == null ? null : reported.copy();
       }
 
@@ -1032,7 +1036,7 @@ public class Immunization extends DomainResource {
         if (!(other_ instanceof ImmunizationReactionComponent))
           return false;
         ImmunizationReactionComponent o = (ImmunizationReactionComponent) other_;
-        return compareDeep(date, o.date, true) && compareDeep(detail, o.detail, true) && compareDeep(reported, o.reported, true)
+        return compareDeep(date, o.date, true) && compareDeep(manifestation, o.manifestation, true) && compareDeep(reported, o.reported, true)
           ;
       }
 
@@ -1047,7 +1051,8 @@ public class Immunization extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(date, detail, reported);
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(date, manifestation, reported
+          );
       }
 
   public String fhirType() {
@@ -1611,19 +1616,19 @@ public class Immunization extends DomainResource {
     protected DateTimeType recorded;
 
     /**
-     * Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.
+     * Indicates whether this record was captured as an original primary source-of-truth record rather than a secondary 'reported' record. A value "true" means this is a primary record of the immunization.
      */
     @Child(name = "primarySource", type = {BooleanType.class}, order=14, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Indicates context the data was recorded in", formalDefinition="Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record." )
+    @Description(shortDefinition="Indicates context the data was recorded in", formalDefinition="Indicates whether this record was captured as an original primary source-of-truth record rather than a secondary 'reported' record. A value \"true\" means this is a primary record of the immunization." )
     protected BooleanType primarySource;
 
     /**
      * Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.
      */
-    @Child(name = "informationSource", type = {CodeableConcept.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class, Organization.class}, order=15, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "informationSource", type = {CodeableReference.class}, order=15, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Indicates the source of a  reported record", formalDefinition="Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/immunization-origin")
-    protected DataType informationSource;
+    protected CodeableReference informationSource;
 
     /**
      * The service delivery location where the vaccine administration occurred.
@@ -1729,7 +1734,7 @@ public class Immunization extends DomainResource {
     @Description(shortDefinition="Protocol followed by the provider", formalDefinition="The protocol (set of recommendations) being followed by the provider who administered the dose." )
     protected List<ImmunizationProtocolAppliedComponent> protocolApplied;
 
-    private static final long serialVersionUID = 35822108L;
+    private static final long serialVersionUID = -603679230L;
 
   /**
    * Constructor
@@ -2341,7 +2346,7 @@ public class Immunization extends DomainResource {
     }
 
     /**
-     * @return {@link #primarySource} (Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.). This is the underlying object with id, value and extensions. The accessor "getPrimarySource" gives direct access to the value
+     * @return {@link #primarySource} (Indicates whether this record was captured as an original primary source-of-truth record rather than a secondary 'reported' record. A value "true" means this is a primary record of the immunization.). This is the underlying object with id, value and extensions. The accessor "getPrimarySource" gives direct access to the value
      */
     public BooleanType getPrimarySourceElement() { 
       if (this.primarySource == null)
@@ -2361,7 +2366,7 @@ public class Immunization extends DomainResource {
     }
 
     /**
-     * @param value {@link #primarySource} (Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.). This is the underlying object with id, value and extensions. The accessor "getPrimarySource" gives direct access to the value
+     * @param value {@link #primarySource} (Indicates whether this record was captured as an original primary source-of-truth record rather than a secondary 'reported' record. A value "true" means this is a primary record of the immunization.). This is the underlying object with id, value and extensions. The accessor "getPrimarySource" gives direct access to the value
      */
     public Immunization setPrimarySourceElement(BooleanType value) { 
       this.primarySource = value;
@@ -2369,14 +2374,14 @@ public class Immunization extends DomainResource {
     }
 
     /**
-     * @return Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.
+     * @return Indicates whether this record was captured as an original primary source-of-truth record rather than a secondary 'reported' record. A value "true" means this is a primary record of the immunization.
      */
     public boolean getPrimarySource() { 
       return this.primarySource == null || this.primarySource.isEmpty() ? false : this.primarySource.getValue();
     }
 
     /**
-     * @param value Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.
+     * @param value Indicates whether this record was captured as an original primary source-of-truth record rather than a secondary 'reported' record. A value "true" means this is a primary record of the immunization.
      */
     public Immunization setPrimarySource(boolean value) { 
         if (this.primarySource == null)
@@ -2388,38 +2393,13 @@ public class Immunization extends DomainResource {
     /**
      * @return {@link #informationSource} (Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.)
      */
-    public DataType getInformationSource() { 
+    public CodeableReference getInformationSource() { 
+      if (this.informationSource == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Immunization.informationSource");
+        else if (Configuration.doAutoCreate())
+          this.informationSource = new CodeableReference(); // cc
       return this.informationSource;
-    }
-
-    /**
-     * @return {@link #informationSource} (Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.)
-     */
-    public CodeableConcept getInformationSourceCodeableConcept() throws FHIRException { 
-      if (this.informationSource == null)
-        this.informationSource = new CodeableConcept();
-      if (!(this.informationSource instanceof CodeableConcept))
-        throw new FHIRException("Type mismatch: the type CodeableConcept was expected, but "+this.informationSource.getClass().getName()+" was encountered");
-      return (CodeableConcept) this.informationSource;
-    }
-
-    public boolean hasInformationSourceCodeableConcept() { 
-      return this != null && this.informationSource instanceof CodeableConcept;
-    }
-
-    /**
-     * @return {@link #informationSource} (Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.)
-     */
-    public Reference getInformationSourceReference() throws FHIRException { 
-      if (this.informationSource == null)
-        this.informationSource = new Reference();
-      if (!(this.informationSource instanceof Reference))
-        throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.informationSource.getClass().getName()+" was encountered");
-      return (Reference) this.informationSource;
-    }
-
-    public boolean hasInformationSourceReference() { 
-      return this != null && this.informationSource instanceof Reference;
     }
 
     public boolean hasInformationSource() { 
@@ -2429,9 +2409,7 @@ public class Immunization extends DomainResource {
     /**
      * @param value {@link #informationSource} (Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.)
      */
-    public Immunization setInformationSource(DataType value) { 
-      if (value != null && !(value instanceof CodeableConcept || value instanceof Reference))
-        throw new Error("Not the right type for Immunization.informationSource[x]: "+value.fhirType());
+    public Immunization setInformationSource(CodeableReference value) { 
       this.informationSource = value;
       return this;
     }
@@ -3041,8 +3019,8 @@ public class Immunization extends DomainResource {
         children.add(new Property("encounter", "Reference(Encounter)", "The visit or admission or other contact between patient and health care provider the immunization was performed as part of.", 0, 1, encounter));
         children.add(new Property("occurrence[x]", "dateTime|string", "Date vaccine administered or was to be administered.", 0, 1, occurrence));
         children.add(new Property("recorded", "dateTime", "The date the occurrence of the immunization was first captured in the record - potentially significantly after the occurrence of the event.", 0, 1, recorded));
-        children.add(new Property("primarySource", "boolean", "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.", 0, 1, primarySource));
-        children.add(new Property("informationSource[x]", "CodeableConcept|Reference(Patient|Practitioner|PractitionerRole|RelatedPerson|Organization)", "Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.", 0, 1, informationSource));
+        children.add(new Property("primarySource", "boolean", "Indicates whether this record was captured as an original primary source-of-truth record rather than a secondary 'reported' record. A value \"true\" means this is a primary record of the immunization.", 0, 1, primarySource));
+        children.add(new Property("informationSource", "CodeableReference(Patient|Practitioner|PractitionerRole|RelatedPerson|Organization)", "Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.", 0, 1, informationSource));
         children.add(new Property("location", "Reference(Location)", "The service delivery location where the vaccine administration occurred.", 0, 1, location));
         children.add(new Property("site", "CodeableConcept", "Body site where vaccine was administered.", 0, 1, site));
         children.add(new Property("route", "CodeableConcept", "The path by which the vaccine product is taken into the body.", 0, 1, route));
@@ -3079,11 +3057,8 @@ public class Immunization extends DomainResource {
         case -298443636: /*occurrenceDateTime*/  return new Property("occurrence[x]", "dateTime", "Date vaccine administered or was to be administered.", 0, 1, occurrence);
         case 1496896834: /*occurrenceString*/  return new Property("occurrence[x]", "string", "Date vaccine administered or was to be administered.", 0, 1, occurrence);
         case -799233872: /*recorded*/  return new Property("recorded", "dateTime", "The date the occurrence of the immunization was first captured in the record - potentially significantly after the occurrence of the event.", 0, 1, recorded);
-        case -528721731: /*primarySource*/  return new Property("primarySource", "boolean", "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.", 0, 1, primarySource);
-        case -890044743: /*informationSource[x]*/  return new Property("informationSource[x]", "CodeableConcept|Reference(Patient|Practitioner|PractitionerRole|RelatedPerson|Organization)", "Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.", 0, 1, informationSource);
-        case -2123220889: /*informationSource*/  return new Property("informationSource[x]", "CodeableConcept|Reference(Patient|Practitioner|PractitionerRole|RelatedPerson|Organization)", "Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.", 0, 1, informationSource);
-        case -1849314246: /*informationSourceCodeableConcept*/  return new Property("informationSource[x]", "CodeableConcept", "Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.", 0, 1, informationSource);
-        case -1721324892: /*informationSourceReference*/  return new Property("informationSource[x]", "Reference(Patient|Practitioner|PractitionerRole|RelatedPerson|Organization)", "Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.", 0, 1, informationSource);
+        case -528721731: /*primarySource*/  return new Property("primarySource", "boolean", "Indicates whether this record was captured as an original primary source-of-truth record rather than a secondary 'reported' record. A value \"true\" means this is a primary record of the immunization.", 0, 1, primarySource);
+        case -2123220889: /*informationSource*/  return new Property("informationSource", "CodeableReference(Patient|Practitioner|PractitionerRole|RelatedPerson|Organization)", "Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.", 0, 1, informationSource);
         case 1901043637: /*location*/  return new Property("location", "Reference(Location)", "The service delivery location where the vaccine administration occurred.", 0, 1, location);
         case 3530567: /*site*/  return new Property("site", "CodeableConcept", "Body site where vaccine was administered.", 0, 1, site);
         case 108704329: /*route*/  return new Property("route", "CodeableConcept", "The path by which the vaccine product is taken into the body.", 0, 1, route);
@@ -3121,7 +3096,7 @@ public class Immunization extends DomainResource {
         case 1687874001: /*occurrence*/ return this.occurrence == null ? new Base[0] : new Base[] {this.occurrence}; // DataType
         case -799233872: /*recorded*/ return this.recorded == null ? new Base[0] : new Base[] {this.recorded}; // DateTimeType
         case -528721731: /*primarySource*/ return this.primarySource == null ? new Base[0] : new Base[] {this.primarySource}; // BooleanType
-        case -2123220889: /*informationSource*/ return this.informationSource == null ? new Base[0] : new Base[] {this.informationSource}; // DataType
+        case -2123220889: /*informationSource*/ return this.informationSource == null ? new Base[0] : new Base[] {this.informationSource}; // CodeableReference
         case 1901043637: /*location*/ return this.location == null ? new Base[0] : new Base[] {this.location}; // Reference
         case 3530567: /*site*/ return this.site == null ? new Base[0] : new Base[] {this.site}; // CodeableConcept
         case 108704329: /*route*/ return this.route == null ? new Base[0] : new Base[] {this.route}; // CodeableConcept
@@ -3191,7 +3166,7 @@ public class Immunization extends DomainResource {
           this.primarySource = TypeConvertor.castToBoolean(value); // BooleanType
           return value;
         case -2123220889: // informationSource
-          this.informationSource = TypeConvertor.castToType(value); // DataType
+          this.informationSource = TypeConvertor.castToCodeableReference(value); // CodeableReference
           return value;
         case 1901043637: // location
           this.location = TypeConvertor.castToReference(value); // Reference
@@ -3273,8 +3248,8 @@ public class Immunization extends DomainResource {
           this.recorded = TypeConvertor.castToDateTime(value); // DateTimeType
         } else if (name.equals("primarySource")) {
           this.primarySource = TypeConvertor.castToBoolean(value); // BooleanType
-        } else if (name.equals("informationSource[x]")) {
-          this.informationSource = TypeConvertor.castToType(value); // DataType
+        } else if (name.equals("informationSource")) {
+          this.informationSource = TypeConvertor.castToCodeableReference(value); // CodeableReference
         } else if (name.equals("location")) {
           this.location = TypeConvertor.castToReference(value); // Reference
         } else if (name.equals("site")) {
@@ -3327,7 +3302,6 @@ public class Immunization extends DomainResource {
         case 1687874001:  return getOccurrence();
         case -799233872:  return getRecordedElement();
         case -528721731:  return getPrimarySourceElement();
-        case -890044743:  return getInformationSource();
         case -2123220889:  return getInformationSource();
         case 1901043637:  return getLocation();
         case 3530567:  return getSite();
@@ -3366,7 +3340,7 @@ public class Immunization extends DomainResource {
         case 1687874001: /*occurrence*/ return new String[] {"dateTime", "string"};
         case -799233872: /*recorded*/ return new String[] {"dateTime"};
         case -528721731: /*primarySource*/ return new String[] {"boolean"};
-        case -2123220889: /*informationSource*/ return new String[] {"CodeableConcept", "Reference"};
+        case -2123220889: /*informationSource*/ return new String[] {"CodeableReference"};
         case 1901043637: /*location*/ return new String[] {"Reference"};
         case 3530567: /*site*/ return new String[] {"CodeableConcept"};
         case 108704329: /*route*/ return new String[] {"CodeableConcept"};
@@ -3443,12 +3417,8 @@ public class Immunization extends DomainResource {
         else if (name.equals("primarySource")) {
           throw new FHIRException("Cannot call addChild on a primitive type Immunization.primarySource");
         }
-        else if (name.equals("informationSourceCodeableConcept")) {
-          this.informationSource = new CodeableConcept();
-          return this.informationSource;
-        }
-        else if (name.equals("informationSourceReference")) {
-          this.informationSource = new Reference();
+        else if (name.equals("informationSource")) {
+          this.informationSource = new CodeableReference();
           return this.informationSource;
         }
         else if (name.equals("location")) {
@@ -3772,17 +3742,17 @@ public class Immunization extends DomainResource {
    * <p>
    * Description: <b>Additional information on reaction</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>Immunization.reaction.detail</b><br>
+   * Path: <b>Immunization.reaction.manifestation.reference</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="reaction", path="Immunization.reaction.detail", description="Additional information on reaction", type="reference", target={Observation.class } )
+  @SearchParamDefinition(name="reaction", path="Immunization.reaction.manifestation.reference", description="Additional information on reaction", type="reference" )
   public static final String SP_REACTION = "reaction";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>reaction</b>
    * <p>
    * Description: <b>Additional information on reaction</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>Immunization.reaction.detail</b><br>
+   * Path: <b>Immunization.reaction.manifestation.reference</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REACTION = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REACTION);
@@ -4123,7 +4093,7 @@ public class Immunization extends DomainResource {
    * Path: <b>AllergyIntolerance.patient | CarePlan.subject.where(resolve() is Patient) | CareTeam.subject.where(resolve() is Patient) | ClinicalImpression.subject.where(resolve() is Patient) | Composition.subject.where(resolve() is Patient) | Condition.subject.where(resolve() is Patient) | Consent.subject.where(resolve() is Patient) | DetectedIssue.patient | DeviceRequest.subject.where(resolve() is Patient) | DeviceUsage.patient | DiagnosticReport.subject.where(resolve() is Patient) | DocumentManifest.subject.where(resolve() is Patient) | DocumentReference.subject.where(resolve() is Patient) | Encounter.subject.where(resolve() is Patient) | EpisodeOfCare.patient | FamilyMemberHistory.patient | Flag.subject.where(resolve() is Patient) | Goal.subject.where(resolve() is Patient) | ImagingStudy.subject.where(resolve() is Patient) | Immunization.patient | List.subject.where(resolve() is Patient) | MedicationAdministration.subject.where(resolve() is Patient) | MedicationDispense.subject.where(resolve() is Patient) | MedicationRequest.subject.where(resolve() is Patient) | MedicationUsage.subject.where(resolve() is Patient) | NutritionOrder.patient | Observation.subject.where(resolve() is Patient) | Procedure.subject.where(resolve() is Patient) | RiskAssessment.subject.where(resolve() is Patient) | ServiceRequest.subject.where(resolve() is Patient) | SupplyDelivery.patient | VisionPrescription.patient</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="AllergyIntolerance.patient | CarePlan.subject.where(resolve() is Patient) | CareTeam.subject.where(resolve() is Patient) | ClinicalImpression.subject.where(resolve() is Patient) | Composition.subject.where(resolve() is Patient) | Condition.subject.where(resolve() is Patient) | Consent.subject.where(resolve() is Patient) | DetectedIssue.patient | DeviceRequest.subject.where(resolve() is Patient) | DeviceUsage.patient | DiagnosticReport.subject.where(resolve() is Patient) | DocumentManifest.subject.where(resolve() is Patient) | DocumentReference.subject.where(resolve() is Patient) | Encounter.subject.where(resolve() is Patient) | EpisodeOfCare.patient | FamilyMemberHistory.patient | Flag.subject.where(resolve() is Patient) | Goal.subject.where(resolve() is Patient) | ImagingStudy.subject.where(resolve() is Patient) | Immunization.patient | List.subject.where(resolve() is Patient) | MedicationAdministration.subject.where(resolve() is Patient) | MedicationDispense.subject.where(resolve() is Patient) | MedicationRequest.subject.where(resolve() is Patient) | MedicationUsage.subject.where(resolve() is Patient) | NutritionOrder.patient | Observation.subject.where(resolve() is Patient) | Procedure.subject.where(resolve() is Patient) | RiskAssessment.subject.where(resolve() is Patient) | ServiceRequest.subject.where(resolve() is Patient) | SupplyDelivery.patient | VisionPrescription.patient", description="Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUsage](deviceusage.html): Search by patient who used / uses the device\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationUsage](medicationusage.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient") }, target={Account.class, ActivityDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CapabilityStatement2.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, ClinicalUseIssue.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, ConceptMap2.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentManifest.class, DocumentReference.class, Encounter.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationUsage.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestGroup.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestReport.class, TestScript.class, ValueSet.class, VerificationResult.class, VisionPrescription.class } )
+  @SearchParamDefinition(name="patient", path="AllergyIntolerance.patient | CarePlan.subject.where(resolve() is Patient) | CareTeam.subject.where(resolve() is Patient) | ClinicalImpression.subject.where(resolve() is Patient) | Composition.subject.where(resolve() is Patient) | Condition.subject.where(resolve() is Patient) | Consent.subject.where(resolve() is Patient) | DetectedIssue.patient | DeviceRequest.subject.where(resolve() is Patient) | DeviceUsage.patient | DiagnosticReport.subject.where(resolve() is Patient) | DocumentManifest.subject.where(resolve() is Patient) | DocumentReference.subject.where(resolve() is Patient) | Encounter.subject.where(resolve() is Patient) | EpisodeOfCare.patient | FamilyMemberHistory.patient | Flag.subject.where(resolve() is Patient) | Goal.subject.where(resolve() is Patient) | ImagingStudy.subject.where(resolve() is Patient) | Immunization.patient | List.subject.where(resolve() is Patient) | MedicationAdministration.subject.where(resolve() is Patient) | MedicationDispense.subject.where(resolve() is Patient) | MedicationRequest.subject.where(resolve() is Patient) | MedicationUsage.subject.where(resolve() is Patient) | NutritionOrder.patient | Observation.subject.where(resolve() is Patient) | Procedure.subject.where(resolve() is Patient) | RiskAssessment.subject.where(resolve() is Patient) | ServiceRequest.subject.where(resolve() is Patient) | SupplyDelivery.patient | VisionPrescription.patient", description="Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUsage](deviceusage.html): Search by patient who used / uses the device\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationUsage](medicationusage.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient") }, target={Account.class, ActivityDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CapabilityStatement2.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, ConceptMap2.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentManifest.class, DocumentReference.class, Encounter.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationUsage.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestGroup.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestReport.class, TestScript.class, Transport.class, ValueSet.class, VerificationResult.class, VisionPrescription.class } )
   public static final String SP_PATIENT = "patient";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>patient</b>

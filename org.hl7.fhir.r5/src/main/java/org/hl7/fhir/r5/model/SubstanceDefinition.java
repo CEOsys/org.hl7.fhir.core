@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -81,6 +81,7 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "stereochemistry", type = {CodeableConcept.class}, order=4, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Stereochemistry type", formalDefinition="Stereochemistry type." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-stereochemistry")
         protected CodeableConcept stereochemistry;
 
         /**
@@ -88,13 +89,14 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "opticalActivity", type = {CodeableConcept.class}, order=5, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Optical activity type", formalDefinition="Optical activity type." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-optical-activity")
         protected CodeableConcept opticalActivity;
 
         /**
          * Molecular formula for this moiety of this substance, typically using the Hill system.
          */
         @Child(name = "molecularFormula", type = {StringType.class}, order=6, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Molecular formula for this moiety of this substance, typically using the Hill system", formalDefinition="Molecular formula for this moiety of this substance, typically using the Hill system." )
+        @Description(shortDefinition="Molecular formula for this moiety (e.g. with the Hill system)", formalDefinition="Molecular formula for this moiety of this substance, typically using the Hill system." )
         protected StringType molecularFormula;
 
         /**
@@ -105,10 +107,11 @@ public class SubstanceDefinition extends DomainResource {
         protected DataType amount;
 
         /**
-         * The measurement type of the quantitative value.
+         * The measurement type of the quantitative value. In capturing the actual relative amounts of substances or molecular fragments it may be necessary to indicate whether the amount refers to, for example, a mole ratio or weight ratio.
          */
         @Child(name = "amountType", type = {CodeableConcept.class}, order=8, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="The measurement type of the quantitative value", formalDefinition="The measurement type of the quantitative value." )
+        @Description(shortDefinition="The measurement type of the quantitative value", formalDefinition="The measurement type of the quantitative value. In capturing the actual relative amounts of substances or molecular fragments it may be necessary to indicate whether the amount refers to, for example, a mole ratio or weight ratio." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-amount-type")
         protected CodeableConcept amountType;
 
         private static final long serialVersionUID = -1330905924L;
@@ -366,7 +369,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #amountType} (The measurement type of the quantitative value.)
+         * @return {@link #amountType} (The measurement type of the quantitative value. In capturing the actual relative amounts of substances or molecular fragments it may be necessary to indicate whether the amount refers to, for example, a mole ratio or weight ratio.)
          */
         public CodeableConcept getAmountType() { 
           if (this.amountType == null)
@@ -382,7 +385,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @param value {@link #amountType} (The measurement type of the quantitative value.)
+         * @param value {@link #amountType} (The measurement type of the quantitative value. In capturing the actual relative amounts of substances or molecular fragments it may be necessary to indicate whether the amount refers to, for example, a mole ratio or weight ratio.)
          */
         public SubstanceDefinitionMoietyComponent setAmountType(CodeableConcept value) { 
           this.amountType = value;
@@ -398,7 +401,7 @@ public class SubstanceDefinition extends DomainResource {
           children.add(new Property("opticalActivity", "CodeableConcept", "Optical activity type.", 0, 1, opticalActivity));
           children.add(new Property("molecularFormula", "string", "Molecular formula for this moiety of this substance, typically using the Hill system.", 0, 1, molecularFormula));
           children.add(new Property("amount[x]", "Quantity|string", "Quantitative value for this moiety.", 0, 1, amount));
-          children.add(new Property("amountType", "CodeableConcept", "The measurement type of the quantitative value.", 0, 1, amountType));
+          children.add(new Property("amountType", "CodeableConcept", "The measurement type of the quantitative value. In capturing the actual relative amounts of substances or molecular fragments it may be necessary to indicate whether the amount refers to, for example, a mole ratio or weight ratio.", 0, 1, amountType));
         }
 
         @Override
@@ -414,7 +417,7 @@ public class SubstanceDefinition extends DomainResource {
           case -1413853096: /*amount*/  return new Property("amount[x]", "Quantity|string", "Quantitative value for this moiety.", 0, 1, amount);
           case 1664303363: /*amountQuantity*/  return new Property("amount[x]", "Quantity", "Quantitative value for this moiety.", 0, 1, amount);
           case 773651081: /*amountString*/  return new Property("amount[x]", "string", "Quantitative value for this moiety.", 0, 1, amount);
-          case -1424857166: /*amountType*/  return new Property("amountType", "CodeableConcept", "The measurement type of the quantitative value.", 0, 1, amountType);
+          case -1424857166: /*amountType*/  return new Property("amountType", "CodeableConcept", "The measurement type of the quantitative value. In capturing the actual relative amounts of substances or molecular fragments it may be necessary to indicate whether the amount refers to, for example, a mole ratio or weight ratio.", 0, 1, amountType);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -621,17 +624,18 @@ public class SubstanceDefinition extends DomainResource {
     @Block()
     public static class SubstanceDefinitionPropertyComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * A code expressing the type of characteristic.
+         * A code expressing the type of property.
          */
         @Child(name = "type", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="A code expressing the type of characteristic", formalDefinition="A code expressing the type of characteristic." )
+        @Description(shortDefinition="A code expressing the type of property", formalDefinition="A code expressing the type of property." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/product-characteristic-codes")
         protected CodeableConcept type;
 
         /**
-         * A value for the characteristic.
+         * A value for the property.
          */
         @Child(name = "value", type = {CodeableConcept.class, Quantity.class, DateType.class, BooleanType.class, Attachment.class}, order=2, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="A value for the characteristic", formalDefinition="A value for the characteristic." )
+        @Description(shortDefinition="A value for the property", formalDefinition="A value for the property." )
         protected DataType value;
 
         private static final long serialVersionUID = -1659186716L;
@@ -652,7 +656,7 @@ public class SubstanceDefinition extends DomainResource {
       }
 
         /**
-         * @return {@link #type} (A code expressing the type of characteristic.)
+         * @return {@link #type} (A code expressing the type of property.)
          */
         public CodeableConcept getType() { 
           if (this.type == null)
@@ -668,7 +672,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @param value {@link #type} (A code expressing the type of characteristic.)
+         * @param value {@link #type} (A code expressing the type of property.)
          */
         public SubstanceDefinitionPropertyComponent setType(CodeableConcept value) { 
           this.type = value;
@@ -676,14 +680,14 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #value} (A value for the characteristic.)
+         * @return {@link #value} (A value for the property.)
          */
         public DataType getValue() { 
           return this.value;
         }
 
         /**
-         * @return {@link #value} (A value for the characteristic.)
+         * @return {@link #value} (A value for the property.)
          */
         public CodeableConcept getValueCodeableConcept() throws FHIRException { 
           if (this.value == null)
@@ -698,7 +702,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #value} (A value for the characteristic.)
+         * @return {@link #value} (A value for the property.)
          */
         public Quantity getValueQuantity() throws FHIRException { 
           if (this.value == null)
@@ -713,7 +717,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #value} (A value for the characteristic.)
+         * @return {@link #value} (A value for the property.)
          */
         public DateType getValueDateType() throws FHIRException { 
           if (this.value == null)
@@ -728,7 +732,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #value} (A value for the characteristic.)
+         * @return {@link #value} (A value for the property.)
          */
         public BooleanType getValueBooleanType() throws FHIRException { 
           if (this.value == null)
@@ -743,7 +747,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #value} (A value for the characteristic.)
+         * @return {@link #value} (A value for the property.)
          */
         public Attachment getValueAttachment() throws FHIRException { 
           if (this.value == null)
@@ -762,7 +766,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @param value {@link #value} (A value for the characteristic.)
+         * @param value {@link #value} (A value for the property.)
          */
         public SubstanceDefinitionPropertyComponent setValue(DataType value) { 
           if (value != null && !(value instanceof CodeableConcept || value instanceof Quantity || value instanceof DateType || value instanceof BooleanType || value instanceof Attachment))
@@ -773,21 +777,21 @@ public class SubstanceDefinition extends DomainResource {
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("type", "CodeableConcept", "A code expressing the type of characteristic.", 0, 1, type));
-          children.add(new Property("value[x]", "CodeableConcept|Quantity|date|boolean|Attachment", "A value for the characteristic.", 0, 1, value));
+          children.add(new Property("type", "CodeableConcept", "A code expressing the type of property.", 0, 1, type));
+          children.add(new Property("value[x]", "CodeableConcept|Quantity|date|boolean|Attachment", "A value for the property.", 0, 1, value));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case 3575610: /*type*/  return new Property("type", "CodeableConcept", "A code expressing the type of characteristic.", 0, 1, type);
-          case -1410166417: /*value[x]*/  return new Property("value[x]", "CodeableConcept|Quantity|date|boolean|Attachment", "A value for the characteristic.", 0, 1, value);
-          case 111972721: /*value*/  return new Property("value[x]", "CodeableConcept|Quantity|date|boolean|Attachment", "A value for the characteristic.", 0, 1, value);
-          case 924902896: /*valueCodeableConcept*/  return new Property("value[x]", "CodeableConcept", "A value for the characteristic.", 0, 1, value);
-          case -2029823716: /*valueQuantity*/  return new Property("value[x]", "Quantity", "A value for the characteristic.", 0, 1, value);
-          case -766192449: /*valueDate*/  return new Property("value[x]", "date", "A value for the characteristic.", 0, 1, value);
-          case 733421943: /*valueBoolean*/  return new Property("value[x]", "boolean", "A value for the characteristic.", 0, 1, value);
-          case -475566732: /*valueAttachment*/  return new Property("value[x]", "Attachment", "A value for the characteristic.", 0, 1, value);
+          case 3575610: /*type*/  return new Property("type", "CodeableConcept", "A code expressing the type of property.", 0, 1, type);
+          case -1410166417: /*value[x]*/  return new Property("value[x]", "CodeableConcept|Quantity|date|boolean|Attachment", "A value for the property.", 0, 1, value);
+          case 111972721: /*value*/  return new Property("value[x]", "CodeableConcept|Quantity|date|boolean|Attachment", "A value for the property.", 0, 1, value);
+          case 924902896: /*valueCodeableConcept*/  return new Property("value[x]", "CodeableConcept", "A value for the property.", 0, 1, value);
+          case -2029823716: /*valueQuantity*/  return new Property("value[x]", "Quantity", "A value for the property.", 0, 1, value);
+          case -766192449: /*valueDate*/  return new Property("value[x]", "date", "A value for the property.", 0, 1, value);
+          case 733421943: /*valueBoolean*/  return new Property("value[x]", "boolean", "A value for the property.", 0, 1, value);
+          case -475566732: /*valueAttachment*/  return new Property("value[x]", "Attachment", "A value for the property.", 0, 1, value);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -928,21 +932,23 @@ public class SubstanceDefinition extends DomainResource {
          * The method by which the molecular weight was determined.
          */
         @Child(name = "method", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="The method by which the molecular weight was determined", formalDefinition="The method by which the molecular weight was determined." )
+        @Description(shortDefinition="The method by which the weight was determined", formalDefinition="The method by which the molecular weight was determined." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-weight-method")
         protected CodeableConcept method;
 
         /**
          * Type of molecular weight such as exact, average (also known as. number average), weight average.
          */
         @Child(name = "type", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Type of molecular weight such as exact, average (also known as. number average), weight average", formalDefinition="Type of molecular weight such as exact, average (also known as. number average), weight average." )
+        @Description(shortDefinition="Type of molecular weight e.g. exact, average, weight average", formalDefinition="Type of molecular weight such as exact, average (also known as. number average), weight average." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-weight-type")
         protected CodeableConcept type;
 
         /**
          * Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field.
          */
         @Child(name = "amount", type = {Quantity.class}, order=3, min=1, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field", formalDefinition="Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field." )
+        @Description(shortDefinition="Used to capture quantitative values for a variety of elements", formalDefinition="Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field." )
         protected Quantity amount;
 
         private static final long serialVersionUID = 805939780L;
@@ -1185,6 +1191,7 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "stereochemistry", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Stereochemistry type", formalDefinition="Stereochemistry type." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-stereochemistry")
         protected CodeableConcept stereochemistry;
 
         /**
@@ -1192,41 +1199,43 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "opticalActivity", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Optical activity type", formalDefinition="Optical activity type." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-optical-activity")
         protected CodeableConcept opticalActivity;
 
         /**
          * Molecular formula of this substance, typically using the Hill system.
          */
         @Child(name = "molecularFormula", type = {StringType.class}, order=3, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Molecular formula of this substance, typically using the Hill system", formalDefinition="Molecular formula of this substance, typically using the Hill system." )
+        @Description(shortDefinition="Molecular formula (e.g. using the Hill system)", formalDefinition="Molecular formula of this substance, typically using the Hill system." )
         protected StringType molecularFormula;
 
         /**
          * Specified per moiety according to the Hill system, i.e. first C, then H, then alphabetical, each moiety separated by a dot.
          */
         @Child(name = "molecularFormulaByMoiety", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Specified per moiety according to the Hill system, i.e. first C, then H, then alphabetical, each moiety separated by a dot", formalDefinition="Specified per moiety according to the Hill system, i.e. first C, then H, then alphabetical, each moiety separated by a dot." )
+        @Description(shortDefinition="Specified per moiety according to the Hill system", formalDefinition="Specified per moiety according to the Hill system, i.e. first C, then H, then alphabetical, each moiety separated by a dot." )
         protected StringType molecularFormulaByMoiety;
 
         /**
          * The molecular weight or weight range (for proteins, polymers or nucleic acids).
          */
         @Child(name = "molecularWeight", type = {SubstanceDefinitionMolecularWeightComponent.class}, order=5, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="The molecular weight or weight range (for proteins, polymers or nucleic acids)", formalDefinition="The molecular weight or weight range (for proteins, polymers or nucleic acids)." )
+        @Description(shortDefinition="The molecular weight or weight range", formalDefinition="The molecular weight or weight range (for proteins, polymers or nucleic acids)." )
         protected SubstanceDefinitionMolecularWeightComponent molecularWeight;
 
         /**
          * The method used to elucidate the structure or characterization of the drug substance. Examples: X-ray, HPLC, NMR, Peptide mapping, Ligand binding assay.
          */
         @Child(name = "technique", type = {CodeableConcept.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-        @Description(shortDefinition="The method used to elucidate the structure or characterization of the drug substance. Examples: X-ray, HPLC, NMR, Peptide mapping, Ligand binding assay", formalDefinition="The method used to elucidate the structure or characterization of the drug substance. Examples: X-ray, HPLC, NMR, Peptide mapping, Ligand binding assay." )
+        @Description(shortDefinition="The method used to find the structure e.g. X-ray, NMR", formalDefinition="The method used to elucidate the structure or characterization of the drug substance. Examples: X-ray, HPLC, NMR, Peptide mapping, Ligand binding assay." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-structure-technique")
         protected List<CodeableConcept> technique;
 
         /**
-         * Supporting literature about the source of information.
+         * The source of information about the structure.
          */
         @Child(name = "sourceDocument", type = {DocumentReference.class}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-        @Description(shortDefinition="Supporting literature about the source of information", formalDefinition="Supporting literature about the source of information." )
+        @Description(shortDefinition="Source of information for the structure", formalDefinition="The source of information about the structure." )
         protected List<Reference> sourceDocument;
 
         /**
@@ -1469,7 +1478,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #sourceDocument} (Supporting literature about the source of information.)
+         * @return {@link #sourceDocument} (The source of information about the structure.)
          */
         public List<Reference> getSourceDocument() { 
           if (this.sourceDocument == null)
@@ -1582,7 +1591,7 @@ public class SubstanceDefinition extends DomainResource {
           children.add(new Property("molecularFormulaByMoiety", "string", "Specified per moiety according to the Hill system, i.e. first C, then H, then alphabetical, each moiety separated by a dot.", 0, 1, molecularFormulaByMoiety));
           children.add(new Property("molecularWeight", "@SubstanceDefinition.molecularWeight", "The molecular weight or weight range (for proteins, polymers or nucleic acids).", 0, 1, molecularWeight));
           children.add(new Property("technique", "CodeableConcept", "The method used to elucidate the structure or characterization of the drug substance. Examples: X-ray, HPLC, NMR, Peptide mapping, Ligand binding assay.", 0, java.lang.Integer.MAX_VALUE, technique));
-          children.add(new Property("sourceDocument", "Reference(DocumentReference)", "Supporting literature about the source of information.", 0, java.lang.Integer.MAX_VALUE, sourceDocument));
+          children.add(new Property("sourceDocument", "Reference(DocumentReference)", "The source of information about the structure.", 0, java.lang.Integer.MAX_VALUE, sourceDocument));
           children.add(new Property("representation", "", "A depiction of the structure or characterization of the substance.", 0, java.lang.Integer.MAX_VALUE, representation));
         }
 
@@ -1595,7 +1604,7 @@ public class SubstanceDefinition extends DomainResource {
           case 1315452848: /*molecularFormulaByMoiety*/  return new Property("molecularFormulaByMoiety", "string", "Specified per moiety according to the Hill system, i.e. first C, then H, then alphabetical, each moiety separated by a dot.", 0, 1, molecularFormulaByMoiety);
           case 635625672: /*molecularWeight*/  return new Property("molecularWeight", "@SubstanceDefinition.molecularWeight", "The molecular weight or weight range (for proteins, polymers or nucleic acids).", 0, 1, molecularWeight);
           case 1469675088: /*technique*/  return new Property("technique", "CodeableConcept", "The method used to elucidate the structure or characterization of the drug substance. Examples: X-ray, HPLC, NMR, Peptide mapping, Ligand binding assay.", 0, java.lang.Integer.MAX_VALUE, technique);
-          case -501788074: /*sourceDocument*/  return new Property("sourceDocument", "Reference(DocumentReference)", "Supporting literature about the source of information.", 0, java.lang.Integer.MAX_VALUE, sourceDocument);
+          case -501788074: /*sourceDocument*/  return new Property("sourceDocument", "Reference(DocumentReference)", "The source of information about the structure.", 0, java.lang.Integer.MAX_VALUE, sourceDocument);
           case -671065907: /*representation*/  return new Property("representation", "", "A depiction of the structure or characterization of the substance.", 0, java.lang.Integer.MAX_VALUE, representation);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
@@ -1813,6 +1822,7 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "type", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="The kind of structural representation (e.g. full, partial)", formalDefinition="The kind of structural representation (e.g. full, partial)." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-representation-type")
         protected CodeableConcept type;
 
         /**
@@ -1826,14 +1836,15 @@ public class SubstanceDefinition extends DomainResource {
          * The format of the representation e.g. InChI, SMILES, MOLFILE, CDX, SDF, PDB, mmCIF. The logical content type rather than the physical file format of a document.
          */
         @Child(name = "format", type = {CodeableConcept.class}, order=3, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="The format of the representation e.g. InChI, SMILES, MOLFILE, CDX, SDF, PDB, mmCIF. The logical content type rather than the physical file format of a document", formalDefinition="The format of the representation e.g. InChI, SMILES, MOLFILE, CDX, SDF, PDB, mmCIF. The logical content type rather than the physical file format of a document." )
+        @Description(shortDefinition="The format of the representation e.g. InChI, SMILES, MOLFILE (note: not the physical file format)", formalDefinition="The format of the representation e.g. InChI, SMILES, MOLFILE, CDX, SDF, PDB, mmCIF. The logical content type rather than the physical file format of a document." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-representation-format")
         protected CodeableConcept format;
 
         /**
          * An attached file with the structural representation or characterization e.g. a molecular structure graphic of the substance, a JCAMP or AnIML file.
          */
         @Child(name = "document", type = {DocumentReference.class}, order=4, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="An attached file with the structural representation or characterization e.g. a molecular structure graphic of the substance, a JCAMP or AnIML file", formalDefinition="An attached file with the structural representation or characterization e.g. a molecular structure graphic of the substance, a JCAMP or AnIML file." )
+        @Description(shortDefinition="An attachment with the structural representation e.g. a structure graphic or AnIML file", formalDefinition="An attached file with the structural representation or characterization e.g. a molecular structure graphic of the substance, a JCAMP or AnIML file." )
         protected Reference document;
 
         private static final long serialVersionUID = 138704347L;
@@ -2139,20 +2150,21 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "status", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Status of the code assignment, for example 'provisional', 'approved'", formalDefinition="Status of the code assignment, for example 'provisional', 'approved'." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/publication-status")
         protected CodeableConcept status;
 
         /**
-         * The date at which the code status is changed as part of the terminology maintenance.
+         * The date at which the code status was changed as part of the terminology maintenance.
          */
         @Child(name = "statusDate", type = {DateTimeType.class}, order=3, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="The date at which the code status is changed as part of the terminology maintenance", formalDefinition="The date at which the code status is changed as part of the terminology maintenance." )
+        @Description(shortDefinition="The date at which the code status was changed", formalDefinition="The date at which the code status was changed as part of the terminology maintenance." )
         protected DateTimeType statusDate;
 
         /**
          * Any comment can be provided in this field, if necessary.
          */
         @Child(name = "note", type = {Annotation.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-        @Description(shortDefinition="Any comment can be provided in this field, if necessary", formalDefinition="Any comment can be provided in this field, if necessary." )
+        @Description(shortDefinition="Any comment can be provided in this field", formalDefinition="Any comment can be provided in this field, if necessary." )
         protected List<Annotation> note;
 
         /**
@@ -2220,7 +2232,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #statusDate} (The date at which the code status is changed as part of the terminology maintenance.). This is the underlying object with id, value and extensions. The accessor "getStatusDate" gives direct access to the value
+         * @return {@link #statusDate} (The date at which the code status was changed as part of the terminology maintenance.). This is the underlying object with id, value and extensions. The accessor "getStatusDate" gives direct access to the value
          */
         public DateTimeType getStatusDateElement() { 
           if (this.statusDate == null)
@@ -2240,7 +2252,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @param value {@link #statusDate} (The date at which the code status is changed as part of the terminology maintenance.). This is the underlying object with id, value and extensions. The accessor "getStatusDate" gives direct access to the value
+         * @param value {@link #statusDate} (The date at which the code status was changed as part of the terminology maintenance.). This is the underlying object with id, value and extensions. The accessor "getStatusDate" gives direct access to the value
          */
         public SubstanceDefinitionCodeComponent setStatusDateElement(DateTimeType value) { 
           this.statusDate = value;
@@ -2248,14 +2260,14 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return The date at which the code status is changed as part of the terminology maintenance.
+         * @return The date at which the code status was changed as part of the terminology maintenance.
          */
         public Date getStatusDate() { 
           return this.statusDate == null ? null : this.statusDate.getValue();
         }
 
         /**
-         * @param value The date at which the code status is changed as part of the terminology maintenance.
+         * @param value The date at which the code status was changed as part of the terminology maintenance.
          */
         public SubstanceDefinitionCodeComponent setStatusDate(Date value) { 
           if (value == null)
@@ -2378,7 +2390,7 @@ public class SubstanceDefinition extends DomainResource {
           super.listChildren(children);
           children.add(new Property("code", "CodeableConcept", "The specific code.", 0, 1, code));
           children.add(new Property("status", "CodeableConcept", "Status of the code assignment, for example 'provisional', 'approved'.", 0, 1, status));
-          children.add(new Property("statusDate", "dateTime", "The date at which the code status is changed as part of the terminology maintenance.", 0, 1, statusDate));
+          children.add(new Property("statusDate", "dateTime", "The date at which the code status was changed as part of the terminology maintenance.", 0, 1, statusDate));
           children.add(new Property("note", "Annotation", "Any comment can be provided in this field, if necessary.", 0, java.lang.Integer.MAX_VALUE, note));
           children.add(new Property("source", "Reference(DocumentReference)", "Supporting literature.", 0, java.lang.Integer.MAX_VALUE, source));
         }
@@ -2388,7 +2400,7 @@ public class SubstanceDefinition extends DomainResource {
           switch (_hash) {
           case 3059181: /*code*/  return new Property("code", "CodeableConcept", "The specific code.", 0, 1, code);
           case -892481550: /*status*/  return new Property("status", "CodeableConcept", "Status of the code assignment, for example 'provisional', 'approved'.", 0, 1, status);
-          case 247524032: /*statusDate*/  return new Property("statusDate", "dateTime", "The date at which the code status is changed as part of the terminology maintenance.", 0, 1, statusDate);
+          case 247524032: /*statusDate*/  return new Property("statusDate", "dateTime", "The date at which the code status was changed as part of the terminology maintenance.", 0, 1, statusDate);
           case 3387378: /*note*/  return new Property("note", "Annotation", "Any comment can be provided in this field, if necessary.", 0, java.lang.Integer.MAX_VALUE, note);
           case -896505829: /*source*/  return new Property("source", "Reference(DocumentReference)", "Supporting literature.", 0, java.lang.Integer.MAX_VALUE, source);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -2567,14 +2579,16 @@ public class SubstanceDefinition extends DomainResource {
          * Name type, for example 'systematic',  'scientific, 'brand'.
          */
         @Child(name = "type", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Name type, for example 'systematic',  'scientific, 'brand'", formalDefinition="Name type, for example 'systematic',  'scientific, 'brand'." )
+        @Description(shortDefinition="Name type e.g. 'systematic',  'scientific, 'brand'", formalDefinition="Name type, for example 'systematic',  'scientific, 'brand'." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-name-type")
         protected CodeableConcept type;
 
         /**
          * The status of the name, for example 'current', 'proposed'.
          */
         @Child(name = "status", type = {CodeableConcept.class}, order=3, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="The status of the name, for example 'current', 'proposed'", formalDefinition="The status of the name, for example 'current', 'proposed'." )
+        @Description(shortDefinition="The status of the name e.g. 'current', 'proposed'", formalDefinition="The status of the name, for example 'current', 'proposed'." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/publication-status")
         protected CodeableConcept status;
 
         /**
@@ -2589,13 +2603,15 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "language", type = {CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
         @Description(shortDefinition="Human language that the name is written in", formalDefinition="Human language that the name is written in." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/languages")
         protected List<CodeableConcept> language;
 
         /**
          * The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive.
          */
         @Child(name = "domain", type = {CodeableConcept.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-        @Description(shortDefinition="The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive", formalDefinition="The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive." )
+        @Description(shortDefinition="The use context of this name e.g. as an active ingredient or as a food colour additive", formalDefinition="The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-name-domain")
         protected List<CodeableConcept> domain;
 
         /**
@@ -2603,6 +2619,7 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "jurisdiction", type = {CodeableConcept.class}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
         @Description(shortDefinition="The jurisdiction where this name applies", formalDefinition="The jurisdiction where this name applies." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/jurisdiction")
         protected List<CodeableConcept> jurisdiction;
 
         /**
@@ -3452,20 +3469,22 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "authority", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Which authority uses this official name", formalDefinition="Which authority uses this official name." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-name-authority")
         protected CodeableConcept authority;
 
         /**
-         * The status of the official name, for example 'provisional', 'approved'.
+         * The status of the official name, for example 'draft', 'active', 'retired'.
          */
         @Child(name = "status", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="The status of the official name, for example 'provisional', 'approved'", formalDefinition="The status of the official name, for example 'provisional', 'approved'." )
+        @Description(shortDefinition="The status of the official name, for example 'draft', 'active'", formalDefinition="The status of the official name, for example 'draft', 'active', 'retired'." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/publication-status")
         protected CodeableConcept status;
 
         /**
-         * Date of official name change.
+         * Date of the official name change.
          */
         @Child(name = "date", type = {DateTimeType.class}, order=3, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Date of official name change", formalDefinition="Date of official name change." )
+        @Description(shortDefinition="Date of official name change", formalDefinition="Date of the official name change." )
         protected DateTimeType date;
 
         private static final long serialVersionUID = -2040011008L;
@@ -3502,7 +3521,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #status} (The status of the official name, for example 'provisional', 'approved'.)
+         * @return {@link #status} (The status of the official name, for example 'draft', 'active', 'retired'.)
          */
         public CodeableConcept getStatus() { 
           if (this.status == null)
@@ -3518,7 +3537,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @param value {@link #status} (The status of the official name, for example 'provisional', 'approved'.)
+         * @param value {@link #status} (The status of the official name, for example 'draft', 'active', 'retired'.)
          */
         public SubstanceDefinitionNameOfficialComponent setStatus(CodeableConcept value) { 
           this.status = value;
@@ -3526,7 +3545,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #date} (Date of official name change.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+         * @return {@link #date} (Date of the official name change.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
          */
         public DateTimeType getDateElement() { 
           if (this.date == null)
@@ -3546,7 +3565,7 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @param value {@link #date} (Date of official name change.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+         * @param value {@link #date} (Date of the official name change.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
          */
         public SubstanceDefinitionNameOfficialComponent setDateElement(DateTimeType value) { 
           this.date = value;
@@ -3554,14 +3573,14 @@ public class SubstanceDefinition extends DomainResource {
         }
 
         /**
-         * @return Date of official name change.
+         * @return Date of the official name change.
          */
         public Date getDate() { 
           return this.date == null ? null : this.date.getValue();
         }
 
         /**
-         * @param value Date of official name change.
+         * @param value Date of the official name change.
          */
         public SubstanceDefinitionNameOfficialComponent setDate(Date value) { 
           if (value == null)
@@ -3577,16 +3596,16 @@ public class SubstanceDefinition extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("authority", "CodeableConcept", "Which authority uses this official name.", 0, 1, authority));
-          children.add(new Property("status", "CodeableConcept", "The status of the official name, for example 'provisional', 'approved'.", 0, 1, status));
-          children.add(new Property("date", "dateTime", "Date of official name change.", 0, 1, date));
+          children.add(new Property("status", "CodeableConcept", "The status of the official name, for example 'draft', 'active', 'retired'.", 0, 1, status));
+          children.add(new Property("date", "dateTime", "Date of the official name change.", 0, 1, date));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 1475610435: /*authority*/  return new Property("authority", "CodeableConcept", "Which authority uses this official name.", 0, 1, authority);
-          case -892481550: /*status*/  return new Property("status", "CodeableConcept", "The status of the official name, for example 'provisional', 'approved'.", 0, 1, status);
-          case 3076014: /*date*/  return new Property("date", "dateTime", "Date of official name change.", 0, 1, date);
+          case -892481550: /*status*/  return new Property("status", "CodeableConcept", "The status of the official name, for example 'draft', 'active', 'retired'.", 0, 1, status);
+          case 3076014: /*date*/  return new Property("date", "dateTime", "Date of the official name change.", 0, 1, date);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -3724,28 +3743,29 @@ public class SubstanceDefinition extends DomainResource {
          * A pointer to another substance, as a resource or just a representational code.
          */
         @Child(name = "substanceDefinition", type = {SubstanceDefinition.class, CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="A pointer to another substance, as a resource or just a representational code", formalDefinition="A pointer to another substance, as a resource or just a representational code." )
+        @Description(shortDefinition="A pointer to another substance, as a resource or a representational code", formalDefinition="A pointer to another substance, as a resource or just a representational code." )
         protected DataType substanceDefinition;
 
         /**
          * For example "salt to parent", "active moiety", "starting material", "polymorph", "impurity of".
          */
         @Child(name = "type", type = {CodeableConcept.class}, order=2, min=1, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="For example \"salt to parent\", \"active moiety\", \"starting material\", \"polymorph\", \"impurity of\"", formalDefinition="For example \"salt to parent\", \"active moiety\", \"starting material\", \"polymorph\", \"impurity of\"." )
+        @Description(shortDefinition="For example \"salt to parent\", \"active moiety\"", formalDefinition="For example \"salt to parent\", \"active moiety\", \"starting material\", \"polymorph\", \"impurity of\"." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-relationship-type")
         protected CodeableConcept type;
 
         /**
          * For example where an enzyme strongly bonds with a particular substance, this is a defining relationship for that enzyme, out of several possible substance relationships.
          */
         @Child(name = "isDefining", type = {BooleanType.class}, order=3, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="For example where an enzyme strongly bonds with a particular substance, this is a defining relationship for that enzyme, out of several possible substance relationships", formalDefinition="For example where an enzyme strongly bonds with a particular substance, this is a defining relationship for that enzyme, out of several possible substance relationships." )
+        @Description(shortDefinition="For example where an enzyme strongly bonds with a particular substance, this is a defining relationship for that enzyme, out of several possible relationships", formalDefinition="For example where an enzyme strongly bonds with a particular substance, this is a defining relationship for that enzyme, out of several possible substance relationships." )
         protected BooleanType isDefining;
 
         /**
          * A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other.
          */
         @Child(name = "amount", type = {Quantity.class, Ratio.class, StringType.class}, order=4, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other", formalDefinition="A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other." )
+        @Description(shortDefinition="A numeric factor for the relationship, e.g. that a substance salt has some percentage of active substance in relation to some other", formalDefinition="A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other." )
         protected DataType amount;
 
         /**
@@ -3760,6 +3780,7 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "amountType", type = {CodeableConcept.class}, order=6, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="An operator for the amount, for example \"average\", \"approximately\", \"less than\"", formalDefinition="An operator for the amount, for example \"average\", \"approximately\", \"less than\"." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-amount-type")
         protected CodeableConcept amountType;
 
         /**
@@ -4308,21 +4329,24 @@ public class SubstanceDefinition extends DomainResource {
          * A classification that provides the origin of the raw material. Example: cat hair would be an Animal source type.
          */
         @Child(name = "type", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="A classification that provides the origin of the raw material. Example: cat hair would be an Animal source type", formalDefinition="A classification that provides the origin of the raw material. Example: cat hair would be an Animal source type." )
+        @Description(shortDefinition="Classification of the origin of the raw material. e.g. cat hair is an Animal source type", formalDefinition="A classification that provides the origin of the raw material. Example: cat hair would be an Animal source type." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-source-material-type")
         protected CodeableConcept type;
 
         /**
          * The genus of an organism, typically referring to the Latin epithet of the genus element of the plant/animal scientific name.
          */
         @Child(name = "genus", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="The genus of an organism, typically referring to the Latin epithet of the genus element of the plant/animal scientific name", formalDefinition="The genus of an organism, typically referring to the Latin epithet of the genus element of the plant/animal scientific name." )
+        @Description(shortDefinition="The genus of an organism e.g. the Latin epithet of the plant/animal scientific name", formalDefinition="The genus of an organism, typically referring to the Latin epithet of the genus element of the plant/animal scientific name." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-source-material-genus")
         protected CodeableConcept genus;
 
         /**
          * The species of an organism, typically referring to the Latin epithet of the species of the plant/animal.
          */
         @Child(name = "species", type = {CodeableConcept.class}, order=3, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="The species of an organism, typically referring to the Latin epithet of the species of the plant/animal", formalDefinition="The species of an organism, typically referring to the Latin epithet of the species of the plant/animal." )
+        @Description(shortDefinition="The species of an organism e.g. the Latin epithet of the species of the plant/animal", formalDefinition="The species of an organism, typically referring to the Latin epithet of the species of the plant/animal." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-source-material-species")
         protected CodeableConcept species;
 
         /**
@@ -4330,6 +4354,7 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "part", type = {CodeableConcept.class}, order=4, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="An anatomical origin of the source material within an organism", formalDefinition="An anatomical origin of the source material within an organism." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-source-material-part")
         protected CodeableConcept part;
 
         /**
@@ -4337,6 +4362,7 @@ public class SubstanceDefinition extends DomainResource {
          */
         @Child(name = "countryOfOrigin", type = {CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
         @Description(shortDefinition="The country or countries where the material is harvested", formalDefinition="The country or countries where the material is harvested." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/country")
         protected List<CodeableConcept> countryOfOrigin;
 
         private static final long serialVersionUID = 569352795L;
@@ -4683,38 +4709,41 @@ public class SubstanceDefinition extends DomainResource {
     protected List<Identifier> identifier;
 
     /**
-     * A business level identifier of the substance.
+     * A business level version identifier of the substance.
      */
     @Child(name = "version", type = {StringType.class}, order=1, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="A business level identifier of the substance", formalDefinition="A business level identifier of the substance." )
+    @Description(shortDefinition="A business level version identifier of the substance", formalDefinition="A business level version identifier of the substance." )
     protected StringType version;
 
     /**
-     * Status of substance within the catalogue e.g. approved.
+     * Status of substance within the catalogue e.g. active, retired.
      */
     @Child(name = "status", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Status of substance within the catalogue e.g. approved", formalDefinition="Status of substance within the catalogue e.g. approved." )
+    @Description(shortDefinition="Status of substance within the catalogue e.g. active, retired", formalDefinition="Status of substance within the catalogue e.g. active, retired." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/publication-status")
     protected CodeableConcept status;
 
     /**
      * A high level categorization, e.g. polymer or nucleic acid, or food, chemical, biological, or a lower level such as the general types of polymer (linear or branch chain) or type of impurity (process related or contaminant).
      */
     @Child(name = "classification", type = {CodeableConcept.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="A high level categorization, e.g. polymer or nucleic acid, or food, chemical, biological, or a lower level such as the general types of polymer (linear or branch chain) or type of impurity (process related or contaminant)", formalDefinition="A high level categorization, e.g. polymer or nucleic acid, or food, chemical, biological, or a lower level such as the general types of polymer (linear or branch chain) or type of impurity (process related or contaminant)." )
+    @Description(shortDefinition="A categorization, high level e.g. polymer or nucleic acid, or food, chemical, biological, or lower e.g. polymer linear or branch chain, or type of impurity", formalDefinition="A high level categorization, e.g. polymer or nucleic acid, or food, chemical, biological, or a lower level such as the general types of polymer (linear or branch chain) or type of impurity (process related or contaminant)." )
     protected List<CodeableConcept> classification;
 
     /**
-     * If the substance applies to only human or veterinary use.
+     * If the substance applies to human or veterinary use.
      */
     @Child(name = "domain", type = {CodeableConcept.class}, order=4, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="If the substance applies to only human or veterinary use", formalDefinition="If the substance applies to only human or veterinary use." )
+    @Description(shortDefinition="If the substance applies to human or veterinary use", formalDefinition="If the substance applies to human or veterinary use." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/medicinal-product-domain")
     protected CodeableConcept domain;
 
     /**
      * The quality standard, established benchmark, to which substance complies (e.g. USP/NF, Ph. Eur, JP, BP, Company Standard).
      */
     @Child(name = "grade", type = {CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="The quality standard, established benchmark, to which substance complies (e.g. USP/NF, Ph. Eur, JP, BP, Company Standard)", formalDefinition="The quality standard, established benchmark, to which substance complies (e.g. USP/NF, Ph. Eur, JP, BP, Company Standard)." )
+    @Description(shortDefinition="The quality standard, established benchmark, to which substance complies (e.g. USP/NF, BP)", formalDefinition="The quality standard, established benchmark, to which substance complies (e.g. USP/NF, Ph. Eur, JP, BP, Company Standard)." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-grade")
     protected List<CodeableConcept> grade;
 
     /**
@@ -4739,17 +4768,17 @@ public class SubstanceDefinition extends DomainResource {
     protected List<Annotation> note;
 
     /**
-     * A company that makes this substance.
+     * The entity that creates, makes, produces or fabricates the substance. This is a set of potential manufacturers but is not necessarily comprehensive.
      */
     @Child(name = "manufacturer", type = {Organization.class}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="A company that makes this substance", formalDefinition="A company that makes this substance." )
+    @Description(shortDefinition="The entity that creates, makes, produces or fabricates the substance", formalDefinition="The entity that creates, makes, produces or fabricates the substance. This is a set of potential manufacturers but is not necessarily comprehensive." )
     protected List<Reference> manufacturer;
 
     /**
-     * A company that supplies this substance.
+     * An entity that is the source for the substance. It may be different from the manufacturer. Supplier is synonymous to a distributor.
      */
     @Child(name = "supplier", type = {Organization.class}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="A company that supplies this substance", formalDefinition="A company that supplies this substance." )
+    @Description(shortDefinition="An entity that is the source for the substance. It may be different from the manufacturer", formalDefinition="An entity that is the source for the substance. It may be different from the manufacturer. Supplier is synonymous to a distributor." )
     protected List<Reference> supplier;
 
     /**
@@ -4777,7 +4806,7 @@ public class SubstanceDefinition extends DomainResource {
      * The molecular weight or weight range (for proteins, polymers or nucleic acids).
      */
     @Child(name = "molecularWeight", type = {}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="The molecular weight or weight range (for proteins, polymers or nucleic acids)", formalDefinition="The molecular weight or weight range (for proteins, polymers or nucleic acids)." )
+    @Description(shortDefinition="The molecular weight or weight range", formalDefinition="The molecular weight or weight range (for proteins, polymers or nucleic acids)." )
     protected List<SubstanceDefinitionMolecularWeightComponent> molecularWeight;
 
     /**
@@ -4805,7 +4834,7 @@ public class SubstanceDefinition extends DomainResource {
      * A link between this substance and another, with details of the relationship.
      */
     @Child(name = "relationship", type = {}, order=18, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="A link between this substance and another, with details of the relationship", formalDefinition="A link between this substance and another, with details of the relationship." )
+    @Description(shortDefinition="A link between this substance and another", formalDefinition="A link between this substance and another, with details of the relationship." )
     protected List<SubstanceDefinitionRelationshipComponent> relationship;
 
     /**
@@ -4833,7 +4862,7 @@ public class SubstanceDefinition extends DomainResource {
      * Material or taxonomic/anatomical source for the substance.
      */
     @Child(name = "sourceMaterial", type = {}, order=22, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Material or taxonomic/anatomical source for the substance", formalDefinition="Material or taxonomic/anatomical source for the substance." )
+    @Description(shortDefinition="Material or taxonomic/anatomical source", formalDefinition="Material or taxonomic/anatomical source for the substance." )
     protected SubstanceDefinitionSourceMaterialComponent sourceMaterial;
 
     private static final long serialVersionUID = 23576785L;
@@ -4899,7 +4928,7 @@ public class SubstanceDefinition extends DomainResource {
     }
 
     /**
-     * @return {@link #version} (A business level identifier of the substance.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
+     * @return {@link #version} (A business level version identifier of the substance.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
      */
     public StringType getVersionElement() { 
       if (this.version == null)
@@ -4919,7 +4948,7 @@ public class SubstanceDefinition extends DomainResource {
     }
 
     /**
-     * @param value {@link #version} (A business level identifier of the substance.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
+     * @param value {@link #version} (A business level version identifier of the substance.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
      */
     public SubstanceDefinition setVersionElement(StringType value) { 
       this.version = value;
@@ -4927,14 +4956,14 @@ public class SubstanceDefinition extends DomainResource {
     }
 
     /**
-     * @return A business level identifier of the substance.
+     * @return A business level version identifier of the substance.
      */
     public String getVersion() { 
       return this.version == null ? null : this.version.getValue();
     }
 
     /**
-     * @param value A business level identifier of the substance.
+     * @param value A business level version identifier of the substance.
      */
     public SubstanceDefinition setVersion(String value) { 
       if (Utilities.noString(value))
@@ -4948,7 +4977,7 @@ public class SubstanceDefinition extends DomainResource {
     }
 
     /**
-     * @return {@link #status} (Status of substance within the catalogue e.g. approved.)
+     * @return {@link #status} (Status of substance within the catalogue e.g. active, retired.)
      */
     public CodeableConcept getStatus() { 
       if (this.status == null)
@@ -4964,7 +4993,7 @@ public class SubstanceDefinition extends DomainResource {
     }
 
     /**
-     * @param value {@link #status} (Status of substance within the catalogue e.g. approved.)
+     * @param value {@link #status} (Status of substance within the catalogue e.g. active, retired.)
      */
     public SubstanceDefinition setStatus(CodeableConcept value) { 
       this.status = value;
@@ -5025,7 +5054,7 @@ public class SubstanceDefinition extends DomainResource {
     }
 
     /**
-     * @return {@link #domain} (If the substance applies to only human or veterinary use.)
+     * @return {@link #domain} (If the substance applies to human or veterinary use.)
      */
     public CodeableConcept getDomain() { 
       if (this.domain == null)
@@ -5041,7 +5070,7 @@ public class SubstanceDefinition extends DomainResource {
     }
 
     /**
-     * @param value {@link #domain} (If the substance applies to only human or veterinary use.)
+     * @param value {@link #domain} (If the substance applies to human or veterinary use.)
      */
     public SubstanceDefinition setDomain(CodeableConcept value) { 
       this.domain = value;
@@ -5257,7 +5286,7 @@ public class SubstanceDefinition extends DomainResource {
     }
 
     /**
-     * @return {@link #manufacturer} (A company that makes this substance.)
+     * @return {@link #manufacturer} (The entity that creates, makes, produces or fabricates the substance. This is a set of potential manufacturers but is not necessarily comprehensive.)
      */
     public List<Reference> getManufacturer() { 
       if (this.manufacturer == null)
@@ -5310,7 +5339,7 @@ public class SubstanceDefinition extends DomainResource {
     }
 
     /**
-     * @return {@link #supplier} (A company that supplies this substance.)
+     * @return {@link #supplier} (An entity that is the source for the substance. It may be different from the manufacturer. Supplier is synonymous to a distributor.)
      */
     public List<Reference> getSupplier() { 
       if (this.supplier == null)
@@ -5827,16 +5856,16 @@ public class SubstanceDefinition extends DomainResource {
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("identifier", "Identifier", "Identifier by which this substance is known.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        children.add(new Property("version", "string", "A business level identifier of the substance.", 0, 1, version));
-        children.add(new Property("status", "CodeableConcept", "Status of substance within the catalogue e.g. approved.", 0, 1, status));
+        children.add(new Property("version", "string", "A business level version identifier of the substance.", 0, 1, version));
+        children.add(new Property("status", "CodeableConcept", "Status of substance within the catalogue e.g. active, retired.", 0, 1, status));
         children.add(new Property("classification", "CodeableConcept", "A high level categorization, e.g. polymer or nucleic acid, or food, chemical, biological, or a lower level such as the general types of polymer (linear or branch chain) or type of impurity (process related or contaminant).", 0, java.lang.Integer.MAX_VALUE, classification));
-        children.add(new Property("domain", "CodeableConcept", "If the substance applies to only human or veterinary use.", 0, 1, domain));
+        children.add(new Property("domain", "CodeableConcept", "If the substance applies to human or veterinary use.", 0, 1, domain));
         children.add(new Property("grade", "CodeableConcept", "The quality standard, established benchmark, to which substance complies (e.g. USP/NF, Ph. Eur, JP, BP, Company Standard).", 0, java.lang.Integer.MAX_VALUE, grade));
         children.add(new Property("description", "markdown", "Textual description of the substance.", 0, 1, description));
         children.add(new Property("informationSource", "Reference(Citation)", "Supporting literature.", 0, java.lang.Integer.MAX_VALUE, informationSource));
         children.add(new Property("note", "Annotation", "Textual comment about the substance's catalogue or registry record.", 0, java.lang.Integer.MAX_VALUE, note));
-        children.add(new Property("manufacturer", "Reference(Organization)", "A company that makes this substance.", 0, java.lang.Integer.MAX_VALUE, manufacturer));
-        children.add(new Property("supplier", "Reference(Organization)", "A company that supplies this substance.", 0, java.lang.Integer.MAX_VALUE, supplier));
+        children.add(new Property("manufacturer", "Reference(Organization)", "The entity that creates, makes, produces or fabricates the substance. This is a set of potential manufacturers but is not necessarily comprehensive.", 0, java.lang.Integer.MAX_VALUE, manufacturer));
+        children.add(new Property("supplier", "Reference(Organization)", "An entity that is the source for the substance. It may be different from the manufacturer. Supplier is synonymous to a distributor.", 0, java.lang.Integer.MAX_VALUE, supplier));
         children.add(new Property("moiety", "", "Moiety, for structural modifications.", 0, java.lang.Integer.MAX_VALUE, moiety));
         children.add(new Property("property", "", "General specifications for this substance.", 0, java.lang.Integer.MAX_VALUE, property));
         children.add(new Property("referenceInformation", "Reference(SubstanceReferenceInformation)", "General information detailing this substance.", 0, 1, referenceInformation));
@@ -5855,16 +5884,16 @@ public class SubstanceDefinition extends DomainResource {
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Identifier by which this substance is known.", 0, java.lang.Integer.MAX_VALUE, identifier);
-        case 351608024: /*version*/  return new Property("version", "string", "A business level identifier of the substance.", 0, 1, version);
-        case -892481550: /*status*/  return new Property("status", "CodeableConcept", "Status of substance within the catalogue e.g. approved.", 0, 1, status);
+        case 351608024: /*version*/  return new Property("version", "string", "A business level version identifier of the substance.", 0, 1, version);
+        case -892481550: /*status*/  return new Property("status", "CodeableConcept", "Status of substance within the catalogue e.g. active, retired.", 0, 1, status);
         case 382350310: /*classification*/  return new Property("classification", "CodeableConcept", "A high level categorization, e.g. polymer or nucleic acid, or food, chemical, biological, or a lower level such as the general types of polymer (linear or branch chain) or type of impurity (process related or contaminant).", 0, java.lang.Integer.MAX_VALUE, classification);
-        case -1326197564: /*domain*/  return new Property("domain", "CodeableConcept", "If the substance applies to only human or veterinary use.", 0, 1, domain);
+        case -1326197564: /*domain*/  return new Property("domain", "CodeableConcept", "If the substance applies to human or veterinary use.", 0, 1, domain);
         case 98615255: /*grade*/  return new Property("grade", "CodeableConcept", "The quality standard, established benchmark, to which substance complies (e.g. USP/NF, Ph. Eur, JP, BP, Company Standard).", 0, java.lang.Integer.MAX_VALUE, grade);
         case -1724546052: /*description*/  return new Property("description", "markdown", "Textual description of the substance.", 0, 1, description);
         case -2123220889: /*informationSource*/  return new Property("informationSource", "Reference(Citation)", "Supporting literature.", 0, java.lang.Integer.MAX_VALUE, informationSource);
         case 3387378: /*note*/  return new Property("note", "Annotation", "Textual comment about the substance's catalogue or registry record.", 0, java.lang.Integer.MAX_VALUE, note);
-        case -1969347631: /*manufacturer*/  return new Property("manufacturer", "Reference(Organization)", "A company that makes this substance.", 0, java.lang.Integer.MAX_VALUE, manufacturer);
-        case -1663305268: /*supplier*/  return new Property("supplier", "Reference(Organization)", "A company that supplies this substance.", 0, java.lang.Integer.MAX_VALUE, supplier);
+        case -1969347631: /*manufacturer*/  return new Property("manufacturer", "Reference(Organization)", "The entity that creates, makes, produces or fabricates the substance. This is a set of potential manufacturers but is not necessarily comprehensive.", 0, java.lang.Integer.MAX_VALUE, manufacturer);
+        case -1663305268: /*supplier*/  return new Property("supplier", "Reference(Organization)", "An entity that is the source for the substance. It may be different from the manufacturer. Supplier is synonymous to a distributor.", 0, java.lang.Integer.MAX_VALUE, supplier);
         case -1068650173: /*moiety*/  return new Property("moiety", "", "Moiety, for structural modifications.", 0, java.lang.Integer.MAX_VALUE, moiety);
         case -993141291: /*property*/  return new Property("property", "", "General specifications for this substance.", 0, java.lang.Integer.MAX_VALUE, property);
         case -2117930783: /*referenceInformation*/  return new Property("referenceInformation", "Reference(SubstanceReferenceInformation)", "General information detailing this substance.", 0, 1, referenceInformation);

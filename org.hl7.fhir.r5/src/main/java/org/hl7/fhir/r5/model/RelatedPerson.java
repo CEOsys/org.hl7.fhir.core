@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,7 +48,7 @@ import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 
 /**
- * Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
+ * Information about a person that is involved in a patient's health or the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
  */
 @ResourceDef(name="RelatedPerson", profile="http://hl7.org/fhir/StructureDefinition/RelatedPerson")
 public class RelatedPerson extends DomainResource {
@@ -305,10 +305,10 @@ public class RelatedPerson extends DomainResource {
     protected Reference patient;
 
     /**
-     * The nature of the relationship between a patient and the related person.
+     * The nature of the relationship between the related person and the patient.
      */
     @Child(name = "relationship", type = {CodeableConcept.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="The nature of the relationship", formalDefinition="The nature of the relationship between a patient and the related person." )
+    @Description(shortDefinition="The relationship of the related person to the patient", formalDefinition="The nature of the relationship between the related person and the patient." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype")
     protected List<CodeableConcept> relationship;
 
@@ -509,7 +509,7 @@ public class RelatedPerson extends DomainResource {
     }
 
     /**
-     * @return {@link #relationship} (The nature of the relationship between a patient and the related person.)
+     * @return {@link #relationship} (The nature of the relationship between the related person and the patient.)
      */
     public List<CodeableConcept> getRelationship() { 
       if (this.relationship == null)
@@ -953,7 +953,7 @@ public class RelatedPerson extends DomainResource {
         children.add(new Property("identifier", "Identifier", "Identifier for a person within a particular scope.", 0, java.lang.Integer.MAX_VALUE, identifier));
         children.add(new Property("active", "boolean", "Whether this related person record is in active use.", 0, 1, active));
         children.add(new Property("patient", "Reference(Patient)", "The patient this person is related to.", 0, 1, patient));
-        children.add(new Property("relationship", "CodeableConcept", "The nature of the relationship between a patient and the related person.", 0, java.lang.Integer.MAX_VALUE, relationship));
+        children.add(new Property("relationship", "CodeableConcept", "The nature of the relationship between the related person and the patient.", 0, java.lang.Integer.MAX_VALUE, relationship));
         children.add(new Property("name", "HumanName", "A name associated with the person.", 0, java.lang.Integer.MAX_VALUE, name));
         children.add(new Property("telecom", "ContactPoint", "A contact detail for the person, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom));
         children.add(new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, 1, gender));
@@ -970,7 +970,7 @@ public class RelatedPerson extends DomainResource {
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Identifier for a person within a particular scope.", 0, java.lang.Integer.MAX_VALUE, identifier);
         case -1422950650: /*active*/  return new Property("active", "boolean", "Whether this related person record is in active use.", 0, 1, active);
         case -791418107: /*patient*/  return new Property("patient", "Reference(Patient)", "The patient this person is related to.", 0, 1, patient);
-        case -261851592: /*relationship*/  return new Property("relationship", "CodeableConcept", "The nature of the relationship between a patient and the related person.", 0, java.lang.Integer.MAX_VALUE, relationship);
+        case -261851592: /*relationship*/  return new Property("relationship", "CodeableConcept", "The nature of the relationship between the related person and the patient.", 0, java.lang.Integer.MAX_VALUE, relationship);
         case 3373707: /*name*/  return new Property("name", "HumanName", "A name associated with the person.", 0, java.lang.Integer.MAX_VALUE, name);
         case -1429363305: /*telecom*/  return new Property("telecom", "ContactPoint", "A contact detail for the person, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom);
         case -1249512767: /*gender*/  return new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, 1, gender);

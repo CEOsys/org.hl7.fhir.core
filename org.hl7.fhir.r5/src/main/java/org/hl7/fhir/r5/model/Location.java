@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -83,6 +83,7 @@ public class Location extends DomainResource {
           switch (this) {
             case INSTANCE: return "instance";
             case KIND: return "kind";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -90,6 +91,7 @@ public class Location extends DomainResource {
           switch (this) {
             case INSTANCE: return "http://hl7.org/fhir/location-mode";
             case KIND: return "http://hl7.org/fhir/location-mode";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +99,7 @@ public class Location extends DomainResource {
           switch (this) {
             case INSTANCE: return "The Location resource represents a specific instance of a location (e.g. Operating Theatre 1A).";
             case KIND: return "The Location represents a class of locations (e.g. Any Operating Theatre) although this class of locations could be constrained within a specific boundary (such as organization, or parent location, address etc.).";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -104,6 +107,7 @@ public class Location extends DomainResource {
           switch (this) {
             case INSTANCE: return "Instance";
             case KIND: return "Kind";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -182,6 +186,7 @@ public class Location extends DomainResource {
             case ACTIVE: return "active";
             case SUSPENDED: return "suspended";
             case INACTIVE: return "inactive";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -190,6 +195,7 @@ public class Location extends DomainResource {
             case ACTIVE: return "http://hl7.org/fhir/location-status";
             case SUSPENDED: return "http://hl7.org/fhir/location-status";
             case INACTIVE: return "http://hl7.org/fhir/location-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -198,6 +204,7 @@ public class Location extends DomainResource {
             case ACTIVE: return "The location is operational.";
             case SUSPENDED: return "The location is temporarily closed.";
             case INACTIVE: return "The location is no longer used.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -206,6 +213,7 @@ public class Location extends DomainResource {
             case ACTIVE: return "Active";
             case SUSPENDED: return "Suspended";
             case INACTIVE: return "Inactive";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -642,10 +650,10 @@ public class Location extends DomainResource {
         protected List<Enumeration<DaysOfWeek>> daysOfWeek;
 
         /**
-         * The Location is open all day.
+         * Is this always available? (hence times are irrelevant) i.e. 24 hour service.
          */
         @Child(name = "allDay", type = {BooleanType.class}, order=2, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="The Location is open all day", formalDefinition="The Location is open all day." )
+        @Description(shortDefinition="Always available? i.e. 24 hour service", formalDefinition="Is this always available? (hence times are irrelevant) i.e. 24 hour service." )
         protected BooleanType allDay;
 
         /**
@@ -733,7 +741,7 @@ public class Location extends DomainResource {
         }
 
         /**
-         * @return {@link #allDay} (The Location is open all day.). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
+         * @return {@link #allDay} (Is this always available? (hence times are irrelevant) i.e. 24 hour service.). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
          */
         public BooleanType getAllDayElement() { 
           if (this.allDay == null)
@@ -753,7 +761,7 @@ public class Location extends DomainResource {
         }
 
         /**
-         * @param value {@link #allDay} (The Location is open all day.). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
+         * @param value {@link #allDay} (Is this always available? (hence times are irrelevant) i.e. 24 hour service.). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
          */
         public LocationHoursOfOperationComponent setAllDayElement(BooleanType value) { 
           this.allDay = value;
@@ -761,14 +769,14 @@ public class Location extends DomainResource {
         }
 
         /**
-         * @return The Location is open all day.
+         * @return Is this always available? (hence times are irrelevant) i.e. 24 hour service.
          */
         public boolean getAllDay() { 
           return this.allDay == null || this.allDay.isEmpty() ? false : this.allDay.getValue();
         }
 
         /**
-         * @param value The Location is open all day.
+         * @param value Is this always available? (hence times are irrelevant) i.e. 24 hour service.
          */
         public LocationHoursOfOperationComponent setAllDay(boolean value) { 
             if (this.allDay == null)
@@ -878,7 +886,7 @@ public class Location extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("daysOfWeek", "code", "Indicates which days of the week are available between the start and end Times.", 0, java.lang.Integer.MAX_VALUE, daysOfWeek));
-          children.add(new Property("allDay", "boolean", "The Location is open all day.", 0, 1, allDay));
+          children.add(new Property("allDay", "boolean", "Is this always available? (hence times are irrelevant) i.e. 24 hour service.", 0, 1, allDay));
           children.add(new Property("openingTime", "time", "Time that the Location opens.", 0, 1, openingTime));
           children.add(new Property("closingTime", "time", "Time that the Location closes.", 0, 1, closingTime));
         }
@@ -887,7 +895,7 @@ public class Location extends DomainResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 68050338: /*daysOfWeek*/  return new Property("daysOfWeek", "code", "Indicates which days of the week are available between the start and end Times.", 0, java.lang.Integer.MAX_VALUE, daysOfWeek);
-          case -1414913477: /*allDay*/  return new Property("allDay", "boolean", "The Location is open all day.", 0, 1, allDay);
+          case -1414913477: /*allDay*/  return new Property("allDay", "boolean", "Is this always available? (hence times are irrelevant) i.e. 24 hour service.", 0, 1, allDay);
           case 84062277: /*openingTime*/  return new Property("openingTime", "time", "Time that the Location opens.", 0, 1, openingTime);
           case 188137762: /*closingTime*/  return new Property("closingTime", "time", "Time that the Location closes.", 0, 1, closingTime);
           default: return super.getNamedProperty(_hash, _name, _checkValid);

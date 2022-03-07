@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -83,6 +83,7 @@ public class ImagingSelection extends DomainResource {
           switch (this) {
             case _2D: return "2d";
             case _3D: return "3d";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -90,6 +91,7 @@ public class ImagingSelection extends DomainResource {
           switch (this) {
             case _2D: return "http://hl7.org/fhir/imagingselection-coordinatetype";
             case _3D: return "http://hl7.org/fhir/imagingselection-coordinatetype";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +99,7 @@ public class ImagingSelection extends DomainResource {
           switch (this) {
             case _2D: return "The selected image region is defined in a 2D coordinate system.";
             case _3D: return "The selected image region is defined in a 3D coordinate system.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -104,6 +107,7 @@ public class ImagingSelection extends DomainResource {
           switch (this) {
             case _2D: return "2D";
             case _3D: return "3D";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -203,6 +207,7 @@ public class ImagingSelection extends DomainResource {
             case POLYGON: return "POLYGON";
             case ELLIPSE: return "ELLIPSE";
             case ELLIPSOID: return "ELLIPSOID";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -214,6 +219,7 @@ public class ImagingSelection extends DomainResource {
             case POLYGON: return "http://hl7.org/fhir/imagingselection-graphictype";
             case ELLIPSE: return "http://hl7.org/fhir/imagingselection-graphictype";
             case ELLIPSOID: return "http://hl7.org/fhir/imagingselection-graphictype";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -225,6 +231,7 @@ public class ImagingSelection extends DomainResource {
             case POLYGON: return "a series of connected line segments with ordered vertices denoted by (x,y,z) triplets, where the first and last vertices shall be the same forming a polygon; the points shall be coplanar.";
             case ELLIPSE: return "an ellipse defined by four (x,y,z) triplets, the first two triplets specifying the endpoints of the major axis and the second two triplets specifying the endpoints of the minor axis.";
             case ELLIPSOID: return "a three-dimensional geometric surface whose plane sections are either ellipses or circles and contains three intersecting orthogonal axes, \"a\", \"b\", and \"c\"; the ellipsoid is defined by six (x,y,z) triplets, the first and second triplets specifying the endpoints of axis \"a\", the third and fourth triplets specifying the endpoints of axis \"b\", and the fifth and sixth triplets specifying the endpoints of axis \"c\".";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -236,6 +243,7 @@ public class ImagingSelection extends DomainResource {
             case POLYGON: return "POLYGON";
             case ELLIPSE: return "ELLIPSE";
             case ELLIPSOID: return "ELLIPSOID";
+            case NULL: return null;
             default: return "?";
           }
         }

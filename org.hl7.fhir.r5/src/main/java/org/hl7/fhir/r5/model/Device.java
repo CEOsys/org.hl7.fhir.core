@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -89,6 +89,7 @@ public class Device extends DomainResource {
             case ACTIVE: return "active";
             case INACTIVE: return "inactive";
             case ENTEREDINERROR: return "entered-in-error";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +98,7 @@ public class Device extends DomainResource {
             case ACTIVE: return "http://hl7.org/fhir/device-status";
             case INACTIVE: return "http://hl7.org/fhir/device-status";
             case ENTEREDINERROR: return "http://hl7.org/fhir/device-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -105,6 +107,7 @@ public class Device extends DomainResource {
             case ACTIVE: return "The device is available for use.  Note: For *implanted devices*  this means that the device is implanted in the patient.";
             case INACTIVE: return "The device is no longer available for use (e.g. lost, expired, damaged).  Note: For *implanted devices*  this means that the device has been removed from the patient.";
             case ENTEREDINERROR: return "The device was entered in error and voided.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +116,7 @@ public class Device extends DomainResource {
             case ACTIVE: return "Active";
             case INACTIVE: return "Inactive";
             case ENTEREDINERROR: return "Entered in Error";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -225,6 +229,7 @@ public class Device extends DomainResource {
             case SELFREPORTED: return "self-reported";
             case ELECTRONICTRANSMISSION: return "electronic-transmission";
             case UNKNOWN: return "unknown";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -237,6 +242,7 @@ public class Device extends DomainResource {
             case SELFREPORTED: return "http://hl7.org/fhir/udi-entry-type";
             case ELECTRONICTRANSMISSION: return "http://hl7.org/fhir/udi-entry-type";
             case UNKNOWN: return "http://hl7.org/fhir/udi-entry-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -249,6 +255,7 @@ public class Device extends DomainResource {
             case SELFREPORTED: return "The data originated from a patient source and was not directly scanned or read from a label or card.";
             case ELECTRONICTRANSMISSION: return "The UDI information was received electronically from the device through a communication protocol, such as the IEEE 11073 20601 version 4 exchange protocol over Bluetooth or USB.";
             case UNKNOWN: return "The method of data capture has not been determined.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -261,6 +268,7 @@ public class Device extends DomainResource {
             case SELFREPORTED: return "Self Reported";
             case ELECTRONICTRANSMISSION: return "Electronic Transmission";
             case UNKNOWN: return "Unknown";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -349,7 +357,7 @@ public class Device extends DomainResource {
 3) ICCBBA for blood containers: http://hl7.org/fhir/NamingSystem/iccbba-blood-di, 
 4) ICCBA for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di # Informationsstelle für Arzneispezialitäten (IFA GmbH) (EU only): http://hl7.org/fhir/NamingSystem/ifa-gmbh-di.
          */
-        @Child(name = "issuer", type = {UriType.class}, order=2, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "issuer", type = {UriType.class}, order=2, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="UDI Issuing Organization", formalDefinition="Organization that is charged with issuing UDIs for devices. For example, the US FDA issuers include: \n1) GS1: http://hl7.org/fhir/NamingSystem/gs1-di, \n2) HIBCC: http://hl7.org/fhir/NamingSystem/hibcc-diI, \n3) ICCBBA for blood containers: http://hl7.org/fhir/NamingSystem/iccbba-blood-di, \n4) ICCBA for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di # Informationsstelle für Arzneispezialitäten (IFA GmbH) (EU only): http://hl7.org/fhir/NamingSystem/ifa-gmbh-di." )
         protected UriType issuer;
 
@@ -394,9 +402,10 @@ public class Device extends DomainResource {
     /**
      * Constructor
      */
-      public DeviceUdiCarrierComponent(String deviceIdentifier) {
+      public DeviceUdiCarrierComponent(String deviceIdentifier, String issuer) {
         super();
         this.setDeviceIdentifier(deviceIdentifier);
+        this.setIssuer(issuer);
       }
 
         /**
@@ -499,13 +508,9 @@ public class Device extends DomainResource {
 4) ICCBA for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di # Informationsstelle für Arzneispezialitäten (IFA GmbH) (EU only): http://hl7.org/fhir/NamingSystem/ifa-gmbh-di.
          */
         public DeviceUdiCarrierComponent setIssuer(String value) { 
-          if (Utilities.noString(value))
-            this.issuer = null;
-          else {
             if (this.issuer == null)
               this.issuer = new UriType();
             this.issuer.setValue(value);
-          }
           return this;
         }
 
@@ -1169,13 +1174,20 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         protected Identifier component;
 
         /**
+         * The date the version was installed on the device.
+         */
+        @Child(name = "installDate", type = {DateTimeType.class}, order=3, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="The date the version was installed on the device", formalDefinition="The date the version was installed on the device." )
+        protected DateTimeType installDate;
+
+        /**
          * The version text.
          */
-        @Child(name = "value", type = {StringType.class}, order=3, min=1, max=1, modifier=false, summary=false)
+        @Child(name = "value", type = {StringType.class}, order=4, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="The version text", formalDefinition="The version text." )
         protected StringType value;
 
-        private static final long serialVersionUID = 645214295L;
+        private static final long serialVersionUID = 1358422741L;
 
     /**
      * Constructor
@@ -1241,6 +1253,55 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         }
 
         /**
+         * @return {@link #installDate} (The date the version was installed on the device.). This is the underlying object with id, value and extensions. The accessor "getInstallDate" gives direct access to the value
+         */
+        public DateTimeType getInstallDateElement() { 
+          if (this.installDate == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create DeviceVersionComponent.installDate");
+            else if (Configuration.doAutoCreate())
+              this.installDate = new DateTimeType(); // bb
+          return this.installDate;
+        }
+
+        public boolean hasInstallDateElement() { 
+          return this.installDate != null && !this.installDate.isEmpty();
+        }
+
+        public boolean hasInstallDate() { 
+          return this.installDate != null && !this.installDate.isEmpty();
+        }
+
+        /**
+         * @param value {@link #installDate} (The date the version was installed on the device.). This is the underlying object with id, value and extensions. The accessor "getInstallDate" gives direct access to the value
+         */
+        public DeviceVersionComponent setInstallDateElement(DateTimeType value) { 
+          this.installDate = value;
+          return this;
+        }
+
+        /**
+         * @return The date the version was installed on the device.
+         */
+        public Date getInstallDate() { 
+          return this.installDate == null ? null : this.installDate.getValue();
+        }
+
+        /**
+         * @param value The date the version was installed on the device.
+         */
+        public DeviceVersionComponent setInstallDate(Date value) { 
+          if (value == null)
+            this.installDate = null;
+          else {
+            if (this.installDate == null)
+              this.installDate = new DateTimeType();
+            this.installDate.setValue(value);
+          }
+          return this;
+        }
+
+        /**
          * @return {@link #value} (The version text.). This is the underlying object with id, value and extensions. The accessor "getValue" gives direct access to the value
          */
         public StringType getValueElement() { 
@@ -1289,6 +1350,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
           super.listChildren(children);
           children.add(new Property("type", "CodeableConcept", "The type of the device version, e.g. manufacturer, approved, internal.", 0, 1, type));
           children.add(new Property("component", "Identifier", "The hardware or software module of the device to which the version applies.", 0, 1, component));
+          children.add(new Property("installDate", "dateTime", "The date the version was installed on the device.", 0, 1, installDate));
           children.add(new Property("value", "string", "The version text.", 0, 1, value));
         }
 
@@ -1297,6 +1359,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
           switch (_hash) {
           case 3575610: /*type*/  return new Property("type", "CodeableConcept", "The type of the device version, e.g. manufacturer, approved, internal.", 0, 1, type);
           case -1399907075: /*component*/  return new Property("component", "Identifier", "The hardware or software module of the device to which the version applies.", 0, 1, component);
+          case 2143044585: /*installDate*/  return new Property("installDate", "dateTime", "The date the version was installed on the device.", 0, 1, installDate);
           case 111972721: /*value*/  return new Property("value", "string", "The version text.", 0, 1, value);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
@@ -1308,6 +1371,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         switch (hash) {
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
         case -1399907075: /*component*/ return this.component == null ? new Base[0] : new Base[] {this.component}; // Identifier
+        case 2143044585: /*installDate*/ return this.installDate == null ? new Base[0] : new Base[] {this.installDate}; // DateTimeType
         case 111972721: /*value*/ return this.value == null ? new Base[0] : new Base[] {this.value}; // StringType
         default: return super.getProperty(hash, name, checkValid);
         }
@@ -1323,6 +1387,9 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case -1399907075: // component
           this.component = TypeConvertor.castToIdentifier(value); // Identifier
           return value;
+        case 2143044585: // installDate
+          this.installDate = TypeConvertor.castToDateTime(value); // DateTimeType
+          return value;
         case 111972721: // value
           this.value = TypeConvertor.castToString(value); // StringType
           return value;
@@ -1337,6 +1404,8 @@ RegisteredName | UserFriendlyName | PatientReportedName.
           this.type = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
         } else if (name.equals("component")) {
           this.component = TypeConvertor.castToIdentifier(value); // Identifier
+        } else if (name.equals("installDate")) {
+          this.installDate = TypeConvertor.castToDateTime(value); // DateTimeType
         } else if (name.equals("value")) {
           this.value = TypeConvertor.castToString(value); // StringType
         } else
@@ -1349,6 +1418,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         switch (hash) {
         case 3575610:  return getType();
         case -1399907075:  return getComponent();
+        case 2143044585:  return getInstallDateElement();
         case 111972721:  return getValueElement();
         default: return super.makeProperty(hash, name);
         }
@@ -1360,6 +1430,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         switch (hash) {
         case 3575610: /*type*/ return new String[] {"CodeableConcept"};
         case -1399907075: /*component*/ return new String[] {"Identifier"};
+        case 2143044585: /*installDate*/ return new String[] {"dateTime"};
         case 111972721: /*value*/ return new String[] {"string"};
         default: return super.getTypesForProperty(hash, name);
         }
@@ -1375,6 +1446,9 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         else if (name.equals("component")) {
           this.component = new Identifier();
           return this.component;
+        }
+        else if (name.equals("installDate")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Device.version.installDate");
         }
         else if (name.equals("value")) {
           throw new FHIRException("Cannot call addChild on a primitive type Device.version.value");
@@ -1393,6 +1467,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         super.copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.component = component == null ? null : component.copy();
+        dst.installDate = installDate == null ? null : installDate.copy();
         dst.value = value == null ? null : value.copy();
       }
 
@@ -1403,8 +1478,8 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         if (!(other_ instanceof DeviceVersionComponent))
           return false;
         DeviceVersionComponent o = (DeviceVersionComponent) other_;
-        return compareDeep(type, o.type, true) && compareDeep(component, o.component, true) && compareDeep(value, o.value, true)
-          ;
+        return compareDeep(type, o.type, true) && compareDeep(component, o.component, true) && compareDeep(installDate, o.installDate, true)
+           && compareDeep(value, o.value, true);
       }
 
       @Override
@@ -1414,11 +1489,12 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         if (!(other_ instanceof DeviceVersionComponent))
           return false;
         DeviceVersionComponent o = (DeviceVersionComponent) other_;
-        return compareValues(value, o.value, true);
+        return compareValues(installDate, o.installDate, true) && compareValues(value, o.value, true);
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(type, component, value);
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(type, component, installDate
+          , value);
       }
 
   public String fhirType() {
@@ -2598,10 +2674,10 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     protected List<DevicePropertyComponent> property;
 
     /**
-     * Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in.
+     * Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker.
      */
-    @Child(name = "subject", type = {Patient.class, Practitioner.class, Person.class}, order=18, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Patient to whom Device is affixed", formalDefinition="Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in." )
+    @Child(name = "subject", type = {Patient.class, Practitioner.class}, order=18, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Patient to whom Device is affixed", formalDefinition="Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker." )
     protected Reference subject;
 
     /**
@@ -2675,10 +2751,10 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     protected List<CodeableConcept> safety;
 
     /**
-     * The device that this device is attached to or is part of.
+     * The higher level or encompassing device that this device is a logical part of.
      */
     @Child(name = "parent", type = {Device.class}, order=29, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="The device that this device is attached to or is part of", formalDefinition="The device that this device is attached to or is part of." )
+    @Description(shortDefinition="The device that this device is attached to or is part of", formalDefinition="The higher level or encompassing device that this device is a logical part of." )
     protected Reference parent;
 
     private static final long serialVersionUID = 1453107483L;
@@ -3551,7 +3627,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     }
 
     /**
-     * @return {@link #subject} (Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in.)
+     * @return {@link #subject} (Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker.)
      */
     public Reference getSubject() { 
       if (this.subject == null)
@@ -3567,7 +3643,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     }
 
     /**
-     * @param value {@link #subject} (Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in.)
+     * @param value {@link #subject} (Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker.)
      */
     public Device setSubject(Reference value) { 
       this.subject = value;
@@ -3985,7 +4061,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     }
 
     /**
-     * @return {@link #parent} (The device that this device is attached to or is part of.)
+     * @return {@link #parent} (The higher level or encompassing device that this device is a logical part of.)
      */
     public Reference getParent() { 
       if (this.parent == null)
@@ -4001,7 +4077,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     }
 
     /**
-     * @param value {@link #parent} (The device that this device is attached to or is part of.)
+     * @param value {@link #parent} (The higher level or encompassing device that this device is a logical part of.)
      */
     public Device setParent(Reference value) { 
       this.parent = value;
@@ -4028,7 +4104,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         children.add(new Property("type", "CodeableConcept", "The kind or type of device. A device instance may have more than one type - in which case those are the types that apply to the specific instance of the device.", 0, java.lang.Integer.MAX_VALUE, type));
         children.add(new Property("version", "", "The actual design of the device or software version running on the device.", 0, java.lang.Integer.MAX_VALUE, version));
         children.add(new Property("property", "", "The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties.", 0, java.lang.Integer.MAX_VALUE, property));
-        children.add(new Property("subject", "Reference(Patient|Practitioner|Person)", "Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in.", 0, 1, subject));
+        children.add(new Property("subject", "Reference(Patient|Practitioner)", "Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker.", 0, 1, subject));
         children.add(new Property("operationalStatus", "", "The status of the device itself - whether it is switched on, or activated, etc.", 0, 1, operationalStatus));
         children.add(new Property("associationStatus", "", "The state of the usage or application of the device - whether the device is implanted, or explanted, or attached to the patient.", 0, 1, associationStatus));
         children.add(new Property("owner", "Reference(Organization)", "An organization that is responsible for the provision and ongoing maintenance of the device.", 0, 1, owner));
@@ -4039,7 +4115,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         children.add(new Property("link", "", "An associated device, attached to, used with, communicating with or linking a previous or new device model to the focal device.", 0, java.lang.Integer.MAX_VALUE, link));
         children.add(new Property("note", "Annotation", "Descriptive information, usage information or implantation information that is not captured in an existing element.", 0, java.lang.Integer.MAX_VALUE, note));
         children.add(new Property("safety", "CodeableConcept", "Provides additional safety characteristics about a medical device.  For example devices containing latex.", 0, java.lang.Integer.MAX_VALUE, safety));
-        children.add(new Property("parent", "Reference(Device)", "The device that this device is attached to or is part of.", 0, 1, parent));
+        children.add(new Property("parent", "Reference(Device)", "The higher level or encompassing device that this device is a logical part of.", 0, 1, parent));
       }
 
       @Override
@@ -4063,7 +4139,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case 3575610: /*type*/  return new Property("type", "CodeableConcept", "The kind or type of device. A device instance may have more than one type - in which case those are the types that apply to the specific instance of the device.", 0, java.lang.Integer.MAX_VALUE, type);
         case 351608024: /*version*/  return new Property("version", "", "The actual design of the device or software version running on the device.", 0, java.lang.Integer.MAX_VALUE, version);
         case -993141291: /*property*/  return new Property("property", "", "The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties.", 0, java.lang.Integer.MAX_VALUE, property);
-        case -1867885268: /*subject*/  return new Property("subject", "Reference(Patient|Practitioner|Person)", "Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in.", 0, 1, subject);
+        case -1867885268: /*subject*/  return new Property("subject", "Reference(Patient|Practitioner)", "Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker.", 0, 1, subject);
         case -2103166364: /*operationalStatus*/  return new Property("operationalStatus", "", "The status of the device itself - whether it is switched on, or activated, etc.", 0, 1, operationalStatus);
         case -605391917: /*associationStatus*/  return new Property("associationStatus", "", "The state of the usage or application of the device - whether the device is implanted, or explanted, or attached to the patient.", 0, 1, associationStatus);
         case 106164915: /*owner*/  return new Property("owner", "Reference(Organization)", "An organization that is responsible for the provision and ongoing maintenance of the device.", 0, 1, owner);
@@ -4074,7 +4150,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case 3321850: /*link*/  return new Property("link", "", "An associated device, attached to, used with, communicating with or linking a previous or new device model to the focal device.", 0, java.lang.Integer.MAX_VALUE, link);
         case 3387378: /*note*/  return new Property("note", "Annotation", "Descriptive information, usage information or implantation information that is not captured in an existing element.", 0, java.lang.Integer.MAX_VALUE, note);
         case -909893934: /*safety*/  return new Property("safety", "CodeableConcept", "Provides additional safety characteristics about a medical device.  For example devices containing latex.", 0, java.lang.Integer.MAX_VALUE, safety);
-        case -995424086: /*parent*/  return new Property("parent", "Reference(Device)", "The device that this device is attached to or is part of.", 0, 1, parent);
+        case -995424086: /*parent*/  return new Property("parent", "Reference(Device)", "The higher level or encompassing device that this device is a logical part of.", 0, 1, parent);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -4883,7 +4959,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
    * Path: <b>Device.subject.where(resolve() is Patient)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="Device.subject.where(resolve() is Patient)", description="Patient information, if the resource is affixed to a person", type="reference", target={Patient.class, Person.class, Practitioner.class } )
+  @SearchParamDefinition(name="patient", path="Device.subject.where(resolve() is Patient)", description="Patient information, if the resource is affixed to a person", type="reference", target={Patient.class, Practitioner.class } )
   public static final String SP_PATIENT = "patient";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>patient</b>
@@ -4906,17 +4982,17 @@ RegisteredName | UserFriendlyName | PatientReportedName.
    * <p>
    * Description: <b>The serial number of the device</b><br>
    * Type: <b>string</b><br>
-   * Path: <b>Device.serialNumber</b><br>
+   * Path: <b>Device.serialNumber | Device.identifier.where(type='SNO')</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="serial-number", path="Device.serialNumber", description="The serial number of the device", type="string" )
+  @SearchParamDefinition(name="serial-number", path="Device.serialNumber | Device.identifier.where(type='SNO')", description="The serial number of the device", type="string" )
   public static final String SP_SERIAL_NUMBER = "serial-number";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>serial-number</b>
    * <p>
    * Description: <b>The serial number of the device</b><br>
    * Type: <b>string</b><br>
-   * Path: <b>Device.serialNumber</b><br>
+   * Path: <b>Device.serialNumber | Device.identifier.where(type='SNO')</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.StringClientParam SERIAL_NUMBER = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_SERIAL_NUMBER);
@@ -4949,7 +5025,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
    * Path: <b>Device.subject</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="subject", path="Device.subject", description="Subject information, to which the device is associated of affixed", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient") }, target={Patient.class, Person.class, Practitioner.class } )
+  @SearchParamDefinition(name="subject", path="Device.subject", description="Subject information, to which the device is associated of affixed", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient") }, target={Patient.class, Practitioner.class } )
   public static final String SP_SUBJECT = "subject";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>subject</b>

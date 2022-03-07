@@ -48,12 +48,12 @@ import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 
 /**
- * Record of delivery of what is supplied.
+ * Record of transport.
  */
-@ResourceDef(name="SupplyDelivery", profile="http://hl7.org/fhir/StructureDefinition/SupplyDelivery")
-public class SupplyDelivery extends DomainResource {
+@ResourceDef(name="Transport", profile="http://hl7.org/fhir/StructureDefinition/Transport")
+public class Transport extends DomainResource {
 
-    public enum SupplyDeliveryStatus {
+    public enum TransportStatus {
         /**
          * Supply has been requested, but not delivered.
          */
@@ -74,7 +74,7 @@ public class SupplyDelivery extends DomainResource {
          * added to help the parsers with the generic types
          */
         NULL;
-        public static SupplyDeliveryStatus fromCode(String codeString) throws FHIRException {
+        public static TransportStatus fromCode(String codeString) throws FHIRException {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("in-progress".equals(codeString))
@@ -88,7 +88,7 @@ public class SupplyDelivery extends DomainResource {
         if (Configuration.isAcceptInvalidEnums())
           return null;
         else
-          throw new FHIRException("Unknown SupplyDeliveryStatus code '"+codeString+"'");
+          throw new FHIRException("Unknown TransportStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -132,57 +132,57 @@ public class SupplyDelivery extends DomainResource {
         }
     }
 
-  public static class SupplyDeliveryStatusEnumFactory implements EnumFactory<SupplyDeliveryStatus> {
-    public SupplyDeliveryStatus fromCode(String codeString) throws IllegalArgumentException {
+  public static class TransportStatusEnumFactory implements EnumFactory<TransportStatus> {
+    public TransportStatus fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("in-progress".equals(codeString))
-          return SupplyDeliveryStatus.INPROGRESS;
+          return TransportStatus.INPROGRESS;
         if ("completed".equals(codeString))
-          return SupplyDeliveryStatus.COMPLETED;
+          return TransportStatus.COMPLETED;
         if ("abandoned".equals(codeString))
-          return SupplyDeliveryStatus.ABANDONED;
+          return TransportStatus.ABANDONED;
         if ("entered-in-error".equals(codeString))
-          return SupplyDeliveryStatus.ENTEREDINERROR;
-        throw new IllegalArgumentException("Unknown SupplyDeliveryStatus code '"+codeString+"'");
+          return TransportStatus.ENTEREDINERROR;
+        throw new IllegalArgumentException("Unknown TransportStatus code '"+codeString+"'");
         }
-        public Enumeration<SupplyDeliveryStatus> fromType(Base code) throws FHIRException {
+        public Enumeration<TransportStatus> fromType(Base code) throws FHIRException {
           if (code == null)
             return null;
           if (code.isEmpty())
-            return new Enumeration<SupplyDeliveryStatus>(this);
+            return new Enumeration<TransportStatus>(this);
           String codeString = ((PrimitiveType) code).asStringValue();
           if (codeString == null || "".equals(codeString))
             return null;
         if ("in-progress".equals(codeString))
-          return new Enumeration<SupplyDeliveryStatus>(this, SupplyDeliveryStatus.INPROGRESS);
+          return new Enumeration<TransportStatus>(this, TransportStatus.INPROGRESS);
         if ("completed".equals(codeString))
-          return new Enumeration<SupplyDeliveryStatus>(this, SupplyDeliveryStatus.COMPLETED);
+          return new Enumeration<TransportStatus>(this, TransportStatus.COMPLETED);
         if ("abandoned".equals(codeString))
-          return new Enumeration<SupplyDeliveryStatus>(this, SupplyDeliveryStatus.ABANDONED);
+          return new Enumeration<TransportStatus>(this, TransportStatus.ABANDONED);
         if ("entered-in-error".equals(codeString))
-          return new Enumeration<SupplyDeliveryStatus>(this, SupplyDeliveryStatus.ENTEREDINERROR);
-        throw new FHIRException("Unknown SupplyDeliveryStatus code '"+codeString+"'");
+          return new Enumeration<TransportStatus>(this, TransportStatus.ENTEREDINERROR);
+        throw new FHIRException("Unknown TransportStatus code '"+codeString+"'");
         }
-    public String toCode(SupplyDeliveryStatus code) {
-      if (code == SupplyDeliveryStatus.INPROGRESS)
+    public String toCode(TransportStatus code) {
+      if (code == TransportStatus.INPROGRESS)
         return "in-progress";
-      if (code == SupplyDeliveryStatus.COMPLETED)
+      if (code == TransportStatus.COMPLETED)
         return "completed";
-      if (code == SupplyDeliveryStatus.ABANDONED)
+      if (code == TransportStatus.ABANDONED)
         return "abandoned";
-      if (code == SupplyDeliveryStatus.ENTEREDINERROR)
+      if (code == TransportStatus.ENTEREDINERROR)
         return "entered-in-error";
       return "?";
       }
-    public String toSystem(SupplyDeliveryStatus code) {
+    public String toSystem(TransportStatus code) {
       return code.getSystem();
       }
     }
 
     @Block()
-    public static class SupplyDeliverySuppliedItemComponent extends BackboneElement implements IBaseBackboneElement {
+    public static class TransportSuppliedItemComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The amount of supply that has been dispensed. Includes unit of measure.
          */
@@ -203,7 +203,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * Constructor
      */
-      public SupplyDeliverySuppliedItemComponent() {
+      public TransportSuppliedItemComponent() {
         super();
       }
 
@@ -213,7 +213,7 @@ public class SupplyDelivery extends DomainResource {
         public Quantity getQuantity() { 
           if (this.quantity == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create SupplyDeliverySuppliedItemComponent.quantity");
+              throw new Error("Attempt to auto-create TransportSuppliedItemComponent.quantity");
             else if (Configuration.doAutoCreate())
               this.quantity = new Quantity(); // cc
           return this.quantity;
@@ -226,7 +226,7 @@ public class SupplyDelivery extends DomainResource {
         /**
          * @param value {@link #quantity} (The amount of supply that has been dispensed. Includes unit of measure.)
          */
-        public SupplyDeliverySuppliedItemComponent setQuantity(Quantity value) { 
+        public TransportSuppliedItemComponent setQuantity(Quantity value) { 
           this.quantity = value;
           return this;
         }
@@ -275,9 +275,9 @@ public class SupplyDelivery extends DomainResource {
         /**
          * @param value {@link #item} (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.)
          */
-        public SupplyDeliverySuppliedItemComponent setItem(DataType value) { 
+        public TransportSuppliedItemComponent setItem(DataType value) { 
           if (value != null && !(value instanceof CodeableConcept || value instanceof Reference))
-            throw new Error("Not the right type for SupplyDelivery.suppliedItem.item[x]: "+value.fhirType());
+            throw new Error("Not the right type for Transport.suppliedItem.item[x]: "+value.fhirType());
           this.item = value;
           return this;
         }
@@ -375,13 +375,13 @@ public class SupplyDelivery extends DomainResource {
           return super.addChild(name);
       }
 
-      public SupplyDeliverySuppliedItemComponent copy() {
-        SupplyDeliverySuppliedItemComponent dst = new SupplyDeliverySuppliedItemComponent();
+      public TransportSuppliedItemComponent copy() {
+        TransportSuppliedItemComponent dst = new TransportSuppliedItemComponent();
         copyValues(dst);
         return dst;
       }
 
-      public void copyValues(SupplyDeliverySuppliedItemComponent dst) {
+      public void copyValues(TransportSuppliedItemComponent dst) {
         super.copyValues(dst);
         dst.quantity = quantity == null ? null : quantity.copy();
         dst.item = item == null ? null : item.copy();
@@ -391,9 +391,9 @@ public class SupplyDelivery extends DomainResource {
       public boolean equalsDeep(Base other_) {
         if (!super.equalsDeep(other_))
           return false;
-        if (!(other_ instanceof SupplyDeliverySuppliedItemComponent))
+        if (!(other_ instanceof TransportSuppliedItemComponent))
           return false;
-        SupplyDeliverySuppliedItemComponent o = (SupplyDeliverySuppliedItemComponent) other_;
+        TransportSuppliedItemComponent o = (TransportSuppliedItemComponent) other_;
         return compareDeep(quantity, o.quantity, true) && compareDeep(item, o.item, true);
       }
 
@@ -401,9 +401,9 @@ public class SupplyDelivery extends DomainResource {
       public boolean equalsShallow(Base other_) {
         if (!super.equalsShallow(other_))
           return false;
-        if (!(other_ instanceof SupplyDeliverySuppliedItemComponent))
+        if (!(other_ instanceof TransportSuppliedItemComponent))
           return false;
-        SupplyDeliverySuppliedItemComponent o = (SupplyDeliverySuppliedItemComponent) other_;
+        TransportSuppliedItemComponent o = (TransportSuppliedItemComponent) other_;
         return true;
       }
 
@@ -412,30 +412,30 @@ public class SupplyDelivery extends DomainResource {
       }
 
   public String fhirType() {
-    return "SupplyDelivery.suppliedItem";
+    return "Transport.suppliedItem";
 
   }
 
   }
 
     /**
-     * Identifier for the supply delivery event that is used to identify it across multiple disparate systems.
+     * Identifier for the transport event that is used to identify it across multiple disparate systems.
      */
     @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="External identifier", formalDefinition="Identifier for the supply delivery event that is used to identify it across multiple disparate systems." )
+    @Description(shortDefinition="External identifier", formalDefinition="Identifier for the transport event that is used to identify it across multiple disparate systems." )
     protected List<Identifier> identifier;
 
     /**
-     * A plan, proposal or order that is fulfilled in whole or in part by this event.
+     * BasedOn refers to a higher-level authorization that triggered the creation of the transport.  It references a "request" resource such as a ServiceRequest or Task, which is distinct from the "request" resource the Transport is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a transport is created to fulfill a procedureRequest ( = FocusOn ) to transport a specimen to the lab.
      */
-    @Child(name = "basedOn", type = {SupplyRequest.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="Fulfills plan, proposal or order", formalDefinition="A plan, proposal or order that is fulfilled in whole or in part by this event." )
+    @Child(name = "basedOn", type = {Reference.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Request fulfilled by this transport", formalDefinition="BasedOn refers to a higher-level authorization that triggered the creation of the transport.  It references a \"request\" resource such as a ServiceRequest or Task, which is distinct from the \"request\" resource the Transport is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a transport is created to fulfill a procedureRequest ( = FocusOn ) to transport a specimen to the lab." )
     protected List<Reference> basedOn;
 
     /**
      * A larger event of which this particular event is a component or step.
      */
-    @Child(name = "partOf", type = {SupplyDelivery.class, Contract.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "partOf", type = {Transport.class, Contract.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Part of referenced event", formalDefinition="A larger event of which this particular event is a component or step." )
     protected List<Reference> partOf;
 
@@ -444,8 +444,8 @@ public class SupplyDelivery extends DomainResource {
      */
     @Child(name = "status", type = {CodeType.class}, order=3, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="in-progress | completed | abandoned | entered-in-error", formalDefinition="A code specifying the state of the dispense event." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/supplydelivery-status")
-    protected Enumeration<SupplyDeliveryStatus> status;
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/transport-status")
+    protected Enumeration<TransportStatus> status;
 
     /**
      * A link to a resource representing the person whom the delivered item is for.
@@ -459,7 +459,7 @@ public class SupplyDelivery extends DomainResource {
      */
     @Child(name = "type", type = {CodeableConcept.class}, order=5, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Category of dispense event", formalDefinition="Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/supplydelivery-type")
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/transport-type")
     protected CodeableConcept type;
 
     /**
@@ -467,7 +467,7 @@ public class SupplyDelivery extends DomainResource {
      */
     @Child(name = "suppliedItem", type = {}, order=6, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="The item that is delivered or supplied", formalDefinition="The item that is being delivered or has been supplied." )
-    protected SupplyDeliverySuppliedItemComponent suppliedItem;
+    protected TransportSuppliedItemComponent suppliedItem;
 
     /**
      * The date or time(s) the activity occurred.
@@ -497,17 +497,17 @@ public class SupplyDelivery extends DomainResource {
     @Description(shortDefinition="Who collected the Supply", formalDefinition="Identifies the person who picked up the Supply." )
     protected List<Reference> receiver;
 
-    private static final long serialVersionUID = -841753644L;
+    private static final long serialVersionUID = -1123253888L;
 
   /**
    * Constructor
    */
-    public SupplyDelivery() {
+    public Transport() {
       super();
     }
 
     /**
-     * @return {@link #identifier} (Identifier for the supply delivery event that is used to identify it across multiple disparate systems.)
+     * @return {@link #identifier} (Identifier for the transport event that is used to identify it across multiple disparate systems.)
      */
     public List<Identifier> getIdentifier() { 
       if (this.identifier == null)
@@ -518,7 +518,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public SupplyDelivery setIdentifier(List<Identifier> theIdentifier) { 
+    public Transport setIdentifier(List<Identifier> theIdentifier) { 
       this.identifier = theIdentifier;
       return this;
     }
@@ -540,7 +540,7 @@ public class SupplyDelivery extends DomainResource {
       return t;
     }
 
-    public SupplyDelivery addIdentifier(Identifier t) { //3
+    public Transport addIdentifier(Identifier t) { //3
       if (t == null)
         return this;
       if (this.identifier == null)
@@ -560,7 +560,7 @@ public class SupplyDelivery extends DomainResource {
     }
 
     /**
-     * @return {@link #basedOn} (A plan, proposal or order that is fulfilled in whole or in part by this event.)
+     * @return {@link #basedOn} (BasedOn refers to a higher-level authorization that triggered the creation of the transport.  It references a "request" resource such as a ServiceRequest or Task, which is distinct from the "request" resource the Transport is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a transport is created to fulfill a procedureRequest ( = FocusOn ) to transport a specimen to the lab.)
      */
     public List<Reference> getBasedOn() { 
       if (this.basedOn == null)
@@ -571,7 +571,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public SupplyDelivery setBasedOn(List<Reference> theBasedOn) { 
+    public Transport setBasedOn(List<Reference> theBasedOn) { 
       this.basedOn = theBasedOn;
       return this;
     }
@@ -593,7 +593,7 @@ public class SupplyDelivery extends DomainResource {
       return t;
     }
 
-    public SupplyDelivery addBasedOn(Reference t) { //3
+    public Transport addBasedOn(Reference t) { //3
       if (t == null)
         return this;
       if (this.basedOn == null)
@@ -624,7 +624,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public SupplyDelivery setPartOf(List<Reference> thePartOf) { 
+    public Transport setPartOf(List<Reference> thePartOf) { 
       this.partOf = thePartOf;
       return this;
     }
@@ -646,7 +646,7 @@ public class SupplyDelivery extends DomainResource {
       return t;
     }
 
-    public SupplyDelivery addPartOf(Reference t) { //3
+    public Transport addPartOf(Reference t) { //3
       if (t == null)
         return this;
       if (this.partOf == null)
@@ -668,12 +668,12 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @return {@link #status} (A code specifying the state of the dispense event.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<SupplyDeliveryStatus> getStatusElement() { 
+    public Enumeration<TransportStatus> getStatusElement() { 
       if (this.status == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create SupplyDelivery.status");
+          throw new Error("Attempt to auto-create Transport.status");
         else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<SupplyDeliveryStatus>(new SupplyDeliveryStatusEnumFactory()); // bb
+          this.status = new Enumeration<TransportStatus>(new TransportStatusEnumFactory()); // bb
       return this.status;
     }
 
@@ -688,7 +688,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @param value {@link #status} (A code specifying the state of the dispense event.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public SupplyDelivery setStatusElement(Enumeration<SupplyDeliveryStatus> value) { 
+    public Transport setStatusElement(Enumeration<TransportStatus> value) { 
       this.status = value;
       return this;
     }
@@ -696,19 +696,19 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @return A code specifying the state of the dispense event.
      */
-    public SupplyDeliveryStatus getStatus() { 
+    public TransportStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value A code specifying the state of the dispense event.
      */
-    public SupplyDelivery setStatus(SupplyDeliveryStatus value) { 
+    public Transport setStatus(TransportStatus value) { 
       if (value == null)
         this.status = null;
       else {
         if (this.status == null)
-          this.status = new Enumeration<SupplyDeliveryStatus>(new SupplyDeliveryStatusEnumFactory());
+          this.status = new Enumeration<TransportStatus>(new TransportStatusEnumFactory());
         this.status.setValue(value);
       }
       return this;
@@ -720,7 +720,7 @@ public class SupplyDelivery extends DomainResource {
     public Reference getPatient() { 
       if (this.patient == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create SupplyDelivery.patient");
+          throw new Error("Attempt to auto-create Transport.patient");
         else if (Configuration.doAutoCreate())
           this.patient = new Reference(); // cc
       return this.patient;
@@ -733,7 +733,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @param value {@link #patient} (A link to a resource representing the person whom the delivered item is for.)
      */
-    public SupplyDelivery setPatient(Reference value) { 
+    public Transport setPatient(Reference value) { 
       this.patient = value;
       return this;
     }
@@ -744,7 +744,7 @@ public class SupplyDelivery extends DomainResource {
     public CodeableConcept getType() { 
       if (this.type == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create SupplyDelivery.type");
+          throw new Error("Attempt to auto-create Transport.type");
         else if (Configuration.doAutoCreate())
           this.type = new CodeableConcept(); // cc
       return this.type;
@@ -757,7 +757,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @param value {@link #type} (Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.)
      */
-    public SupplyDelivery setType(CodeableConcept value) { 
+    public Transport setType(CodeableConcept value) { 
       this.type = value;
       return this;
     }
@@ -765,12 +765,12 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @return {@link #suppliedItem} (The item that is being delivered or has been supplied.)
      */
-    public SupplyDeliverySuppliedItemComponent getSuppliedItem() { 
+    public TransportSuppliedItemComponent getSuppliedItem() { 
       if (this.suppliedItem == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create SupplyDelivery.suppliedItem");
+          throw new Error("Attempt to auto-create Transport.suppliedItem");
         else if (Configuration.doAutoCreate())
-          this.suppliedItem = new SupplyDeliverySuppliedItemComponent(); // cc
+          this.suppliedItem = new TransportSuppliedItemComponent(); // cc
       return this.suppliedItem;
     }
 
@@ -781,7 +781,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @param value {@link #suppliedItem} (The item that is being delivered or has been supplied.)
      */
-    public SupplyDelivery setSuppliedItem(SupplyDeliverySuppliedItemComponent value) { 
+    public Transport setSuppliedItem(TransportSuppliedItemComponent value) { 
       this.suppliedItem = value;
       return this;
     }
@@ -845,9 +845,9 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @param value {@link #occurrence} (The date or time(s) the activity occurred.)
      */
-    public SupplyDelivery setOccurrence(DataType value) { 
+    public Transport setOccurrence(DataType value) { 
       if (value != null && !(value instanceof DateTimeType || value instanceof Period || value instanceof Timing))
-        throw new Error("Not the right type for SupplyDelivery.occurrence[x]: "+value.fhirType());
+        throw new Error("Not the right type for Transport.occurrence[x]: "+value.fhirType());
       this.occurrence = value;
       return this;
     }
@@ -858,7 +858,7 @@ public class SupplyDelivery extends DomainResource {
     public Reference getSupplier() { 
       if (this.supplier == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create SupplyDelivery.supplier");
+          throw new Error("Attempt to auto-create Transport.supplier");
         else if (Configuration.doAutoCreate())
           this.supplier = new Reference(); // cc
       return this.supplier;
@@ -871,7 +871,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @param value {@link #supplier} (The individual responsible for dispensing the medication, supplier or device.)
      */
-    public SupplyDelivery setSupplier(Reference value) { 
+    public Transport setSupplier(Reference value) { 
       this.supplier = value;
       return this;
     }
@@ -882,7 +882,7 @@ public class SupplyDelivery extends DomainResource {
     public Reference getDestination() { 
       if (this.destination == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create SupplyDelivery.destination");
+          throw new Error("Attempt to auto-create Transport.destination");
         else if (Configuration.doAutoCreate())
           this.destination = new Reference(); // cc
       return this.destination;
@@ -895,7 +895,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @param value {@link #destination} (Identification of the facility/location where the Supply was shipped to, as part of the dispense event.)
      */
-    public SupplyDelivery setDestination(Reference value) { 
+    public Transport setDestination(Reference value) { 
       this.destination = value;
       return this;
     }
@@ -912,7 +912,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public SupplyDelivery setReceiver(List<Reference> theReceiver) { 
+    public Transport setReceiver(List<Reference> theReceiver) { 
       this.receiver = theReceiver;
       return this;
     }
@@ -934,7 +934,7 @@ public class SupplyDelivery extends DomainResource {
       return t;
     }
 
-    public SupplyDelivery addReceiver(Reference t) { //3
+    public Transport addReceiver(Reference t) { //3
       if (t == null)
         return this;
       if (this.receiver == null)
@@ -955,9 +955,9 @@ public class SupplyDelivery extends DomainResource {
 
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
-        children.add(new Property("identifier", "Identifier", "Identifier for the supply delivery event that is used to identify it across multiple disparate systems.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        children.add(new Property("basedOn", "Reference(SupplyRequest)", "A plan, proposal or order that is fulfilled in whole or in part by this event.", 0, java.lang.Integer.MAX_VALUE, basedOn));
-        children.add(new Property("partOf", "Reference(SupplyDelivery|Contract)", "A larger event of which this particular event is a component or step.", 0, java.lang.Integer.MAX_VALUE, partOf));
+        children.add(new Property("identifier", "Identifier", "Identifier for the transport event that is used to identify it across multiple disparate systems.", 0, java.lang.Integer.MAX_VALUE, identifier));
+        children.add(new Property("basedOn", "Reference(Any)", "BasedOn refers to a higher-level authorization that triggered the creation of the transport.  It references a \"request\" resource such as a ServiceRequest or Task, which is distinct from the \"request\" resource the Transport is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a transport is created to fulfill a procedureRequest ( = FocusOn ) to transport a specimen to the lab.", 0, java.lang.Integer.MAX_VALUE, basedOn));
+        children.add(new Property("partOf", "Reference(Transport|Contract)", "A larger event of which this particular event is a component or step.", 0, java.lang.Integer.MAX_VALUE, partOf));
         children.add(new Property("status", "code", "A code specifying the state of the dispense event.", 0, 1, status));
         children.add(new Property("patient", "Reference(Patient)", "A link to a resource representing the person whom the delivered item is for.", 0, 1, patient));
         children.add(new Property("type", "CodeableConcept", "Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.", 0, 1, type));
@@ -971,9 +971,9 @@ public class SupplyDelivery extends DomainResource {
       @Override
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
-        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Identifier for the supply delivery event that is used to identify it across multiple disparate systems.", 0, java.lang.Integer.MAX_VALUE, identifier);
-        case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(SupplyRequest)", "A plan, proposal or order that is fulfilled in whole or in part by this event.", 0, java.lang.Integer.MAX_VALUE, basedOn);
-        case -995410646: /*partOf*/  return new Property("partOf", "Reference(SupplyDelivery|Contract)", "A larger event of which this particular event is a component or step.", 0, java.lang.Integer.MAX_VALUE, partOf);
+        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Identifier for the transport event that is used to identify it across multiple disparate systems.", 0, java.lang.Integer.MAX_VALUE, identifier);
+        case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(Any)", "BasedOn refers to a higher-level authorization that triggered the creation of the transport.  It references a \"request\" resource such as a ServiceRequest or Task, which is distinct from the \"request\" resource the Transport is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a transport is created to fulfill a procedureRequest ( = FocusOn ) to transport a specimen to the lab.", 0, java.lang.Integer.MAX_VALUE, basedOn);
+        case -995410646: /*partOf*/  return new Property("partOf", "Reference(Transport|Contract)", "A larger event of which this particular event is a component or step.", 0, java.lang.Integer.MAX_VALUE, partOf);
         case -892481550: /*status*/  return new Property("status", "code", "A code specifying the state of the dispense event.", 0, 1, status);
         case -791418107: /*patient*/  return new Property("patient", "Reference(Patient)", "A link to a resource representing the person whom the delivered item is for.", 0, 1, patient);
         case 3575610: /*type*/  return new Property("type", "CodeableConcept", "Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.", 0, 1, type);
@@ -997,10 +997,10 @@ public class SupplyDelivery extends DomainResource {
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
         case -332612366: /*basedOn*/ return this.basedOn == null ? new Base[0] : this.basedOn.toArray(new Base[this.basedOn.size()]); // Reference
         case -995410646: /*partOf*/ return this.partOf == null ? new Base[0] : this.partOf.toArray(new Base[this.partOf.size()]); // Reference
-        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<SupplyDeliveryStatus>
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<TransportStatus>
         case -791418107: /*patient*/ return this.patient == null ? new Base[0] : new Base[] {this.patient}; // Reference
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
-        case 1993333233: /*suppliedItem*/ return this.suppliedItem == null ? new Base[0] : new Base[] {this.suppliedItem}; // SupplyDeliverySuppliedItemComponent
+        case 1993333233: /*suppliedItem*/ return this.suppliedItem == null ? new Base[0] : new Base[] {this.suppliedItem}; // TransportSuppliedItemComponent
         case 1687874001: /*occurrence*/ return this.occurrence == null ? new Base[0] : new Base[] {this.occurrence}; // DataType
         case -1663305268: /*supplier*/ return this.supplier == null ? new Base[0] : new Base[] {this.supplier}; // Reference
         case -1429847026: /*destination*/ return this.destination == null ? new Base[0] : new Base[] {this.destination}; // Reference
@@ -1023,8 +1023,8 @@ public class SupplyDelivery extends DomainResource {
           this.getPartOf().add(TypeConvertor.castToReference(value)); // Reference
           return value;
         case -892481550: // status
-          value = new SupplyDeliveryStatusEnumFactory().fromType(TypeConvertor.castToCode(value));
-          this.status = (Enumeration) value; // Enumeration<SupplyDeliveryStatus>
+          value = new TransportStatusEnumFactory().fromType(TypeConvertor.castToCode(value));
+          this.status = (Enumeration) value; // Enumeration<TransportStatus>
           return value;
         case -791418107: // patient
           this.patient = TypeConvertor.castToReference(value); // Reference
@@ -1033,7 +1033,7 @@ public class SupplyDelivery extends DomainResource {
           this.type = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
           return value;
         case 1993333233: // suppliedItem
-          this.suppliedItem = (SupplyDeliverySuppliedItemComponent) value; // SupplyDeliverySuppliedItemComponent
+          this.suppliedItem = (TransportSuppliedItemComponent) value; // TransportSuppliedItemComponent
           return value;
         case 1687874001: // occurrence
           this.occurrence = TypeConvertor.castToType(value); // DataType
@@ -1061,14 +1061,14 @@ public class SupplyDelivery extends DomainResource {
         } else if (name.equals("partOf")) {
           this.getPartOf().add(TypeConvertor.castToReference(value));
         } else if (name.equals("status")) {
-          value = new SupplyDeliveryStatusEnumFactory().fromType(TypeConvertor.castToCode(value));
-          this.status = (Enumeration) value; // Enumeration<SupplyDeliveryStatus>
+          value = new TransportStatusEnumFactory().fromType(TypeConvertor.castToCode(value));
+          this.status = (Enumeration) value; // Enumeration<TransportStatus>
         } else if (name.equals("patient")) {
           this.patient = TypeConvertor.castToReference(value); // Reference
         } else if (name.equals("type")) {
           this.type = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
         } else if (name.equals("suppliedItem")) {
-          this.suppliedItem = (SupplyDeliverySuppliedItemComponent) value; // SupplyDeliverySuppliedItemComponent
+          this.suppliedItem = (TransportSuppliedItemComponent) value; // TransportSuppliedItemComponent
         } else if (name.equals("occurrence[x]")) {
           this.occurrence = TypeConvertor.castToType(value); // DataType
         } else if (name.equals("supplier")) {
@@ -1133,7 +1133,7 @@ public class SupplyDelivery extends DomainResource {
           return addPartOf();
         }
         else if (name.equals("status")) {
-          throw new FHIRException("Cannot call addChild on a primitive type SupplyDelivery.status");
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.status");
         }
         else if (name.equals("patient")) {
           this.patient = new Reference();
@@ -1144,7 +1144,7 @@ public class SupplyDelivery extends DomainResource {
           return this.type;
         }
         else if (name.equals("suppliedItem")) {
-          this.suppliedItem = new SupplyDeliverySuppliedItemComponent();
+          this.suppliedItem = new TransportSuppliedItemComponent();
           return this.suppliedItem;
         }
         else if (name.equals("occurrenceDateTime")) {
@@ -1175,17 +1175,17 @@ public class SupplyDelivery extends DomainResource {
       }
 
   public String fhirType() {
-    return "SupplyDelivery";
+    return "Transport";
 
   }
 
-      public SupplyDelivery copy() {
-        SupplyDelivery dst = new SupplyDelivery();
+      public Transport copy() {
+        Transport dst = new Transport();
         copyValues(dst);
         return dst;
       }
 
-      public void copyValues(SupplyDelivery dst) {
+      public void copyValues(Transport dst) {
         super.copyValues(dst);
         if (identifier != null) {
           dst.identifier = new ArrayList<Identifier>();
@@ -1216,7 +1216,7 @@ public class SupplyDelivery extends DomainResource {
         };
       }
 
-      protected SupplyDelivery typedCopy() {
+      protected Transport typedCopy() {
         return copy();
       }
 
@@ -1224,9 +1224,9 @@ public class SupplyDelivery extends DomainResource {
       public boolean equalsDeep(Base other_) {
         if (!super.equalsDeep(other_))
           return false;
-        if (!(other_ instanceof SupplyDelivery))
+        if (!(other_ instanceof Transport))
           return false;
-        SupplyDelivery o = (SupplyDelivery) other_;
+        Transport o = (Transport) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(basedOn, o.basedOn, true) && compareDeep(partOf, o.partOf, true)
            && compareDeep(status, o.status, true) && compareDeep(patient, o.patient, true) && compareDeep(type, o.type, true)
            && compareDeep(suppliedItem, o.suppliedItem, true) && compareDeep(occurrence, o.occurrence, true)
@@ -1238,9 +1238,9 @@ public class SupplyDelivery extends DomainResource {
       public boolean equalsShallow(Base other_) {
         if (!super.equalsShallow(other_))
           return false;
-        if (!(other_ instanceof SupplyDelivery))
+        if (!(other_ instanceof Transport))
           return false;
-        SupplyDelivery o = (SupplyDelivery) other_;
+        Transport o = (Transport) other_;
         return compareValues(status, o.status, true);
       }
 
@@ -1252,51 +1252,97 @@ public class SupplyDelivery extends DomainResource {
 
   @Override
   public ResourceType getResourceType() {
-    return ResourceType.SupplyDelivery;
+    return ResourceType.Transport;
    }
+
+ /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>External identifier</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Transport.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="identifier", path="Transport.identifier", description="External identifier", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
+   * <p>
+   * Description: <b>External identifier</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Transport.identifier</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
+
+ /**
+   * Search parameter: <b>patient</b>
+   * <p>
+   * Description: <b>Patient for whom the item is supplied</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Transport.patient</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="patient", path="Transport.patient", description="Patient for whom the item is supplied", type="reference", target={Patient.class } )
+  public static final String SP_PATIENT = "patient";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
+   * <p>
+   * Description: <b>Patient for whom the item is supplied</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Transport.patient</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Transport:patient</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("Transport:patient").toLocked();
 
  /**
    * Search parameter: <b>receiver</b>
    * <p>
    * Description: <b>Who collected the Supply</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>SupplyDelivery.receiver</b><br>
+   * Path: <b>Transport.receiver</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="receiver", path="SupplyDelivery.receiver", description="Who collected the Supply", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Practitioner") }, target={Practitioner.class, PractitionerRole.class } )
+  @SearchParamDefinition(name="receiver", path="Transport.receiver", description="Who collected the Supply", type="reference", target={Practitioner.class, PractitionerRole.class } )
   public static final String SP_RECEIVER = "receiver";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>receiver</b>
    * <p>
    * Description: <b>Who collected the Supply</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>SupplyDelivery.receiver</b><br>
+   * Path: <b>Transport.receiver</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam RECEIVER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_RECEIVER);
 
 /**
    * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>SupplyDelivery:receiver</b>".
+   * the path value of "<b>Transport:receiver</b>".
    */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_RECEIVER = new ca.uhn.fhir.model.api.Include("SupplyDelivery:receiver").toLocked();
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_RECEIVER = new ca.uhn.fhir.model.api.Include("Transport:receiver").toLocked();
 
  /**
    * Search parameter: <b>status</b>
    * <p>
-   * Description: <b>in-progress | completed | abandoned | entered-in-error</b><br>
+   * Description: <b>in-progress | completed | entered-in-error</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>SupplyDelivery.status</b><br>
+   * Path: <b>Transport.status</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="status", path="SupplyDelivery.status", description="in-progress | completed | abandoned | entered-in-error", type="token" )
+  @SearchParamDefinition(name="status", path="Transport.status", description="in-progress | completed | entered-in-error", type="token" )
   public static final String SP_STATUS = "status";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>status</b>
    * <p>
-   * Description: <b>in-progress | completed | abandoned | entered-in-error</b><br>
+   * Description: <b>in-progress | completed | entered-in-error</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>SupplyDelivery.status</b><br>
+   * Path: <b>Transport.status</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
@@ -1306,204 +1352,26 @@ public class SupplyDelivery extends DomainResource {
    * <p>
    * Description: <b>Dispenser</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>SupplyDelivery.supplier</b><br>
+   * Path: <b>Transport.supplier</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="supplier", path="SupplyDelivery.supplier", description="Dispenser", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Practitioner") }, target={Organization.class, Practitioner.class, PractitionerRole.class } )
+  @SearchParamDefinition(name="supplier", path="Transport.supplier", description="Dispenser", type="reference", target={Organization.class, Practitioner.class, PractitionerRole.class } )
   public static final String SP_SUPPLIER = "supplier";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>supplier</b>
    * <p>
    * Description: <b>Dispenser</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>SupplyDelivery.supplier</b><br>
+   * Path: <b>Transport.supplier</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam SUPPLIER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_SUPPLIER);
 
 /**
    * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>SupplyDelivery:supplier</b>".
+   * the path value of "<b>Transport:supplier</b>".
    */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_SUPPLIER = new ca.uhn.fhir.model.api.Include("SupplyDelivery:supplier").toLocked();
-
- /**
-   * Search parameter: <b>identifier</b>
-   * <p>
-   * Description: <b>Multiple Resources: 
-
-* [AllergyIntolerance](allergyintolerance.html): External ids for this item
-* [CarePlan](careplan.html): External Ids for this plan
-* [CareTeam](careteam.html): External Ids for this team
-* [Composition](composition.html): Version-independent identifier for the Composition
-* [Condition](condition.html): A unique identifier of the condition record
-* [Consent](consent.html): Identifier for this record (external references)
-* [DetectedIssue](detectedissue.html): Unique id for the detected issue
-* [DeviceRequest](devicerequest.html): Business identifier for request/order
-* [DiagnosticReport](diagnosticreport.html): An identifier for the report
-* [DocumentManifest](documentmanifest.html): Unique Identifier for the set of documents
-* [DocumentReference](documentreference.html): Identifier of the attachment binary
-* [Encounter](encounter.html): Identifier(s) by which this encounter is known
-* [EpisodeOfCare](episodeofcare.html): Business Identifier(s) relevant for this EpisodeOfCare
-* [FamilyMemberHistory](familymemberhistory.html): A search by a record identifier
-* [Goal](goal.html): External Ids for this goal
-* [ImagingStudy](imagingstudy.html): Identifiers for the Study, such as DICOM Study Instance UID
-* [Immunization](immunization.html): Business identifier
-* [List](list.html): Business identifier
-* [MedicationAdministration](medicationadministration.html): Return administrations with this external identifier
-* [MedicationDispense](medicationdispense.html): Returns dispenses with this external identifier
-* [MedicationRequest](medicationrequest.html): Return prescriptions with this external identifier
-* [MedicationUsage](medicationusage.html): Return statements with this external identifier
-* [NutritionOrder](nutritionorder.html): Return nutrition orders with this external identifier
-* [Observation](observation.html): The unique id for a particular observation
-* [Procedure](procedure.html): A unique identifier for a procedure
-* [RiskAssessment](riskassessment.html): Unique identifier for the assessment
-* [ServiceRequest](servicerequest.html): Identifiers assigned to this order
-* [SupplyDelivery](supplydelivery.html): External identifier
-* [SupplyRequest](supplyrequest.html): Business Identifier for SupplyRequest
-* [VisionPrescription](visionprescription.html): Return prescriptions with this external identifier
-</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>AllergyIntolerance.identifier | CarePlan.identifier | CareTeam.identifier | Composition.identifier | Condition.identifier | Consent.identifier | DetectedIssue.identifier | DeviceRequest.identifier | DiagnosticReport.identifier | DocumentManifest.masterIdentifier | DocumentManifest.identifier | DocumentReference.content.identifier | DocumentReference.identifier | Encounter.identifier | EpisodeOfCare.identifier | FamilyMemberHistory.identifier | Goal.identifier | ImagingStudy.identifier | Immunization.identifier | List.identifier | MedicationAdministration.identifier | MedicationDispense.identifier | MedicationRequest.identifier | MedicationUsage.identifier | NutritionOrder.identifier | Observation.identifier | Procedure.identifier | RiskAssessment.identifier | ServiceRequest.identifier | SupplyDelivery.identifier | SupplyRequest.identifier | VisionPrescription.identifier</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="identifier", path="AllergyIntolerance.identifier | CarePlan.identifier | CareTeam.identifier | Composition.identifier | Condition.identifier | Consent.identifier | DetectedIssue.identifier | DeviceRequest.identifier | DiagnosticReport.identifier | DocumentManifest.masterIdentifier | DocumentManifest.identifier | DocumentReference.content.identifier | DocumentReference.identifier | Encounter.identifier | EpisodeOfCare.identifier | FamilyMemberHistory.identifier | Goal.identifier | ImagingStudy.identifier | Immunization.identifier | List.identifier | MedicationAdministration.identifier | MedicationDispense.identifier | MedicationRequest.identifier | MedicationUsage.identifier | NutritionOrder.identifier | Observation.identifier | Procedure.identifier | RiskAssessment.identifier | ServiceRequest.identifier | SupplyDelivery.identifier | SupplyRequest.identifier | VisionPrescription.identifier", description="Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): External ids for this item\r\n* [CarePlan](careplan.html): External Ids for this plan\r\n* [CareTeam](careteam.html): External Ids for this team\r\n* [Composition](composition.html): Version-independent identifier for the Composition\r\n* [Condition](condition.html): A unique identifier of the condition record\r\n* [Consent](consent.html): Identifier for this record (external references)\r\n* [DetectedIssue](detectedissue.html): Unique id for the detected issue\r\n* [DeviceRequest](devicerequest.html): Business identifier for request/order\r\n* [DiagnosticReport](diagnosticreport.html): An identifier for the report\r\n* [DocumentManifest](documentmanifest.html): Unique Identifier for the set of documents\r\n* [DocumentReference](documentreference.html): Identifier of the attachment binary\r\n* [Encounter](encounter.html): Identifier(s) by which this encounter is known\r\n* [EpisodeOfCare](episodeofcare.html): Business Identifier(s) relevant for this EpisodeOfCare\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a record identifier\r\n* [Goal](goal.html): External Ids for this goal\r\n* [ImagingStudy](imagingstudy.html): Identifiers for the Study, such as DICOM Study Instance UID\r\n* [Immunization](immunization.html): Business identifier\r\n* [List](list.html): Business identifier\r\n* [MedicationAdministration](medicationadministration.html): Return administrations with this external identifier\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses with this external identifier\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions with this external identifier\r\n* [MedicationUsage](medicationusage.html): Return statements with this external identifier\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this external identifier\r\n* [Observation](observation.html): The unique id for a particular observation\r\n* [Procedure](procedure.html): A unique identifier for a procedure\r\n* [RiskAssessment](riskassessment.html): Unique identifier for the assessment\r\n* [ServiceRequest](servicerequest.html): Identifiers assigned to this order\r\n* [SupplyDelivery](supplydelivery.html): External identifier\r\n* [SupplyRequest](supplyrequest.html): Business Identifier for SupplyRequest\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this external identifier\r\n", type="token" )
-  public static final String SP_IDENTIFIER = "identifier";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
-   * <p>
-   * Description: <b>Multiple Resources: 
-
-* [AllergyIntolerance](allergyintolerance.html): External ids for this item
-* [CarePlan](careplan.html): External Ids for this plan
-* [CareTeam](careteam.html): External Ids for this team
-* [Composition](composition.html): Version-independent identifier for the Composition
-* [Condition](condition.html): A unique identifier of the condition record
-* [Consent](consent.html): Identifier for this record (external references)
-* [DetectedIssue](detectedissue.html): Unique id for the detected issue
-* [DeviceRequest](devicerequest.html): Business identifier for request/order
-* [DiagnosticReport](diagnosticreport.html): An identifier for the report
-* [DocumentManifest](documentmanifest.html): Unique Identifier for the set of documents
-* [DocumentReference](documentreference.html): Identifier of the attachment binary
-* [Encounter](encounter.html): Identifier(s) by which this encounter is known
-* [EpisodeOfCare](episodeofcare.html): Business Identifier(s) relevant for this EpisodeOfCare
-* [FamilyMemberHistory](familymemberhistory.html): A search by a record identifier
-* [Goal](goal.html): External Ids for this goal
-* [ImagingStudy](imagingstudy.html): Identifiers for the Study, such as DICOM Study Instance UID
-* [Immunization](immunization.html): Business identifier
-* [List](list.html): Business identifier
-* [MedicationAdministration](medicationadministration.html): Return administrations with this external identifier
-* [MedicationDispense](medicationdispense.html): Returns dispenses with this external identifier
-* [MedicationRequest](medicationrequest.html): Return prescriptions with this external identifier
-* [MedicationUsage](medicationusage.html): Return statements with this external identifier
-* [NutritionOrder](nutritionorder.html): Return nutrition orders with this external identifier
-* [Observation](observation.html): The unique id for a particular observation
-* [Procedure](procedure.html): A unique identifier for a procedure
-* [RiskAssessment](riskassessment.html): Unique identifier for the assessment
-* [ServiceRequest](servicerequest.html): Identifiers assigned to this order
-* [SupplyDelivery](supplydelivery.html): External identifier
-* [SupplyRequest](supplyrequest.html): Business Identifier for SupplyRequest
-* [VisionPrescription](visionprescription.html): Return prescriptions with this external identifier
-</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>AllergyIntolerance.identifier | CarePlan.identifier | CareTeam.identifier | Composition.identifier | Condition.identifier | Consent.identifier | DetectedIssue.identifier | DeviceRequest.identifier | DiagnosticReport.identifier | DocumentManifest.masterIdentifier | DocumentManifest.identifier | DocumentReference.content.identifier | DocumentReference.identifier | Encounter.identifier | EpisodeOfCare.identifier | FamilyMemberHistory.identifier | Goal.identifier | ImagingStudy.identifier | Immunization.identifier | List.identifier | MedicationAdministration.identifier | MedicationDispense.identifier | MedicationRequest.identifier | MedicationUsage.identifier | NutritionOrder.identifier | Observation.identifier | Procedure.identifier | RiskAssessment.identifier | ServiceRequest.identifier | SupplyDelivery.identifier | SupplyRequest.identifier | VisionPrescription.identifier</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
-
- /**
-   * Search parameter: <b>patient</b>
-   * <p>
-   * Description: <b>Multiple Resources: 
-
-* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for
-* [CarePlan](careplan.html): Who the care plan is for
-* [CareTeam](careteam.html): Who care team is for
-* [ClinicalImpression](clinicalimpression.html): Patient assessed
-* [Composition](composition.html): Who and/or what the composition is about
-* [Condition](condition.html): Who has the condition?
-* [Consent](consent.html): Who the consent applies to
-* [DetectedIssue](detectedissue.html): Associated patient
-* [DeviceRequest](devicerequest.html): Individual the service is ordered for
-* [DeviceUsage](deviceusage.html): Search by patient who used / uses the device
-* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient
-* [DocumentManifest](documentmanifest.html): The subject of the set of documents
-* [DocumentReference](documentreference.html): Who/what is the subject of the document
-* [Encounter](encounter.html): The patient present at the encounter
-* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care
-* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for
-* [Flag](flag.html): The identity of a subject to list flags for
-* [Goal](goal.html): Who this goal is intended for
-* [ImagingStudy](imagingstudy.html): Who the study is about
-* [Immunization](immunization.html): The patient for the vaccination record
-* [List](list.html): If all resources have the same subject
-* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for
-* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for
-* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient
-* [MedicationUsage](medicationusage.html): Returns statements for a specific patient.
-* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement
-* [Observation](observation.html): The subject that the observation is about (if patient)
-* [Procedure](procedure.html): Search by subject - a patient
-* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?
-* [ServiceRequest](servicerequest.html): Search by subject - a patient
-* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied
-* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for
-</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>AllergyIntolerance.patient | CarePlan.subject.where(resolve() is Patient) | CareTeam.subject.where(resolve() is Patient) | ClinicalImpression.subject.where(resolve() is Patient) | Composition.subject.where(resolve() is Patient) | Condition.subject.where(resolve() is Patient) | Consent.subject.where(resolve() is Patient) | DetectedIssue.patient | DeviceRequest.subject.where(resolve() is Patient) | DeviceUsage.patient | DiagnosticReport.subject.where(resolve() is Patient) | DocumentManifest.subject.where(resolve() is Patient) | DocumentReference.subject.where(resolve() is Patient) | Encounter.subject.where(resolve() is Patient) | EpisodeOfCare.patient | FamilyMemberHistory.patient | Flag.subject.where(resolve() is Patient) | Goal.subject.where(resolve() is Patient) | ImagingStudy.subject.where(resolve() is Patient) | Immunization.patient | List.subject.where(resolve() is Patient) | MedicationAdministration.subject.where(resolve() is Patient) | MedicationDispense.subject.where(resolve() is Patient) | MedicationRequest.subject.where(resolve() is Patient) | MedicationUsage.subject.where(resolve() is Patient) | NutritionOrder.patient | Observation.subject.where(resolve() is Patient) | Procedure.subject.where(resolve() is Patient) | RiskAssessment.subject.where(resolve() is Patient) | ServiceRequest.subject.where(resolve() is Patient) | SupplyDelivery.patient | VisionPrescription.patient</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="patient", path="AllergyIntolerance.patient | CarePlan.subject.where(resolve() is Patient) | CareTeam.subject.where(resolve() is Patient) | ClinicalImpression.subject.where(resolve() is Patient) | Composition.subject.where(resolve() is Patient) | Condition.subject.where(resolve() is Patient) | Consent.subject.where(resolve() is Patient) | DetectedIssue.patient | DeviceRequest.subject.where(resolve() is Patient) | DeviceUsage.patient | DiagnosticReport.subject.where(resolve() is Patient) | DocumentManifest.subject.where(resolve() is Patient) | DocumentReference.subject.where(resolve() is Patient) | Encounter.subject.where(resolve() is Patient) | EpisodeOfCare.patient | FamilyMemberHistory.patient | Flag.subject.where(resolve() is Patient) | Goal.subject.where(resolve() is Patient) | ImagingStudy.subject.where(resolve() is Patient) | Immunization.patient | List.subject.where(resolve() is Patient) | MedicationAdministration.subject.where(resolve() is Patient) | MedicationDispense.subject.where(resolve() is Patient) | MedicationRequest.subject.where(resolve() is Patient) | MedicationUsage.subject.where(resolve() is Patient) | NutritionOrder.patient | Observation.subject.where(resolve() is Patient) | Procedure.subject.where(resolve() is Patient) | RiskAssessment.subject.where(resolve() is Patient) | ServiceRequest.subject.where(resolve() is Patient) | SupplyDelivery.patient | VisionPrescription.patient", description="Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUsage](deviceusage.html): Search by patient who used / uses the device\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationUsage](medicationusage.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient") }, target={Account.class, ActivityDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CapabilityStatement2.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, ConceptMap2.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentManifest.class, DocumentReference.class, Encounter.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationUsage.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestGroup.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestReport.class, TestScript.class, Transport.class, ValueSet.class, VerificationResult.class, VisionPrescription.class } )
-  public static final String SP_PATIENT = "patient";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
-   * <p>
-   * Description: <b>Multiple Resources: 
-
-* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for
-* [CarePlan](careplan.html): Who the care plan is for
-* [CareTeam](careteam.html): Who care team is for
-* [ClinicalImpression](clinicalimpression.html): Patient assessed
-* [Composition](composition.html): Who and/or what the composition is about
-* [Condition](condition.html): Who has the condition?
-* [Consent](consent.html): Who the consent applies to
-* [DetectedIssue](detectedissue.html): Associated patient
-* [DeviceRequest](devicerequest.html): Individual the service is ordered for
-* [DeviceUsage](deviceusage.html): Search by patient who used / uses the device
-* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient
-* [DocumentManifest](documentmanifest.html): The subject of the set of documents
-* [DocumentReference](documentreference.html): Who/what is the subject of the document
-* [Encounter](encounter.html): The patient present at the encounter
-* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care
-* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for
-* [Flag](flag.html): The identity of a subject to list flags for
-* [Goal](goal.html): Who this goal is intended for
-* [ImagingStudy](imagingstudy.html): Who the study is about
-* [Immunization](immunization.html): The patient for the vaccination record
-* [List](list.html): If all resources have the same subject
-* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for
-* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for
-* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient
-* [MedicationUsage](medicationusage.html): Returns statements for a specific patient.
-* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement
-* [Observation](observation.html): The subject that the observation is about (if patient)
-* [Procedure](procedure.html): Search by subject - a patient
-* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?
-* [ServiceRequest](servicerequest.html): Search by subject - a patient
-* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied
-* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for
-</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>AllergyIntolerance.patient | CarePlan.subject.where(resolve() is Patient) | CareTeam.subject.where(resolve() is Patient) | ClinicalImpression.subject.where(resolve() is Patient) | Composition.subject.where(resolve() is Patient) | Condition.subject.where(resolve() is Patient) | Consent.subject.where(resolve() is Patient) | DetectedIssue.patient | DeviceRequest.subject.where(resolve() is Patient) | DeviceUsage.patient | DiagnosticReport.subject.where(resolve() is Patient) | DocumentManifest.subject.where(resolve() is Patient) | DocumentReference.subject.where(resolve() is Patient) | Encounter.subject.where(resolve() is Patient) | EpisodeOfCare.patient | FamilyMemberHistory.patient | Flag.subject.where(resolve() is Patient) | Goal.subject.where(resolve() is Patient) | ImagingStudy.subject.where(resolve() is Patient) | Immunization.patient | List.subject.where(resolve() is Patient) | MedicationAdministration.subject.where(resolve() is Patient) | MedicationDispense.subject.where(resolve() is Patient) | MedicationRequest.subject.where(resolve() is Patient) | MedicationUsage.subject.where(resolve() is Patient) | NutritionOrder.patient | Observation.subject.where(resolve() is Patient) | Procedure.subject.where(resolve() is Patient) | RiskAssessment.subject.where(resolve() is Patient) | ServiceRequest.subject.where(resolve() is Patient) | SupplyDelivery.patient | VisionPrescription.patient</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>SupplyDelivery:patient</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("SupplyDelivery:patient").toLocked();
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_SUPPLIER = new ca.uhn.fhir.model.api.Include("Transport:supplier").toLocked();
 
 
 }

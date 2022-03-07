@@ -28,7 +28,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 
 
@@ -60,7 +60,6 @@ Account,
     ClaimResponse,
     ClinicalImpression,
     ClinicalUseDefinition,
-    ClinicalUseIssue,
     CodeSystem,
     Communication,
     CommunicationRequest,
@@ -184,6 +183,7 @@ Account,
     TerminologyCapabilities,
     TestReport,
     TestScript,
+    Transport,
     ValueSet,
     VerificationResult,
     VisionPrescription;
@@ -241,8 +241,6 @@ Account,
       return "clinicalimpression";
     case ClinicalUseDefinition:
       return "clinicalusedefinition";
-    case ClinicalUseIssue:
-      return "clinicaluseissue";
     case CodeSystem:
       return "codesystem";
     case Communication:
@@ -489,6 +487,8 @@ Account,
       return "testreport";
     case TestScript:
       return "testscript";
+    case Transport:
+      return "transport";
     case ValueSet:
       return "valueset";
     case VerificationResult:
@@ -552,8 +552,6 @@ Account,
       return ClinicalImpression;
     if ("ClinicalUseDefinition".equals(code))
       return ClinicalUseDefinition;
-    if ("ClinicalUseIssue".equals(code))
-      return ClinicalUseIssue;
     if ("CodeSystem".equals(code))
       return CodeSystem;
     if ("Communication".equals(code))
@@ -800,6 +798,8 @@ Account,
       return TestReport;
     if ("TestScript".equals(code))
       return TestScript;
+    if ("Transport".equals(code))
+      return Transport;
     if ("ValueSet".equals(code))
       return ValueSet;
     if ("VerificationResult".equals(code))

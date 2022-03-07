@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -533,34 +533,35 @@ public abstract class CanonicalResource extends DomainResource {
       }
 
 // Manual code (from Configuration.txt):
-  @Override
-  public String toString() {
-    return fhirType()+"["+getUrl()+"]";
+@Override
+public String toString() {
+  return fhirType()+"["+getUrl()+"]";
   }
-  
-  public String present() {
-    if (hasTitle())
-      return getTitle();
-    if (hasName())
-      return getName();
-    return toString();
+
+public String present() {
+  if (hasTitle())
+  return getTitle();
+  if (hasName())
+  return getName();
+  return toString();
   }
-  
-  public String getVUrl() {
-    return getUrl() + (hasVersion() ? "|"+getVersion() : "");
-  }      
-  
-  public boolean supportsCopyright() {
-    return true;
+
+public String getVUrl() {
+  return getUrl() + (hasVersion() ? "|"+getVersion() : "");
   }
-  
-  public boolean supportsExperimental() {
-    return true;
+
+public boolean supportsCopyright() {
+  return true;
   }
-  
-  public String getVersionedUrl() {
-    return hasVersion() ? getUrl()+"|"+getVersion() : getUrl();
-  }  
+
+public boolean supportsExperimental() {
+  return true;
+  }
+
+public String getVersionedUrl() {
+  return hasVersion() ? getUrl()+"|"+getVersion() : getUrl();
+  }
+
 // end addition
 
 }

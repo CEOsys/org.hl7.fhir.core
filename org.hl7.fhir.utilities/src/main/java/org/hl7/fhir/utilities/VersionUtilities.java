@@ -55,8 +55,8 @@ public class VersionUtilities {
     }
   }
 
-  public static final String CURRENT_VERSION = "4.6";
-  public static final String CURRENT_FULL_VERSION = "4.6.0";
+  public static final String CURRENT_VERSION = "5.0";
+  public static final String CURRENT_FULL_VERSION = "5.0.0";
 
   public static String packageForVersion(String v) {
     if (isR2Ver(v)) {
@@ -141,7 +141,7 @@ public class VersionUtilities {
   }
 
   public static String listSupportedVersions() {
-    return "1.0.2, 1.4.0, 3.0.2, 4.0.1, 4.1.0, 4.3.0, 5.0, " + CURRENT_FULL_VERSION;
+    return "1.0.2, 1.4.0, 3.0.2, 4.0.1, 4.1.0, 4.3.0, 5.0.0, " + CURRENT_FULL_VERSION;
   }
 
   public static boolean isR5Ver(String ver) {

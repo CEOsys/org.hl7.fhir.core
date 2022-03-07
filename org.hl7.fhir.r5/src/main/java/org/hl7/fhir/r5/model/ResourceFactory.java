@@ -28,7 +28,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 
   
@@ -87,8 +87,6 @@ public class ResourceFactory extends Factory {
             return new ClinicalImpression();
         if ("ClinicalUseDefinition".equals(name))
             return new ClinicalUseDefinition();
-        if ("ClinicalUseIssue".equals(name))
-            return new ClinicalUseIssue();
         if ("CodeSystem".equals(name))
             return new CodeSystem();
         if ("Communication".equals(name))
@@ -335,6 +333,8 @@ public class ResourceFactory extends Factory {
             return new TestReport();
         if ("TestScript".equals(name))
             return new TestScript();
+        if ("Transport".equals(name))
+            return new Transport();
         if ("ValueSet".equals(name))
             return new ValueSet();
         if ("VerificationResult".equals(name))
@@ -517,7 +517,6 @@ public class ResourceFactory extends Factory {
         case 1488475261: return new ClaimResponse();
         case -1268501092: return new ClinicalImpression();
         case 462236103: return new ClinicalUseDefinition();
-        case -590890011: return new ClinicalUseIssue();
         case 1076953756: return new CodeSystem();
         case -236322890: return new Communication();
         case -1874423303: return new CommunicationRequest();
@@ -641,6 +640,7 @@ public class ResourceFactory extends Factory {
         case -549565975: return new TerminologyCapabilities();
         case -616289146: return new TestReport();
         case -589453283: return new TestScript();
+        case -1238034679: return new Transport();
         case -1345530543: return new ValueSet();
         case 957089336: return new VerificationResult();
         case -555387838: return new VisionPrescription();

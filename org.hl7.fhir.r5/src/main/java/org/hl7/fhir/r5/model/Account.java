@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,6 +103,7 @@ public class Account extends DomainResource {
             case ENTEREDINERROR: return "entered-in-error";
             case ONHOLD: return "on-hold";
             case UNKNOWN: return "unknown";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +114,7 @@ public class Account extends DomainResource {
             case ENTEREDINERROR: return "http://hl7.org/fhir/account-status";
             case ONHOLD: return "http://hl7.org/fhir/account-status";
             case UNKNOWN: return "http://hl7.org/fhir/account-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -123,6 +125,7 @@ public class Account extends DomainResource {
             case ENTEREDINERROR: return "This instance should not have been part of this patient's medical record.";
             case ONHOLD: return "This account is on hold.";
             case UNKNOWN: return "The account status is unknown.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -133,6 +136,7 @@ public class Account extends DomainResource {
             case ENTEREDINERROR: return "Entered in error";
             case ONHOLD: return "On Hold";
             case UNKNOWN: return "Unknown";
+            case NULL: return null;
             default: return "?";
           }
         }
