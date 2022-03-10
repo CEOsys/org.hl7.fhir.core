@@ -30,7 +30,7 @@ package org.hl7.fhir.r5.formats;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Thu, Mar 10, 2022 17:24+0100 for FHIR v5.0.0-cibuild
+// Generated on Thu, Mar 10, 2022 18:15+0100 for FHIR v5.0.0-cibuild
 
 
 
@@ -3143,7 +3143,7 @@ public class JsonParser extends JsonParserBase {
   }
 
   protected void parseArtifactAssessmentProperties(JsonObject json, ArtifactAssessment res) throws IOException, FHIRFormatError {
-    parseMetadataResourceProperties(json, res);
+    parseDomainResourceProperties(json, res);
     if (json.has("identifier")) {
       JsonArray array = getJArray(json, "identifier");
       for (int i = 0; i < array.size(); i++) {
@@ -36959,7 +36959,7 @@ public class JsonParser extends JsonParserBase {
   }
 
   protected void composeArtifactAssessmentProperties(ArtifactAssessment element) throws IOException {
-    composeMetadataResourceProperties(element);
+    composeDomainResourceProperties(element);
       if (element.hasIdentifier()) {
         openArray("identifier");
         for (Identifier e : element.getIdentifier()) 

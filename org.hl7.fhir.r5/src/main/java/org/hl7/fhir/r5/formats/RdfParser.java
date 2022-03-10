@@ -31,7 +31,7 @@ package org.hl7.fhir.r5.formats;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Thu, Mar 10, 2022 17:24+0100 for FHIR v5.0.0-cibuild
+// Generated on Thu, Mar 10, 2022 18:15+0100 for FHIR v5.0.0-cibuild
 
 
 
@@ -2713,7 +2713,7 @@ public class RdfParser extends RdfParserBase {
     else {
       t = parent.predicate("fhir:"+parentType+'.'+name);
     }
-    composeMetadataResource(t, "ArtifactAssessment", name, element, index);
+    composeDomainResource(t, "ArtifactAssessment", name, element, index);
     for (int i = 0; i < element.getIdentifier().size(); i++) {
       composeIdentifier(t, "ArtifactAssessment", "identifier", element.getIdentifier().get(i), i);
     }

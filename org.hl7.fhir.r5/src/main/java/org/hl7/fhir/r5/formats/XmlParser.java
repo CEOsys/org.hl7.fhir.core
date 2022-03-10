@@ -30,7 +30,7 @@ package org.hl7.fhir.r5.formats;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Thu, Mar 10, 2022 17:24+0100 for FHIR v5.0.0-cibuild
+// Generated on Thu, Mar 10, 2022 18:15+0100 for FHIR v5.0.0-cibuild
 
 
 
@@ -3152,7 +3152,7 @@ public class XmlParser extends XmlParserBase {
       res.setWorkflowStatusElement(parseEnumeration(xpp, ArtifactAssessment.ArtifactAssessmentWorkflowStatus.NULL, new ArtifactAssessment.ArtifactAssessmentWorkflowStatusEnumFactory()));
     } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("disposition")) {
       res.setDispositionElement(parseEnumeration(xpp, ArtifactAssessment.ArtifactAssessmentDisposition.NULL, new ArtifactAssessment.ArtifactAssessmentDispositionEnumFactory()));
-    } else if (!parseMetadataResourceContent(eventType, xpp, res)){ 
+    } else if (!parseDomainResourceContent(eventType, xpp, res)){ 
       return false;
     }
     return true;
@@ -32583,7 +32583,7 @@ public class XmlParser extends XmlParserBase {
   }
 
   protected void composeArtifactAssessmentElements(ArtifactAssessment element) throws IOException {
-    composeMetadataResourceElements(element);
+    composeDomainResourceElements(element);
     if (element.hasIdentifier()) { 
       for (Identifier e : element.getIdentifier()) 
           composeIdentifier("identifier", e);
