@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
+// Generated on Thu, Mar 10, 2022 17:24+0100 for FHIR v5.0.0-cibuild
 
 
 import org.hl7.fhir.instance.model.api.*;
@@ -2991,6 +2991,10 @@ public class Enumerations {
          */
         EXPRESSION, 
         /**
+         * Specifies contact information for a specific purpose over a period of time, might be handled/monitored by a specific named person or organization.
+         */
+        EXTENDEDCONTACTDETAIL, 
+        /**
          * Optional Extension Element - found in all resources.
          */
         EXTENSION, 
@@ -3863,6 +3867,8 @@ The primary difference between a medicationusage and a medicationadministration 
           return ELEMENTDEFINITION;
         if ("Expression".equals(codeString))
           return EXPRESSION;
+        if ("ExtendedContactDetail".equals(codeString))
+          return EXTENDEDCONTACTDETAIL;
         if ("Extension".equals(codeString))
           return EXTENSION;
         if ("HumanName".equals(codeString))
@@ -4299,6 +4305,7 @@ The primary difference between a medicationusage and a medicationadministration 
             case ELEMENT: return "Element";
             case ELEMENTDEFINITION: return "ElementDefinition";
             case EXPRESSION: return "Expression";
+            case EXTENDEDCONTACTDETAIL: return "ExtendedContactDetail";
             case EXTENSION: return "Extension";
             case HUMANNAME: return "HumanName";
             case IDENTIFIER: return "Identifier";
@@ -4532,6 +4539,7 @@ The primary difference between a medicationusage and a medicationadministration 
             case ELEMENT: return "http://hl7.org/fhir/data-types";
             case ELEMENTDEFINITION: return "http://hl7.org/fhir/data-types";
             case EXPRESSION: return "http://hl7.org/fhir/data-types";
+            case EXTENDEDCONTACTDETAIL: return "http://hl7.org/fhir/data-types";
             case EXTENSION: return "http://hl7.org/fhir/data-types";
             case HUMANNAME: return "http://hl7.org/fhir/data-types";
             case IDENTIFIER: return "http://hl7.org/fhir/data-types";
@@ -4765,6 +4773,7 @@ The primary difference between a medicationusage and a medicationadministration 
             case ELEMENT: return "Base definition for all elements in a resource.";
             case ELEMENTDEFINITION: return "Captures constraints on each element within the resource, profile, or extension.";
             case EXPRESSION: return "A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used.";
+            case EXTENDEDCONTACTDETAIL: return "Specifies contact information for a specific purpose over a period of time, might be handled/monitored by a specific named person or organization.";
             case EXTENSION: return "Optional Extension Element - found in all resources.";
             case HUMANNAME: return "A human's name with the ability to identify parts and usage.";
             case IDENTIFIER: return "An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.";
@@ -4998,6 +5007,7 @@ The primary difference between a medicationusage and a medicationadministration 
             case ELEMENT: return "Element";
             case ELEMENTDEFINITION: return "ElementDefinition";
             case EXPRESSION: return "Expression";
+            case EXTENDEDCONTACTDETAIL: return "ExtendedContactDetail";
             case EXTENSION: return "Extension";
             case HUMANNAME: return "HumanName";
             case IDENTIFIER: return "Identifier";
@@ -5258,6 +5268,8 @@ The primary difference between a medicationusage and a medicationadministration 
           return FHIRAllTypes.ELEMENTDEFINITION;
         if ("Expression".equals(codeString))
           return FHIRAllTypes.EXPRESSION;
+        if ("ExtendedContactDetail".equals(codeString))
+          return FHIRAllTypes.EXTENDEDCONTACTDETAIL;
         if ("Extension".equals(codeString))
           return FHIRAllTypes.EXTENSION;
         if ("HumanName".equals(codeString))
@@ -5722,6 +5734,8 @@ The primary difference between a medicationusage and a medicationadministration 
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.ELEMENTDEFINITION);
         if ("Expression".equals(codeString))
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.EXPRESSION);
+        if ("ExtendedContactDetail".equals(codeString))
+          return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.EXTENDEDCONTACTDETAIL);
         if ("Extension".equals(codeString))
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.EXTENSION);
         if ("HumanName".equals(codeString))
@@ -6179,6 +6193,8 @@ The primary difference between a medicationusage and a medicationadministration 
         return "ElementDefinition";
       if (code == FHIRAllTypes.EXPRESSION)
         return "Expression";
+      if (code == FHIRAllTypes.EXTENDEDCONTACTDETAIL)
+        return "ExtendedContactDetail";
       if (code == FHIRAllTypes.EXTENSION)
         return "Extension";
       if (code == FHIRAllTypes.HUMANNAME)
@@ -6706,14 +6722,6 @@ The primary difference between a medicationusage and a medicationadministration 
          */
         _4_5_0, 
         /**
-         * null
-         */
-        _4_6_0, 
-        /**
-         * null
-         */
-        _5_0_0SNAPSHOT1, 
-        /**
          * R5 Draft Ballot.
          */
         _5_0_0CIBUILD, 
@@ -6778,10 +6786,6 @@ The primary difference between a medicationusage and a medicationadministration 
           return _4_4_0;
         if ("4.5.0".equals(codeString))
           return _4_5_0;
-        if ("4.6.0".equals(codeString))
-          return _4_6_0;
-        if ("5.0.0-snapshot1".equals(codeString))
-          return _5_0_0SNAPSHOT1;
         if ("5.0.0-cibuild".equals(codeString))
           return _5_0_0CIBUILD;
         throw new FHIRException("Unknown FHIRVersion code '"+codeString+"'");
@@ -6815,8 +6819,6 @@ The primary difference between a medicationusage and a medicationadministration 
             case _4_2_0: return "4.2.0";
             case _4_4_0: return "4.4.0";
             case _4_5_0: return "4.5.0";
-            case _4_6_0: return "4.6.0";
-            case _5_0_0SNAPSHOT1: return "5.0.0-snapshot1";
             case _5_0_0CIBUILD: return "5.0.0-cibuild";
             case NULL: return null;
             default: return "?";
@@ -6851,8 +6853,6 @@ The primary difference between a medicationusage and a medicationadministration 
             case _4_2_0: return "http://hl7.org/fhir/FHIR-version";
             case _4_4_0: return "http://hl7.org/fhir/FHIR-version";
             case _4_5_0: return "http://hl7.org/fhir/FHIR-version";
-            case _4_6_0: return "http://hl7.org/fhir/FHIR-version";
-            case _5_0_0SNAPSHOT1: return "http://hl7.org/fhir/FHIR-version";
             case _5_0_0CIBUILD: return "http://hl7.org/fhir/FHIR-version";
             case NULL: return null;
             default: return "?";
@@ -6887,8 +6887,6 @@ The primary difference between a medicationusage and a medicationadministration 
             case _4_2_0: return "R5 Preview #1.";
             case _4_4_0: return "R5 Preview #2.";
             case _4_5_0: return "R5 Preview #3.";
-            case _4_6_0: return "";
-            case _5_0_0SNAPSHOT1: return "";
             case _5_0_0CIBUILD: return "R5 Draft Ballot.";
             case NULL: return null;
             default: return "?";
@@ -6923,8 +6921,6 @@ The primary difference between a medicationusage and a medicationadministration 
             case _4_2_0: return "4.2.0";
             case _4_4_0: return "4.4.0";
             case _4_5_0: return "4.5.0";
-            case _4_6_0: return "4.6.0";
-            case _5_0_0SNAPSHOT1: return "5.0.0-snapshot1";
             case _5_0_0CIBUILD: return "5.0.0-cibuild";
             case NULL: return null;
             default: return "?";
@@ -7061,10 +7057,6 @@ public String toCode(int len) {
           return FHIRVersion._4_4_0;
         if ("4.5.0".equals(codeString))
           return FHIRVersion._4_5_0;
-        if ("4.6.0".equals(codeString))
-          return FHIRVersion._4_6_0;
-        if ("5.0.0-snapshot1".equals(codeString))
-          return FHIRVersion._5_0_0SNAPSHOT1;
         if ("5.0.0-cibuild".equals(codeString))
           return FHIRVersion._5_0_0CIBUILD;
         throw new IllegalArgumentException("Unknown FHIRVersion code '"+codeString+"'");
@@ -7131,10 +7123,6 @@ public String toCode(int len) {
           return new Enumeration<FHIRVersion>(this, FHIRVersion._4_4_0);
         if ("4.5.0".equals(codeString))
           return new Enumeration<FHIRVersion>(this, FHIRVersion._4_5_0);
-        if ("4.6.0".equals(codeString))
-          return new Enumeration<FHIRVersion>(this, FHIRVersion._4_6_0);
-        if ("5.0.0-snapshot1".equals(codeString))
-          return new Enumeration<FHIRVersion>(this, FHIRVersion._5_0_0SNAPSHOT1);
         if ("5.0.0-cibuild".equals(codeString))
           return new Enumeration<FHIRVersion>(this, FHIRVersion._5_0_0CIBUILD);
         throw new FHIRException("Unknown FHIRVersion code '"+codeString+"'");
@@ -7194,10 +7182,6 @@ public String toCode(int len) {
         return "4.4.0";
       if (code == FHIRVersion._4_5_0)
         return "4.5.0";
-      if (code == FHIRVersion._4_6_0)
-        return "4.6.0";
-      if (code == FHIRVersion._5_0_0SNAPSHOT1)
-        return "5.0.0-snapshot1";
       if (code == FHIRVersion._5_0_0CIBUILD)
         return "5.0.0-cibuild";
       return "?";

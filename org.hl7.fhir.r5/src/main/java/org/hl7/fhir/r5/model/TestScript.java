@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
+// Generated on Thu, Mar 10, 2022 17:24+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -734,6 +734,10 @@ public class TestScript extends CanonicalResource {
          * A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used.
          */
         EXPRESSION, 
+        /**
+         * Specifies contact information for a specific purpose over a period of time, might be handled/monitored by a specific named person or organization.
+         */
+        EXTENDEDCONTACTDETAIL, 
         /**
          * Optional Extension Element - found in all resources.
          */
@@ -1597,6 +1601,8 @@ public class TestScript extends CanonicalResource {
           return ELEMENTDEFINITION;
         if ("Expression".equals(codeString))
           return EXPRESSION;
+        if ("ExtendedContactDetail".equals(codeString))
+          return EXTENDEDCONTACTDETAIL;
         if ("Extension".equals(codeString))
           return EXTENSION;
         if ("HumanName".equals(codeString))
@@ -2032,6 +2038,7 @@ public class TestScript extends CanonicalResource {
             case ELEMENT: return "Element";
             case ELEMENTDEFINITION: return "ElementDefinition";
             case EXPRESSION: return "Expression";
+            case EXTENDEDCONTACTDETAIL: return "ExtendedContactDetail";
             case EXTENSION: return "Extension";
             case HUMANNAME: return "HumanName";
             case IDENTIFIER: return "Identifier";
@@ -2263,6 +2270,7 @@ public class TestScript extends CanonicalResource {
             case ELEMENT: return "http://hl7.org/fhir/data-types";
             case ELEMENTDEFINITION: return "http://hl7.org/fhir/data-types";
             case EXPRESSION: return "http://hl7.org/fhir/data-types";
+            case EXTENDEDCONTACTDETAIL: return "http://hl7.org/fhir/data-types";
             case EXTENSION: return "http://hl7.org/fhir/data-types";
             case HUMANNAME: return "http://hl7.org/fhir/data-types";
             case IDENTIFIER: return "http://hl7.org/fhir/data-types";
@@ -2494,6 +2502,7 @@ public class TestScript extends CanonicalResource {
             case ELEMENT: return "Base definition for all elements in a resource.";
             case ELEMENTDEFINITION: return "Captures constraints on each element within the resource, profile, or extension.";
             case EXPRESSION: return "A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used.";
+            case EXTENDEDCONTACTDETAIL: return "Specifies contact information for a specific purpose over a period of time, might be handled/monitored by a specific named person or organization.";
             case EXTENSION: return "Optional Extension Element - found in all resources.";
             case HUMANNAME: return "A human's name with the ability to identify parts and usage.";
             case IDENTIFIER: return "An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.";
@@ -2725,6 +2734,7 @@ public class TestScript extends CanonicalResource {
             case ELEMENT: return "Element";
             case ELEMENTDEFINITION: return "ElementDefinition";
             case EXPRESSION: return "Expression";
+            case EXTENDEDCONTACTDETAIL: return "ExtendedContactDetail";
             case EXTENSION: return "Extension";
             case HUMANNAME: return "HumanName";
             case IDENTIFIER: return "Identifier";
@@ -2983,6 +2993,8 @@ public class TestScript extends CanonicalResource {
           return FHIRDefinedType.ELEMENTDEFINITION;
         if ("Expression".equals(codeString))
           return FHIRDefinedType.EXPRESSION;
+        if ("ExtendedContactDetail".equals(codeString))
+          return FHIRDefinedType.EXTENDEDCONTACTDETAIL;
         if ("Extension".equals(codeString))
           return FHIRDefinedType.EXTENSION;
         if ("HumanName".equals(codeString))
@@ -3443,6 +3455,8 @@ public class TestScript extends CanonicalResource {
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.ELEMENTDEFINITION);
         if ("Expression".equals(codeString))
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.EXPRESSION);
+        if ("ExtendedContactDetail".equals(codeString))
+          return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.EXTENDEDCONTACTDETAIL);
         if ("Extension".equals(codeString))
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.EXTENSION);
         if ("HumanName".equals(codeString))
@@ -3896,6 +3910,8 @@ public class TestScript extends CanonicalResource {
         return "ElementDefinition";
       if (code == FHIRDefinedType.EXPRESSION)
         return "Expression";
+      if (code == FHIRDefinedType.EXTENDEDCONTACTDETAIL)
+        return "ExtendedContactDetail";
       if (code == FHIRDefinedType.EXTENSION)
         return "Extension";
       if (code == FHIRDefinedType.HUMANNAME)
@@ -7768,12 +7784,12 @@ public class TestScript extends CanonicalResource {
         protected Coding type;
 
         /**
-         * The type of the resource.  See http://build.fhir.org/resourcelist.html.
+         * The type of the FHIR resource. See http://build.fhir.org/resourcelist.html. Data type of uri is needed when non-HL7 artifacts are identified.
          */
-        @Child(name = "resource", type = {CodeType.class}, order=2, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Resource type", formalDefinition="The type of the resource.  See http://build.fhir.org/resourcelist.html." )
+        @Child(name = "resource", type = {UriType.class}, order=2, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Resource type", formalDefinition="The type of the FHIR resource. See http://build.fhir.org/resourcelist.html. Data type of uri is needed when non-HL7 artifacts are identified." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/defined-types")
-        protected Enumeration<FHIRDefinedType> resource;
+        protected UriType resource;
 
         /**
          * The label would be used for tracking/logging purposes by test engines.
@@ -7883,7 +7899,7 @@ public class TestScript extends CanonicalResource {
         @Description(shortDefinition="Request URL", formalDefinition="Complete request URL." )
         protected StringType url;
 
-        private static final long serialVersionUID = -1301448722L;
+        private static final long serialVersionUID = 308704897L;
 
     /**
      * Constructor
@@ -7925,14 +7941,14 @@ public class TestScript extends CanonicalResource {
         }
 
         /**
-         * @return {@link #resource} (The type of the resource.  See http://build.fhir.org/resourcelist.html.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
+         * @return {@link #resource} (The type of the FHIR resource. See http://build.fhir.org/resourcelist.html. Data type of uri is needed when non-HL7 artifacts are identified.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
          */
-        public Enumeration<FHIRDefinedType> getResourceElement() { 
+        public UriType getResourceElement() { 
           if (this.resource == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SetupActionOperationComponent.resource");
             else if (Configuration.doAutoCreate())
-              this.resource = new Enumeration<FHIRDefinedType>(new FHIRDefinedTypeEnumFactory()); // bb
+              this.resource = new UriType(); // bb
           return this.resource;
         }
 
@@ -7945,29 +7961,29 @@ public class TestScript extends CanonicalResource {
         }
 
         /**
-         * @param value {@link #resource} (The type of the resource.  See http://build.fhir.org/resourcelist.html.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
+         * @param value {@link #resource} (The type of the FHIR resource. See http://build.fhir.org/resourcelist.html. Data type of uri is needed when non-HL7 artifacts are identified.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
          */
-        public SetupActionOperationComponent setResourceElement(Enumeration<FHIRDefinedType> value) { 
+        public SetupActionOperationComponent setResourceElement(UriType value) { 
           this.resource = value;
           return this;
         }
 
         /**
-         * @return The type of the resource.  See http://build.fhir.org/resourcelist.html.
+         * @return The type of the FHIR resource. See http://build.fhir.org/resourcelist.html. Data type of uri is needed when non-HL7 artifacts are identified.
          */
-        public FHIRDefinedType getResource() { 
+        public String getResource() { 
           return this.resource == null ? null : this.resource.getValue();
         }
 
         /**
-         * @param value The type of the resource.  See http://build.fhir.org/resourcelist.html.
+         * @param value The type of the FHIR resource. See http://build.fhir.org/resourcelist.html. Data type of uri is needed when non-HL7 artifacts are identified.
          */
-        public SetupActionOperationComponent setResource(FHIRDefinedType value) { 
-          if (value == null)
+        public SetupActionOperationComponent setResource(String value) { 
+          if (Utilities.noString(value))
             this.resource = null;
           else {
             if (this.resource == null)
-              this.resource = new Enumeration<FHIRDefinedType>(new FHIRDefinedTypeEnumFactory());
+              this.resource = new UriType();
             this.resource.setValue(value);
           }
           return this;
@@ -8703,7 +8719,7 @@ public class TestScript extends CanonicalResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("type", "Coding", "Server interaction or operation type.", 0, 1, type));
-          children.add(new Property("resource", "code", "The type of the resource.  See http://build.fhir.org/resourcelist.html.", 0, 1, resource));
+          children.add(new Property("resource", "uri", "The type of the FHIR resource. See http://build.fhir.org/resourcelist.html. Data type of uri is needed when non-HL7 artifacts are identified.", 0, 1, resource));
           children.add(new Property("label", "string", "The label would be used for tracking/logging purposes by test engines.", 0, 1, label));
           children.add(new Property("description", "string", "The description would be used by test engines for tracking and reporting purposes.", 0, 1, description));
           children.add(new Property("accept", "code", "The mime-type to use for RESTful operation in the 'Accept' header.", 0, 1, accept));
@@ -8725,7 +8741,7 @@ public class TestScript extends CanonicalResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 3575610: /*type*/  return new Property("type", "Coding", "Server interaction or operation type.", 0, 1, type);
-          case -341064690: /*resource*/  return new Property("resource", "code", "The type of the resource.  See http://build.fhir.org/resourcelist.html.", 0, 1, resource);
+          case -341064690: /*resource*/  return new Property("resource", "uri", "The type of the FHIR resource. See http://build.fhir.org/resourcelist.html. Data type of uri is needed when non-HL7 artifacts are identified.", 0, 1, resource);
           case 102727412: /*label*/  return new Property("label", "string", "The label would be used for tracking/logging purposes by test engines.", 0, 1, label);
           case -1724546052: /*description*/  return new Property("description", "string", "The description would be used by test engines for tracking and reporting purposes.", 0, 1, description);
           case -1423461112: /*accept*/  return new Property("accept", "code", "The mime-type to use for RESTful operation in the 'Accept' header.", 0, 1, accept);
@@ -8750,7 +8766,7 @@ public class TestScript extends CanonicalResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Coding
-        case -341064690: /*resource*/ return this.resource == null ? new Base[0] : new Base[] {this.resource}; // Enumeration<FHIRDefinedType>
+        case -341064690: /*resource*/ return this.resource == null ? new Base[0] : new Base[] {this.resource}; // UriType
         case 102727412: /*label*/ return this.label == null ? new Base[0] : new Base[] {this.label}; // StringType
         case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
         case -1423461112: /*accept*/ return this.accept == null ? new Base[0] : new Base[] {this.accept}; // CodeType
@@ -8778,8 +8794,7 @@ public class TestScript extends CanonicalResource {
           this.type = TypeConvertor.castToCoding(value); // Coding
           return value;
         case -341064690: // resource
-          value = new FHIRDefinedTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
-          this.resource = (Enumeration) value; // Enumeration<FHIRDefinedType>
+          this.resource = TypeConvertor.castToUri(value); // UriType
           return value;
         case 102727412: // label
           this.label = TypeConvertor.castToString(value); // StringType
@@ -8837,8 +8852,7 @@ public class TestScript extends CanonicalResource {
         if (name.equals("type")) {
           this.type = TypeConvertor.castToCoding(value); // Coding
         } else if (name.equals("resource")) {
-          value = new FHIRDefinedTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
-          this.resource = (Enumeration) value; // Enumeration<FHIRDefinedType>
+          this.resource = TypeConvertor.castToUri(value); // UriType
         } else if (name.equals("label")) {
           this.label = TypeConvertor.castToString(value); // StringType
         } else if (name.equals("description")) {
@@ -8904,7 +8918,7 @@ public class TestScript extends CanonicalResource {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 3575610: /*type*/ return new String[] {"Coding"};
-        case -341064690: /*resource*/ return new String[] {"code"};
+        case -341064690: /*resource*/ return new String[] {"uri"};
         case 102727412: /*label*/ return new String[] {"string"};
         case -1724546052: /*description*/ return new String[] {"string"};
         case -1423461112: /*accept*/ return new String[] {"code"};

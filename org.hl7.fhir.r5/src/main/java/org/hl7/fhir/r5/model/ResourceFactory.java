@@ -28,7 +28,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
+// Generated on Thu, Mar 10, 2022 17:24+0100 for FHIR v5.0.0-cibuild
 
 
   
@@ -421,6 +421,8 @@ public class ResourceFactory extends Factory {
             return new ElementDefinition();
         if ("Expression".equals(name))
             return new Expression();
+        if ("ExtendedContactDetail".equals(name))
+            return new ExtendedContactDetail();
         if ("Extension".equals(name))
             return new Extension();
         if ("HumanName".equals(name))
@@ -661,6 +663,7 @@ public class ResourceFactory extends Factory {
         case -1927368268: return new Duration();
         case -1605049009: return new ElementDefinition();
         case 198012600: return new Expression();
+        case 1711712184: return new ExtendedContactDetail();
         case 1391410207: return new Extension();
         case 1592332600: return new HumanName();
         case 375032009: return new Identifier();

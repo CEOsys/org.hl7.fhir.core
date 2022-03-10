@@ -362,6 +362,13 @@ public class TypeConvertor {
       throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a ContactDetail");
   }
 
+  public static ExtendedContactDetail castToExtendedContactDetail(Base b) throws FHIRException {
+    if (b instanceof ExtendedContactDetail)
+      return (ExtendedContactDetail) b;
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a ExtendedContactDetail");
+  }
+
   public static Contributor castToContributor(Base b) throws FHIRException {
     if (b instanceof Contributor)
       return (Contributor) b;

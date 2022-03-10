@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Mar 7, 2022 23:49+0100 for FHIR v5.0.0-cibuild
+// Generated on Thu, Mar 10, 2022 17:24+0100 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,15 +59,15 @@ public class RelatedPerson extends DomainResource {
          * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. "en" for English, or "en-US" for American English versus "en-EN" for England English.
          */
         @Child(name = "language", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="The language which can be used to communicate with the patient about his or her health", formalDefinition="The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English." )
+        @Description(shortDefinition="The language which can be used to communicate with the related person about the patient's health", formalDefinition="The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/languages")
         protected CodeableConcept language;
 
         /**
-         * Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
+         * Indicates whether or not the related person prefers this language (over other languages he or she masters up a certain level).
          */
         @Child(name = "preferred", type = {BooleanType.class}, order=2, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Language preference indicator", formalDefinition="Indicates whether or not the patient prefers this language (over other languages he masters up a certain level)." )
+        @Description(shortDefinition="Language preference indicator", formalDefinition="Indicates whether or not the related person prefers this language (over other languages he or she masters up a certain level)." )
         protected BooleanType preferred;
 
         private static final long serialVersionUID = 633792918L;
@@ -112,7 +112,7 @@ public class RelatedPerson extends DomainResource {
         }
 
         /**
-         * @return {@link #preferred} (Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).). This is the underlying object with id, value and extensions. The accessor "getPreferred" gives direct access to the value
+         * @return {@link #preferred} (Indicates whether or not the related person prefers this language (over other languages he or she masters up a certain level).). This is the underlying object with id, value and extensions. The accessor "getPreferred" gives direct access to the value
          */
         public BooleanType getPreferredElement() { 
           if (this.preferred == null)
@@ -132,7 +132,7 @@ public class RelatedPerson extends DomainResource {
         }
 
         /**
-         * @param value {@link #preferred} (Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).). This is the underlying object with id, value and extensions. The accessor "getPreferred" gives direct access to the value
+         * @param value {@link #preferred} (Indicates whether or not the related person prefers this language (over other languages he or she masters up a certain level).). This is the underlying object with id, value and extensions. The accessor "getPreferred" gives direct access to the value
          */
         public RelatedPersonCommunicationComponent setPreferredElement(BooleanType value) { 
           this.preferred = value;
@@ -140,14 +140,14 @@ public class RelatedPerson extends DomainResource {
         }
 
         /**
-         * @return Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
+         * @return Indicates whether or not the related person prefers this language (over other languages he or she masters up a certain level).
          */
         public boolean getPreferred() { 
           return this.preferred == null || this.preferred.isEmpty() ? false : this.preferred.getValue();
         }
 
         /**
-         * @param value Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
+         * @param value Indicates whether or not the related person prefers this language (over other languages he or she masters up a certain level).
          */
         public RelatedPersonCommunicationComponent setPreferred(boolean value) { 
             if (this.preferred == null)
@@ -159,14 +159,14 @@ public class RelatedPerson extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("language", "CodeableConcept", "The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English.", 0, 1, language));
-          children.add(new Property("preferred", "boolean", "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).", 0, 1, preferred));
+          children.add(new Property("preferred", "boolean", "Indicates whether or not the related person prefers this language (over other languages he or she masters up a certain level).", 0, 1, preferred));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case -1613589672: /*language*/  return new Property("language", "CodeableConcept", "The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English.", 0, 1, language);
-          case -1294005119: /*preferred*/  return new Property("preferred", "boolean", "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).", 0, 1, preferred);
+          case -1294005119: /*preferred*/  return new Property("preferred", "boolean", "Indicates whether or not the related person prefers this language (over other languages he or she masters up a certain level).", 0, 1, preferred);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -363,10 +363,10 @@ public class RelatedPerson extends DomainResource {
     protected Period period;
 
     /**
-     * A language which may be used to communicate with about the patient's health.
+     * A language which may be used to communicate with the related person about the patient's health.
      */
     @Child(name = "communication", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="A language which may be used to communicate with about the patient's health", formalDefinition="A language which may be used to communicate with about the patient's health." )
+    @Description(shortDefinition="A language which may be used to communicate with the related person about the patient's health", formalDefinition="A language which may be used to communicate with the related person about the patient's health." )
     protected List<RelatedPersonCommunicationComponent> communication;
 
     private static final long serialVersionUID = -857475397L;
@@ -896,7 +896,7 @@ public class RelatedPerson extends DomainResource {
     }
 
     /**
-     * @return {@link #communication} (A language which may be used to communicate with about the patient's health.)
+     * @return {@link #communication} (A language which may be used to communicate with the related person about the patient's health.)
      */
     public List<RelatedPersonCommunicationComponent> getCommunication() { 
       if (this.communication == null)
@@ -961,7 +961,7 @@ public class RelatedPerson extends DomainResource {
         children.add(new Property("address", "Address", "Address where the related person can be contacted or visited.", 0, java.lang.Integer.MAX_VALUE, address));
         children.add(new Property("photo", "Attachment", "Image of the person.", 0, java.lang.Integer.MAX_VALUE, photo));
         children.add(new Property("period", "Period", "The period of time during which this relationship is or was active. If there are no dates defined, then the interval is unknown.", 0, 1, period));
-        children.add(new Property("communication", "", "A language which may be used to communicate with about the patient's health.", 0, java.lang.Integer.MAX_VALUE, communication));
+        children.add(new Property("communication", "", "A language which may be used to communicate with the related person about the patient's health.", 0, java.lang.Integer.MAX_VALUE, communication));
       }
 
       @Override
@@ -978,7 +978,7 @@ public class RelatedPerson extends DomainResource {
         case -1147692044: /*address*/  return new Property("address", "Address", "Address where the related person can be contacted or visited.", 0, java.lang.Integer.MAX_VALUE, address);
         case 106642994: /*photo*/  return new Property("photo", "Attachment", "Image of the person.", 0, java.lang.Integer.MAX_VALUE, photo);
         case -991726143: /*period*/  return new Property("period", "Period", "The period of time during which this relationship is or was active. If there are no dates defined, then the interval is unknown.", 0, 1, period);
-        case -1035284522: /*communication*/  return new Property("communication", "", "A language which may be used to communicate with about the patient's health.", 0, java.lang.Integer.MAX_VALUE, communication);
+        case -1035284522: /*communication*/  return new Property("communication", "", "A language which may be used to communicate with the related person about the patient's health.", 0, java.lang.Integer.MAX_VALUE, communication);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
