@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Fri, Apr 1, 2022 13:44+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -117,6 +117,7 @@ public class MedicationAdministration extends DomainResource {
             case ENTEREDINERROR: return "entered-in-error";
             case STOPPED: return "stopped";
             case UNKNOWN: return "unknown";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -129,6 +130,7 @@ public class MedicationAdministration extends DomainResource {
             case ENTEREDINERROR: return "http://hl7.org/fhir/CodeSystem/medication-admin-status";
             case STOPPED: return "http://hl7.org/fhir/CodeSystem/medication-admin-status";
             case UNKNOWN: return "http://hl7.org/fhir/CodeSystem/medication-admin-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -141,6 +143,7 @@ public class MedicationAdministration extends DomainResource {
             case ENTEREDINERROR: return "The administration was entered in error and therefore nullified.";
             case STOPPED: return "Actions implied by the administration have been permanently halted, before all of them occurred.";
             case UNKNOWN: return "The authoring system does not know which of the status values currently applies for this request. Note: This concept is not to be used for 'other' - one of the listed statuses is presumed to apply, it's just not known which one.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -153,6 +156,7 @@ public class MedicationAdministration extends DomainResource {
             case ENTEREDINERROR: return "Entered in Error";
             case STOPPED: return "Stopped";
             case UNKNOWN: return "Unknown";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -988,16 +992,31 @@ public class MedicationAdministration extends DomainResource {
     protected DateTimeType recorded;
 
     /**
+     * An indication that the full dose was not administered.
+     */
+    @Child(name = "isSubPotent", type = {BooleanType.class}, order=14, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Full dose was not administered", formalDefinition="An indication that the full dose was not administered." )
+    protected BooleanType isSubPotent;
+
+    /**
+     * The reason or reasons why the full dose was not administered.
+     */
+    @Child(name = "subPotentReason", type = {CodeableConcept.class}, order=15, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Reason full dose was not administered", formalDefinition="The reason or reasons why the full dose was not administered." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/administration-subpotent-reason")
+    protected List<CodeableConcept> subPotentReason;
+
+    /**
      * Indicates who or what performed the medication administration and how they were involved.
      */
-    @Child(name = "performer", type = {}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "performer", type = {}, order=16, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Who performed the medication administration and what they did", formalDefinition="Indicates who or what performed the medication administration and how they were involved." )
     protected List<MedicationAdministrationPerformerComponent> performer;
 
     /**
      * A code, Condition or observation that supports why the medication was administered.
      */
-    @Child(name = "reason", type = {CodeableReference.class}, order=15, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "reason", type = {CodeableReference.class}, order=17, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Concept, condition or observation that supports why the medication was administered", formalDefinition="A code, Condition or observation that supports why the medication was administered." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/reason-medication-given-codes")
     protected List<CodeableReference> reason;
@@ -1005,39 +1024,39 @@ public class MedicationAdministration extends DomainResource {
     /**
      * The original request, instruction or authority to perform the administration.
      */
-    @Child(name = "request", type = {MedicationRequest.class}, order=16, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "request", type = {MedicationRequest.class}, order=18, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Request administration performed against", formalDefinition="The original request, instruction or authority to perform the administration." )
     protected Reference request;
 
     /**
      * The device used in administering the medication to the patient.  For example, a particular infusion pump.
      */
-    @Child(name = "device", type = {Device.class}, order=17, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "device", type = {Device.class}, order=19, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Device used to administer", formalDefinition="The device used in administering the medication to the patient.  For example, a particular infusion pump." )
     protected List<Reference> device;
 
     /**
      * Extra information about the medication administration that is not conveyed by the other attributes.
      */
-    @Child(name = "note", type = {Annotation.class}, order=18, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "note", type = {Annotation.class}, order=20, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Information about the administration", formalDefinition="Extra information about the medication administration that is not conveyed by the other attributes." )
     protected List<Annotation> note;
 
     /**
      * Describes the medication dosage information details e.g. dose, rate, site, route, etc.
      */
-    @Child(name = "dosage", type = {}, order=19, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "dosage", type = {}, order=21, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Details of how medication was taken", formalDefinition="Describes the medication dosage information details e.g. dose, rate, site, route, etc." )
     protected MedicationAdministrationDosageComponent dosage;
 
     /**
      * A summary of the events of interest that have occurred, such as when the administration was verified.
      */
-    @Child(name = "eventHistory", type = {Provenance.class}, order=20, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "eventHistory", type = {Provenance.class}, order=22, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="A list of events of interest in the lifecycle", formalDefinition="A summary of the events of interest that have occurred, such as when the administration was verified." )
     protected List<Reference> eventHistory;
 
-    private static final long serialVersionUID = -1268367135L;
+    private static final long serialVersionUID = 1601619216L;
 
   /**
    * Constructor
@@ -1715,6 +1734,104 @@ public class MedicationAdministration extends DomainResource {
     }
 
     /**
+     * @return {@link #isSubPotent} (An indication that the full dose was not administered.). This is the underlying object with id, value and extensions. The accessor "getIsSubPotent" gives direct access to the value
+     */
+    public BooleanType getIsSubPotentElement() { 
+      if (this.isSubPotent == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create MedicationAdministration.isSubPotent");
+        else if (Configuration.doAutoCreate())
+          this.isSubPotent = new BooleanType(); // bb
+      return this.isSubPotent;
+    }
+
+    public boolean hasIsSubPotentElement() { 
+      return this.isSubPotent != null && !this.isSubPotent.isEmpty();
+    }
+
+    public boolean hasIsSubPotent() { 
+      return this.isSubPotent != null && !this.isSubPotent.isEmpty();
+    }
+
+    /**
+     * @param value {@link #isSubPotent} (An indication that the full dose was not administered.). This is the underlying object with id, value and extensions. The accessor "getIsSubPotent" gives direct access to the value
+     */
+    public MedicationAdministration setIsSubPotentElement(BooleanType value) { 
+      this.isSubPotent = value;
+      return this;
+    }
+
+    /**
+     * @return An indication that the full dose was not administered.
+     */
+    public boolean getIsSubPotent() { 
+      return this.isSubPotent == null || this.isSubPotent.isEmpty() ? false : this.isSubPotent.getValue();
+    }
+
+    /**
+     * @param value An indication that the full dose was not administered.
+     */
+    public MedicationAdministration setIsSubPotent(boolean value) { 
+        if (this.isSubPotent == null)
+          this.isSubPotent = new BooleanType();
+        this.isSubPotent.setValue(value);
+      return this;
+    }
+
+    /**
+     * @return {@link #subPotentReason} (The reason or reasons why the full dose was not administered.)
+     */
+    public List<CodeableConcept> getSubPotentReason() { 
+      if (this.subPotentReason == null)
+        this.subPotentReason = new ArrayList<CodeableConcept>();
+      return this.subPotentReason;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public MedicationAdministration setSubPotentReason(List<CodeableConcept> theSubPotentReason) { 
+      this.subPotentReason = theSubPotentReason;
+      return this;
+    }
+
+    public boolean hasSubPotentReason() { 
+      if (this.subPotentReason == null)
+        return false;
+      for (CodeableConcept item : this.subPotentReason)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public CodeableConcept addSubPotentReason() { //3
+      CodeableConcept t = new CodeableConcept();
+      if (this.subPotentReason == null)
+        this.subPotentReason = new ArrayList<CodeableConcept>();
+      this.subPotentReason.add(t);
+      return t;
+    }
+
+    public MedicationAdministration addSubPotentReason(CodeableConcept t) { //3
+      if (t == null)
+        return this;
+      if (this.subPotentReason == null)
+        this.subPotentReason = new ArrayList<CodeableConcept>();
+      this.subPotentReason.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #subPotentReason}, creating it if it does not already exist {3}
+     */
+    public CodeableConcept getSubPotentReasonFirstRep() { 
+      if (getSubPotentReason().isEmpty()) {
+        addSubPotentReason();
+      }
+      return getSubPotentReason().get(0);
+    }
+
+    /**
      * @return {@link #performer} (Indicates who or what performed the medication administration and how they were involved.)
      */
     public List<MedicationAdministrationPerformerComponent> getPerformer() { 
@@ -2043,6 +2160,8 @@ public class MedicationAdministration extends DomainResource {
         children.add(new Property("supportingInformation", "Reference(Any)", "Additional information (for example, patient height and weight) that supports the administration of the medication.  This attribute can be used to provide documentation of specific characteristics of the patient present at the time of administration.  For example, if the dose says \"give \"x\" if the heartrate exceeds \"y\"\", then the heart rate can be included using this attribute.", 0, java.lang.Integer.MAX_VALUE, supportingInformation));
         children.add(new Property("occurence[x]", "dateTime|Period", "A specific date/time or interval of time during which the administration took place (or did not take place). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.", 0, 1, occurence));
         children.add(new Property("recorded", "dateTime", "The date the occurrence of the  MedicationAdministration was first captured in the record - potentially significantly after the occurrence of the event.", 0, 1, recorded));
+        children.add(new Property("isSubPotent", "boolean", "An indication that the full dose was not administered.", 0, 1, isSubPotent));
+        children.add(new Property("subPotentReason", "CodeableConcept", "The reason or reasons why the full dose was not administered.", 0, java.lang.Integer.MAX_VALUE, subPotentReason));
         children.add(new Property("performer", "", "Indicates who or what performed the medication administration and how they were involved.", 0, java.lang.Integer.MAX_VALUE, performer));
         children.add(new Property("reason", "CodeableReference(Condition|Observation|DiagnosticReport)", "A code, Condition or observation that supports why the medication was administered.", 0, java.lang.Integer.MAX_VALUE, reason));
         children.add(new Property("request", "Reference(MedicationRequest)", "The original request, instruction or authority to perform the administration.", 0, 1, request));
@@ -2072,6 +2191,8 @@ public class MedicationAdministration extends DomainResource {
         case -820552334: /*occurenceDateTime*/  return new Property("occurence[x]", "dateTime", "A specific date/time or interval of time during which the administration took place (or did not take place). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.", 0, 1, occurence);
         case 221195608: /*occurencePeriod*/  return new Property("occurence[x]", "Period", "A specific date/time or interval of time during which the administration took place (or did not take place). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.", 0, 1, occurence);
         case -799233872: /*recorded*/  return new Property("recorded", "dateTime", "The date the occurrence of the  MedicationAdministration was first captured in the record - potentially significantly after the occurrence of the event.", 0, 1, recorded);
+        case 702379724: /*isSubPotent*/  return new Property("isSubPotent", "boolean", "An indication that the full dose was not administered.", 0, 1, isSubPotent);
+        case 969489082: /*subPotentReason*/  return new Property("subPotentReason", "CodeableConcept", "The reason or reasons why the full dose was not administered.", 0, java.lang.Integer.MAX_VALUE, subPotentReason);
         case 481140686: /*performer*/  return new Property("performer", "", "Indicates who or what performed the medication administration and how they were involved.", 0, java.lang.Integer.MAX_VALUE, performer);
         case -934964668: /*reason*/  return new Property("reason", "CodeableReference(Condition|Observation|DiagnosticReport)", "A code, Condition or observation that supports why the medication was administered.", 0, java.lang.Integer.MAX_VALUE, reason);
         case 1095692943: /*request*/  return new Property("request", "Reference(MedicationRequest)", "The original request, instruction or authority to perform the administration.", 0, 1, request);
@@ -2101,6 +2222,8 @@ public class MedicationAdministration extends DomainResource {
         case -1248768647: /*supportingInformation*/ return this.supportingInformation == null ? new Base[0] : this.supportingInformation.toArray(new Base[this.supportingInformation.size()]); // Reference
         case -1192857417: /*occurence*/ return this.occurence == null ? new Base[0] : new Base[] {this.occurence}; // DataType
         case -799233872: /*recorded*/ return this.recorded == null ? new Base[0] : new Base[] {this.recorded}; // DateTimeType
+        case 702379724: /*isSubPotent*/ return this.isSubPotent == null ? new Base[0] : new Base[] {this.isSubPotent}; // BooleanType
+        case 969489082: /*subPotentReason*/ return this.subPotentReason == null ? new Base[0] : this.subPotentReason.toArray(new Base[this.subPotentReason.size()]); // CodeableConcept
         case 481140686: /*performer*/ return this.performer == null ? new Base[0] : this.performer.toArray(new Base[this.performer.size()]); // MedicationAdministrationPerformerComponent
         case -934964668: /*reason*/ return this.reason == null ? new Base[0] : this.reason.toArray(new Base[this.reason.size()]); // CodeableReference
         case 1095692943: /*request*/ return this.request == null ? new Base[0] : new Base[] {this.request}; // Reference
@@ -2159,6 +2282,12 @@ public class MedicationAdministration extends DomainResource {
         case -799233872: // recorded
           this.recorded = TypeConvertor.castToDateTime(value); // DateTimeType
           return value;
+        case 702379724: // isSubPotent
+          this.isSubPotent = TypeConvertor.castToBoolean(value); // BooleanType
+          return value;
+        case 969489082: // subPotentReason
+          this.getSubPotentReason().add(TypeConvertor.castToCodeableConcept(value)); // CodeableConcept
+          return value;
         case 481140686: // performer
           this.getPerformer().add((MedicationAdministrationPerformerComponent) value); // MedicationAdministrationPerformerComponent
           return value;
@@ -2216,6 +2345,10 @@ public class MedicationAdministration extends DomainResource {
           this.occurence = TypeConvertor.castToType(value); // DataType
         } else if (name.equals("recorded")) {
           this.recorded = TypeConvertor.castToDateTime(value); // DateTimeType
+        } else if (name.equals("isSubPotent")) {
+          this.isSubPotent = TypeConvertor.castToBoolean(value); // BooleanType
+        } else if (name.equals("subPotentReason")) {
+          this.getSubPotentReason().add(TypeConvertor.castToCodeableConcept(value));
         } else if (name.equals("performer")) {
           this.getPerformer().add((MedicationAdministrationPerformerComponent) value);
         } else if (name.equals("reason")) {
@@ -2253,6 +2386,8 @@ public class MedicationAdministration extends DomainResource {
         case 144188521:  return getOccurence();
         case -1192857417:  return getOccurence();
         case -799233872:  return getRecordedElement();
+        case 702379724:  return getIsSubPotentElement();
+        case 969489082:  return addSubPotentReason(); 
         case 481140686:  return addPerformer(); 
         case -934964668:  return addReason(); 
         case 1095692943:  return getRequest();
@@ -2282,6 +2417,8 @@ public class MedicationAdministration extends DomainResource {
         case -1248768647: /*supportingInformation*/ return new String[] {"Reference"};
         case -1192857417: /*occurence*/ return new String[] {"dateTime", "Period"};
         case -799233872: /*recorded*/ return new String[] {"dateTime"};
+        case 702379724: /*isSubPotent*/ return new String[] {"boolean"};
+        case 969489082: /*subPotentReason*/ return new String[] {"CodeableConcept"};
         case 481140686: /*performer*/ return new String[] {};
         case -934964668: /*reason*/ return new String[] {"CodeableReference"};
         case 1095692943: /*request*/ return new String[] {"Reference"};
@@ -2345,6 +2482,12 @@ public class MedicationAdministration extends DomainResource {
         }
         else if (name.equals("recorded")) {
           throw new FHIRException("Cannot call addChild on a primitive type MedicationAdministration.recorded");
+        }
+        else if (name.equals("isSubPotent")) {
+          throw new FHIRException("Cannot call addChild on a primitive type MedicationAdministration.isSubPotent");
+        }
+        else if (name.equals("subPotentReason")) {
+          return addSubPotentReason();
         }
         else if (name.equals("performer")) {
           return addPerformer();
@@ -2432,6 +2575,12 @@ public class MedicationAdministration extends DomainResource {
         };
         dst.occurence = occurence == null ? null : occurence.copy();
         dst.recorded = recorded == null ? null : recorded.copy();
+        dst.isSubPotent = isSubPotent == null ? null : isSubPotent.copy();
+        if (subPotentReason != null) {
+          dst.subPotentReason = new ArrayList<CodeableConcept>();
+          for (CodeableConcept i : subPotentReason)
+            dst.subPotentReason.add(i.copy());
+        };
         if (performer != null) {
           dst.performer = new ArrayList<MedicationAdministrationPerformerComponent>();
           for (MedicationAdministrationPerformerComponent i : performer)
@@ -2477,7 +2626,8 @@ public class MedicationAdministration extends DomainResource {
            && compareDeep(partOf, o.partOf, true) && compareDeep(status, o.status, true) && compareDeep(statusReason, o.statusReason, true)
            && compareDeep(category, o.category, true) && compareDeep(medication, o.medication, true) && compareDeep(subject, o.subject, true)
            && compareDeep(encounter, o.encounter, true) && compareDeep(supportingInformation, o.supportingInformation, true)
-           && compareDeep(occurence, o.occurence, true) && compareDeep(recorded, o.recorded, true) && compareDeep(performer, o.performer, true)
+           && compareDeep(occurence, o.occurence, true) && compareDeep(recorded, o.recorded, true) && compareDeep(isSubPotent, o.isSubPotent, true)
+           && compareDeep(subPotentReason, o.subPotentReason, true) && compareDeep(performer, o.performer, true)
            && compareDeep(reason, o.reason, true) && compareDeep(request, o.request, true) && compareDeep(device, o.device, true)
            && compareDeep(note, o.note, true) && compareDeep(dosage, o.dosage, true) && compareDeep(eventHistory, o.eventHistory, true)
           ;
@@ -2491,14 +2641,15 @@ public class MedicationAdministration extends DomainResource {
           return false;
         MedicationAdministration o = (MedicationAdministration) other_;
         return compareValues(instantiatesCanonical, o.instantiatesCanonical, true) && compareValues(instantiatesUri, o.instantiatesUri, true)
-           && compareValues(status, o.status, true) && compareValues(recorded, o.recorded, true);
+           && compareValues(status, o.status, true) && compareValues(recorded, o.recorded, true) && compareValues(isSubPotent, o.isSubPotent, true)
+          ;
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, instantiatesCanonical
           , instantiatesUri, basedOn, partOf, status, statusReason, category, medication
-          , subject, encounter, supportingInformation, occurence, recorded, performer, reason
-          , request, device, note, dosage, eventHistory);
+          , subject, encounter, supportingInformation, occurence, recorded, isSubPotent, subPotentReason
+          , performer, reason, request, device, note, dosage, eventHistory);
       }
 
   @Override
@@ -2854,7 +3005,7 @@ public class MedicationAdministration extends DomainResource {
    * Path: <b>AllergyIntolerance.patient | CarePlan.subject.where(resolve() is Patient) | CareTeam.subject.where(resolve() is Patient) | ClinicalImpression.subject.where(resolve() is Patient) | Composition.subject.where(resolve() is Patient) | Condition.subject.where(resolve() is Patient) | Consent.subject.where(resolve() is Patient) | DetectedIssue.patient | DeviceRequest.subject.where(resolve() is Patient) | DeviceUsage.patient | DiagnosticReport.subject.where(resolve() is Patient) | DocumentManifest.subject.where(resolve() is Patient) | DocumentReference.subject.where(resolve() is Patient) | Encounter.subject.where(resolve() is Patient) | EpisodeOfCare.patient | FamilyMemberHistory.patient | Flag.subject.where(resolve() is Patient) | Goal.subject.where(resolve() is Patient) | ImagingStudy.subject.where(resolve() is Patient) | Immunization.patient | List.subject.where(resolve() is Patient) | MedicationAdministration.subject.where(resolve() is Patient) | MedicationDispense.subject.where(resolve() is Patient) | MedicationRequest.subject.where(resolve() is Patient) | MedicationUsage.subject.where(resolve() is Patient) | NutritionOrder.patient | Observation.subject.where(resolve() is Patient) | Procedure.subject.where(resolve() is Patient) | RiskAssessment.subject.where(resolve() is Patient) | ServiceRequest.subject.where(resolve() is Patient) | SupplyDelivery.patient | VisionPrescription.patient</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="AllergyIntolerance.patient | CarePlan.subject.where(resolve() is Patient) | CareTeam.subject.where(resolve() is Patient) | ClinicalImpression.subject.where(resolve() is Patient) | Composition.subject.where(resolve() is Patient) | Condition.subject.where(resolve() is Patient) | Consent.subject.where(resolve() is Patient) | DetectedIssue.patient | DeviceRequest.subject.where(resolve() is Patient) | DeviceUsage.patient | DiagnosticReport.subject.where(resolve() is Patient) | DocumentManifest.subject.where(resolve() is Patient) | DocumentReference.subject.where(resolve() is Patient) | Encounter.subject.where(resolve() is Patient) | EpisodeOfCare.patient | FamilyMemberHistory.patient | Flag.subject.where(resolve() is Patient) | Goal.subject.where(resolve() is Patient) | ImagingStudy.subject.where(resolve() is Patient) | Immunization.patient | List.subject.where(resolve() is Patient) | MedicationAdministration.subject.where(resolve() is Patient) | MedicationDispense.subject.where(resolve() is Patient) | MedicationRequest.subject.where(resolve() is Patient) | MedicationUsage.subject.where(resolve() is Patient) | NutritionOrder.patient | Observation.subject.where(resolve() is Patient) | Procedure.subject.where(resolve() is Patient) | RiskAssessment.subject.where(resolve() is Patient) | ServiceRequest.subject.where(resolve() is Patient) | SupplyDelivery.patient | VisionPrescription.patient", description="Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUsage](deviceusage.html): Search by patient who used / uses the device\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationUsage](medicationusage.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient") }, target={Account.class, ActivityDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CapabilityStatement2.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, ClinicalUseIssue.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, ConceptMap2.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentManifest.class, DocumentReference.class, Encounter.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationUsage.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestGroup.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestReport.class, TestScript.class, ValueSet.class, VerificationResult.class, VisionPrescription.class } )
+  @SearchParamDefinition(name="patient", path="AllergyIntolerance.patient | CarePlan.subject.where(resolve() is Patient) | CareTeam.subject.where(resolve() is Patient) | ClinicalImpression.subject.where(resolve() is Patient) | Composition.subject.where(resolve() is Patient) | Condition.subject.where(resolve() is Patient) | Consent.subject.where(resolve() is Patient) | DetectedIssue.patient | DeviceRequest.subject.where(resolve() is Patient) | DeviceUsage.patient | DiagnosticReport.subject.where(resolve() is Patient) | DocumentManifest.subject.where(resolve() is Patient) | DocumentReference.subject.where(resolve() is Patient) | Encounter.subject.where(resolve() is Patient) | EpisodeOfCare.patient | FamilyMemberHistory.patient | Flag.subject.where(resolve() is Patient) | Goal.subject.where(resolve() is Patient) | ImagingStudy.subject.where(resolve() is Patient) | Immunization.patient | List.subject.where(resolve() is Patient) | MedicationAdministration.subject.where(resolve() is Patient) | MedicationDispense.subject.where(resolve() is Patient) | MedicationRequest.subject.where(resolve() is Patient) | MedicationUsage.subject.where(resolve() is Patient) | NutritionOrder.patient | Observation.subject.where(resolve() is Patient) | Procedure.subject.where(resolve() is Patient) | RiskAssessment.subject.where(resolve() is Patient) | ServiceRequest.subject.where(resolve() is Patient) | SupplyDelivery.patient | VisionPrescription.patient", description="Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUsage](deviceusage.html): Search by patient who used / uses the device\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationUsage](medicationusage.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient") }, target={Account.class, ActivityDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CapabilityStatement2.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, ConceptMap2.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentManifest.class, DocumentReference.class, Encounter.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationUsage.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestGroup.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestReport.class, TestScript.class, Transport.class, ValueSet.class, VerificationResult.class, VisionPrescription.class } )
   public static final String SP_PATIENT = "patient";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>patient</b>

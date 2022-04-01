@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Fri, Apr 1, 2022 13:44+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -4812,10 +4812,10 @@ public class ValueSet extends CanonicalResource {
     protected BooleanType experimental;
 
     /**
-     * The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').
+     * The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.
      */
     @Child(name = "date", type = {DateTimeType.class}, order=7, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Date last changed", formalDefinition="The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition')." )
+    @Description(shortDefinition="Date last changed", formalDefinition="The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised." )
     protected DateTimeType date;
 
     /**
@@ -5253,7 +5253,7 @@ public class ValueSet extends CanonicalResource {
     }
 
     /**
-     * @return {@link #date} (The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @return {@link #date} (The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public DateTimeType getDateElement() { 
       if (this.date == null)
@@ -5273,7 +5273,7 @@ public class ValueSet extends CanonicalResource {
     }
 
     /**
-     * @param value {@link #date} (The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @param value {@link #date} (The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public ValueSet setDateElement(DateTimeType value) { 
       this.date = value;
@@ -5281,14 +5281,14 @@ public class ValueSet extends CanonicalResource {
     }
 
     /**
-     * @return The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').
+     * @return The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.
      */
     public Date getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
-     * @param value The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').
+     * @param value The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.
      */
     public ValueSet setDate(Date value) { 
       if (value == null)
@@ -5782,7 +5782,7 @@ public class ValueSet extends CanonicalResource {
         children.add(new Property("title", "string", "A short, descriptive, user-friendly title for the value set.", 0, 1, title));
         children.add(new Property("status", "code", "The status of this value set. Enables tracking the life-cycle of the content. The status of the value set applies to the value set definition (ValueSet.compose) and the associated ValueSet metadata. Expansions do not have a state.", 0, 1, status));
         children.add(new Property("experimental", "boolean", "A Boolean value to indicate that this value set is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.", 0, 1, experimental));
-        children.add(new Property("date", "dateTime", "The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').", 0, 1, date));
+        children.add(new Property("date", "dateTime", "The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.", 0, 1, date));
         children.add(new Property("publisher", "string", "The name of the organization or individual that published the value set.", 0, 1, publisher));
         children.add(new Property("contact", "ContactDetail", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact));
         children.add(new Property("description", "markdown", "A free text natural language description of the value set from a consumer's perspective. The textual description specifies the span of meanings for concepts to be included within the Value Set Expansion, and also may specify the intended use and limitations of the Value Set.", 0, 1, description));
@@ -5806,7 +5806,7 @@ public class ValueSet extends CanonicalResource {
         case 110371416: /*title*/  return new Property("title", "string", "A short, descriptive, user-friendly title for the value set.", 0, 1, title);
         case -892481550: /*status*/  return new Property("status", "code", "The status of this value set. Enables tracking the life-cycle of the content. The status of the value set applies to the value set definition (ValueSet.compose) and the associated ValueSet metadata. Expansions do not have a state.", 0, 1, status);
         case -404562712: /*experimental*/  return new Property("experimental", "boolean", "A Boolean value to indicate that this value set is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.", 0, 1, experimental);
-        case 3076014: /*date*/  return new Property("date", "dateTime", "The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').", 0, 1, date);
+        case 3076014: /*date*/  return new Property("date", "dateTime", "The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.", 0, 1, date);
         case 1447404028: /*publisher*/  return new Property("publisher", "string", "The name of the organization or individual that published the value set.", 0, 1, publisher);
         case 951526432: /*contact*/  return new Property("contact", "ContactDetail", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact);
         case -1724546052: /*description*/  return new Property("description", "markdown", "A free text natural language description of the value set from a consumer's perspective. The textual description specifies the span of meanings for concepts to be included within the Value Set Expansion, and also may specify the intended use and limitations of the Value Set.", 0, 1, description);

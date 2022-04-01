@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Fri, Apr 1, 2022 13:44+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -83,6 +83,7 @@ public class Location extends DomainResource {
           switch (this) {
             case INSTANCE: return "instance";
             case KIND: return "kind";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -90,6 +91,7 @@ public class Location extends DomainResource {
           switch (this) {
             case INSTANCE: return "http://hl7.org/fhir/location-mode";
             case KIND: return "http://hl7.org/fhir/location-mode";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +99,7 @@ public class Location extends DomainResource {
           switch (this) {
             case INSTANCE: return "The Location resource represents a specific instance of a location (e.g. Operating Theatre 1A).";
             case KIND: return "The Location represents a class of locations (e.g. Any Operating Theatre) although this class of locations could be constrained within a specific boundary (such as organization, or parent location, address etc.).";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -104,6 +107,7 @@ public class Location extends DomainResource {
           switch (this) {
             case INSTANCE: return "Instance";
             case KIND: return "Kind";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -182,6 +186,7 @@ public class Location extends DomainResource {
             case ACTIVE: return "active";
             case SUSPENDED: return "suspended";
             case INACTIVE: return "inactive";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -190,6 +195,7 @@ public class Location extends DomainResource {
             case ACTIVE: return "http://hl7.org/fhir/location-status";
             case SUSPENDED: return "http://hl7.org/fhir/location-status";
             case INACTIVE: return "http://hl7.org/fhir/location-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -198,6 +204,7 @@ public class Location extends DomainResource {
             case ACTIVE: return "The location is operational.";
             case SUSPENDED: return "The location is temporarily closed.";
             case INACTIVE: return "The location is no longer used.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -206,6 +213,7 @@ public class Location extends DomainResource {
             case ACTIVE: return "Active";
             case SUSPENDED: return "Suspended";
             case INACTIVE: return "Inactive";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -642,10 +650,10 @@ public class Location extends DomainResource {
         protected List<Enumeration<DaysOfWeek>> daysOfWeek;
 
         /**
-         * The Location is open all day.
+         * Is this always available? (hence times are irrelevant) i.e. 24 hour service.
          */
         @Child(name = "allDay", type = {BooleanType.class}, order=2, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="The Location is open all day", formalDefinition="The Location is open all day." )
+        @Description(shortDefinition="Always available? i.e. 24 hour service", formalDefinition="Is this always available? (hence times are irrelevant) i.e. 24 hour service." )
         protected BooleanType allDay;
 
         /**
@@ -733,7 +741,7 @@ public class Location extends DomainResource {
         }
 
         /**
-         * @return {@link #allDay} (The Location is open all day.). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
+         * @return {@link #allDay} (Is this always available? (hence times are irrelevant) i.e. 24 hour service.). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
          */
         public BooleanType getAllDayElement() { 
           if (this.allDay == null)
@@ -753,7 +761,7 @@ public class Location extends DomainResource {
         }
 
         /**
-         * @param value {@link #allDay} (The Location is open all day.). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
+         * @param value {@link #allDay} (Is this always available? (hence times are irrelevant) i.e. 24 hour service.). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
          */
         public LocationHoursOfOperationComponent setAllDayElement(BooleanType value) { 
           this.allDay = value;
@@ -761,14 +769,14 @@ public class Location extends DomainResource {
         }
 
         /**
-         * @return The Location is open all day.
+         * @return Is this always available? (hence times are irrelevant) i.e. 24 hour service.
          */
         public boolean getAllDay() { 
           return this.allDay == null || this.allDay.isEmpty() ? false : this.allDay.getValue();
         }
 
         /**
-         * @param value The Location is open all day.
+         * @param value Is this always available? (hence times are irrelevant) i.e. 24 hour service.
          */
         public LocationHoursOfOperationComponent setAllDay(boolean value) { 
             if (this.allDay == null)
@@ -878,7 +886,7 @@ public class Location extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("daysOfWeek", "code", "Indicates which days of the week are available between the start and end Times.", 0, java.lang.Integer.MAX_VALUE, daysOfWeek));
-          children.add(new Property("allDay", "boolean", "The Location is open all day.", 0, 1, allDay));
+          children.add(new Property("allDay", "boolean", "Is this always available? (hence times are irrelevant) i.e. 24 hour service.", 0, 1, allDay));
           children.add(new Property("openingTime", "time", "Time that the Location opens.", 0, 1, openingTime));
           children.add(new Property("closingTime", "time", "Time that the Location closes.", 0, 1, closingTime));
         }
@@ -887,7 +895,7 @@ public class Location extends DomainResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 68050338: /*daysOfWeek*/  return new Property("daysOfWeek", "code", "Indicates which days of the week are available between the start and end Times.", 0, java.lang.Integer.MAX_VALUE, daysOfWeek);
-          case -1414913477: /*allDay*/  return new Property("allDay", "boolean", "The Location is open all day.", 0, 1, allDay);
+          case -1414913477: /*allDay*/  return new Property("allDay", "boolean", "Is this always available? (hence times are irrelevant) i.e. 24 hour service.", 0, 1, allDay);
           case 84062277: /*openingTime*/  return new Property("openingTime", "time", "Time that the Location opens.", 0, 1, openingTime);
           case 188137762: /*closingTime*/  return new Property("closingTime", "time", "Time that the Location closes.", 0, 1, closingTime);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -1099,23 +1107,30 @@ public class Location extends DomainResource {
     protected List<CodeableConcept> type;
 
     /**
-     * The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.
+     * The contact details of communication devices available at the location. This can include addresses, phone numbers, fax numbers, mobile numbers, email addresses and web sites.
      */
-    @Child(name = "telecom", type = {ContactPoint.class}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Contact details of the location", formalDefinition="The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites." )
+    @Child(name = "contact", type = {ExtendedContactDetail.class}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Official contact details for the location", formalDefinition="The contact details of communication devices available at the location. This can include addresses, phone numbers, fax numbers, mobile numbers, email addresses and web sites." )
+    protected List<ExtendedContactDetail> contact;
+
+    /**
+     * Deprecated - use contact.telecom.
+     */
+    @Child(name = "telecom", type = {ContactPoint.class}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Deprecated - use contact.telecom", formalDefinition="Deprecated - use contact.telecom." )
     protected List<ContactPoint> telecom;
 
     /**
      * Physical location.
      */
-    @Child(name = "address", type = {Address.class}, order=9, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "address", type = {Address.class}, order=10, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Physical location", formalDefinition="Physical location." )
     protected Address address;
 
     /**
      * Physical form of the location, e.g. building, room, vehicle, road.
      */
-    @Child(name = "physicalType", type = {CodeableConcept.class}, order=10, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "physicalType", type = {CodeableConcept.class}, order=11, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Physical form of the location", formalDefinition="Physical form of the location, e.g. building, room, vehicle, road." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/location-physical-type")
     protected CodeableConcept physicalType;
@@ -1123,46 +1138,46 @@ public class Location extends DomainResource {
     /**
      * The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
      */
-    @Child(name = "position", type = {}, order=11, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "position", type = {}, order=12, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="The absolute geographic location", formalDefinition="The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML)." )
     protected LocationPositionComponent position;
 
     /**
      * The organization responsible for the provisioning and upkeep of the location.
      */
-    @Child(name = "managingOrganization", type = {Organization.class}, order=12, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "managingOrganization", type = {Organization.class}, order=13, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Organization responsible for provisioning and upkeep", formalDefinition="The organization responsible for the provisioning and upkeep of the location." )
     protected Reference managingOrganization;
 
     /**
      * Another Location of which this Location is physically a part of.
      */
-    @Child(name = "partOf", type = {Location.class}, order=13, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "partOf", type = {Location.class}, order=14, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Another Location this one is physically a part of", formalDefinition="Another Location of which this Location is physically a part of." )
     protected Reference partOf;
 
     /**
      * What days/times during a week is this location usually open.
      */
-    @Child(name = "hoursOfOperation", type = {}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "hoursOfOperation", type = {}, order=15, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="What days/times during a week is this location usually open", formalDefinition="What days/times during a week is this location usually open." )
     protected List<LocationHoursOfOperationComponent> hoursOfOperation;
 
     /**
      * A description of when the locations opening ours are different to normal, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as detailed in the opening hours Times.
      */
-    @Child(name = "availabilityExceptions", type = {StringType.class}, order=15, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "availabilityExceptions", type = {StringType.class}, order=16, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Description of availability exceptions", formalDefinition="A description of when the locations opening ours are different to normal, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as detailed in the opening hours Times." )
     protected StringType availabilityExceptions;
 
     /**
      * Technical endpoints providing access to services operated for the location.
      */
-    @Child(name = "endpoint", type = {Endpoint.class}, order=16, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "endpoint", type = {Endpoint.class}, order=17, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Technical endpoints providing access to services operated for the location", formalDefinition="Technical endpoints providing access to services operated for the location." )
     protected List<Reference> endpoint;
 
-    private static final long serialVersionUID = -1479198769L;
+    private static final long serialVersionUID = 270794377L;
 
   /**
    * Constructor
@@ -1559,7 +1574,60 @@ public class Location extends DomainResource {
     }
 
     /**
-     * @return {@link #telecom} (The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.)
+     * @return {@link #contact} (The contact details of communication devices available at the location. This can include addresses, phone numbers, fax numbers, mobile numbers, email addresses and web sites.)
+     */
+    public List<ExtendedContactDetail> getContact() { 
+      if (this.contact == null)
+        this.contact = new ArrayList<ExtendedContactDetail>();
+      return this.contact;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Location setContact(List<ExtendedContactDetail> theContact) { 
+      this.contact = theContact;
+      return this;
+    }
+
+    public boolean hasContact() { 
+      if (this.contact == null)
+        return false;
+      for (ExtendedContactDetail item : this.contact)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public ExtendedContactDetail addContact() { //3
+      ExtendedContactDetail t = new ExtendedContactDetail();
+      if (this.contact == null)
+        this.contact = new ArrayList<ExtendedContactDetail>();
+      this.contact.add(t);
+      return t;
+    }
+
+    public Location addContact(ExtendedContactDetail t) { //3
+      if (t == null)
+        return this;
+      if (this.contact == null)
+        this.contact = new ArrayList<ExtendedContactDetail>();
+      this.contact.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #contact}, creating it if it does not already exist {3}
+     */
+    public ExtendedContactDetail getContactFirstRep() { 
+      if (getContact().isEmpty()) {
+        addContact();
+      }
+      return getContact().get(0);
+    }
+
+    /**
+     * @return {@link #telecom} (Deprecated - use contact.telecom.)
      */
     public List<ContactPoint> getTelecom() { 
       if (this.telecom == null)
@@ -1896,7 +1964,8 @@ public class Location extends DomainResource {
         children.add(new Property("description", "string", "Description of the Location, which helps in finding or referencing the place.", 0, 1, description));
         children.add(new Property("mode", "code", "Indicates whether a resource instance represents a specific location or a class of locations.", 0, 1, mode));
         children.add(new Property("type", "CodeableConcept", "Indicates the type of function performed at the location.", 0, java.lang.Integer.MAX_VALUE, type));
-        children.add(new Property("telecom", "ContactPoint", "The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.", 0, java.lang.Integer.MAX_VALUE, telecom));
+        children.add(new Property("contact", "ExtendedContactDetail", "The contact details of communication devices available at the location. This can include addresses, phone numbers, fax numbers, mobile numbers, email addresses and web sites.", 0, java.lang.Integer.MAX_VALUE, contact));
+        children.add(new Property("telecom", "ContactPoint", "Deprecated - use contact.telecom.", 0, java.lang.Integer.MAX_VALUE, telecom));
         children.add(new Property("address", "Address", "Physical location.", 0, 1, address));
         children.add(new Property("physicalType", "CodeableConcept", "Physical form of the location, e.g. building, room, vehicle, road.", 0, 1, physicalType));
         children.add(new Property("position", "", "The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).", 0, 1, position));
@@ -1918,7 +1987,8 @@ public class Location extends DomainResource {
         case -1724546052: /*description*/  return new Property("description", "string", "Description of the Location, which helps in finding or referencing the place.", 0, 1, description);
         case 3357091: /*mode*/  return new Property("mode", "code", "Indicates whether a resource instance represents a specific location or a class of locations.", 0, 1, mode);
         case 3575610: /*type*/  return new Property("type", "CodeableConcept", "Indicates the type of function performed at the location.", 0, java.lang.Integer.MAX_VALUE, type);
-        case -1429363305: /*telecom*/  return new Property("telecom", "ContactPoint", "The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.", 0, java.lang.Integer.MAX_VALUE, telecom);
+        case 951526432: /*contact*/  return new Property("contact", "ExtendedContactDetail", "The contact details of communication devices available at the location. This can include addresses, phone numbers, fax numbers, mobile numbers, email addresses and web sites.", 0, java.lang.Integer.MAX_VALUE, contact);
+        case -1429363305: /*telecom*/  return new Property("telecom", "ContactPoint", "Deprecated - use contact.telecom.", 0, java.lang.Integer.MAX_VALUE, telecom);
         case -1147692044: /*address*/  return new Property("address", "Address", "Physical location.", 0, 1, address);
         case -1474715471: /*physicalType*/  return new Property("physicalType", "CodeableConcept", "Physical form of the location, e.g. building, room, vehicle, road.", 0, 1, physicalType);
         case 747804969: /*position*/  return new Property("position", "", "The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).", 0, 1, position);
@@ -1943,6 +2013,7 @@ public class Location extends DomainResource {
         case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
         case 3357091: /*mode*/ return this.mode == null ? new Base[0] : new Base[] {this.mode}; // Enumeration<LocationMode>
         case 3575610: /*type*/ return this.type == null ? new Base[0] : this.type.toArray(new Base[this.type.size()]); // CodeableConcept
+        case 951526432: /*contact*/ return this.contact == null ? new Base[0] : this.contact.toArray(new Base[this.contact.size()]); // ExtendedContactDetail
         case -1429363305: /*telecom*/ return this.telecom == null ? new Base[0] : this.telecom.toArray(new Base[this.telecom.size()]); // ContactPoint
         case -1147692044: /*address*/ return this.address == null ? new Base[0] : new Base[] {this.address}; // Address
         case -1474715471: /*physicalType*/ return this.physicalType == null ? new Base[0] : new Base[] {this.physicalType}; // CodeableConcept
@@ -1985,6 +2056,9 @@ public class Location extends DomainResource {
           return value;
         case 3575610: // type
           this.getType().add(TypeConvertor.castToCodeableConcept(value)); // CodeableConcept
+          return value;
+        case 951526432: // contact
+          this.getContact().add(TypeConvertor.castToExtendedContactDetail(value)); // ExtendedContactDetail
           return value;
         case -1429363305: // telecom
           this.getTelecom().add(TypeConvertor.castToContactPoint(value)); // ContactPoint
@@ -2038,6 +2112,8 @@ public class Location extends DomainResource {
           this.mode = (Enumeration) value; // Enumeration<LocationMode>
         } else if (name.equals("type")) {
           this.getType().add(TypeConvertor.castToCodeableConcept(value));
+        } else if (name.equals("contact")) {
+          this.getContact().add(TypeConvertor.castToExtendedContactDetail(value));
         } else if (name.equals("telecom")) {
           this.getTelecom().add(TypeConvertor.castToContactPoint(value));
         } else if (name.equals("address")) {
@@ -2072,6 +2148,7 @@ public class Location extends DomainResource {
         case -1724546052:  return getDescriptionElement();
         case 3357091:  return getModeElement();
         case 3575610:  return addType(); 
+        case 951526432:  return addContact(); 
         case -1429363305:  return addTelecom(); 
         case -1147692044:  return getAddress();
         case -1474715471:  return getPhysicalType();
@@ -2097,6 +2174,7 @@ public class Location extends DomainResource {
         case -1724546052: /*description*/ return new String[] {"string"};
         case 3357091: /*mode*/ return new String[] {"code"};
         case 3575610: /*type*/ return new String[] {"CodeableConcept"};
+        case 951526432: /*contact*/ return new String[] {"ExtendedContactDetail"};
         case -1429363305: /*telecom*/ return new String[] {"ContactPoint"};
         case -1147692044: /*address*/ return new String[] {"Address"};
         case -1474715471: /*physicalType*/ return new String[] {"CodeableConcept"};
@@ -2137,6 +2215,9 @@ public class Location extends DomainResource {
         }
         else if (name.equals("type")) {
           return addType();
+        }
+        else if (name.equals("contact")) {
+          return addContact();
         }
         else if (name.equals("telecom")) {
           return addTelecom();
@@ -2207,6 +2288,11 @@ public class Location extends DomainResource {
           for (CodeableConcept i : type)
             dst.type.add(i.copy());
         };
+        if (contact != null) {
+          dst.contact = new ArrayList<ExtendedContactDetail>();
+          for (ExtendedContactDetail i : contact)
+            dst.contact.add(i.copy());
+        };
         if (telecom != null) {
           dst.telecom = new ArrayList<ContactPoint>();
           for (ContactPoint i : telecom)
@@ -2243,11 +2329,12 @@ public class Location extends DomainResource {
         Location o = (Location) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(status, o.status, true) && compareDeep(operationalStatus, o.operationalStatus, true)
            && compareDeep(name, o.name, true) && compareDeep(alias, o.alias, true) && compareDeep(description, o.description, true)
-           && compareDeep(mode, o.mode, true) && compareDeep(type, o.type, true) && compareDeep(telecom, o.telecom, true)
-           && compareDeep(address, o.address, true) && compareDeep(physicalType, o.physicalType, true) && compareDeep(position, o.position, true)
-           && compareDeep(managingOrganization, o.managingOrganization, true) && compareDeep(partOf, o.partOf, true)
-           && compareDeep(hoursOfOperation, o.hoursOfOperation, true) && compareDeep(availabilityExceptions, o.availabilityExceptions, true)
-           && compareDeep(endpoint, o.endpoint, true);
+           && compareDeep(mode, o.mode, true) && compareDeep(type, o.type, true) && compareDeep(contact, o.contact, true)
+           && compareDeep(telecom, o.telecom, true) && compareDeep(address, o.address, true) && compareDeep(physicalType, o.physicalType, true)
+           && compareDeep(position, o.position, true) && compareDeep(managingOrganization, o.managingOrganization, true)
+           && compareDeep(partOf, o.partOf, true) && compareDeep(hoursOfOperation, o.hoursOfOperation, true)
+           && compareDeep(availabilityExceptions, o.availabilityExceptions, true) && compareDeep(endpoint, o.endpoint, true)
+          ;
       }
 
       @Override
@@ -2264,9 +2351,9 @@ public class Location extends DomainResource {
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, operationalStatus
-          , name, alias, description, mode, type, telecom, address, physicalType, position
-          , managingOrganization, partOf, hoursOfOperation, availabilityExceptions, endpoint
-          );
+          , name, alias, description, mode, type, contact, telecom, address, physicalType
+          , position, managingOrganization, partOf, hoursOfOperation, availabilityExceptions
+          , endpoint);
       }
 
   @Override

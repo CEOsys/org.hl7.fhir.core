@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Fri, Apr 1, 2022 13:44+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,6 +103,7 @@ public class NamingSystem extends CanonicalResource {
             case URI: return "uri";
             case V2CSMNEMONIC: return "v2csmnemonic";
             case OTHER: return "other";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +114,7 @@ public class NamingSystem extends CanonicalResource {
             case URI: return "http://hl7.org/fhir/namingsystem-identifier-type";
             case V2CSMNEMONIC: return "http://hl7.org/fhir/namingsystem-identifier-type";
             case OTHER: return "http://hl7.org/fhir/namingsystem-identifier-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -123,6 +125,7 @@ public class NamingSystem extends CanonicalResource {
             case URI: return "A uniform resource identifier (ideally a URL - uniform resource locator); e.g. http://unitsofmeasure.org.";
             case V2CSMNEMONIC: return "A short string published by HL7 for use in the V2 family of standsrds to idenfify a code system in the V12 coded data types CWE, CNE, and CF. The code values are also published by HL7 at http://www.hl7.org/Special/committees/vocab/table_0396/index.cfm";
             case OTHER: return "Some other type of unique identifier; e.g. HL7-assigned reserved string such as LN for LOINC.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -133,6 +136,7 @@ public class NamingSystem extends CanonicalResource {
             case URI: return "URI";
             case V2CSMNEMONIC: return "V2CSMNemonic";
             case OTHER: return "Other";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -229,6 +233,7 @@ public class NamingSystem extends CanonicalResource {
             case CODESYSTEM: return "codesystem";
             case IDENTIFIER: return "identifier";
             case ROOT: return "root";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -237,6 +242,7 @@ public class NamingSystem extends CanonicalResource {
             case CODESYSTEM: return "http://hl7.org/fhir/namingsystem-type";
             case IDENTIFIER: return "http://hl7.org/fhir/namingsystem-type";
             case ROOT: return "http://hl7.org/fhir/namingsystem-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -245,6 +251,7 @@ public class NamingSystem extends CanonicalResource {
             case CODESYSTEM: return "The naming system is used to define concepts and symbols to represent those concepts; e.g. UCUM, LOINC, NDC code, local lab codes, etc.";
             case IDENTIFIER: return "The naming system is used to manage identifiers (e.g. license numbers, order numbers, etc.).";
             case ROOT: return "The naming system is used as the root for other identifiers and naming systems.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -253,6 +260,7 @@ public class NamingSystem extends CanonicalResource {
             case CODESYSTEM: return "Code System";
             case IDENTIFIER: return "Identifier";
             case ROOT: return "Root";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -3044,10 +3052,6 @@ public class NamingSystem extends CanonicalResource {
     return false;
   }
 
-  public boolean supportsExperimental() {
-    return false;
-  }
-  
 // end addition
 
 }

@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Fri, Apr 1, 2022 13:44+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -110,6 +110,7 @@ public class Group extends DomainResource {
             case DEVICE: return "device";
             case MEDICATION: return "medication";
             case SUBSTANCE: return "substance";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -121,6 +122,7 @@ public class Group extends DomainResource {
             case DEVICE: return "http://hl7.org/fhir/group-type";
             case MEDICATION: return "http://hl7.org/fhir/group-type";
             case SUBSTANCE: return "http://hl7.org/fhir/group-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -132,6 +134,7 @@ public class Group extends DomainResource {
             case DEVICE: return "Group contains Device resources.";
             case MEDICATION: return "Group contains Medication resources.";
             case SUBSTANCE: return "Group contains Substance resources.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -143,6 +146,7 @@ public class Group extends DomainResource {
             case DEVICE: return "Device";
             case MEDICATION: return "Medication";
             case SUBSTANCE: return "Substance";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -634,7 +638,7 @@ public class Group extends DomainResource {
         /**
          * A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.
          */
-        @Child(name = "entity", type = {Patient.class, Practitioner.class, PractitionerRole.class, Device.class, Medication.class, Substance.class, Group.class}, order=1, min=1, max=1, modifier=false, summary=false)
+        @Child(name = "entity", type = {Patient.class, Practitioner.class, PractitionerRole.class, Device.class, Group.class, RelatedPerson.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Reference to the group member", formalDefinition="A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same." )
         protected Reference entity;
 
@@ -764,7 +768,7 @@ public class Group extends DomainResource {
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("entity", "Reference(Patient|Practitioner|PractitionerRole|Device|Medication|Substance|Group)", "A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.", 0, 1, entity));
+          children.add(new Property("entity", "Reference(Patient|Practitioner|PractitionerRole|Device|Group|RelatedPerson)", "A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.", 0, 1, entity));
           children.add(new Property("period", "Period", "The period that the member was in the group, if known.", 0, 1, period));
           children.add(new Property("inactive", "boolean", "A flag to indicate that the member is no longer in the group, but previously may have been a member.", 0, 1, inactive));
         }
@@ -772,7 +776,7 @@ public class Group extends DomainResource {
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case -1298275357: /*entity*/  return new Property("entity", "Reference(Patient|Practitioner|PractitionerRole|Device|Medication|Substance|Group)", "A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.", 0, 1, entity);
+          case -1298275357: /*entity*/  return new Property("entity", "Reference(Patient|Practitioner|PractitionerRole|Device|Group|RelatedPerson)", "A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.", 0, 1, entity);
           case -991726143: /*period*/  return new Property("period", "Period", "The period that the member was in the group, if known.", 0, 1, period);
           case 24665195: /*inactive*/  return new Property("inactive", "boolean", "A flag to indicate that the member is no longer in the group, but previously may have been a member.", 0, 1, inactive);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -1851,7 +1855,7 @@ public class Group extends DomainResource {
    * Path: <b>Group.member.entity</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="member", path="Group.member.entity", description="Reference to the group member", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Device"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Practitioner") }, target={Device.class, Group.class, Medication.class, Patient.class, Practitioner.class, PractitionerRole.class, Substance.class } )
+  @SearchParamDefinition(name="member", path="Group.member.entity", description="Reference to the group member", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Device"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Practitioner") }, target={Device.class, Group.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
   public static final String SP_MEMBER = "member";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>member</b>

@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Fri, Apr 1, 2022 13:44+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -80,6 +80,7 @@ public class DataRequirement extends DataType implements ICompositeType {
           switch (this) {
             case ASCENDING: return "ascending";
             case DESCENDING: return "descending";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -87,6 +88,7 @@ public class DataRequirement extends DataType implements ICompositeType {
           switch (this) {
             case ASCENDING: return "http://hl7.org/fhir/sort-direction";
             case DESCENDING: return "http://hl7.org/fhir/sort-direction";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -94,6 +96,7 @@ public class DataRequirement extends DataType implements ICompositeType {
           switch (this) {
             case ASCENDING: return "Sort by the value ascending, so that lower values appear first.";
             case DESCENDING: return "Sort by the value descending, so that lower values appear last.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -101,6 +104,7 @@ public class DataRequirement extends DataType implements ICompositeType {
           switch (this) {
             case ASCENDING: return "Ascending";
             case DESCENDING: return "Descending";
+            case NULL: return null;
             default: return "?";
           }
         }

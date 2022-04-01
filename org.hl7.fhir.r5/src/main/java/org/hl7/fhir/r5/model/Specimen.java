@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Fri, Apr 1, 2022 13:44+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -96,6 +96,7 @@ public class Specimen extends DomainResource {
             case UNAVAILABLE: return "unavailable";
             case UNSATISFACTORY: return "unsatisfactory";
             case ENTEREDINERROR: return "entered-in-error";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -105,6 +106,7 @@ public class Specimen extends DomainResource {
             case UNAVAILABLE: return "http://hl7.org/fhir/specimen-status";
             case UNSATISFACTORY: return "http://hl7.org/fhir/specimen-status";
             case ENTEREDINERROR: return "http://hl7.org/fhir/specimen-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -114,6 +116,7 @@ public class Specimen extends DomainResource {
             case UNAVAILABLE: return "There is no physical specimen because it is either lost, destroyed or consumed.";
             case UNSATISFACTORY: return "The specimen cannot be used because of a quality issue such as a broken container, contamination, or too old.";
             case ENTEREDINERROR: return "The specimen was entered in error and therefore nullified.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -123,6 +126,7 @@ public class Specimen extends DomainResource {
             case UNAVAILABLE: return "Unavailable";
             case UNSATISFACTORY: return "Unsatisfactory";
             case ENTEREDINERROR: return "Entered in Error";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -176,6 +180,237 @@ public class Specimen extends DomainResource {
       return code.getSystem();
       }
     }
+
+    @Block()
+    public static class SpecimenFeatureComponent extends BackboneElement implements IBaseBackboneElement {
+        /**
+         * The landmark or feature being highlighted.
+         */
+        @Child(name = "type", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Highlighted feature", formalDefinition="The landmark or feature being highlighted." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/body-site")
+        protected CodeableConcept type;
+
+        /**
+         * Description of the feature of the specimen.
+         */
+        @Child(name = "description", type = {StringType.class}, order=2, min=1, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Information about the feature", formalDefinition="Description of the feature of the specimen." )
+        protected StringType description;
+
+        private static final long serialVersionUID = 1762224562L;
+
+    /**
+     * Constructor
+     */
+      public SpecimenFeatureComponent() {
+        super();
+      }
+
+    /**
+     * Constructor
+     */
+      public SpecimenFeatureComponent(CodeableConcept type, String description) {
+        super();
+        this.setType(type);
+        this.setDescription(description);
+      }
+
+        /**
+         * @return {@link #type} (The landmark or feature being highlighted.)
+         */
+        public CodeableConcept getType() { 
+          if (this.type == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create SpecimenFeatureComponent.type");
+            else if (Configuration.doAutoCreate())
+              this.type = new CodeableConcept(); // cc
+          return this.type;
+        }
+
+        public boolean hasType() { 
+          return this.type != null && !this.type.isEmpty();
+        }
+
+        /**
+         * @param value {@link #type} (The landmark or feature being highlighted.)
+         */
+        public SpecimenFeatureComponent setType(CodeableConcept value) { 
+          this.type = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #description} (Description of the feature of the specimen.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
+         */
+        public StringType getDescriptionElement() { 
+          if (this.description == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create SpecimenFeatureComponent.description");
+            else if (Configuration.doAutoCreate())
+              this.description = new StringType(); // bb
+          return this.description;
+        }
+
+        public boolean hasDescriptionElement() { 
+          return this.description != null && !this.description.isEmpty();
+        }
+
+        public boolean hasDescription() { 
+          return this.description != null && !this.description.isEmpty();
+        }
+
+        /**
+         * @param value {@link #description} (Description of the feature of the specimen.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
+         */
+        public SpecimenFeatureComponent setDescriptionElement(StringType value) { 
+          this.description = value;
+          return this;
+        }
+
+        /**
+         * @return Description of the feature of the specimen.
+         */
+        public String getDescription() { 
+          return this.description == null ? null : this.description.getValue();
+        }
+
+        /**
+         * @param value Description of the feature of the specimen.
+         */
+        public SpecimenFeatureComponent setDescription(String value) { 
+            if (this.description == null)
+              this.description = new StringType();
+            this.description.setValue(value);
+          return this;
+        }
+
+        protected void listChildren(List<Property> children) {
+          super.listChildren(children);
+          children.add(new Property("type", "CodeableConcept", "The landmark or feature being highlighted.", 0, 1, type));
+          children.add(new Property("description", "string", "Description of the feature of the specimen.", 0, 1, description));
+        }
+
+        @Override
+        public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
+          switch (_hash) {
+          case 3575610: /*type*/  return new Property("type", "CodeableConcept", "The landmark or feature being highlighted.", 0, 1, type);
+          case -1724546052: /*description*/  return new Property("description", "string", "Description of the feature of the specimen.", 0, 1, description);
+          default: return super.getNamedProperty(_hash, _name, _checkValid);
+          }
+
+        }
+
+      @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
+        case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3575610: // type
+          this.type = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+          return value;
+        case -1724546052: // description
+          this.description = TypeConvertor.castToString(value); // StringType
+          return value;
+        default: return super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(String name, Base value) throws FHIRException {
+        if (name.equals("type")) {
+          this.type = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("description")) {
+          this.description = TypeConvertor.castToString(value); // StringType
+        } else
+          return super.setProperty(name, value);
+        return value;
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3575610:  return getType();
+        case -1724546052:  return getDescriptionElement();
+        default: return super.makeProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public String[] getTypesForProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3575610: /*type*/ return new String[] {"CodeableConcept"};
+        case -1724546052: /*description*/ return new String[] {"string"};
+        default: return super.getTypesForProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public Base addChild(String name) throws FHIRException {
+        if (name.equals("type")) {
+          this.type = new CodeableConcept();
+          return this.type;
+        }
+        else if (name.equals("description")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Specimen.feature.description");
+        }
+        else
+          return super.addChild(name);
+      }
+
+      public SpecimenFeatureComponent copy() {
+        SpecimenFeatureComponent dst = new SpecimenFeatureComponent();
+        copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(SpecimenFeatureComponent dst) {
+        super.copyValues(dst);
+        dst.type = type == null ? null : type.copy();
+        dst.description = description == null ? null : description.copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
+          return false;
+        if (!(other_ instanceof SpecimenFeatureComponent))
+          return false;
+        SpecimenFeatureComponent o = (SpecimenFeatureComponent) other_;
+        return compareDeep(type, o.type, true) && compareDeep(description, o.description, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
+          return false;
+        if (!(other_ instanceof SpecimenFeatureComponent))
+          return false;
+        SpecimenFeatureComponent o = (SpecimenFeatureComponent) other_;
+        return compareValues(description, o.description, true);
+      }
+
+      public boolean isEmpty() {
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(type, description);
+      }
+
+  public String fhirType() {
+    return "Specimen.feature";
+
+  }
+
+  }
 
     @Block()
     public static class SpecimenCollectionComponent extends BackboneElement implements IBaseBackboneElement {
@@ -1751,30 +1986,37 @@ public class Specimen extends DomainResource {
     protected List<Reference> request;
 
     /**
+     * A physical feature or landmark on a specimen, highlighted for context by the collector of the specimen (e.g. surgeon), that identifies the type of feature as well as its meaning (e.g. the red ink indicating the resection margin of the right lobe of the excised prostate tissue or wire loop at radiologically suspected tumor location).
+     */
+    @Child(name = "feature", type = {}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="The physical feature of a specimen ", formalDefinition="A physical feature or landmark on a specimen, highlighted for context by the collector of the specimen (e.g. surgeon), that identifies the type of feature as well as its meaning (e.g. the red ink indicating the resection margin of the right lobe of the excised prostate tissue or wire loop at radiologically suspected tumor location)." )
+    protected List<SpecimenFeatureComponent> feature;
+
+    /**
      * Details concerning the specimen collection.
      */
-    @Child(name = "collection", type = {}, order=8, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "collection", type = {}, order=9, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Collection details", formalDefinition="Details concerning the specimen collection." )
     protected SpecimenCollectionComponent collection;
 
     /**
      * Details concerning processing and processing steps for the specimen.
      */
-    @Child(name = "processing", type = {}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "processing", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Processing and processing step details", formalDefinition="Details concerning processing and processing steps for the specimen." )
     protected List<SpecimenProcessingComponent> processing;
 
     /**
      * The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.
      */
-    @Child(name = "container", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "container", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Direct container of specimen (tube/slide, etc.)", formalDefinition="The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here." )
     protected List<SpecimenContainerComponent> container;
 
     /**
      * A mode or state of being that describes the nature of the specimen.
      */
-    @Child(name = "condition", type = {CodeableConcept.class}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "condition", type = {CodeableConcept.class}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="State of the specimen", formalDefinition="A mode or state of being that describes the nature of the specimen." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://terminology.hl7.org/ValueSet/v2-0493")
     protected List<CodeableConcept> condition;
@@ -1782,11 +2024,11 @@ public class Specimen extends DomainResource {
     /**
      * To communicate any details or issues about the specimen or during the specimen collection. (for example: broken vial, sent with patient, frozen).
      */
-    @Child(name = "note", type = {Annotation.class}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "note", type = {Annotation.class}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Comments", formalDefinition="To communicate any details or issues about the specimen or during the specimen collection. (for example: broken vial, sent with patient, frozen)." )
     protected List<Annotation> note;
 
-    private static final long serialVersionUID = -1069243129L;
+    private static final long serialVersionUID = 1193796650L;
 
   /**
    * Constructor
@@ -2125,6 +2367,59 @@ public class Specimen extends DomainResource {
     }
 
     /**
+     * @return {@link #feature} (A physical feature or landmark on a specimen, highlighted for context by the collector of the specimen (e.g. surgeon), that identifies the type of feature as well as its meaning (e.g. the red ink indicating the resection margin of the right lobe of the excised prostate tissue or wire loop at radiologically suspected tumor location).)
+     */
+    public List<SpecimenFeatureComponent> getFeature() { 
+      if (this.feature == null)
+        this.feature = new ArrayList<SpecimenFeatureComponent>();
+      return this.feature;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Specimen setFeature(List<SpecimenFeatureComponent> theFeature) { 
+      this.feature = theFeature;
+      return this;
+    }
+
+    public boolean hasFeature() { 
+      if (this.feature == null)
+        return false;
+      for (SpecimenFeatureComponent item : this.feature)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public SpecimenFeatureComponent addFeature() { //3
+      SpecimenFeatureComponent t = new SpecimenFeatureComponent();
+      if (this.feature == null)
+        this.feature = new ArrayList<SpecimenFeatureComponent>();
+      this.feature.add(t);
+      return t;
+    }
+
+    public Specimen addFeature(SpecimenFeatureComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.feature == null)
+        this.feature = new ArrayList<SpecimenFeatureComponent>();
+      this.feature.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #feature}, creating it if it does not already exist {3}
+     */
+    public SpecimenFeatureComponent getFeatureFirstRep() { 
+      if (getFeature().isEmpty()) {
+        addFeature();
+      }
+      return getFeature().get(0);
+    }
+
+    /**
      * @return {@link #collection} (Details concerning the specimen collection.)
      */
     public SpecimenCollectionComponent getCollection() { 
@@ -2370,6 +2665,7 @@ public class Specimen extends DomainResource {
         children.add(new Property("receivedTime", "dateTime", "Time when specimen is received by the testing laboratory for processing or testing.", 0, 1, receivedTime));
         children.add(new Property("parent", "Reference(Specimen)", "Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.", 0, java.lang.Integer.MAX_VALUE, parent));
         children.add(new Property("request", "Reference(ServiceRequest)", "Details concerning a service request that required a specimen to be collected.", 0, java.lang.Integer.MAX_VALUE, request));
+        children.add(new Property("feature", "", "A physical feature or landmark on a specimen, highlighted for context by the collector of the specimen (e.g. surgeon), that identifies the type of feature as well as its meaning (e.g. the red ink indicating the resection margin of the right lobe of the excised prostate tissue or wire loop at radiologically suspected tumor location).", 0, java.lang.Integer.MAX_VALUE, feature));
         children.add(new Property("collection", "", "Details concerning the specimen collection.", 0, 1, collection));
         children.add(new Property("processing", "", "Details concerning processing and processing steps for the specimen.", 0, java.lang.Integer.MAX_VALUE, processing));
         children.add(new Property("container", "", "The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.", 0, java.lang.Integer.MAX_VALUE, container));
@@ -2388,6 +2684,7 @@ public class Specimen extends DomainResource {
         case -767961010: /*receivedTime*/  return new Property("receivedTime", "dateTime", "Time when specimen is received by the testing laboratory for processing or testing.", 0, 1, receivedTime);
         case -995424086: /*parent*/  return new Property("parent", "Reference(Specimen)", "Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.", 0, java.lang.Integer.MAX_VALUE, parent);
         case 1095692943: /*request*/  return new Property("request", "Reference(ServiceRequest)", "Details concerning a service request that required a specimen to be collected.", 0, java.lang.Integer.MAX_VALUE, request);
+        case -979207434: /*feature*/  return new Property("feature", "", "A physical feature or landmark on a specimen, highlighted for context by the collector of the specimen (e.g. surgeon), that identifies the type of feature as well as its meaning (e.g. the red ink indicating the resection margin of the right lobe of the excised prostate tissue or wire loop at radiologically suspected tumor location).", 0, java.lang.Integer.MAX_VALUE, feature);
         case -1741312354: /*collection*/  return new Property("collection", "", "Details concerning the specimen collection.", 0, 1, collection);
         case 422194963: /*processing*/  return new Property("processing", "", "Details concerning processing and processing steps for the specimen.", 0, java.lang.Integer.MAX_VALUE, processing);
         case -410956671: /*container*/  return new Property("container", "", "The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.", 0, java.lang.Integer.MAX_VALUE, container);
@@ -2409,6 +2706,7 @@ public class Specimen extends DomainResource {
         case -767961010: /*receivedTime*/ return this.receivedTime == null ? new Base[0] : new Base[] {this.receivedTime}; // DateTimeType
         case -995424086: /*parent*/ return this.parent == null ? new Base[0] : this.parent.toArray(new Base[this.parent.size()]); // Reference
         case 1095692943: /*request*/ return this.request == null ? new Base[0] : this.request.toArray(new Base[this.request.size()]); // Reference
+        case -979207434: /*feature*/ return this.feature == null ? new Base[0] : this.feature.toArray(new Base[this.feature.size()]); // SpecimenFeatureComponent
         case -1741312354: /*collection*/ return this.collection == null ? new Base[0] : new Base[] {this.collection}; // SpecimenCollectionComponent
         case 422194963: /*processing*/ return this.processing == null ? new Base[0] : this.processing.toArray(new Base[this.processing.size()]); // SpecimenProcessingComponent
         case -410956671: /*container*/ return this.container == null ? new Base[0] : this.container.toArray(new Base[this.container.size()]); // SpecimenContainerComponent
@@ -2446,6 +2744,9 @@ public class Specimen extends DomainResource {
           return value;
         case 1095692943: // request
           this.getRequest().add(TypeConvertor.castToReference(value)); // Reference
+          return value;
+        case -979207434: // feature
+          this.getFeature().add((SpecimenFeatureComponent) value); // SpecimenFeatureComponent
           return value;
         case -1741312354: // collection
           this.collection = (SpecimenCollectionComponent) value; // SpecimenCollectionComponent
@@ -2486,6 +2787,8 @@ public class Specimen extends DomainResource {
           this.getParent().add(TypeConvertor.castToReference(value));
         } else if (name.equals("request")) {
           this.getRequest().add(TypeConvertor.castToReference(value));
+        } else if (name.equals("feature")) {
+          this.getFeature().add((SpecimenFeatureComponent) value);
         } else if (name.equals("collection")) {
           this.collection = (SpecimenCollectionComponent) value; // SpecimenCollectionComponent
         } else if (name.equals("processing")) {
@@ -2512,6 +2815,7 @@ public class Specimen extends DomainResource {
         case -767961010:  return getReceivedTimeElement();
         case -995424086:  return addParent(); 
         case 1095692943:  return addRequest(); 
+        case -979207434:  return addFeature(); 
         case -1741312354:  return getCollection();
         case 422194963:  return addProcessing(); 
         case -410956671:  return addContainer(); 
@@ -2533,6 +2837,7 @@ public class Specimen extends DomainResource {
         case -767961010: /*receivedTime*/ return new String[] {"dateTime"};
         case -995424086: /*parent*/ return new String[] {"Reference"};
         case 1095692943: /*request*/ return new String[] {"Reference"};
+        case -979207434: /*feature*/ return new String[] {};
         case -1741312354: /*collection*/ return new String[] {};
         case 422194963: /*processing*/ return new String[] {};
         case -410956671: /*container*/ return new String[] {};
@@ -2571,6 +2876,9 @@ public class Specimen extends DomainResource {
         }
         else if (name.equals("request")) {
           return addRequest();
+        }
+        else if (name.equals("feature")) {
+          return addFeature();
         }
         else if (name.equals("collection")) {
           this.collection = new SpecimenCollectionComponent();
@@ -2625,6 +2933,11 @@ public class Specimen extends DomainResource {
           for (Reference i : request)
             dst.request.add(i.copy());
         };
+        if (feature != null) {
+          dst.feature = new ArrayList<SpecimenFeatureComponent>();
+          for (SpecimenFeatureComponent i : feature)
+            dst.feature.add(i.copy());
+        };
         dst.collection = collection == null ? null : collection.copy();
         if (processing != null) {
           dst.processing = new ArrayList<SpecimenProcessingComponent>();
@@ -2662,8 +2975,9 @@ public class Specimen extends DomainResource {
         return compareDeep(identifier, o.identifier, true) && compareDeep(accessionIdentifier, o.accessionIdentifier, true)
            && compareDeep(status, o.status, true) && compareDeep(type, o.type, true) && compareDeep(subject, o.subject, true)
            && compareDeep(receivedTime, o.receivedTime, true) && compareDeep(parent, o.parent, true) && compareDeep(request, o.request, true)
-           && compareDeep(collection, o.collection, true) && compareDeep(processing, o.processing, true) && compareDeep(container, o.container, true)
-           && compareDeep(condition, o.condition, true) && compareDeep(note, o.note, true);
+           && compareDeep(feature, o.feature, true) && compareDeep(collection, o.collection, true) && compareDeep(processing, o.processing, true)
+           && compareDeep(container, o.container, true) && compareDeep(condition, o.condition, true) && compareDeep(note, o.note, true)
+          ;
       }
 
       @Override
@@ -2678,8 +2992,8 @@ public class Specimen extends DomainResource {
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, accessionIdentifier
-          , status, type, subject, receivedTime, parent, request, collection, processing
-          , container, condition, note);
+          , status, type, subject, receivedTime, parent, request, feature, collection
+          , processing, container, condition, note);
       }
 
   @Override

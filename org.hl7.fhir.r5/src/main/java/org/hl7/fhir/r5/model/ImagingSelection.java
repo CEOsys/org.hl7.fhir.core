@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Fri, Apr 1, 2022 13:44+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -83,6 +83,7 @@ public class ImagingSelection extends DomainResource {
           switch (this) {
             case _2D: return "2d";
             case _3D: return "3d";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -90,6 +91,7 @@ public class ImagingSelection extends DomainResource {
           switch (this) {
             case _2D: return "http://hl7.org/fhir/imagingselection-coordinatetype";
             case _3D: return "http://hl7.org/fhir/imagingselection-coordinatetype";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +99,7 @@ public class ImagingSelection extends DomainResource {
           switch (this) {
             case _2D: return "The selected image region is defined in a 2D coordinate system.";
             case _3D: return "The selected image region is defined in a 3D coordinate system.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -104,6 +107,7 @@ public class ImagingSelection extends DomainResource {
           switch (this) {
             case _2D: return "2D";
             case _3D: return "3D";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -203,6 +207,7 @@ public class ImagingSelection extends DomainResource {
             case POLYGON: return "POLYGON";
             case ELLIPSE: return "ELLIPSE";
             case ELLIPSOID: return "ELLIPSOID";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -214,6 +219,7 @@ public class ImagingSelection extends DomainResource {
             case POLYGON: return "http://hl7.org/fhir/imagingselection-graphictype";
             case ELLIPSE: return "http://hl7.org/fhir/imagingselection-graphictype";
             case ELLIPSOID: return "http://hl7.org/fhir/imagingselection-graphictype";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -225,6 +231,7 @@ public class ImagingSelection extends DomainResource {
             case POLYGON: return "a series of connected line segments with ordered vertices denoted by (x,y,z) triplets, where the first and last vertices shall be the same forming a polygon; the points shall be coplanar.";
             case ELLIPSE: return "an ellipse defined by four (x,y,z) triplets, the first two triplets specifying the endpoints of the major axis and the second two triplets specifying the endpoints of the minor axis.";
             case ELLIPSOID: return "a three-dimensional geometric surface whose plane sections are either ellipses or circles and contains three intersecting orthogonal axes, \"a\", \"b\", and \"c\"; the ellipsoid is defined by six (x,y,z) triplets, the first and second triplets specifying the endpoints of axis \"a\", the third and fourth triplets specifying the endpoints of axis \"b\", and the fifth and sixth triplets specifying the endpoints of axis \"c\".";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -236,6 +243,7 @@ public class ImagingSelection extends DomainResource {
             case POLYGON: return "POLYGON";
             case ELLIPSE: return "ELLIPSE";
             case ELLIPSOID: return "ELLIPSOID";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -1055,11 +1063,11 @@ public class ImagingSelection extends DomainResource {
         /**
          * The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.
          */
-        @Child(name = "coordinates", type = {DecimalType.class}, order=3, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+        @Child(name = "coordinate", type = {DecimalType.class}, order=3, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="Specifies the type of coordinates that define the image region 2d | 3d", formalDefinition="The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element." )
-        protected List<DecimalType> coordinates;
+        protected List<DecimalType> coordinate;
 
-        private static final long serialVersionUID = -1266111852L;
+        private static final long serialVersionUID = 97649769L;
 
     /**
      * Constructor
@@ -1071,11 +1079,11 @@ public class ImagingSelection extends DomainResource {
     /**
      * Constructor
      */
-      public ImagingSelectionImageRegionComponent(ImagingSelectionGraphicType regionType, ImagingSelectionCoordinateType coordinateType, BigDecimal coordinates) {
+      public ImagingSelectionImageRegionComponent(ImagingSelectionGraphicType regionType, ImagingSelectionCoordinateType coordinateType, BigDecimal coordinate) {
         super();
         this.setRegionType(regionType);
         this.setCoordinateType(coordinateType);
-        this.addCoordinates(coordinates);
+        this.addCoordinate(coordinate);
       }
 
         /**
@@ -1169,61 +1177,61 @@ public class ImagingSelection extends DomainResource {
         }
 
         /**
-         * @return {@link #coordinates} (The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.)
+         * @return {@link #coordinate} (The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.)
          */
-        public List<DecimalType> getCoordinates() { 
-          if (this.coordinates == null)
-            this.coordinates = new ArrayList<DecimalType>();
-          return this.coordinates;
+        public List<DecimalType> getCoordinate() { 
+          if (this.coordinate == null)
+            this.coordinate = new ArrayList<DecimalType>();
+          return this.coordinate;
         }
 
         /**
          * @return Returns a reference to <code>this</code> for easy method chaining
          */
-        public ImagingSelectionImageRegionComponent setCoordinates(List<DecimalType> theCoordinates) { 
-          this.coordinates = theCoordinates;
+        public ImagingSelectionImageRegionComponent setCoordinate(List<DecimalType> theCoordinate) { 
+          this.coordinate = theCoordinate;
           return this;
         }
 
-        public boolean hasCoordinates() { 
-          if (this.coordinates == null)
+        public boolean hasCoordinate() { 
+          if (this.coordinate == null)
             return false;
-          for (DecimalType item : this.coordinates)
+          for (DecimalType item : this.coordinate)
             if (!item.isEmpty())
               return true;
           return false;
         }
 
         /**
-         * @return {@link #coordinates} (The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.)
+         * @return {@link #coordinate} (The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.)
          */
-        public DecimalType addCoordinatesElement() {//2 
+        public DecimalType addCoordinateElement() {//2 
           DecimalType t = new DecimalType();
-          if (this.coordinates == null)
-            this.coordinates = new ArrayList<DecimalType>();
-          this.coordinates.add(t);
+          if (this.coordinate == null)
+            this.coordinate = new ArrayList<DecimalType>();
+          this.coordinate.add(t);
           return t;
         }
 
         /**
-         * @param value {@link #coordinates} (The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.)
+         * @param value {@link #coordinate} (The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.)
          */
-        public ImagingSelectionImageRegionComponent addCoordinates(BigDecimal value) { //1
+        public ImagingSelectionImageRegionComponent addCoordinate(BigDecimal value) { //1
           DecimalType t = new DecimalType();
           t.setValue(value);
-          if (this.coordinates == null)
-            this.coordinates = new ArrayList<DecimalType>();
-          this.coordinates.add(t);
+          if (this.coordinate == null)
+            this.coordinate = new ArrayList<DecimalType>();
+          this.coordinate.add(t);
           return this;
         }
 
         /**
-         * @param value {@link #coordinates} (The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.)
+         * @param value {@link #coordinate} (The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.)
          */
-        public boolean hasCoordinates(BigDecimal value) { 
-          if (this.coordinates == null)
+        public boolean hasCoordinate(BigDecimal value) { 
+          if (this.coordinate == null)
             return false;
-          for (DecimalType v : this.coordinates)
+          for (DecimalType v : this.coordinate)
             if (v.getValue().equals(value)) // decimal
               return true;
           return false;
@@ -1233,7 +1241,7 @@ public class ImagingSelection extends DomainResource {
           super.listChildren(children);
           children.add(new Property("regionType", "code", "Specifies the type of image region.", 0, 1, regionType));
           children.add(new Property("coordinateType", "code", "Specifies the type of coordinate system that define the image region.", 0, 1, coordinateType));
-          children.add(new Property("coordinates", "decimal", "The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.", 0, java.lang.Integer.MAX_VALUE, coordinates));
+          children.add(new Property("coordinate", "decimal", "The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.", 0, java.lang.Integer.MAX_VALUE, coordinate));
         }
 
         @Override
@@ -1241,7 +1249,7 @@ public class ImagingSelection extends DomainResource {
           switch (_hash) {
           case -1990487986: /*regionType*/  return new Property("regionType", "code", "Specifies the type of image region.", 0, 1, regionType);
           case 500956370: /*coordinateType*/  return new Property("coordinateType", "code", "Specifies the type of coordinate system that define the image region.", 0, 1, coordinateType);
-          case 1871919611: /*coordinates*/  return new Property("coordinates", "decimal", "The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.", 0, java.lang.Integer.MAX_VALUE, coordinates);
+          case 198931832: /*coordinate*/  return new Property("coordinate", "decimal", "The coordinates describing the image region.       If coordinateType is 2D this specifies sequence of (x,y) coordinates in the coordinate system of the image specified by the instance.uid element that contains this image region.       If coordinateType is 3D this specifies sequence of (x,y,z) coordinates in the coordinate system specified by the frameOfReferenceUid element.", 0, java.lang.Integer.MAX_VALUE, coordinate);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -1252,7 +1260,7 @@ public class ImagingSelection extends DomainResource {
         switch (hash) {
         case -1990487986: /*regionType*/ return this.regionType == null ? new Base[0] : new Base[] {this.regionType}; // Enumeration<ImagingSelectionGraphicType>
         case 500956370: /*coordinateType*/ return this.coordinateType == null ? new Base[0] : new Base[] {this.coordinateType}; // Enumeration<ImagingSelectionCoordinateType>
-        case 1871919611: /*coordinates*/ return this.coordinates == null ? new Base[0] : this.coordinates.toArray(new Base[this.coordinates.size()]); // DecimalType
+        case 198931832: /*coordinate*/ return this.coordinate == null ? new Base[0] : this.coordinate.toArray(new Base[this.coordinate.size()]); // DecimalType
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -1269,8 +1277,8 @@ public class ImagingSelection extends DomainResource {
           value = new ImagingSelectionCoordinateTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
           this.coordinateType = (Enumeration) value; // Enumeration<ImagingSelectionCoordinateType>
           return value;
-        case 1871919611: // coordinates
-          this.getCoordinates().add(TypeConvertor.castToDecimal(value)); // DecimalType
+        case 198931832: // coordinate
+          this.getCoordinate().add(TypeConvertor.castToDecimal(value)); // DecimalType
           return value;
         default: return super.setProperty(hash, name, value);
         }
@@ -1285,8 +1293,8 @@ public class ImagingSelection extends DomainResource {
         } else if (name.equals("coordinateType")) {
           value = new ImagingSelectionCoordinateTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
           this.coordinateType = (Enumeration) value; // Enumeration<ImagingSelectionCoordinateType>
-        } else if (name.equals("coordinates")) {
-          this.getCoordinates().add(TypeConvertor.castToDecimal(value));
+        } else if (name.equals("coordinate")) {
+          this.getCoordinate().add(TypeConvertor.castToDecimal(value));
         } else
           return super.setProperty(name, value);
         return value;
@@ -1297,7 +1305,7 @@ public class ImagingSelection extends DomainResource {
         switch (hash) {
         case -1990487986:  return getRegionTypeElement();
         case 500956370:  return getCoordinateTypeElement();
-        case 1871919611:  return addCoordinatesElement();
+        case 198931832:  return addCoordinateElement();
         default: return super.makeProperty(hash, name);
         }
 
@@ -1308,7 +1316,7 @@ public class ImagingSelection extends DomainResource {
         switch (hash) {
         case -1990487986: /*regionType*/ return new String[] {"code"};
         case 500956370: /*coordinateType*/ return new String[] {"code"};
-        case 1871919611: /*coordinates*/ return new String[] {"decimal"};
+        case 198931832: /*coordinate*/ return new String[] {"decimal"};
         default: return super.getTypesForProperty(hash, name);
         }
 
@@ -1322,8 +1330,8 @@ public class ImagingSelection extends DomainResource {
         else if (name.equals("coordinateType")) {
           throw new FHIRException("Cannot call addChild on a primitive type ImagingSelection.imageRegion.coordinateType");
         }
-        else if (name.equals("coordinates")) {
-          throw new FHIRException("Cannot call addChild on a primitive type ImagingSelection.imageRegion.coordinates");
+        else if (name.equals("coordinate")) {
+          throw new FHIRException("Cannot call addChild on a primitive type ImagingSelection.imageRegion.coordinate");
         }
         else
           return super.addChild(name);
@@ -1339,10 +1347,10 @@ public class ImagingSelection extends DomainResource {
         super.copyValues(dst);
         dst.regionType = regionType == null ? null : regionType.copy();
         dst.coordinateType = coordinateType == null ? null : coordinateType.copy();
-        if (coordinates != null) {
-          dst.coordinates = new ArrayList<DecimalType>();
-          for (DecimalType i : coordinates)
-            dst.coordinates.add(i.copy());
+        if (coordinate != null) {
+          dst.coordinate = new ArrayList<DecimalType>();
+          for (DecimalType i : coordinate)
+            dst.coordinate.add(i.copy());
         };
       }
 
@@ -1354,7 +1362,7 @@ public class ImagingSelection extends DomainResource {
           return false;
         ImagingSelectionImageRegionComponent o = (ImagingSelectionImageRegionComponent) other_;
         return compareDeep(regionType, o.regionType, true) && compareDeep(coordinateType, o.coordinateType, true)
-           && compareDeep(coordinates, o.coordinates, true);
+           && compareDeep(coordinate, o.coordinate, true);
       }
 
       @Override
@@ -1365,12 +1373,12 @@ public class ImagingSelection extends DomainResource {
           return false;
         ImagingSelectionImageRegionComponent o = (ImagingSelectionImageRegionComponent) other_;
         return compareValues(regionType, o.regionType, true) && compareValues(coordinateType, o.coordinateType, true)
-           && compareValues(coordinates, o.coordinates, true);
+           && compareValues(coordinate, o.coordinate, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(regionType, coordinateType
-          , coordinates);
+          , coordinate);
       }
 
   public String fhirType() {
@@ -1388,37 +1396,44 @@ public class ImagingSelection extends DomainResource {
     protected List<Identifier> identifier;
 
     /**
-     * A list of the diagnostic requests that resulted in this imaging selection being performed.
-     */
-    @Child(name = "basedOn", type = {CarePlan.class, ServiceRequest.class, Appointment.class, AppointmentResponse.class, Task.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="Associated request", formalDefinition="A list of the diagnostic requests that resulted in this imaging selection being performed." )
-    protected List<Reference> basedOn;
-
-    /**
      * The patient, or group of patients, location, device, organization, procedure or practitioner this imaging selection is about and into whose or what record the imaging selection is placed.
      */
-    @Child(name = "subject", type = {Patient.class, Group.class, Device.class, Location.class, Organization.class, Procedure.class, Practitioner.class, Medication.class, Substance.class, Specimen.class}, order=2, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "subject", type = {Patient.class, Group.class, Device.class, Location.class, Organization.class, Procedure.class, Practitioner.class, Medication.class, Substance.class, Specimen.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Subject of the selected instances and / or frames", formalDefinition="The patient, or group of patients, location, device, organization, procedure or practitioner this imaging selection is about and into whose or what record the imaging selection is placed." )
     protected Reference subject;
 
     /**
      * The date and time this imaging selection was created.
      */
-    @Child(name = "issued", type = {InstantType.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "issued", type = {InstantType.class}, order=2, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Date / Time when the selection of instances was made", formalDefinition="The date and time this imaging selection was created." )
     protected InstantType issued;
 
     /**
      * Author – human or machine.
      */
-    @Child(name = "performer", type = {}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "performer", type = {}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Author (human or machine)", formalDefinition="Author – human or machine." )
     protected List<ImagingSelectionPerformerComponent> performer;
 
     /**
+     * A list of the diagnostic requests that resulted in this imaging selection being performed.
+     */
+    @Child(name = "basedOn", type = {CarePlan.class, ServiceRequest.class, Appointment.class, AppointmentResponse.class, Task.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Associated request", formalDefinition="A list of the diagnostic requests that resulted in this imaging selection being performed." )
+    protected List<Reference> basedOn;
+
+    /**
+     * Classifies the imaging selection.
+     */
+    @Child(name = "category", type = {CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Classifies the imaging selection", formalDefinition="Classifies the imaging selection." )
+    protected List<CodeableConcept> category;
+
+    /**
      * Describes the imaging selection.
      */
-    @Child(name = "code", type = {CodeableConcept.class}, order=5, min=1, max=1, modifier=false, summary=true)
+    @Child(name = "code", type = {CodeableConcept.class}, order=6, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Imaging Selection description text or code", formalDefinition="Describes the imaging selection." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_7010.html")
     protected CodeableConcept code;
@@ -1426,61 +1441,61 @@ public class ImagingSelection extends DomainResource {
     /**
      * The Study Instance UID for the DICOM Study from which the images were selected.
      */
-    @Child(name = "studyUid", type = {OidType.class}, order=6, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "studyUid", type = {OidType.class}, order=7, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="DICOM Study Instance UID", formalDefinition="The Study Instance UID for the DICOM Study from which the images were selected." )
     protected OidType studyUid;
 
     /**
      * The imaging study from which the imaging selection is made.
      */
-    @Child(name = "derivedFrom", type = {ImagingStudy.class}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "derivedFrom", type = {ImagingStudy.class}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="The imaging study from which the imaging selection is derived", formalDefinition="The imaging study from which the imaging selection is made." )
     protected List<Reference> derivedFrom;
 
     /**
      * The network service providing retrieval access to the selected images, frames, etc. See implementation notes for information about using DICOM endpoints.
      */
-    @Child(name = "endpoint", type = {Endpoint.class}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "endpoint", type = {Endpoint.class}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="The network service providing retrieval for the images referenced in the imaging selection", formalDefinition="The network service providing retrieval access to the selected images, frames, etc. See implementation notes for information about using DICOM endpoints." )
     protected List<Reference> endpoint;
 
     /**
      * The Series Instance UID for the DICOM Series from which the images were selected.
      */
-    @Child(name = "seriesUid", type = {OidType.class}, order=9, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "seriesUid", type = {OidType.class}, order=10, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="DICOM Series Instance UID", formalDefinition="The Series Instance UID for the DICOM Series from which the images were selected." )
     protected OidType seriesUid;
 
     /**
      * The Frame of Reference UID identifying the coordinate system that conveys spatial and/or temporal information for the selected images or frames.
      */
-    @Child(name = "frameOfReferenceUid", type = {OidType.class}, order=10, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "frameOfReferenceUid", type = {OidType.class}, order=11, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The Frame of Reference UID for the selected images", formalDefinition="The Frame of Reference UID identifying the coordinate system that conveys spatial and/or temporal information for the selected images or frames." )
     protected OidType frameOfReferenceUid;
 
     /**
      * The anatomic structures examined. See DICOM Part 16 Annex L (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings.
      */
-    @Child(name = "bodySite", type = {Coding.class}, order=11, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "bodySite", type = {CodeableReference.class}, order=12, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Body part examined", formalDefinition="The anatomic structures examined. See DICOM Part 16 Annex L (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/body-site")
-    protected Coding bodySite;
+    protected CodeableReference bodySite;
 
     /**
      * Each imaging selection includes one or more selected DICOM SOP instances.
      */
-    @Child(name = "instance", type = {}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "instance", type = {}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="The selected instances", formalDefinition="Each imaging selection includes one or more selected DICOM SOP instances." )
     protected List<ImagingSelectionInstanceComponent> instance;
 
     /**
      * Each imaging selection might includes one or more image regions. Image regions are specified by a region type and a set of 2D or 3D coordinates.
      */
-    @Child(name = "imageRegion", type = {}, order=13, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "imageRegion", type = {}, order=14, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="A specific region in a DICOM image / frame", formalDefinition="Each imaging selection might includes one or more image regions. Image regions are specified by a region type and a set of 2D or 3D coordinates." )
     protected ImagingSelectionImageRegionComponent imageRegion;
 
-    private static final long serialVersionUID = 4408161L;
+    private static final long serialVersionUID = 595686392L;
 
   /**
    * Constructor
@@ -1548,59 +1563,6 @@ public class ImagingSelection extends DomainResource {
         addIdentifier();
       }
       return getIdentifier().get(0);
-    }
-
-    /**
-     * @return {@link #basedOn} (A list of the diagnostic requests that resulted in this imaging selection being performed.)
-     */
-    public List<Reference> getBasedOn() { 
-      if (this.basedOn == null)
-        this.basedOn = new ArrayList<Reference>();
-      return this.basedOn;
-    }
-
-    /**
-     * @return Returns a reference to <code>this</code> for easy method chaining
-     */
-    public ImagingSelection setBasedOn(List<Reference> theBasedOn) { 
-      this.basedOn = theBasedOn;
-      return this;
-    }
-
-    public boolean hasBasedOn() { 
-      if (this.basedOn == null)
-        return false;
-      for (Reference item : this.basedOn)
-        if (!item.isEmpty())
-          return true;
-      return false;
-    }
-
-    public Reference addBasedOn() { //3
-      Reference t = new Reference();
-      if (this.basedOn == null)
-        this.basedOn = new ArrayList<Reference>();
-      this.basedOn.add(t);
-      return t;
-    }
-
-    public ImagingSelection addBasedOn(Reference t) { //3
-      if (t == null)
-        return this;
-      if (this.basedOn == null)
-        this.basedOn = new ArrayList<Reference>();
-      this.basedOn.add(t);
-      return this;
-    }
-
-    /**
-     * @return The first repetition of repeating field {@link #basedOn}, creating it if it does not already exist {3}
-     */
-    public Reference getBasedOnFirstRep() { 
-      if (getBasedOn().isEmpty()) {
-        addBasedOn();
-      }
-      return getBasedOn().get(0);
     }
 
     /**
@@ -1727,6 +1689,112 @@ public class ImagingSelection extends DomainResource {
         addPerformer();
       }
       return getPerformer().get(0);
+    }
+
+    /**
+     * @return {@link #basedOn} (A list of the diagnostic requests that resulted in this imaging selection being performed.)
+     */
+    public List<Reference> getBasedOn() { 
+      if (this.basedOn == null)
+        this.basedOn = new ArrayList<Reference>();
+      return this.basedOn;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ImagingSelection setBasedOn(List<Reference> theBasedOn) { 
+      this.basedOn = theBasedOn;
+      return this;
+    }
+
+    public boolean hasBasedOn() { 
+      if (this.basedOn == null)
+        return false;
+      for (Reference item : this.basedOn)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public Reference addBasedOn() { //3
+      Reference t = new Reference();
+      if (this.basedOn == null)
+        this.basedOn = new ArrayList<Reference>();
+      this.basedOn.add(t);
+      return t;
+    }
+
+    public ImagingSelection addBasedOn(Reference t) { //3
+      if (t == null)
+        return this;
+      if (this.basedOn == null)
+        this.basedOn = new ArrayList<Reference>();
+      this.basedOn.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #basedOn}, creating it if it does not already exist {3}
+     */
+    public Reference getBasedOnFirstRep() { 
+      if (getBasedOn().isEmpty()) {
+        addBasedOn();
+      }
+      return getBasedOn().get(0);
+    }
+
+    /**
+     * @return {@link #category} (Classifies the imaging selection.)
+     */
+    public List<CodeableConcept> getCategory() { 
+      if (this.category == null)
+        this.category = new ArrayList<CodeableConcept>();
+      return this.category;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ImagingSelection setCategory(List<CodeableConcept> theCategory) { 
+      this.category = theCategory;
+      return this;
+    }
+
+    public boolean hasCategory() { 
+      if (this.category == null)
+        return false;
+      for (CodeableConcept item : this.category)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public CodeableConcept addCategory() { //3
+      CodeableConcept t = new CodeableConcept();
+      if (this.category == null)
+        this.category = new ArrayList<CodeableConcept>();
+      this.category.add(t);
+      return t;
+    }
+
+    public ImagingSelection addCategory(CodeableConcept t) { //3
+      if (t == null)
+        return this;
+      if (this.category == null)
+        this.category = new ArrayList<CodeableConcept>();
+      this.category.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #category}, creating it if it does not already exist {3}
+     */
+    public CodeableConcept getCategoryFirstRep() { 
+      if (getCategory().isEmpty()) {
+        addCategory();
+      }
+      return getCategory().get(0);
     }
 
     /**
@@ -2009,12 +2077,12 @@ public class ImagingSelection extends DomainResource {
     /**
      * @return {@link #bodySite} (The anatomic structures examined. See DICOM Part 16 Annex L (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings.)
      */
-    public Coding getBodySite() { 
+    public CodeableReference getBodySite() { 
       if (this.bodySite == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ImagingSelection.bodySite");
         else if (Configuration.doAutoCreate())
-          this.bodySite = new Coding(); // cc
+          this.bodySite = new CodeableReference(); // cc
       return this.bodySite;
     }
 
@@ -2025,7 +2093,7 @@ public class ImagingSelection extends DomainResource {
     /**
      * @param value {@link #bodySite} (The anatomic structures examined. See DICOM Part 16 Annex L (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings.)
      */
-    public ImagingSelection setBodySite(Coding value) { 
+    public ImagingSelection setBodySite(CodeableReference value) { 
       this.bodySite = value;
       return this;
     }
@@ -2110,17 +2178,18 @@ public class ImagingSelection extends DomainResource {
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("identifier", "Identifier", "A unique identifier assigned to this imaging selection.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        children.add(new Property("basedOn", "Reference(CarePlan|ServiceRequest|Appointment|AppointmentResponse|Task)", "A list of the diagnostic requests that resulted in this imaging selection being performed.", 0, java.lang.Integer.MAX_VALUE, basedOn));
         children.add(new Property("subject", "Reference(Patient|Group|Device|Location|Organization|Procedure|Practitioner|Medication|Substance|Specimen)", "The patient, or group of patients, location, device, organization, procedure or practitioner this imaging selection is about and into whose or what record the imaging selection is placed.", 0, 1, subject));
         children.add(new Property("issued", "instant", "The date and time this imaging selection was created.", 0, 1, issued));
         children.add(new Property("performer", "", "Author – human or machine.", 0, java.lang.Integer.MAX_VALUE, performer));
+        children.add(new Property("basedOn", "Reference(CarePlan|ServiceRequest|Appointment|AppointmentResponse|Task)", "A list of the diagnostic requests that resulted in this imaging selection being performed.", 0, java.lang.Integer.MAX_VALUE, basedOn));
+        children.add(new Property("category", "CodeableConcept", "Classifies the imaging selection.", 0, java.lang.Integer.MAX_VALUE, category));
         children.add(new Property("code", "CodeableConcept", "Describes the imaging selection.", 0, 1, code));
         children.add(new Property("studyUid", "oid", "The Study Instance UID for the DICOM Study from which the images were selected.", 0, 1, studyUid));
         children.add(new Property("derivedFrom", "Reference(ImagingStudy)", "The imaging study from which the imaging selection is made.", 0, java.lang.Integer.MAX_VALUE, derivedFrom));
         children.add(new Property("endpoint", "Reference(Endpoint)", "The network service providing retrieval access to the selected images, frames, etc. See implementation notes for information about using DICOM endpoints.", 0, java.lang.Integer.MAX_VALUE, endpoint));
         children.add(new Property("seriesUid", "oid", "The Series Instance UID for the DICOM Series from which the images were selected.", 0, 1, seriesUid));
         children.add(new Property("frameOfReferenceUid", "oid", "The Frame of Reference UID identifying the coordinate system that conveys spatial and/or temporal information for the selected images or frames.", 0, 1, frameOfReferenceUid));
-        children.add(new Property("bodySite", "Coding", "The anatomic structures examined. See DICOM Part 16 Annex L (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings.", 0, 1, bodySite));
+        children.add(new Property("bodySite", "CodeableReference(BodyStructure)", "The anatomic structures examined. See DICOM Part 16 Annex L (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings.", 0, 1, bodySite));
         children.add(new Property("instance", "", "Each imaging selection includes one or more selected DICOM SOP instances.", 0, java.lang.Integer.MAX_VALUE, instance));
         children.add(new Property("imageRegion", "", "Each imaging selection might includes one or more image regions. Image regions are specified by a region type and a set of 2D or 3D coordinates.", 0, 1, imageRegion));
       }
@@ -2129,17 +2198,18 @@ public class ImagingSelection extends DomainResource {
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "A unique identifier assigned to this imaging selection.", 0, java.lang.Integer.MAX_VALUE, identifier);
-        case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(CarePlan|ServiceRequest|Appointment|AppointmentResponse|Task)", "A list of the diagnostic requests that resulted in this imaging selection being performed.", 0, java.lang.Integer.MAX_VALUE, basedOn);
         case -1867885268: /*subject*/  return new Property("subject", "Reference(Patient|Group|Device|Location|Organization|Procedure|Practitioner|Medication|Substance|Specimen)", "The patient, or group of patients, location, device, organization, procedure or practitioner this imaging selection is about and into whose or what record the imaging selection is placed.", 0, 1, subject);
         case -1179159893: /*issued*/  return new Property("issued", "instant", "The date and time this imaging selection was created.", 0, 1, issued);
         case 481140686: /*performer*/  return new Property("performer", "", "Author – human or machine.", 0, java.lang.Integer.MAX_VALUE, performer);
+        case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(CarePlan|ServiceRequest|Appointment|AppointmentResponse|Task)", "A list of the diagnostic requests that resulted in this imaging selection being performed.", 0, java.lang.Integer.MAX_VALUE, basedOn);
+        case 50511102: /*category*/  return new Property("category", "CodeableConcept", "Classifies the imaging selection.", 0, java.lang.Integer.MAX_VALUE, category);
         case 3059181: /*code*/  return new Property("code", "CodeableConcept", "Describes the imaging selection.", 0, 1, code);
         case 1876590023: /*studyUid*/  return new Property("studyUid", "oid", "The Study Instance UID for the DICOM Study from which the images were selected.", 0, 1, studyUid);
         case 1077922663: /*derivedFrom*/  return new Property("derivedFrom", "Reference(ImagingStudy)", "The imaging study from which the imaging selection is made.", 0, java.lang.Integer.MAX_VALUE, derivedFrom);
         case 1741102485: /*endpoint*/  return new Property("endpoint", "Reference(Endpoint)", "The network service providing retrieval access to the selected images, frames, etc. See implementation notes for information about using DICOM endpoints.", 0, java.lang.Integer.MAX_VALUE, endpoint);
         case -569596327: /*seriesUid*/  return new Property("seriesUid", "oid", "The Series Instance UID for the DICOM Series from which the images were selected.", 0, 1, seriesUid);
         case 828378953: /*frameOfReferenceUid*/  return new Property("frameOfReferenceUid", "oid", "The Frame of Reference UID identifying the coordinate system that conveys spatial and/or temporal information for the selected images or frames.", 0, 1, frameOfReferenceUid);
-        case 1702620169: /*bodySite*/  return new Property("bodySite", "Coding", "The anatomic structures examined. See DICOM Part 16 Annex L (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings.", 0, 1, bodySite);
+        case 1702620169: /*bodySite*/  return new Property("bodySite", "CodeableReference(BodyStructure)", "The anatomic structures examined. See DICOM Part 16 Annex L (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings.", 0, 1, bodySite);
         case 555127957: /*instance*/  return new Property("instance", "", "Each imaging selection includes one or more selected DICOM SOP instances.", 0, java.lang.Integer.MAX_VALUE, instance);
         case 2132544559: /*imageRegion*/  return new Property("imageRegion", "", "Each imaging selection might includes one or more image regions. Image regions are specified by a region type and a set of 2D or 3D coordinates.", 0, 1, imageRegion);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -2151,17 +2221,18 @@ public class ImagingSelection extends DomainResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
-        case -332612366: /*basedOn*/ return this.basedOn == null ? new Base[0] : this.basedOn.toArray(new Base[this.basedOn.size()]); // Reference
         case -1867885268: /*subject*/ return this.subject == null ? new Base[0] : new Base[] {this.subject}; // Reference
         case -1179159893: /*issued*/ return this.issued == null ? new Base[0] : new Base[] {this.issued}; // InstantType
         case 481140686: /*performer*/ return this.performer == null ? new Base[0] : this.performer.toArray(new Base[this.performer.size()]); // ImagingSelectionPerformerComponent
+        case -332612366: /*basedOn*/ return this.basedOn == null ? new Base[0] : this.basedOn.toArray(new Base[this.basedOn.size()]); // Reference
+        case 50511102: /*category*/ return this.category == null ? new Base[0] : this.category.toArray(new Base[this.category.size()]); // CodeableConcept
         case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // CodeableConcept
         case 1876590023: /*studyUid*/ return this.studyUid == null ? new Base[0] : new Base[] {this.studyUid}; // OidType
         case 1077922663: /*derivedFrom*/ return this.derivedFrom == null ? new Base[0] : this.derivedFrom.toArray(new Base[this.derivedFrom.size()]); // Reference
         case 1741102485: /*endpoint*/ return this.endpoint == null ? new Base[0] : this.endpoint.toArray(new Base[this.endpoint.size()]); // Reference
         case -569596327: /*seriesUid*/ return this.seriesUid == null ? new Base[0] : new Base[] {this.seriesUid}; // OidType
         case 828378953: /*frameOfReferenceUid*/ return this.frameOfReferenceUid == null ? new Base[0] : new Base[] {this.frameOfReferenceUid}; // OidType
-        case 1702620169: /*bodySite*/ return this.bodySite == null ? new Base[0] : new Base[] {this.bodySite}; // Coding
+        case 1702620169: /*bodySite*/ return this.bodySite == null ? new Base[0] : new Base[] {this.bodySite}; // CodeableReference
         case 555127957: /*instance*/ return this.instance == null ? new Base[0] : this.instance.toArray(new Base[this.instance.size()]); // ImagingSelectionInstanceComponent
         case 2132544559: /*imageRegion*/ return this.imageRegion == null ? new Base[0] : new Base[] {this.imageRegion}; // ImagingSelectionImageRegionComponent
         default: return super.getProperty(hash, name, checkValid);
@@ -2175,9 +2246,6 @@ public class ImagingSelection extends DomainResource {
         case -1618432855: // identifier
           this.getIdentifier().add(TypeConvertor.castToIdentifier(value)); // Identifier
           return value;
-        case -332612366: // basedOn
-          this.getBasedOn().add(TypeConvertor.castToReference(value)); // Reference
-          return value;
         case -1867885268: // subject
           this.subject = TypeConvertor.castToReference(value); // Reference
           return value;
@@ -2186,6 +2254,12 @@ public class ImagingSelection extends DomainResource {
           return value;
         case 481140686: // performer
           this.getPerformer().add((ImagingSelectionPerformerComponent) value); // ImagingSelectionPerformerComponent
+          return value;
+        case -332612366: // basedOn
+          this.getBasedOn().add(TypeConvertor.castToReference(value)); // Reference
+          return value;
+        case 50511102: // category
+          this.getCategory().add(TypeConvertor.castToCodeableConcept(value)); // CodeableConcept
           return value;
         case 3059181: // code
           this.code = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
@@ -2206,7 +2280,7 @@ public class ImagingSelection extends DomainResource {
           this.frameOfReferenceUid = TypeConvertor.castToOid(value); // OidType
           return value;
         case 1702620169: // bodySite
-          this.bodySite = TypeConvertor.castToCoding(value); // Coding
+          this.bodySite = TypeConvertor.castToCodeableReference(value); // CodeableReference
           return value;
         case 555127957: // instance
           this.getInstance().add((ImagingSelectionInstanceComponent) value); // ImagingSelectionInstanceComponent
@@ -2223,14 +2297,16 @@ public class ImagingSelection extends DomainResource {
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("identifier")) {
           this.getIdentifier().add(TypeConvertor.castToIdentifier(value));
-        } else if (name.equals("basedOn")) {
-          this.getBasedOn().add(TypeConvertor.castToReference(value));
         } else if (name.equals("subject")) {
           this.subject = TypeConvertor.castToReference(value); // Reference
         } else if (name.equals("issued")) {
           this.issued = TypeConvertor.castToInstant(value); // InstantType
         } else if (name.equals("performer")) {
           this.getPerformer().add((ImagingSelectionPerformerComponent) value);
+        } else if (name.equals("basedOn")) {
+          this.getBasedOn().add(TypeConvertor.castToReference(value));
+        } else if (name.equals("category")) {
+          this.getCategory().add(TypeConvertor.castToCodeableConcept(value));
         } else if (name.equals("code")) {
           this.code = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
         } else if (name.equals("studyUid")) {
@@ -2244,7 +2320,7 @@ public class ImagingSelection extends DomainResource {
         } else if (name.equals("frameOfReferenceUid")) {
           this.frameOfReferenceUid = TypeConvertor.castToOid(value); // OidType
         } else if (name.equals("bodySite")) {
-          this.bodySite = TypeConvertor.castToCoding(value); // Coding
+          this.bodySite = TypeConvertor.castToCodeableReference(value); // CodeableReference
         } else if (name.equals("instance")) {
           this.getInstance().add((ImagingSelectionInstanceComponent) value);
         } else if (name.equals("imageRegion")) {
@@ -2258,10 +2334,11 @@ public class ImagingSelection extends DomainResource {
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -1618432855:  return addIdentifier(); 
-        case -332612366:  return addBasedOn(); 
         case -1867885268:  return getSubject();
         case -1179159893:  return getIssuedElement();
         case 481140686:  return addPerformer(); 
+        case -332612366:  return addBasedOn(); 
+        case 50511102:  return addCategory(); 
         case 3059181:  return getCode();
         case 1876590023:  return getStudyUidElement();
         case 1077922663:  return addDerivedFrom(); 
@@ -2280,17 +2357,18 @@ public class ImagingSelection extends DomainResource {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -1618432855: /*identifier*/ return new String[] {"Identifier"};
-        case -332612366: /*basedOn*/ return new String[] {"Reference"};
         case -1867885268: /*subject*/ return new String[] {"Reference"};
         case -1179159893: /*issued*/ return new String[] {"instant"};
         case 481140686: /*performer*/ return new String[] {};
+        case -332612366: /*basedOn*/ return new String[] {"Reference"};
+        case 50511102: /*category*/ return new String[] {"CodeableConcept"};
         case 3059181: /*code*/ return new String[] {"CodeableConcept"};
         case 1876590023: /*studyUid*/ return new String[] {"oid"};
         case 1077922663: /*derivedFrom*/ return new String[] {"Reference"};
         case 1741102485: /*endpoint*/ return new String[] {"Reference"};
         case -569596327: /*seriesUid*/ return new String[] {"oid"};
         case 828378953: /*frameOfReferenceUid*/ return new String[] {"oid"};
-        case 1702620169: /*bodySite*/ return new String[] {"Coding"};
+        case 1702620169: /*bodySite*/ return new String[] {"CodeableReference"};
         case 555127957: /*instance*/ return new String[] {};
         case 2132544559: /*imageRegion*/ return new String[] {};
         default: return super.getTypesForProperty(hash, name);
@@ -2303,9 +2381,6 @@ public class ImagingSelection extends DomainResource {
         if (name.equals("identifier")) {
           return addIdentifier();
         }
-        else if (name.equals("basedOn")) {
-          return addBasedOn();
-        }
         else if (name.equals("subject")) {
           this.subject = new Reference();
           return this.subject;
@@ -2315,6 +2390,12 @@ public class ImagingSelection extends DomainResource {
         }
         else if (name.equals("performer")) {
           return addPerformer();
+        }
+        else if (name.equals("basedOn")) {
+          return addBasedOn();
+        }
+        else if (name.equals("category")) {
+          return addCategory();
         }
         else if (name.equals("code")) {
           this.code = new CodeableConcept();
@@ -2336,7 +2417,7 @@ public class ImagingSelection extends DomainResource {
           throw new FHIRException("Cannot call addChild on a primitive type ImagingSelection.frameOfReferenceUid");
         }
         else if (name.equals("bodySite")) {
-          this.bodySite = new Coding();
+          this.bodySite = new CodeableReference();
           return this.bodySite;
         }
         else if (name.equals("instance")) {
@@ -2368,17 +2449,22 @@ public class ImagingSelection extends DomainResource {
           for (Identifier i : identifier)
             dst.identifier.add(i.copy());
         };
-        if (basedOn != null) {
-          dst.basedOn = new ArrayList<Reference>();
-          for (Reference i : basedOn)
-            dst.basedOn.add(i.copy());
-        };
         dst.subject = subject == null ? null : subject.copy();
         dst.issued = issued == null ? null : issued.copy();
         if (performer != null) {
           dst.performer = new ArrayList<ImagingSelectionPerformerComponent>();
           for (ImagingSelectionPerformerComponent i : performer)
             dst.performer.add(i.copy());
+        };
+        if (basedOn != null) {
+          dst.basedOn = new ArrayList<Reference>();
+          for (Reference i : basedOn)
+            dst.basedOn.add(i.copy());
+        };
+        if (category != null) {
+          dst.category = new ArrayList<CodeableConcept>();
+          for (CodeableConcept i : category)
+            dst.category.add(i.copy());
         };
         dst.code = code == null ? null : code.copy();
         dst.studyUid = studyUid == null ? null : studyUid.copy();
@@ -2414,10 +2500,10 @@ public class ImagingSelection extends DomainResource {
         if (!(other_ instanceof ImagingSelection))
           return false;
         ImagingSelection o = (ImagingSelection) other_;
-        return compareDeep(identifier, o.identifier, true) && compareDeep(basedOn, o.basedOn, true) && compareDeep(subject, o.subject, true)
-           && compareDeep(issued, o.issued, true) && compareDeep(performer, o.performer, true) && compareDeep(code, o.code, true)
-           && compareDeep(studyUid, o.studyUid, true) && compareDeep(derivedFrom, o.derivedFrom, true) && compareDeep(endpoint, o.endpoint, true)
-           && compareDeep(seriesUid, o.seriesUid, true) && compareDeep(frameOfReferenceUid, o.frameOfReferenceUid, true)
+        return compareDeep(identifier, o.identifier, true) && compareDeep(subject, o.subject, true) && compareDeep(issued, o.issued, true)
+           && compareDeep(performer, o.performer, true) && compareDeep(basedOn, o.basedOn, true) && compareDeep(category, o.category, true)
+           && compareDeep(code, o.code, true) && compareDeep(studyUid, o.studyUid, true) && compareDeep(derivedFrom, o.derivedFrom, true)
+           && compareDeep(endpoint, o.endpoint, true) && compareDeep(seriesUid, o.seriesUid, true) && compareDeep(frameOfReferenceUid, o.frameOfReferenceUid, true)
            && compareDeep(bodySite, o.bodySite, true) && compareDeep(instance, o.instance, true) && compareDeep(imageRegion, o.imageRegion, true)
           ;
       }
@@ -2434,9 +2520,9 @@ public class ImagingSelection extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, basedOn, subject
-          , issued, performer, code, studyUid, derivedFrom, endpoint, seriesUid, frameOfReferenceUid
-          , bodySite, instance, imageRegion);
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, subject, issued
+          , performer, basedOn, category, code, studyUid, derivedFrom, endpoint, seriesUid
+          , frameOfReferenceUid, bodySite, instance, imageRegion);
       }
 
   @Override
@@ -2475,17 +2561,17 @@ public class ImagingSelection extends DomainResource {
    * <p>
    * Description: <b>The body site associated with the imaging selection</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>ImagingSelection.bodySite</b><br>
+   * Path: <b>ImagingSelection.bodySite.concept</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="body-site", path="ImagingSelection.bodySite", description="The body site associated with the imaging selection", type="token" )
+  @SearchParamDefinition(name="body-site", path="ImagingSelection.bodySite.concept", description="The body site associated with the imaging selection", type="token" )
   public static final String SP_BODY_SITE = "body-site";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>body-site</b>
    * <p>
    * Description: <b>The body site associated with the imaging selection</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>ImagingSelection.bodySite</b><br>
+   * Path: <b>ImagingSelection.bodySite.concept</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam BODY_SITE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_BODY_SITE);

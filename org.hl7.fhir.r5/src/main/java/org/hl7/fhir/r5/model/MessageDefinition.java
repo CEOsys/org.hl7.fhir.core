@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Fri, Apr 1, 2022 13:44+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -89,6 +89,7 @@ public class MessageDefinition extends CanonicalResource {
             case CONSEQUENCE: return "consequence";
             case CURRENCY: return "currency";
             case NOTIFICATION: return "notification";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +98,7 @@ public class MessageDefinition extends CanonicalResource {
             case CONSEQUENCE: return "http://hl7.org/fhir/message-significance-category";
             case CURRENCY: return "http://hl7.org/fhir/message-significance-category";
             case NOTIFICATION: return "http://hl7.org/fhir/message-significance-category";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -105,6 +107,7 @@ public class MessageDefinition extends CanonicalResource {
             case CONSEQUENCE: return "The message represents/requests a change that should not be processed more than once; e.g., making a booking for an appointment.";
             case CURRENCY: return "The message represents a response to query for current information. Retrospective processing is wrong and/or wasteful.";
             case NOTIFICATION: return "The content is not necessarily intended to be current, and it can be reprocessed, though there may be version issues created by processing old notifications.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +116,7 @@ public class MessageDefinition extends CanonicalResource {
             case CONSEQUENCE: return "Consequence";
             case CURRENCY: return "Currency";
             case NOTIFICATION: return "Notification";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -204,6 +208,7 @@ public class MessageDefinition extends CanonicalResource {
             case ONERROR: return "on-error";
             case NEVER: return "never";
             case ONSUCCESS: return "on-success";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -213,6 +218,7 @@ public class MessageDefinition extends CanonicalResource {
             case ONERROR: return "http://hl7.org/fhir/messageheader-response-request";
             case NEVER: return "http://hl7.org/fhir/messageheader-response-request";
             case ONSUCCESS: return "http://hl7.org/fhir/messageheader-response-request";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -222,6 +228,7 @@ public class MessageDefinition extends CanonicalResource {
             case ONERROR: return "initiator expects a response only if in error.";
             case NEVER: return "initiator does not expect a response.";
             case ONSUCCESS: return "initiator expects a response only if successful.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -231,6 +238,7 @@ public class MessageDefinition extends CanonicalResource {
             case ONERROR: return "Error/reject conditions only";
             case NEVER: return "Never";
             case ONSUCCESS: return "Successful completion only";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -1101,11 +1109,11 @@ public class MessageDefinition extends CanonicalResource {
     /**
      * Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.
      */
-    @Child(name = "graph", type = {CanonicalType.class}, order=23, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "graph", type = {CanonicalType.class}, order=23, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Canonical reference to a GraphDefinition", formalDefinition="Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources." )
-    protected List<CanonicalType> graph;
+    protected CanonicalType graph;
 
-    private static final long serialVersionUID = -1567425385L;
+    private static final long serialVersionUID = -1381412553L;
 
   /**
    * Constructor
@@ -2290,64 +2298,52 @@ public class MessageDefinition extends CanonicalResource {
     }
 
     /**
-     * @return {@link #graph} (Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.)
+     * @return {@link #graph} (Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.). This is the underlying object with id, value and extensions. The accessor "getGraph" gives direct access to the value
      */
-    public List<CanonicalType> getGraph() { 
+    public CanonicalType getGraphElement() { 
       if (this.graph == null)
-        this.graph = new ArrayList<CanonicalType>();
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create MessageDefinition.graph");
+        else if (Configuration.doAutoCreate())
+          this.graph = new CanonicalType(); // bb
       return this.graph;
     }
 
-    /**
-     * @return Returns a reference to <code>this</code> for easy method chaining
-     */
-    public MessageDefinition setGraph(List<CanonicalType> theGraph) { 
-      this.graph = theGraph;
-      return this;
+    public boolean hasGraphElement() { 
+      return this.graph != null && !this.graph.isEmpty();
     }
 
     public boolean hasGraph() { 
-      if (this.graph == null)
-        return false;
-      for (CanonicalType item : this.graph)
-        if (!item.isEmpty())
-          return true;
-      return false;
+      return this.graph != null && !this.graph.isEmpty();
     }
 
     /**
-     * @return {@link #graph} (Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.)
+     * @param value {@link #graph} (Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.). This is the underlying object with id, value and extensions. The accessor "getGraph" gives direct access to the value
      */
-    public CanonicalType addGraphElement() {//2 
-      CanonicalType t = new CanonicalType();
-      if (this.graph == null)
-        this.graph = new ArrayList<CanonicalType>();
-      this.graph.add(t);
-      return t;
-    }
-
-    /**
-     * @param value {@link #graph} (Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.)
-     */
-    public MessageDefinition addGraph(String value) { //1
-      CanonicalType t = new CanonicalType();
-      t.setValue(value);
-      if (this.graph == null)
-        this.graph = new ArrayList<CanonicalType>();
-      this.graph.add(t);
+    public MessageDefinition setGraphElement(CanonicalType value) { 
+      this.graph = value;
       return this;
     }
 
     /**
-     * @param value {@link #graph} (Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.)
+     * @return Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.
      */
-    public boolean hasGraph(String value) { 
-      if (this.graph == null)
-        return false;
-      for (CanonicalType v : this.graph)
-        if (v.getValue().equals(value)) // canonical
-          return true;
-      return false;
+    public String getGraph() { 
+      return this.graph == null ? null : this.graph.getValue();
+    }
+
+    /**
+     * @param value Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.
+     */
+    public MessageDefinition setGraph(String value) { 
+      if (Utilities.noString(value))
+        this.graph = null;
+      else {
+        if (this.graph == null)
+          this.graph = new CanonicalType();
+        this.graph.setValue(value);
+      }
+      return this;
     }
 
       protected void listChildren(List<Property> children) {
@@ -2375,7 +2371,7 @@ public class MessageDefinition extends CanonicalResource {
         children.add(new Property("focus", "", "Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.", 0, java.lang.Integer.MAX_VALUE, focus));
         children.add(new Property("responseRequired", "code", "Declare at a message definition level whether a response is required or only upon error or success, or never.", 0, 1, responseRequired));
         children.add(new Property("allowedResponse", "", "Indicates what types of messages may be sent as an application-level response to this message.", 0, java.lang.Integer.MAX_VALUE, allowedResponse));
-        children.add(new Property("graph", "canonical(GraphDefinition)", "Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.", 0, java.lang.Integer.MAX_VALUE, graph));
+        children.add(new Property("graph", "canonical(GraphDefinition)", "Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.", 0, 1, graph));
       }
 
       @Override
@@ -2407,7 +2403,7 @@ public class MessageDefinition extends CanonicalResource {
         case 97604824: /*focus*/  return new Property("focus", "", "Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.", 0, java.lang.Integer.MAX_VALUE, focus);
         case 791597824: /*responseRequired*/  return new Property("responseRequired", "code", "Declare at a message definition level whether a response is required or only upon error or success, or never.", 0, 1, responseRequired);
         case -1130933751: /*allowedResponse*/  return new Property("allowedResponse", "", "Indicates what types of messages may be sent as an application-level response to this message.", 0, java.lang.Integer.MAX_VALUE, allowedResponse);
-        case 98615630: /*graph*/  return new Property("graph", "canonical(GraphDefinition)", "Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.", 0, java.lang.Integer.MAX_VALUE, graph);
+        case 98615630: /*graph*/  return new Property("graph", "canonical(GraphDefinition)", "Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](graphdefinition.html) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.", 0, 1, graph);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -2439,7 +2435,7 @@ public class MessageDefinition extends CanonicalResource {
         case 97604824: /*focus*/ return this.focus == null ? new Base[0] : this.focus.toArray(new Base[this.focus.size()]); // MessageDefinitionFocusComponent
         case 791597824: /*responseRequired*/ return this.responseRequired == null ? new Base[0] : new Base[] {this.responseRequired}; // Enumeration<MessageheaderResponseRequest>
         case -1130933751: /*allowedResponse*/ return this.allowedResponse == null ? new Base[0] : this.allowedResponse.toArray(new Base[this.allowedResponse.size()]); // MessageDefinitionAllowedResponseComponent
-        case 98615630: /*graph*/ return this.graph == null ? new Base[0] : this.graph.toArray(new Base[this.graph.size()]); // CanonicalType
+        case 98615630: /*graph*/ return this.graph == null ? new Base[0] : new Base[] {this.graph}; // CanonicalType
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -2521,7 +2517,7 @@ public class MessageDefinition extends CanonicalResource {
           this.getAllowedResponse().add((MessageDefinitionAllowedResponseComponent) value); // MessageDefinitionAllowedResponseComponent
           return value;
         case 98615630: // graph
-          this.getGraph().add(TypeConvertor.castToCanonical(value)); // CanonicalType
+          this.graph = TypeConvertor.castToCanonical(value); // CanonicalType
           return value;
         default: return super.setProperty(hash, name, value);
         }
@@ -2580,7 +2576,7 @@ public class MessageDefinition extends CanonicalResource {
         } else if (name.equals("allowedResponse")) {
           this.getAllowedResponse().add((MessageDefinitionAllowedResponseComponent) value);
         } else if (name.equals("graph")) {
-          this.getGraph().add(TypeConvertor.castToCanonical(value));
+          this.graph = TypeConvertor.castToCanonical(value); // CanonicalType
         } else
           return super.setProperty(name, value);
         return value;
@@ -2613,7 +2609,7 @@ public class MessageDefinition extends CanonicalResource {
         case 97604824:  return addFocus(); 
         case 791597824:  return getResponseRequiredElement();
         case -1130933751:  return addAllowedResponse(); 
-        case 98615630:  return addGraphElement();
+        case 98615630:  return getGraphElement();
         default: return super.makeProperty(hash, name);
         }
 
@@ -2802,11 +2798,7 @@ public class MessageDefinition extends CanonicalResource {
           for (MessageDefinitionAllowedResponseComponent i : allowedResponse)
             dst.allowedResponse.add(i.copy());
         };
-        if (graph != null) {
-          dst.graph = new ArrayList<CanonicalType>();
-          for (CanonicalType i : graph)
-            dst.graph.add(i.copy());
-        };
+        dst.graph = graph == null ? null : graph.copy();
       }
 
       protected MessageDefinition typedCopy() {

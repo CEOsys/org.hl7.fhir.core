@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Fri, Apr 1, 2022 13:44+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -89,6 +89,7 @@ public class Device extends DomainResource {
             case ACTIVE: return "active";
             case INACTIVE: return "inactive";
             case ENTEREDINERROR: return "entered-in-error";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +98,7 @@ public class Device extends DomainResource {
             case ACTIVE: return "http://hl7.org/fhir/device-status";
             case INACTIVE: return "http://hl7.org/fhir/device-status";
             case ENTEREDINERROR: return "http://hl7.org/fhir/device-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -105,6 +107,7 @@ public class Device extends DomainResource {
             case ACTIVE: return "The device is available for use.  Note: For *implanted devices*  this means that the device is implanted in the patient.";
             case INACTIVE: return "The device is no longer available for use (e.g. lost, expired, damaged).  Note: For *implanted devices*  this means that the device has been removed from the patient.";
             case ENTEREDINERROR: return "The device was entered in error and voided.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +116,7 @@ public class Device extends DomainResource {
             case ACTIVE: return "Active";
             case INACTIVE: return "Inactive";
             case ENTEREDINERROR: return "Entered in Error";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -225,6 +229,7 @@ public class Device extends DomainResource {
             case SELFREPORTED: return "self-reported";
             case ELECTRONICTRANSMISSION: return "electronic-transmission";
             case UNKNOWN: return "unknown";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -237,6 +242,7 @@ public class Device extends DomainResource {
             case SELFREPORTED: return "http://hl7.org/fhir/udi-entry-type";
             case ELECTRONICTRANSMISSION: return "http://hl7.org/fhir/udi-entry-type";
             case UNKNOWN: return "http://hl7.org/fhir/udi-entry-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -249,6 +255,7 @@ public class Device extends DomainResource {
             case SELFREPORTED: return "The data originated from a patient source and was not directly scanned or read from a label or card.";
             case ELECTRONICTRANSMISSION: return "The UDI information was received electronically from the device through a communication protocol, such as the IEEE 11073 20601 version 4 exchange protocol over Bluetooth or USB.";
             case UNKNOWN: return "The method of data capture has not been determined.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -261,6 +268,7 @@ public class Device extends DomainResource {
             case SELFREPORTED: return "Self Reported";
             case ELECTRONICTRANSMISSION: return "Electronic Transmission";
             case UNKNOWN: return "Unknown";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -349,7 +357,7 @@ public class Device extends DomainResource {
 3) ICCBBA for blood containers: http://hl7.org/fhir/NamingSystem/iccbba-blood-di, 
 4) ICCBA for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di # Informationsstelle für Arzneispezialitäten (IFA GmbH) (EU only): http://hl7.org/fhir/NamingSystem/ifa-gmbh-di.
          */
-        @Child(name = "issuer", type = {UriType.class}, order=2, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "issuer", type = {UriType.class}, order=2, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="UDI Issuing Organization", formalDefinition="Organization that is charged with issuing UDIs for devices. For example, the US FDA issuers include: \n1) GS1: http://hl7.org/fhir/NamingSystem/gs1-di, \n2) HIBCC: http://hl7.org/fhir/NamingSystem/hibcc-diI, \n3) ICCBBA for blood containers: http://hl7.org/fhir/NamingSystem/iccbba-blood-di, \n4) ICCBA for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di # Informationsstelle für Arzneispezialitäten (IFA GmbH) (EU only): http://hl7.org/fhir/NamingSystem/ifa-gmbh-di." )
         protected UriType issuer;
 
@@ -394,9 +402,10 @@ public class Device extends DomainResource {
     /**
      * Constructor
      */
-      public DeviceUdiCarrierComponent(String deviceIdentifier) {
+      public DeviceUdiCarrierComponent(String deviceIdentifier, String issuer) {
         super();
         this.setDeviceIdentifier(deviceIdentifier);
+        this.setIssuer(issuer);
       }
 
         /**
@@ -499,13 +508,9 @@ public class Device extends DomainResource {
 4) ICCBA for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di # Informationsstelle für Arzneispezialitäten (IFA GmbH) (EU only): http://hl7.org/fhir/NamingSystem/ifa-gmbh-di.
          */
         public DeviceUdiCarrierComponent setIssuer(String value) { 
-          if (Utilities.noString(value))
-            this.issuer = null;
-          else {
             if (this.issuer == null)
               this.issuer = new UriType();
             this.issuer.setValue(value);
-          }
           return this;
         }
 
@@ -1169,13 +1174,20 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         protected Identifier component;
 
         /**
+         * The date the version was installed on the device.
+         */
+        @Child(name = "installDate", type = {DateTimeType.class}, order=3, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="The date the version was installed on the device", formalDefinition="The date the version was installed on the device." )
+        protected DateTimeType installDate;
+
+        /**
          * The version text.
          */
-        @Child(name = "value", type = {StringType.class}, order=3, min=1, max=1, modifier=false, summary=false)
+        @Child(name = "value", type = {StringType.class}, order=4, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="The version text", formalDefinition="The version text." )
         protected StringType value;
 
-        private static final long serialVersionUID = 645214295L;
+        private static final long serialVersionUID = 1358422741L;
 
     /**
      * Constructor
@@ -1241,6 +1253,55 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         }
 
         /**
+         * @return {@link #installDate} (The date the version was installed on the device.). This is the underlying object with id, value and extensions. The accessor "getInstallDate" gives direct access to the value
+         */
+        public DateTimeType getInstallDateElement() { 
+          if (this.installDate == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create DeviceVersionComponent.installDate");
+            else if (Configuration.doAutoCreate())
+              this.installDate = new DateTimeType(); // bb
+          return this.installDate;
+        }
+
+        public boolean hasInstallDateElement() { 
+          return this.installDate != null && !this.installDate.isEmpty();
+        }
+
+        public boolean hasInstallDate() { 
+          return this.installDate != null && !this.installDate.isEmpty();
+        }
+
+        /**
+         * @param value {@link #installDate} (The date the version was installed on the device.). This is the underlying object with id, value and extensions. The accessor "getInstallDate" gives direct access to the value
+         */
+        public DeviceVersionComponent setInstallDateElement(DateTimeType value) { 
+          this.installDate = value;
+          return this;
+        }
+
+        /**
+         * @return The date the version was installed on the device.
+         */
+        public Date getInstallDate() { 
+          return this.installDate == null ? null : this.installDate.getValue();
+        }
+
+        /**
+         * @param value The date the version was installed on the device.
+         */
+        public DeviceVersionComponent setInstallDate(Date value) { 
+          if (value == null)
+            this.installDate = null;
+          else {
+            if (this.installDate == null)
+              this.installDate = new DateTimeType();
+            this.installDate.setValue(value);
+          }
+          return this;
+        }
+
+        /**
          * @return {@link #value} (The version text.). This is the underlying object with id, value and extensions. The accessor "getValue" gives direct access to the value
          */
         public StringType getValueElement() { 
@@ -1289,6 +1350,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
           super.listChildren(children);
           children.add(new Property("type", "CodeableConcept", "The type of the device version, e.g. manufacturer, approved, internal.", 0, 1, type));
           children.add(new Property("component", "Identifier", "The hardware or software module of the device to which the version applies.", 0, 1, component));
+          children.add(new Property("installDate", "dateTime", "The date the version was installed on the device.", 0, 1, installDate));
           children.add(new Property("value", "string", "The version text.", 0, 1, value));
         }
 
@@ -1297,6 +1359,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
           switch (_hash) {
           case 3575610: /*type*/  return new Property("type", "CodeableConcept", "The type of the device version, e.g. manufacturer, approved, internal.", 0, 1, type);
           case -1399907075: /*component*/  return new Property("component", "Identifier", "The hardware or software module of the device to which the version applies.", 0, 1, component);
+          case 2143044585: /*installDate*/  return new Property("installDate", "dateTime", "The date the version was installed on the device.", 0, 1, installDate);
           case 111972721: /*value*/  return new Property("value", "string", "The version text.", 0, 1, value);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
@@ -1308,6 +1371,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         switch (hash) {
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
         case -1399907075: /*component*/ return this.component == null ? new Base[0] : new Base[] {this.component}; // Identifier
+        case 2143044585: /*installDate*/ return this.installDate == null ? new Base[0] : new Base[] {this.installDate}; // DateTimeType
         case 111972721: /*value*/ return this.value == null ? new Base[0] : new Base[] {this.value}; // StringType
         default: return super.getProperty(hash, name, checkValid);
         }
@@ -1323,6 +1387,9 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case -1399907075: // component
           this.component = TypeConvertor.castToIdentifier(value); // Identifier
           return value;
+        case 2143044585: // installDate
+          this.installDate = TypeConvertor.castToDateTime(value); // DateTimeType
+          return value;
         case 111972721: // value
           this.value = TypeConvertor.castToString(value); // StringType
           return value;
@@ -1337,6 +1404,8 @@ RegisteredName | UserFriendlyName | PatientReportedName.
           this.type = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
         } else if (name.equals("component")) {
           this.component = TypeConvertor.castToIdentifier(value); // Identifier
+        } else if (name.equals("installDate")) {
+          this.installDate = TypeConvertor.castToDateTime(value); // DateTimeType
         } else if (name.equals("value")) {
           this.value = TypeConvertor.castToString(value); // StringType
         } else
@@ -1349,6 +1418,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         switch (hash) {
         case 3575610:  return getType();
         case -1399907075:  return getComponent();
+        case 2143044585:  return getInstallDateElement();
         case 111972721:  return getValueElement();
         default: return super.makeProperty(hash, name);
         }
@@ -1360,6 +1430,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         switch (hash) {
         case 3575610: /*type*/ return new String[] {"CodeableConcept"};
         case -1399907075: /*component*/ return new String[] {"Identifier"};
+        case 2143044585: /*installDate*/ return new String[] {"dateTime"};
         case 111972721: /*value*/ return new String[] {"string"};
         default: return super.getTypesForProperty(hash, name);
         }
@@ -1375,6 +1446,9 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         else if (name.equals("component")) {
           this.component = new Identifier();
           return this.component;
+        }
+        else if (name.equals("installDate")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Device.version.installDate");
         }
         else if (name.equals("value")) {
           throw new FHIRException("Cannot call addChild on a primitive type Device.version.value");
@@ -1393,6 +1467,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         super.copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.component = component == null ? null : component.copy();
+        dst.installDate = installDate == null ? null : installDate.copy();
         dst.value = value == null ? null : value.copy();
       }
 
@@ -1403,8 +1478,8 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         if (!(other_ instanceof DeviceVersionComponent))
           return false;
         DeviceVersionComponent o = (DeviceVersionComponent) other_;
-        return compareDeep(type, o.type, true) && compareDeep(component, o.component, true) && compareDeep(value, o.value, true)
-          ;
+        return compareDeep(type, o.type, true) && compareDeep(component, o.component, true) && compareDeep(installDate, o.installDate, true)
+           && compareDeep(value, o.value, true);
       }
 
       @Override
@@ -1414,15 +1489,298 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         if (!(other_ instanceof DeviceVersionComponent))
           return false;
         DeviceVersionComponent o = (DeviceVersionComponent) other_;
-        return compareValues(value, o.value, true);
+        return compareValues(installDate, o.installDate, true) && compareValues(value, o.value, true);
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(type, component, value);
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(type, component, installDate
+          , value);
       }
 
   public String fhirType() {
     return "Device.version";
+
+  }
+
+  }
+
+    @Block()
+    public static class DeviceSpecializationComponent extends BackboneElement implements IBaseBackboneElement {
+        /**
+         * Code that specifies the property being represented. No codes are specified but the MDC codes are an example: https://build.fhir.org/mdc.html.
+         */
+        @Child(name = "systemType", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Code that specifies the property being represented", formalDefinition="Code that specifies the property being represented. No codes are specified but the MDC codes are an example: https://build.fhir.org/mdc.html." )
+        protected CodeableConcept systemType;
+
+        /**
+         * The version of the standard that is used to operate and communicate.
+         */
+        @Child(name = "version", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Standard version used", formalDefinition="The version of the standard that is used to operate and communicate." )
+        protected StringType version;
+
+        /**
+         * Kind of standards that the device adheres to, e.g., communication, performance or communication.
+         */
+        @Child(name = "category", type = {CodeableConcept.class}, order=3, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="communication | performance | measurement", formalDefinition="Kind of standards that the device adheres to, e.g., communication, performance or communication." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/device-specialization-category")
+        protected CodeableConcept category;
+
+        private static final long serialVersionUID = 1401096260L;
+
+    /**
+     * Constructor
+     */
+      public DeviceSpecializationComponent() {
+        super();
+      }
+
+    /**
+     * Constructor
+     */
+      public DeviceSpecializationComponent(CodeableConcept systemType) {
+        super();
+        this.setSystemType(systemType);
+      }
+
+        /**
+         * @return {@link #systemType} (Code that specifies the property being represented. No codes are specified but the MDC codes are an example: https://build.fhir.org/mdc.html.)
+         */
+        public CodeableConcept getSystemType() { 
+          if (this.systemType == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create DeviceSpecializationComponent.systemType");
+            else if (Configuration.doAutoCreate())
+              this.systemType = new CodeableConcept(); // cc
+          return this.systemType;
+        }
+
+        public boolean hasSystemType() { 
+          return this.systemType != null && !this.systemType.isEmpty();
+        }
+
+        /**
+         * @param value {@link #systemType} (Code that specifies the property being represented. No codes are specified but the MDC codes are an example: https://build.fhir.org/mdc.html.)
+         */
+        public DeviceSpecializationComponent setSystemType(CodeableConcept value) { 
+          this.systemType = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #version} (The version of the standard that is used to operate and communicate.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
+         */
+        public StringType getVersionElement() { 
+          if (this.version == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create DeviceSpecializationComponent.version");
+            else if (Configuration.doAutoCreate())
+              this.version = new StringType(); // bb
+          return this.version;
+        }
+
+        public boolean hasVersionElement() { 
+          return this.version != null && !this.version.isEmpty();
+        }
+
+        public boolean hasVersion() { 
+          return this.version != null && !this.version.isEmpty();
+        }
+
+        /**
+         * @param value {@link #version} (The version of the standard that is used to operate and communicate.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
+         */
+        public DeviceSpecializationComponent setVersionElement(StringType value) { 
+          this.version = value;
+          return this;
+        }
+
+        /**
+         * @return The version of the standard that is used to operate and communicate.
+         */
+        public String getVersion() { 
+          return this.version == null ? null : this.version.getValue();
+        }
+
+        /**
+         * @param value The version of the standard that is used to operate and communicate.
+         */
+        public DeviceSpecializationComponent setVersion(String value) { 
+          if (Utilities.noString(value))
+            this.version = null;
+          else {
+            if (this.version == null)
+              this.version = new StringType();
+            this.version.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #category} (Kind of standards that the device adheres to, e.g., communication, performance or communication.)
+         */
+        public CodeableConcept getCategory() { 
+          if (this.category == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create DeviceSpecializationComponent.category");
+            else if (Configuration.doAutoCreate())
+              this.category = new CodeableConcept(); // cc
+          return this.category;
+        }
+
+        public boolean hasCategory() { 
+          return this.category != null && !this.category.isEmpty();
+        }
+
+        /**
+         * @param value {@link #category} (Kind of standards that the device adheres to, e.g., communication, performance or communication.)
+         */
+        public DeviceSpecializationComponent setCategory(CodeableConcept value) { 
+          this.category = value;
+          return this;
+        }
+
+        protected void listChildren(List<Property> children) {
+          super.listChildren(children);
+          children.add(new Property("systemType", "CodeableConcept", "Code that specifies the property being represented. No codes are specified but the MDC codes are an example: https://build.fhir.org/mdc.html.", 0, 1, systemType));
+          children.add(new Property("version", "string", "The version of the standard that is used to operate and communicate.", 0, 1, version));
+          children.add(new Property("category", "CodeableConcept", "Kind of standards that the device adheres to, e.g., communication, performance or communication.", 0, 1, category));
+        }
+
+        @Override
+        public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
+          switch (_hash) {
+          case 642893321: /*systemType*/  return new Property("systemType", "CodeableConcept", "Code that specifies the property being represented. No codes are specified but the MDC codes are an example: https://build.fhir.org/mdc.html.", 0, 1, systemType);
+          case 351608024: /*version*/  return new Property("version", "string", "The version of the standard that is used to operate and communicate.", 0, 1, version);
+          case 50511102: /*category*/  return new Property("category", "CodeableConcept", "Kind of standards that the device adheres to, e.g., communication, performance or communication.", 0, 1, category);
+          default: return super.getNamedProperty(_hash, _name, _checkValid);
+          }
+
+        }
+
+      @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 642893321: /*systemType*/ return this.systemType == null ? new Base[0] : new Base[] {this.systemType}; // CodeableConcept
+        case 351608024: /*version*/ return this.version == null ? new Base[0] : new Base[] {this.version}; // StringType
+        case 50511102: /*category*/ return this.category == null ? new Base[0] : new Base[] {this.category}; // CodeableConcept
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 642893321: // systemType
+          this.systemType = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+          return value;
+        case 351608024: // version
+          this.version = TypeConvertor.castToString(value); // StringType
+          return value;
+        case 50511102: // category
+          this.category = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+          return value;
+        default: return super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(String name, Base value) throws FHIRException {
+        if (name.equals("systemType")) {
+          this.systemType = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("version")) {
+          this.version = TypeConvertor.castToString(value); // StringType
+        } else if (name.equals("category")) {
+          this.category = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+        } else
+          return super.setProperty(name, value);
+        return value;
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 642893321:  return getSystemType();
+        case 351608024:  return getVersionElement();
+        case 50511102:  return getCategory();
+        default: return super.makeProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public String[] getTypesForProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 642893321: /*systemType*/ return new String[] {"CodeableConcept"};
+        case 351608024: /*version*/ return new String[] {"string"};
+        case 50511102: /*category*/ return new String[] {"CodeableConcept"};
+        default: return super.getTypesForProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public Base addChild(String name) throws FHIRException {
+        if (name.equals("systemType")) {
+          this.systemType = new CodeableConcept();
+          return this.systemType;
+        }
+        else if (name.equals("version")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Device.specialization.version");
+        }
+        else if (name.equals("category")) {
+          this.category = new CodeableConcept();
+          return this.category;
+        }
+        else
+          return super.addChild(name);
+      }
+
+      public DeviceSpecializationComponent copy() {
+        DeviceSpecializationComponent dst = new DeviceSpecializationComponent();
+        copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(DeviceSpecializationComponent dst) {
+        super.copyValues(dst);
+        dst.systemType = systemType == null ? null : systemType.copy();
+        dst.version = version == null ? null : version.copy();
+        dst.category = category == null ? null : category.copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
+          return false;
+        if (!(other_ instanceof DeviceSpecializationComponent))
+          return false;
+        DeviceSpecializationComponent o = (DeviceSpecializationComponent) other_;
+        return compareDeep(systemType, o.systemType, true) && compareDeep(version, o.version, true) && compareDeep(category, o.category, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
+          return false;
+        if (!(other_ instanceof DeviceSpecializationComponent))
+          return false;
+        DeviceSpecializationComponent o = (DeviceSpecializationComponent) other_;
+        return compareValues(version, o.version, true);
+      }
+
+      public boolean isEmpty() {
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(systemType, version, category
+          );
+      }
+
+  public String fhirType() {
+    return "Device.specialization";
 
   }
 
@@ -2015,127 +2373,160 @@ RegisteredName | UserFriendlyName | PatientReportedName.
   }
 
     @Block()
-    public static class DeviceAssociationStatusComponent extends BackboneElement implements IBaseBackboneElement {
+    public static class DeviceAssociationStateComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * implanted|explanted|attached.
+         * The state of the usage or application of the device.
          */
-        @Child(name = "value", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="implanted|explanted|attached", formalDefinition="implanted|explanted|attached." )
-        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/device-associationstatus")
-        protected CodeableConcept value;
+        @Child(name = "status", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Device useage state", formalDefinition="The state of the usage or application of the device." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/device-associationstate")
+        protected CodeableConcept status;
 
         /**
          * The reasons given for the current association status - i.e. why is the device explanted, or attached to the patient, etc.
          */
-        @Child(name = "reason", type = {CodeableConcept.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+        @Child(name = "statusReason", type = {CodeableConcept.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="The reasons given for the current association status", formalDefinition="The reasons given for the current association status - i.e. why is the device explanted, or attached to the patient, etc." )
-        protected List<CodeableConcept> reason;
+        protected List<CodeableConcept> statusReason;
 
-        private static final long serialVersionUID = 1425627429L;
+        /**
+         * The individual to whom the device is affixed or inserted in their body.
+         */
+        @Child(name = "humanSubject", type = {Patient.class}, order=3, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="The individual associated with the device", formalDefinition="The individual to whom the device is affixed or inserted in their body." )
+        protected Reference humanSubject;
+
+        private static final long serialVersionUID = -938607364L;
 
     /**
      * Constructor
      */
-      public DeviceAssociationStatusComponent() {
+      public DeviceAssociationStateComponent() {
         super();
       }
 
     /**
      * Constructor
      */
-      public DeviceAssociationStatusComponent(CodeableConcept value) {
+      public DeviceAssociationStateComponent(CodeableConcept status) {
         super();
-        this.setValue(value);
+        this.setStatus(status);
       }
 
         /**
-         * @return {@link #value} (implanted|explanted|attached.)
+         * @return {@link #status} (The state of the usage or application of the device.)
          */
-        public CodeableConcept getValue() { 
-          if (this.value == null)
+        public CodeableConcept getStatus() { 
+          if (this.status == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create DeviceAssociationStatusComponent.value");
+              throw new Error("Attempt to auto-create DeviceAssociationStateComponent.status");
             else if (Configuration.doAutoCreate())
-              this.value = new CodeableConcept(); // cc
-          return this.value;
+              this.status = new CodeableConcept(); // cc
+          return this.status;
         }
 
-        public boolean hasValue() { 
-          return this.value != null && !this.value.isEmpty();
+        public boolean hasStatus() { 
+          return this.status != null && !this.status.isEmpty();
         }
 
         /**
-         * @param value {@link #value} (implanted|explanted|attached.)
+         * @param value {@link #status} (The state of the usage or application of the device.)
          */
-        public DeviceAssociationStatusComponent setValue(CodeableConcept value) { 
-          this.value = value;
+        public DeviceAssociationStateComponent setStatus(CodeableConcept value) { 
+          this.status = value;
           return this;
         }
 
         /**
-         * @return {@link #reason} (The reasons given for the current association status - i.e. why is the device explanted, or attached to the patient, etc.)
+         * @return {@link #statusReason} (The reasons given for the current association status - i.e. why is the device explanted, or attached to the patient, etc.)
          */
-        public List<CodeableConcept> getReason() { 
-          if (this.reason == null)
-            this.reason = new ArrayList<CodeableConcept>();
-          return this.reason;
+        public List<CodeableConcept> getStatusReason() { 
+          if (this.statusReason == null)
+            this.statusReason = new ArrayList<CodeableConcept>();
+          return this.statusReason;
         }
 
         /**
          * @return Returns a reference to <code>this</code> for easy method chaining
          */
-        public DeviceAssociationStatusComponent setReason(List<CodeableConcept> theReason) { 
-          this.reason = theReason;
+        public DeviceAssociationStateComponent setStatusReason(List<CodeableConcept> theStatusReason) { 
+          this.statusReason = theStatusReason;
           return this;
         }
 
-        public boolean hasReason() { 
-          if (this.reason == null)
+        public boolean hasStatusReason() { 
+          if (this.statusReason == null)
             return false;
-          for (CodeableConcept item : this.reason)
+          for (CodeableConcept item : this.statusReason)
             if (!item.isEmpty())
               return true;
           return false;
         }
 
-        public CodeableConcept addReason() { //3
+        public CodeableConcept addStatusReason() { //3
           CodeableConcept t = new CodeableConcept();
-          if (this.reason == null)
-            this.reason = new ArrayList<CodeableConcept>();
-          this.reason.add(t);
+          if (this.statusReason == null)
+            this.statusReason = new ArrayList<CodeableConcept>();
+          this.statusReason.add(t);
           return t;
         }
 
-        public DeviceAssociationStatusComponent addReason(CodeableConcept t) { //3
+        public DeviceAssociationStateComponent addStatusReason(CodeableConcept t) { //3
           if (t == null)
             return this;
-          if (this.reason == null)
-            this.reason = new ArrayList<CodeableConcept>();
-          this.reason.add(t);
+          if (this.statusReason == null)
+            this.statusReason = new ArrayList<CodeableConcept>();
+          this.statusReason.add(t);
           return this;
         }
 
         /**
-         * @return The first repetition of repeating field {@link #reason}, creating it if it does not already exist {3}
+         * @return The first repetition of repeating field {@link #statusReason}, creating it if it does not already exist {3}
          */
-        public CodeableConcept getReasonFirstRep() { 
-          if (getReason().isEmpty()) {
-            addReason();
+        public CodeableConcept getStatusReasonFirstRep() { 
+          if (getStatusReason().isEmpty()) {
+            addStatusReason();
           }
-          return getReason().get(0);
+          return getStatusReason().get(0);
+        }
+
+        /**
+         * @return {@link #humanSubject} (The individual to whom the device is affixed or inserted in their body.)
+         */
+        public Reference getHumanSubject() { 
+          if (this.humanSubject == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create DeviceAssociationStateComponent.humanSubject");
+            else if (Configuration.doAutoCreate())
+              this.humanSubject = new Reference(); // cc
+          return this.humanSubject;
+        }
+
+        public boolean hasHumanSubject() { 
+          return this.humanSubject != null && !this.humanSubject.isEmpty();
+        }
+
+        /**
+         * @param value {@link #humanSubject} (The individual to whom the device is affixed or inserted in their body.)
+         */
+        public DeviceAssociationStateComponent setHumanSubject(Reference value) { 
+          this.humanSubject = value;
+          return this;
         }
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("value", "CodeableConcept", "implanted|explanted|attached.", 0, 1, value));
-          children.add(new Property("reason", "CodeableConcept", "The reasons given for the current association status - i.e. why is the device explanted, or attached to the patient, etc.", 0, java.lang.Integer.MAX_VALUE, reason));
+          children.add(new Property("status", "CodeableConcept", "The state of the usage or application of the device.", 0, 1, status));
+          children.add(new Property("statusReason", "CodeableConcept", "The reasons given for the current association status - i.e. why is the device explanted, or attached to the patient, etc.", 0, java.lang.Integer.MAX_VALUE, statusReason));
+          children.add(new Property("humanSubject", "Reference(Patient)", "The individual to whom the device is affixed or inserted in their body.", 0, 1, humanSubject));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case 111972721: /*value*/  return new Property("value", "CodeableConcept", "implanted|explanted|attached.", 0, 1, value);
-          case -934964668: /*reason*/  return new Property("reason", "CodeableConcept", "The reasons given for the current association status - i.e. why is the device explanted, or attached to the patient, etc.", 0, java.lang.Integer.MAX_VALUE, reason);
+          case -892481550: /*status*/  return new Property("status", "CodeableConcept", "The state of the usage or application of the device.", 0, 1, status);
+          case 2051346646: /*statusReason*/  return new Property("statusReason", "CodeableConcept", "The reasons given for the current association status - i.e. why is the device explanted, or attached to the patient, etc.", 0, java.lang.Integer.MAX_VALUE, statusReason);
+          case -192393409: /*humanSubject*/  return new Property("humanSubject", "Reference(Patient)", "The individual to whom the device is affixed or inserted in their body.", 0, 1, humanSubject);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -2144,8 +2535,9 @@ RegisteredName | UserFriendlyName | PatientReportedName.
       @Override
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
-        case 111972721: /*value*/ return this.value == null ? new Base[0] : new Base[] {this.value}; // CodeableConcept
-        case -934964668: /*reason*/ return this.reason == null ? new Base[0] : this.reason.toArray(new Base[this.reason.size()]); // CodeableConcept
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // CodeableConcept
+        case 2051346646: /*statusReason*/ return this.statusReason == null ? new Base[0] : this.statusReason.toArray(new Base[this.statusReason.size()]); // CodeableConcept
+        case -192393409: /*humanSubject*/ return this.humanSubject == null ? new Base[0] : new Base[] {this.humanSubject}; // Reference
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -2154,11 +2546,14 @@ RegisteredName | UserFriendlyName | PatientReportedName.
       @Override
       public Base setProperty(int hash, String name, Base value) throws FHIRException {
         switch (hash) {
-        case 111972721: // value
-          this.value = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+        case -892481550: // status
+          this.status = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
           return value;
-        case -934964668: // reason
-          this.getReason().add(TypeConvertor.castToCodeableConcept(value)); // CodeableConcept
+        case 2051346646: // statusReason
+          this.getStatusReason().add(TypeConvertor.castToCodeableConcept(value)); // CodeableConcept
+          return value;
+        case -192393409: // humanSubject
+          this.humanSubject = TypeConvertor.castToReference(value); // Reference
           return value;
         default: return super.setProperty(hash, name, value);
         }
@@ -2167,10 +2562,12 @@ RegisteredName | UserFriendlyName | PatientReportedName.
 
       @Override
       public Base setProperty(String name, Base value) throws FHIRException {
-        if (name.equals("value")) {
-          this.value = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
-        } else if (name.equals("reason")) {
-          this.getReason().add(TypeConvertor.castToCodeableConcept(value));
+        if (name.equals("status")) {
+          this.status = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("statusReason")) {
+          this.getStatusReason().add(TypeConvertor.castToCodeableConcept(value));
+        } else if (name.equals("humanSubject")) {
+          this.humanSubject = TypeConvertor.castToReference(value); // Reference
         } else
           return super.setProperty(name, value);
         return value;
@@ -2179,8 +2576,9 @@ RegisteredName | UserFriendlyName | PatientReportedName.
       @Override
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
-        case 111972721:  return getValue();
-        case -934964668:  return addReason(); 
+        case -892481550:  return getStatus();
+        case 2051346646:  return addStatusReason(); 
+        case -192393409:  return getHumanSubject();
         default: return super.makeProperty(hash, name);
         }
 
@@ -2189,8 +2587,9 @@ RegisteredName | UserFriendlyName | PatientReportedName.
       @Override
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
-        case 111972721: /*value*/ return new String[] {"CodeableConcept"};
-        case -934964668: /*reason*/ return new String[] {"CodeableConcept"};
+        case -892481550: /*status*/ return new String[] {"CodeableConcept"};
+        case 2051346646: /*statusReason*/ return new String[] {"CodeableConcept"};
+        case -192393409: /*humanSubject*/ return new String[] {"Reference"};
         default: return super.getTypesForProperty(hash, name);
         }
 
@@ -2198,59 +2597,66 @@ RegisteredName | UserFriendlyName | PatientReportedName.
 
       @Override
       public Base addChild(String name) throws FHIRException {
-        if (name.equals("value")) {
-          this.value = new CodeableConcept();
-          return this.value;
+        if (name.equals("status")) {
+          this.status = new CodeableConcept();
+          return this.status;
         }
-        else if (name.equals("reason")) {
-          return addReason();
+        else if (name.equals("statusReason")) {
+          return addStatusReason();
+        }
+        else if (name.equals("humanSubject")) {
+          this.humanSubject = new Reference();
+          return this.humanSubject;
         }
         else
           return super.addChild(name);
       }
 
-      public DeviceAssociationStatusComponent copy() {
-        DeviceAssociationStatusComponent dst = new DeviceAssociationStatusComponent();
+      public DeviceAssociationStateComponent copy() {
+        DeviceAssociationStateComponent dst = new DeviceAssociationStateComponent();
         copyValues(dst);
         return dst;
       }
 
-      public void copyValues(DeviceAssociationStatusComponent dst) {
+      public void copyValues(DeviceAssociationStateComponent dst) {
         super.copyValues(dst);
-        dst.value = value == null ? null : value.copy();
-        if (reason != null) {
-          dst.reason = new ArrayList<CodeableConcept>();
-          for (CodeableConcept i : reason)
-            dst.reason.add(i.copy());
+        dst.status = status == null ? null : status.copy();
+        if (statusReason != null) {
+          dst.statusReason = new ArrayList<CodeableConcept>();
+          for (CodeableConcept i : statusReason)
+            dst.statusReason.add(i.copy());
         };
+        dst.humanSubject = humanSubject == null ? null : humanSubject.copy();
       }
 
       @Override
       public boolean equalsDeep(Base other_) {
         if (!super.equalsDeep(other_))
           return false;
-        if (!(other_ instanceof DeviceAssociationStatusComponent))
+        if (!(other_ instanceof DeviceAssociationStateComponent))
           return false;
-        DeviceAssociationStatusComponent o = (DeviceAssociationStatusComponent) other_;
-        return compareDeep(value, o.value, true) && compareDeep(reason, o.reason, true);
+        DeviceAssociationStateComponent o = (DeviceAssociationStateComponent) other_;
+        return compareDeep(status, o.status, true) && compareDeep(statusReason, o.statusReason, true) && compareDeep(humanSubject, o.humanSubject, true)
+          ;
       }
 
       @Override
       public boolean equalsShallow(Base other_) {
         if (!super.equalsShallow(other_))
           return false;
-        if (!(other_ instanceof DeviceAssociationStatusComponent))
+        if (!(other_ instanceof DeviceAssociationStateComponent))
           return false;
-        DeviceAssociationStatusComponent o = (DeviceAssociationStatusComponent) other_;
+        DeviceAssociationStateComponent o = (DeviceAssociationStateComponent) other_;
         return true;
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(value, reason);
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(status, statusReason, humanSubject
+          );
       }
 
   public String fhirType() {
-    return "Device.associationStatus";
+    return "Device.associationState";
 
   }
 
@@ -2591,97 +2997,104 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     protected List<DeviceVersionComponent> version;
 
     /**
+     * The standards to which the device adheres in support of its capabilities, e.g., communication, performance, or measurement standards.
+     */
+    @Child(name = "specialization", type = {}, order=17, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="The standard(s) the device supports", formalDefinition="The standards to which the device adheres in support of its capabilities, e.g., communication, performance, or measurement standards." )
+    protected List<DeviceSpecializationComponent> specialization;
+
+    /**
      * The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties.
      */
-    @Child(name = "property", type = {}, order=17, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "property", type = {}, order=18, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties", formalDefinition="The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties." )
     protected List<DevicePropertyComponent> property;
 
     /**
-     * Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in.
+     * Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker.
      */
-    @Child(name = "subject", type = {Patient.class, Practitioner.class, Person.class}, order=18, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Patient to whom Device is affixed", formalDefinition="Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in." )
+    @Child(name = "subject", type = {Patient.class, Practitioner.class}, order=19, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Patient to whom Device is affixed", formalDefinition="Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker." )
     protected Reference subject;
 
     /**
      * The status of the device itself - whether it is switched on, or activated, etc.
      */
-    @Child(name = "operationalStatus", type = {}, order=19, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "operationalStatus", type = {}, order=20, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="The status of the device itself - whether it is switched on, or activated, etc", formalDefinition="The status of the device itself - whether it is switched on, or activated, etc." )
     protected DeviceOperationalStatusComponent operationalStatus;
 
     /**
-     * The state of the usage or application of the device - whether the device is implanted, or explanted, or attached to the patient.
+     * The details about the device when it is affixed or inside of a patient.
      */
-    @Child(name = "associationStatus", type = {}, order=20, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="The state of the usage or application of the device", formalDefinition="The state of the usage or application of the device - whether the device is implanted, or explanted, or attached to the patient." )
-    protected DeviceAssociationStatusComponent associationStatus;
+    @Child(name = "associationState", type = {}, order=21, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Current state of the device", formalDefinition="The details about the device when it is affixed or inside of a patient." )
+    protected List<DeviceAssociationStateComponent> associationState;
 
     /**
      * An organization that is responsible for the provision and ongoing maintenance of the device.
      */
-    @Child(name = "owner", type = {Organization.class}, order=21, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "owner", type = {Organization.class}, order=22, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Organization responsible for device", formalDefinition="An organization that is responsible for the provision and ongoing maintenance of the device." )
     protected Reference owner;
 
     /**
      * Contact details for an organization or a particular human that is responsible for the device.
      */
-    @Child(name = "contact", type = {ContactPoint.class}, order=22, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "contact", type = {ContactPoint.class}, order=23, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Details for human/organization for support", formalDefinition="Contact details for an organization or a particular human that is responsible for the device." )
     protected List<ContactPoint> contact;
 
     /**
      * The place where the device can be found.
      */
-    @Child(name = "location", type = {Location.class}, order=23, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "location", type = {Location.class}, order=24, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Where the device is found", formalDefinition="The place where the device can be found." )
     protected Reference location;
 
     /**
      * A network address on which the device may be contacted directly.
      */
-    @Child(name = "url", type = {UriType.class}, order=24, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "url", type = {UriType.class}, order=25, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Network address to contact device", formalDefinition="A network address on which the device may be contacted directly." )
     protected UriType url;
 
     /**
      * Technical endpoints providing access to services provided by the device defined at this resource.
      */
-    @Child(name = "endpoint", type = {Endpoint.class}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "endpoint", type = {Endpoint.class}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Technical endpoints providing access to electronic services provided by the device", formalDefinition="Technical endpoints providing access to services provided by the device defined at this resource." )
     protected List<Reference> endpoint;
 
     /**
      * An associated device, attached to, used with, communicating with or linking a previous or new device model to the focal device.
      */
-    @Child(name = "link", type = {}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "link", type = {}, order=27, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="An associated device, attached to, used with, communicating with or linking a previous or new device model to the focal device", formalDefinition="An associated device, attached to, used with, communicating with or linking a previous or new device model to the focal device." )
     protected List<DeviceLinkComponent> link;
 
     /**
      * Descriptive information, usage information or implantation information that is not captured in an existing element.
      */
-    @Child(name = "note", type = {Annotation.class}, order=27, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "note", type = {Annotation.class}, order=28, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Device notes and comments", formalDefinition="Descriptive information, usage information or implantation information that is not captured in an existing element." )
     protected List<Annotation> note;
 
     /**
      * Provides additional safety characteristics about a medical device.  For example devices containing latex.
      */
-    @Child(name = "safety", type = {CodeableConcept.class}, order=28, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "safety", type = {CodeableConcept.class}, order=29, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Safety Characteristics of Device", formalDefinition="Provides additional safety characteristics about a medical device.  For example devices containing latex." )
     protected List<CodeableConcept> safety;
 
     /**
-     * The device that this device is attached to or is part of.
+     * The higher level or encompassing device that this device is a logical part of.
      */
-    @Child(name = "parent", type = {Device.class}, order=29, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="The device that this device is attached to or is part of", formalDefinition="The device that this device is attached to or is part of." )
+    @Child(name = "parent", type = {Device.class}, order=30, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="The device that this device is attached to or is part of", formalDefinition="The higher level or encompassing device that this device is a logical part of." )
     protected Reference parent;
 
-    private static final long serialVersionUID = 1453107483L;
+    private static final long serialVersionUID = -1129319632L;
 
   /**
    * Constructor
@@ -3498,6 +3911,59 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     }
 
     /**
+     * @return {@link #specialization} (The standards to which the device adheres in support of its capabilities, e.g., communication, performance, or measurement standards.)
+     */
+    public List<DeviceSpecializationComponent> getSpecialization() { 
+      if (this.specialization == null)
+        this.specialization = new ArrayList<DeviceSpecializationComponent>();
+      return this.specialization;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Device setSpecialization(List<DeviceSpecializationComponent> theSpecialization) { 
+      this.specialization = theSpecialization;
+      return this;
+    }
+
+    public boolean hasSpecialization() { 
+      if (this.specialization == null)
+        return false;
+      for (DeviceSpecializationComponent item : this.specialization)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public DeviceSpecializationComponent addSpecialization() { //3
+      DeviceSpecializationComponent t = new DeviceSpecializationComponent();
+      if (this.specialization == null)
+        this.specialization = new ArrayList<DeviceSpecializationComponent>();
+      this.specialization.add(t);
+      return t;
+    }
+
+    public Device addSpecialization(DeviceSpecializationComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.specialization == null)
+        this.specialization = new ArrayList<DeviceSpecializationComponent>();
+      this.specialization.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #specialization}, creating it if it does not already exist {3}
+     */
+    public DeviceSpecializationComponent getSpecializationFirstRep() { 
+      if (getSpecialization().isEmpty()) {
+        addSpecialization();
+      }
+      return getSpecialization().get(0);
+    }
+
+    /**
      * @return {@link #property} (The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties.)
      */
     public List<DevicePropertyComponent> getProperty() { 
@@ -3551,7 +4017,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     }
 
     /**
-     * @return {@link #subject} (Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in.)
+     * @return {@link #subject} (Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker.)
      */
     public Reference getSubject() { 
       if (this.subject == null)
@@ -3567,7 +4033,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     }
 
     /**
-     * @param value {@link #subject} (Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in.)
+     * @param value {@link #subject} (Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker.)
      */
     public Device setSubject(Reference value) { 
       this.subject = value;
@@ -3599,27 +4065,56 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     }
 
     /**
-     * @return {@link #associationStatus} (The state of the usage or application of the device - whether the device is implanted, or explanted, or attached to the patient.)
+     * @return {@link #associationState} (The details about the device when it is affixed or inside of a patient.)
      */
-    public DeviceAssociationStatusComponent getAssociationStatus() { 
-      if (this.associationStatus == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Device.associationStatus");
-        else if (Configuration.doAutoCreate())
-          this.associationStatus = new DeviceAssociationStatusComponent(); // cc
-      return this.associationStatus;
-    }
-
-    public boolean hasAssociationStatus() { 
-      return this.associationStatus != null && !this.associationStatus.isEmpty();
+    public List<DeviceAssociationStateComponent> getAssociationState() { 
+      if (this.associationState == null)
+        this.associationState = new ArrayList<DeviceAssociationStateComponent>();
+      return this.associationState;
     }
 
     /**
-     * @param value {@link #associationStatus} (The state of the usage or application of the device - whether the device is implanted, or explanted, or attached to the patient.)
+     * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Device setAssociationStatus(DeviceAssociationStatusComponent value) { 
-      this.associationStatus = value;
+    public Device setAssociationState(List<DeviceAssociationStateComponent> theAssociationState) { 
+      this.associationState = theAssociationState;
       return this;
+    }
+
+    public boolean hasAssociationState() { 
+      if (this.associationState == null)
+        return false;
+      for (DeviceAssociationStateComponent item : this.associationState)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public DeviceAssociationStateComponent addAssociationState() { //3
+      DeviceAssociationStateComponent t = new DeviceAssociationStateComponent();
+      if (this.associationState == null)
+        this.associationState = new ArrayList<DeviceAssociationStateComponent>();
+      this.associationState.add(t);
+      return t;
+    }
+
+    public Device addAssociationState(DeviceAssociationStateComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.associationState == null)
+        this.associationState = new ArrayList<DeviceAssociationStateComponent>();
+      this.associationState.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #associationState}, creating it if it does not already exist {3}
+     */
+    public DeviceAssociationStateComponent getAssociationStateFirstRep() { 
+      if (getAssociationState().isEmpty()) {
+        addAssociationState();
+      }
+      return getAssociationState().get(0);
     }
 
     /**
@@ -3985,7 +4480,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     }
 
     /**
-     * @return {@link #parent} (The device that this device is attached to or is part of.)
+     * @return {@link #parent} (The higher level or encompassing device that this device is a logical part of.)
      */
     public Reference getParent() { 
       if (this.parent == null)
@@ -4001,7 +4496,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
     }
 
     /**
-     * @param value {@link #parent} (The device that this device is attached to or is part of.)
+     * @param value {@link #parent} (The higher level or encompassing device that this device is a logical part of.)
      */
     public Device setParent(Reference value) { 
       this.parent = value;
@@ -4027,10 +4522,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         children.add(new Property("partNumber", "string", "The part number or catalog number of the device.", 0, 1, partNumber));
         children.add(new Property("type", "CodeableConcept", "The kind or type of device. A device instance may have more than one type - in which case those are the types that apply to the specific instance of the device.", 0, java.lang.Integer.MAX_VALUE, type));
         children.add(new Property("version", "", "The actual design of the device or software version running on the device.", 0, java.lang.Integer.MAX_VALUE, version));
+        children.add(new Property("specialization", "", "The standards to which the device adheres in support of its capabilities, e.g., communication, performance, or measurement standards.", 0, java.lang.Integer.MAX_VALUE, specialization));
         children.add(new Property("property", "", "The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties.", 0, java.lang.Integer.MAX_VALUE, property));
-        children.add(new Property("subject", "Reference(Patient|Practitioner|Person)", "Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in.", 0, 1, subject));
+        children.add(new Property("subject", "Reference(Patient|Practitioner)", "Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker.", 0, 1, subject));
         children.add(new Property("operationalStatus", "", "The status of the device itself - whether it is switched on, or activated, etc.", 0, 1, operationalStatus));
-        children.add(new Property("associationStatus", "", "The state of the usage or application of the device - whether the device is implanted, or explanted, or attached to the patient.", 0, 1, associationStatus));
+        children.add(new Property("associationState", "", "The details about the device when it is affixed or inside of a patient.", 0, java.lang.Integer.MAX_VALUE, associationState));
         children.add(new Property("owner", "Reference(Organization)", "An organization that is responsible for the provision and ongoing maintenance of the device.", 0, 1, owner));
         children.add(new Property("contact", "ContactPoint", "Contact details for an organization or a particular human that is responsible for the device.", 0, java.lang.Integer.MAX_VALUE, contact));
         children.add(new Property("location", "Reference(Location)", "The place where the device can be found.", 0, 1, location));
@@ -4039,7 +4535,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         children.add(new Property("link", "", "An associated device, attached to, used with, communicating with or linking a previous or new device model to the focal device.", 0, java.lang.Integer.MAX_VALUE, link));
         children.add(new Property("note", "Annotation", "Descriptive information, usage information or implantation information that is not captured in an existing element.", 0, java.lang.Integer.MAX_VALUE, note));
         children.add(new Property("safety", "CodeableConcept", "Provides additional safety characteristics about a medical device.  For example devices containing latex.", 0, java.lang.Integer.MAX_VALUE, safety));
-        children.add(new Property("parent", "Reference(Device)", "The device that this device is attached to or is part of.", 0, 1, parent));
+        children.add(new Property("parent", "Reference(Device)", "The higher level or encompassing device that this device is a logical part of.", 0, 1, parent));
       }
 
       @Override
@@ -4062,10 +4558,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case -731502308: /*partNumber*/  return new Property("partNumber", "string", "The part number or catalog number of the device.", 0, 1, partNumber);
         case 3575610: /*type*/  return new Property("type", "CodeableConcept", "The kind or type of device. A device instance may have more than one type - in which case those are the types that apply to the specific instance of the device.", 0, java.lang.Integer.MAX_VALUE, type);
         case 351608024: /*version*/  return new Property("version", "", "The actual design of the device or software version running on the device.", 0, java.lang.Integer.MAX_VALUE, version);
+        case 682815883: /*specialization*/  return new Property("specialization", "", "The standards to which the device adheres in support of its capabilities, e.g., communication, performance, or measurement standards.", 0, java.lang.Integer.MAX_VALUE, specialization);
         case -993141291: /*property*/  return new Property("property", "", "The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties.", 0, java.lang.Integer.MAX_VALUE, property);
-        case -1867885268: /*subject*/  return new Property("subject", "Reference(Patient|Practitioner|Person)", "Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in.", 0, 1, subject);
+        case -1867885268: /*subject*/  return new Property("subject", "Reference(Patient|Practitioner)", "Patient information, if the device is affixed to, or associated to a patient for their specific use, irrespective of the procedure, use, observation, or other activity that the device is involved in. The use of Patient is also appropriate for the use of devices outside a healthcare setting, such as a fitness tracker.", 0, 1, subject);
         case -2103166364: /*operationalStatus*/  return new Property("operationalStatus", "", "The status of the device itself - whether it is switched on, or activated, etc.", 0, 1, operationalStatus);
-        case -605391917: /*associationStatus*/  return new Property("associationStatus", "", "The state of the usage or application of the device - whether the device is implanted, or explanted, or attached to the patient.", 0, 1, associationStatus);
+        case -850812784: /*associationState*/  return new Property("associationState", "", "The details about the device when it is affixed or inside of a patient.", 0, java.lang.Integer.MAX_VALUE, associationState);
         case 106164915: /*owner*/  return new Property("owner", "Reference(Organization)", "An organization that is responsible for the provision and ongoing maintenance of the device.", 0, 1, owner);
         case 951526432: /*contact*/  return new Property("contact", "ContactPoint", "Contact details for an organization or a particular human that is responsible for the device.", 0, java.lang.Integer.MAX_VALUE, contact);
         case 1901043637: /*location*/  return new Property("location", "Reference(Location)", "The place where the device can be found.", 0, 1, location);
@@ -4074,7 +4571,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case 3321850: /*link*/  return new Property("link", "", "An associated device, attached to, used with, communicating with or linking a previous or new device model to the focal device.", 0, java.lang.Integer.MAX_VALUE, link);
         case 3387378: /*note*/  return new Property("note", "Annotation", "Descriptive information, usage information or implantation information that is not captured in an existing element.", 0, java.lang.Integer.MAX_VALUE, note);
         case -909893934: /*safety*/  return new Property("safety", "CodeableConcept", "Provides additional safety characteristics about a medical device.  For example devices containing latex.", 0, java.lang.Integer.MAX_VALUE, safety);
-        case -995424086: /*parent*/  return new Property("parent", "Reference(Device)", "The device that this device is attached to or is part of.", 0, 1, parent);
+        case -995424086: /*parent*/  return new Property("parent", "Reference(Device)", "The higher level or encompassing device that this device is a logical part of.", 0, 1, parent);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -4100,10 +4597,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case -731502308: /*partNumber*/ return this.partNumber == null ? new Base[0] : new Base[] {this.partNumber}; // StringType
         case 3575610: /*type*/ return this.type == null ? new Base[0] : this.type.toArray(new Base[this.type.size()]); // CodeableConcept
         case 351608024: /*version*/ return this.version == null ? new Base[0] : this.version.toArray(new Base[this.version.size()]); // DeviceVersionComponent
+        case 682815883: /*specialization*/ return this.specialization == null ? new Base[0] : this.specialization.toArray(new Base[this.specialization.size()]); // DeviceSpecializationComponent
         case -993141291: /*property*/ return this.property == null ? new Base[0] : this.property.toArray(new Base[this.property.size()]); // DevicePropertyComponent
         case -1867885268: /*subject*/ return this.subject == null ? new Base[0] : new Base[] {this.subject}; // Reference
         case -2103166364: /*operationalStatus*/ return this.operationalStatus == null ? new Base[0] : new Base[] {this.operationalStatus}; // DeviceOperationalStatusComponent
-        case -605391917: /*associationStatus*/ return this.associationStatus == null ? new Base[0] : new Base[] {this.associationStatus}; // DeviceAssociationStatusComponent
+        case -850812784: /*associationState*/ return this.associationState == null ? new Base[0] : this.associationState.toArray(new Base[this.associationState.size()]); // DeviceAssociationStateComponent
         case 106164915: /*owner*/ return this.owner == null ? new Base[0] : new Base[] {this.owner}; // Reference
         case 951526432: /*contact*/ return this.contact == null ? new Base[0] : this.contact.toArray(new Base[this.contact.size()]); // ContactPoint
         case 1901043637: /*location*/ return this.location == null ? new Base[0] : new Base[] {this.location}; // Reference
@@ -4173,6 +4671,9 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case 351608024: // version
           this.getVersion().add((DeviceVersionComponent) value); // DeviceVersionComponent
           return value;
+        case 682815883: // specialization
+          this.getSpecialization().add((DeviceSpecializationComponent) value); // DeviceSpecializationComponent
+          return value;
         case -993141291: // property
           this.getProperty().add((DevicePropertyComponent) value); // DevicePropertyComponent
           return value;
@@ -4182,8 +4683,8 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case -2103166364: // operationalStatus
           this.operationalStatus = (DeviceOperationalStatusComponent) value; // DeviceOperationalStatusComponent
           return value;
-        case -605391917: // associationStatus
-          this.associationStatus = (DeviceAssociationStatusComponent) value; // DeviceAssociationStatusComponent
+        case -850812784: // associationState
+          this.getAssociationState().add((DeviceAssociationStateComponent) value); // DeviceAssociationStateComponent
           return value;
         case 106164915: // owner
           this.owner = TypeConvertor.castToReference(value); // Reference
@@ -4254,14 +4755,16 @@ RegisteredName | UserFriendlyName | PatientReportedName.
           this.getType().add(TypeConvertor.castToCodeableConcept(value));
         } else if (name.equals("version")) {
           this.getVersion().add((DeviceVersionComponent) value);
+        } else if (name.equals("specialization")) {
+          this.getSpecialization().add((DeviceSpecializationComponent) value);
         } else if (name.equals("property")) {
           this.getProperty().add((DevicePropertyComponent) value);
         } else if (name.equals("subject")) {
           this.subject = TypeConvertor.castToReference(value); // Reference
         } else if (name.equals("operationalStatus")) {
           this.operationalStatus = (DeviceOperationalStatusComponent) value; // DeviceOperationalStatusComponent
-        } else if (name.equals("associationStatus")) {
-          this.associationStatus = (DeviceAssociationStatusComponent) value; // DeviceAssociationStatusComponent
+        } else if (name.equals("associationState")) {
+          this.getAssociationState().add((DeviceAssociationStateComponent) value);
         } else if (name.equals("owner")) {
           this.owner = TypeConvertor.castToReference(value); // Reference
         } else if (name.equals("contact")) {
@@ -4305,10 +4808,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case -731502308:  return getPartNumberElement();
         case 3575610:  return addType(); 
         case 351608024:  return addVersion(); 
+        case 682815883:  return addSpecialization(); 
         case -993141291:  return addProperty(); 
         case -1867885268:  return getSubject();
         case -2103166364:  return getOperationalStatus();
-        case -605391917:  return getAssociationStatus();
+        case -850812784:  return addAssociationState(); 
         case 106164915:  return getOwner();
         case 951526432:  return addContact(); 
         case 1901043637:  return getLocation();
@@ -4343,10 +4847,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         case -731502308: /*partNumber*/ return new String[] {"string"};
         case 3575610: /*type*/ return new String[] {"CodeableConcept"};
         case 351608024: /*version*/ return new String[] {};
+        case 682815883: /*specialization*/ return new String[] {};
         case -993141291: /*property*/ return new String[] {};
         case -1867885268: /*subject*/ return new String[] {"Reference"};
         case -2103166364: /*operationalStatus*/ return new String[] {};
-        case -605391917: /*associationStatus*/ return new String[] {};
+        case -850812784: /*associationState*/ return new String[] {};
         case 106164915: /*owner*/ return new String[] {"Reference"};
         case 951526432: /*contact*/ return new String[] {"ContactPoint"};
         case 1901043637: /*location*/ return new String[] {"Reference"};
@@ -4416,6 +4921,9 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         else if (name.equals("version")) {
           return addVersion();
         }
+        else if (name.equals("specialization")) {
+          return addSpecialization();
+        }
         else if (name.equals("property")) {
           return addProperty();
         }
@@ -4427,9 +4935,8 @@ RegisteredName | UserFriendlyName | PatientReportedName.
           this.operationalStatus = new DeviceOperationalStatusComponent();
           return this.operationalStatus;
         }
-        else if (name.equals("associationStatus")) {
-          this.associationStatus = new DeviceAssociationStatusComponent();
-          return this.associationStatus;
+        else if (name.equals("associationState")) {
+          return addAssociationState();
         }
         else if (name.equals("owner")) {
           this.owner = new Reference();
@@ -4519,6 +5026,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.
           for (DeviceVersionComponent i : version)
             dst.version.add(i.copy());
         };
+        if (specialization != null) {
+          dst.specialization = new ArrayList<DeviceSpecializationComponent>();
+          for (DeviceSpecializationComponent i : specialization)
+            dst.specialization.add(i.copy());
+        };
         if (property != null) {
           dst.property = new ArrayList<DevicePropertyComponent>();
           for (DevicePropertyComponent i : property)
@@ -4526,7 +5038,11 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         };
         dst.subject = subject == null ? null : subject.copy();
         dst.operationalStatus = operationalStatus == null ? null : operationalStatus.copy();
-        dst.associationStatus = associationStatus == null ? null : associationStatus.copy();
+        if (associationState != null) {
+          dst.associationState = new ArrayList<DeviceAssociationStateComponent>();
+          for (DeviceAssociationStateComponent i : associationState)
+            dst.associationState.add(i.copy());
+        };
         dst.owner = owner == null ? null : owner.copy();
         if (contact != null) {
           dst.contact = new ArrayList<ContactPoint>();
@@ -4576,9 +5092,9 @@ RegisteredName | UserFriendlyName | PatientReportedName.
            && compareDeep(expirationDate, o.expirationDate, true) && compareDeep(lotNumber, o.lotNumber, true)
            && compareDeep(serialNumber, o.serialNumber, true) && compareDeep(deviceName, o.deviceName, true)
            && compareDeep(modelNumber, o.modelNumber, true) && compareDeep(partNumber, o.partNumber, true)
-           && compareDeep(type, o.type, true) && compareDeep(version, o.version, true) && compareDeep(property, o.property, true)
-           && compareDeep(subject, o.subject, true) && compareDeep(operationalStatus, o.operationalStatus, true)
-           && compareDeep(associationStatus, o.associationStatus, true) && compareDeep(owner, o.owner, true)
+           && compareDeep(type, o.type, true) && compareDeep(version, o.version, true) && compareDeep(specialization, o.specialization, true)
+           && compareDeep(property, o.property, true) && compareDeep(subject, o.subject, true) && compareDeep(operationalStatus, o.operationalStatus, true)
+           && compareDeep(associationState, o.associationState, true) && compareDeep(owner, o.owner, true)
            && compareDeep(contact, o.contact, true) && compareDeep(location, o.location, true) && compareDeep(url, o.url, true)
            && compareDeep(endpoint, o.endpoint, true) && compareDeep(link, o.link, true) && compareDeep(note, o.note, true)
            && compareDeep(safety, o.safety, true) && compareDeep(parent, o.parent, true);
@@ -4602,8 +5118,8 @@ RegisteredName | UserFriendlyName | PatientReportedName.
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, displayName, definition
           , udiCarrier, status, statusReason, biologicalSource, manufacturer, manufactureDate
           , expirationDate, lotNumber, serialNumber, deviceName, modelNumber, partNumber, type
-          , version, property, subject, operationalStatus, associationStatus, owner, contact
-          , location, url, endpoint, link, note, safety, parent);
+          , version, specialization, property, subject, operationalStatus, associationState
+          , owner, contact, location, url, endpoint, link, note, safety, parent);
       }
 
   @Override
@@ -4883,7 +5399,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
    * Path: <b>Device.subject.where(resolve() is Patient)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="Device.subject.where(resolve() is Patient)", description="Patient information, if the resource is affixed to a person", type="reference", target={Patient.class, Person.class, Practitioner.class } )
+  @SearchParamDefinition(name="patient", path="Device.subject.where(resolve() is Patient)", description="Patient information, if the resource is affixed to a person", type="reference", target={Patient.class, Practitioner.class } )
   public static final String SP_PATIENT = "patient";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>patient</b>
@@ -4906,17 +5422,17 @@ RegisteredName | UserFriendlyName | PatientReportedName.
    * <p>
    * Description: <b>The serial number of the device</b><br>
    * Type: <b>string</b><br>
-   * Path: <b>Device.serialNumber</b><br>
+   * Path: <b>Device.serialNumber | Device.identifier.where(type='SNO')</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="serial-number", path="Device.serialNumber", description="The serial number of the device", type="string" )
+  @SearchParamDefinition(name="serial-number", path="Device.serialNumber | Device.identifier.where(type='SNO')", description="The serial number of the device", type="string" )
   public static final String SP_SERIAL_NUMBER = "serial-number";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>serial-number</b>
    * <p>
    * Description: <b>The serial number of the device</b><br>
    * Type: <b>string</b><br>
-   * Path: <b>Device.serialNumber</b><br>
+   * Path: <b>Device.serialNumber | Device.identifier.where(type='SNO')</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.StringClientParam SERIAL_NUMBER = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_SERIAL_NUMBER);
@@ -4949,7 +5465,7 @@ RegisteredName | UserFriendlyName | PatientReportedName.
    * Path: <b>Device.subject</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="subject", path="Device.subject", description="Subject information, to which the device is associated of affixed", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient") }, target={Patient.class, Person.class, Practitioner.class } )
+  @SearchParamDefinition(name="subject", path="Device.subject", description="Subject information, to which the device is associated of affixed", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Patient") }, target={Patient.class, Practitioner.class } )
   public static final String SP_SUBJECT = "subject";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>subject</b>
