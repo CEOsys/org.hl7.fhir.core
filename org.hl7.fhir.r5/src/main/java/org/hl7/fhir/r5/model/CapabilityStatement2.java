@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -159,6 +159,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case REFERENCEPOLICY: return "referencePolicy";
             case SEARCHINCLUDE: return "searchInclude";
             case SEARCHREVINCLUDE: return "searchRevInclude";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -177,6 +178,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case REFERENCEPOLICY: return "http://hl7.org/fhir/CodeSystem/capability-features";
             case SEARCHINCLUDE: return "http://hl7.org/fhir/CodeSystem/capability-features";
             case SEARCHREVINCLUDE: return "http://hl7.org/fhir/CodeSystem/capability-features";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -195,6 +197,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case REFERENCEPOLICY: return "";
             case SEARCHINCLUDE: return "";
             case SEARCHREVINCLUDE: return "";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -213,6 +216,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case REFERENCEPOLICY: return "referencePolicy";
             case SEARCHINCLUDE: return "searchInclude";
             case SEARCHREVINCLUDE: return "searchRevInclude";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -448,6 +452,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case RESOLVES: return "resolves";
             case ENFORCED: return "enforced";
             case LOCAL: return "local";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -469,6 +474,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case RESOLVES: return "http://hl7.org/fhir/CodeSystem/capability-features";
             case ENFORCED: return "http://hl7.org/fhir/CodeSystem/capability-features";
             case LOCAL: return "http://hl7.org/fhir/CodeSystem/capability-features";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -490,6 +496,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case RESOLVES: return "The server will attempt to resolve logical references to literal references - i.e. converting Reference.identifier to Reference.reference (if resolution fails, the server may still accept resources; see logical).";
             case ENFORCED: return "The server enforces that references have integrity - e.g. it ensures that references can always be resolved. This is typically the case for clinical record systems, but often not the case for middleware/proxy systems.";
             case LOCAL: return "The server does not support references that point to other servers.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -511,6 +518,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case RESOLVES: return "Resolves References";
             case ENFORCED: return "Reference Integrity Enforced";
             case LOCAL: return "Local References Only";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -680,6 +688,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case BATCH: return "batch";
             case SEARCHSYSTEM: return "search-system";
             case HISTORYSYSTEM: return "history-system";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -689,6 +698,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case BATCH: return "http://hl7.org/fhir/restful-interaction";
             case SEARCHSYSTEM: return "http://hl7.org/fhir/restful-interaction";
             case HISTORYSYSTEM: return "http://hl7.org/fhir/restful-interaction";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -698,6 +708,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case BATCH: return "perform a set of a separate interactions in a single http operation";
             case SEARCHSYSTEM: return "Search all resources based on some filter criteria.";
             case HISTORYSYSTEM: return "Retrieve the change history for all resources on a system.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -707,6 +718,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case BATCH: return "batch";
             case SEARCHSYSTEM: return "search-system";
             case HISTORYSYSTEM: return "history-system";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -839,6 +851,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case HISTORYTYPE: return "history-type";
             case CREATE: return "create";
             case SEARCHTYPE: return "search-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -853,6 +866,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case HISTORYTYPE: return "http://hl7.org/fhir/restful-interaction";
             case CREATE: return "http://hl7.org/fhir/restful-interaction";
             case SEARCHTYPE: return "http://hl7.org/fhir/restful-interaction";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -867,6 +881,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case HISTORYTYPE: return "Retrieve the change history for all resources of a particular type.";
             case CREATE: return "Create a new resource with a server assigned id.";
             case SEARCHTYPE: return "Search all resources of the specified type based on some filter criteria.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -881,6 +896,7 @@ public class CapabilityStatement2 extends CanonicalResource {
             case HISTORYTYPE: return "history-type";
             case CREATE: return "create";
             case SEARCHTYPE: return "search-type";
+            case NULL: return null;
             default: return "?";
           }
         }

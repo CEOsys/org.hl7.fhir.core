@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -89,6 +89,7 @@ public class Medication extends DomainResource {
             case ACTIVE: return "active";
             case INACTIVE: return "inactive";
             case ENTEREDINERROR: return "entered-in-error";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +98,7 @@ public class Medication extends DomainResource {
             case ACTIVE: return "http://hl7.org/fhir/CodeSystem/medication-status";
             case INACTIVE: return "http://hl7.org/fhir/CodeSystem/medication-status";
             case ENTEREDINERROR: return "http://hl7.org/fhir/CodeSystem/medication-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -105,6 +107,7 @@ public class Medication extends DomainResource {
             case ACTIVE: return "The medication record is current and is appropriate for reference in new instances.";
             case INACTIVE: return "The medication record is not current and is not is appropriate for reference in new instances.";
             case ENTEREDINERROR: return "The medication record was created erroneously and is not appropriated for reference in new instances.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +116,7 @@ public class Medication extends DomainResource {
             case ACTIVE: return "Active";
             case INACTIVE: return "Inactive";
             case ENTEREDINERROR: return "Entered in Error";
+            case NULL: return null;
             default: return "?";
           }
         }

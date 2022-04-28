@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -82,6 +82,7 @@ public class ConditionDefinition extends MetadataResource {
           switch (this) {
             case SENSITIVE: return "sensitive";
             case SPECIFIC: return "specific";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -89,6 +90,7 @@ public class ConditionDefinition extends MetadataResource {
           switch (this) {
             case SENSITIVE: return "http://hl7.org/fhir/condition-precondition-type";
             case SPECIFIC: return "http://hl7.org/fhir/condition-precondition-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -96,6 +98,7 @@ public class ConditionDefinition extends MetadataResource {
           switch (this) {
             case SENSITIVE: return "The observation is very sensitive for the condition, but may also indicate other conditions.";
             case SPECIFIC: return "The observation is very specific for this condition, but not particularly sensitive.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -103,6 +106,7 @@ public class ConditionDefinition extends MetadataResource {
           switch (this) {
             case SENSITIVE: return "Sensitive";
             case SPECIFIC: return "Specific";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -181,6 +185,7 @@ public class ConditionDefinition extends MetadataResource {
             case PREADMIT: return "preadmit";
             case DIFFDIAGNOSIS: return "diff-diagnosis";
             case OUTCOME: return "outcome";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -189,6 +194,7 @@ public class ConditionDefinition extends MetadataResource {
             case PREADMIT: return "http://hl7.org/fhir/condition-questionnaire-purpose";
             case DIFFDIAGNOSIS: return "http://hl7.org/fhir/condition-questionnaire-purpose";
             case OUTCOME: return "http://hl7.org/fhir/condition-questionnaire-purpose";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -197,6 +203,7 @@ public class ConditionDefinition extends MetadataResource {
             case PREADMIT: return "A pre-admit questionnaire.";
             case DIFFDIAGNOSIS: return "A questionnaire that helps with diferential diagnosis.";
             case OUTCOME: return "A questionnaire to check on outcomes for the patient.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -205,6 +212,7 @@ public class ConditionDefinition extends MetadataResource {
             case PREADMIT: return "Pre-admit";
             case DIFFDIAGNOSIS: return "Diff Diagnosis";
             case OUTCOME: return "Outcome";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -3116,7 +3124,7 @@ public class ConditionDefinition extends MetadataResource {
       return 0;
     }
     /**
-     * @return {@link #topic} (Descriptive topics related to the content of the library. Topics provide a high-level categorization of the library that can be useful for filtering and searching.)
+     * @return {@link #topic} (Descriptive topics related to the content of the condition definition. Topics provide a high-level categorization of the condition definition that can be useful for filtering and searching.)
      */
     public List<CodeableConcept> getTopic() { 
       return new ArrayList<>();

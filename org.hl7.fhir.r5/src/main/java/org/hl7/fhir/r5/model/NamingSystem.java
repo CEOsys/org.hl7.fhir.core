@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,7 +51,7 @@ import ca.uhn.fhir.model.api.annotation.Block;
  * A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
  */
 @ResourceDef(name="NamingSystem", profile="http://hl7.org/fhir/StructureDefinition/NamingSystem")
-public class NamingSystem extends CanonicalResource {
+public class NamingSystem extends MetadataResource {
 
     public enum NamingSystemIdentifierType {
         /**
@@ -103,6 +103,7 @@ public class NamingSystem extends CanonicalResource {
             case URI: return "uri";
             case V2CSMNEMONIC: return "v2csmnemonic";
             case OTHER: return "other";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +114,7 @@ public class NamingSystem extends CanonicalResource {
             case URI: return "http://hl7.org/fhir/namingsystem-identifier-type";
             case V2CSMNEMONIC: return "http://hl7.org/fhir/namingsystem-identifier-type";
             case OTHER: return "http://hl7.org/fhir/namingsystem-identifier-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -123,6 +125,7 @@ public class NamingSystem extends CanonicalResource {
             case URI: return "A uniform resource identifier (ideally a URL - uniform resource locator); e.g. http://unitsofmeasure.org.";
             case V2CSMNEMONIC: return "A short string published by HL7 for use in the V2 family of standsrds to idenfify a code system in the V12 coded data types CWE, CNE, and CF. The code values are also published by HL7 at http://www.hl7.org/Special/committees/vocab/table_0396/index.cfm";
             case OTHER: return "Some other type of unique identifier; e.g. HL7-assigned reserved string such as LN for LOINC.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -133,6 +136,7 @@ public class NamingSystem extends CanonicalResource {
             case URI: return "URI";
             case V2CSMNEMONIC: return "V2CSMNemonic";
             case OTHER: return "Other";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -229,6 +233,7 @@ public class NamingSystem extends CanonicalResource {
             case CODESYSTEM: return "codesystem";
             case IDENTIFIER: return "identifier";
             case ROOT: return "root";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -237,6 +242,7 @@ public class NamingSystem extends CanonicalResource {
             case CODESYSTEM: return "http://hl7.org/fhir/namingsystem-type";
             case IDENTIFIER: return "http://hl7.org/fhir/namingsystem-type";
             case ROOT: return "http://hl7.org/fhir/namingsystem-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -245,6 +251,7 @@ public class NamingSystem extends CanonicalResource {
             case CODESYSTEM: return "The naming system is used to define concepts and symbols to represent those concepts; e.g. UCUM, LOINC, NDC code, local lab codes, etc.";
             case IDENTIFIER: return "The naming system is used to manage identifiers (e.g. license numbers, order numbers, etc.).";
             case ROOT: return "The naming system is used as the root for other identifiers and naming systems.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -253,6 +260,7 @@ public class NamingSystem extends CanonicalResource {
             case CODESYSTEM: return "Code System";
             case IDENTIFIER: return "Identifier";
             case ROOT: return "Root";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -1845,6 +1853,311 @@ public class NamingSystem extends CanonicalResource {
     public NamingSystem setCopyright(String value) { 
       throw new Error("The resource type \"NamingSystem\" does not implement the property \"copyright\"");
     }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getApprovalDateMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #approvalDate} (The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.). This is the underlying object with id, value and extensions. The accessor "getApprovalDate" gives direct access to the value
+     */
+    public DateType getApprovalDateElement() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"approvalDate\"");
+    }
+
+    public boolean hasApprovalDateElement() { 
+      return false;
+    }
+    public boolean hasApprovalDate() {
+      return false;
+    }
+
+    /**
+     * @param value {@link #approvalDate} (The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.). This is the underlying object with id, value and extensions. The accessor "getApprovalDate" gives direct access to the value
+     */
+    public NamingSystem setApprovalDateElement(DateType value) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"approvalDate\"");
+    }
+    public Date getApprovalDate() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"approvalDate\"");
+    }
+    /**
+     * @param value The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
+     */
+    public NamingSystem setApprovalDate(Date value) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"approvalDate\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getLastReviewDateMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #lastReviewDate} (The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.). This is the underlying object with id, value and extensions. The accessor "getLastReviewDate" gives direct access to the value
+     */
+    public DateType getLastReviewDateElement() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"lastReviewDate\"");
+    }
+
+    public boolean hasLastReviewDateElement() { 
+      return false;
+    }
+    public boolean hasLastReviewDate() {
+      return false;
+    }
+
+    /**
+     * @param value {@link #lastReviewDate} (The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.). This is the underlying object with id, value and extensions. The accessor "getLastReviewDate" gives direct access to the value
+     */
+    public NamingSystem setLastReviewDateElement(DateType value) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"lastReviewDate\"");
+    }
+    public Date getLastReviewDate() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"lastReviewDate\"");
+    }
+    /**
+     * @param value The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
+     */
+    public NamingSystem setLastReviewDate(Date value) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"lastReviewDate\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getEffectivePeriodMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #effectivePeriod} (The period during which the naming system content was or is planned to be in active use.)
+     */
+    public Period getEffectivePeriod() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"effectivePeriod\"");
+    }
+    public boolean hasEffectivePeriod() { 
+      return false;
+    }
+    /**
+     * @param value {@link #effectivePeriod} (The period during which the naming system content was or is planned to be in active use.)
+     */
+    public NamingSystem setEffectivePeriod(Period value) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"effectivePeriod\"");
+    }
+
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getTopicMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #topic} (Descriptive topics related to the content of the naming system. Topics provide a high-level categorization of the naming system that can be useful for filtering and searching.)
+     */
+    public List<CodeableConcept> getTopic() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public NamingSystem setTopic(List<CodeableConcept> theTopic) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"topic\"");
+    }
+    public boolean hasTopic() { 
+      return false;
+    }
+
+    public CodeableConcept addTopic() { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"topic\"");
+    }
+    public NamingSystem addTopic(CodeableConcept t) { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"topic\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #topic}, creating it if it does not already exist {2}
+     */
+    public CodeableConcept getTopicFirstRep() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"topic\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getAuthorMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #author} (An individiual or organization primarily involved in the creation and maintenance of the naming system.)
+     */
+    public List<ContactDetail> getAuthor() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public NamingSystem setAuthor(List<ContactDetail> theAuthor) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"author\"");
+    }
+    public boolean hasAuthor() { 
+      return false;
+    }
+
+    public ContactDetail addAuthor() { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"author\"");
+    }
+    public NamingSystem addAuthor(ContactDetail t) { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"author\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #author}, creating it if it does not already exist {2}
+     */
+    public ContactDetail getAuthorFirstRep() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"author\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getEditorMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #editor} (An individual or organization primarily responsible for internal coherence of the naming system.)
+     */
+    public List<ContactDetail> getEditor() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public NamingSystem setEditor(List<ContactDetail> theEditor) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"editor\"");
+    }
+    public boolean hasEditor() { 
+      return false;
+    }
+
+    public ContactDetail addEditor() { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"editor\"");
+    }
+    public NamingSystem addEditor(ContactDetail t) { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"editor\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #editor}, creating it if it does not already exist {2}
+     */
+    public ContactDetail getEditorFirstRep() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"editor\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getReviewerMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #reviewer} (An individual or organization primarily responsible for review of some aspect of the naming system.)
+     */
+    public List<ContactDetail> getReviewer() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public NamingSystem setReviewer(List<ContactDetail> theReviewer) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"reviewer\"");
+    }
+    public boolean hasReviewer() { 
+      return false;
+    }
+
+    public ContactDetail addReviewer() { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"reviewer\"");
+    }
+    public NamingSystem addReviewer(ContactDetail t) { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"reviewer\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #reviewer}, creating it if it does not already exist {2}
+     */
+    public ContactDetail getReviewerFirstRep() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"reviewer\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getEndorserMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #endorser} (An individual or organization responsible for officially endorsing the naming system for use in some setting.)
+     */
+    public List<ContactDetail> getEndorser() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public NamingSystem setEndorser(List<ContactDetail> theEndorser) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"endorser\"");
+    }
+    public boolean hasEndorser() { 
+      return false;
+    }
+
+    public ContactDetail addEndorser() { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"endorser\"");
+    }
+    public NamingSystem addEndorser(ContactDetail t) { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"endorser\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #endorser}, creating it if it does not already exist {2}
+     */
+    public ContactDetail getEndorserFirstRep() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"endorser\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getRelatedArtifactMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #relatedArtifact} (Related artifacts such as additional documentation, justification, dependencies, bibliographic references, and predecessor and successor artifacts.)
+     */
+    public List<RelatedArtifact> getRelatedArtifact() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public NamingSystem setRelatedArtifact(List<RelatedArtifact> theRelatedArtifact) { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"relatedArtifact\"");
+    }
+    public boolean hasRelatedArtifact() { 
+      return false;
+    }
+
+    public RelatedArtifact addRelatedArtifact() { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"relatedArtifact\"");
+    }
+    public NamingSystem addRelatedArtifact(RelatedArtifact t) { //3
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"relatedArtifact\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #relatedArtifact}, creating it if it does not already exist {2}
+     */
+    public RelatedArtifact getRelatedArtifactFirstRep() { 
+      throw new Error("The resource type \"NamingSystem\" does not implement the property \"relatedArtifact\"");
+    }
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("url", "uri", "An absolute URI that is used to identify this naming system when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this naming system is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the naming system is stored on different servers.", 0, 1, url));
@@ -3044,10 +3357,6 @@ public class NamingSystem extends CanonicalResource {
     return false;
   }
 
-  public boolean supportsExperimental() {
-    return false;
-  }
-  
 // end addition
 
 }

@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -60,7 +60,7 @@ public class ResearchStudy extends DomainResource {
          */
         @Child(name = "type", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="short | public | scientific", formalDefinition="Kind of name." )
-        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/research-study-title-type")
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/research-study-label-type")
         protected CodeableConcept type;
 
         /**
@@ -834,7 +834,7 @@ public class ResearchStudy extends DomainResource {
          */
         @Child(name = "role", type = {CodeableConcept.class}, order=2, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="sponsor | sponsor-investigator | primary-investigator | collaborator | funding-source | recruitment-contact | sub-investigator | study-director | study-chair", formalDefinition="Type of association." )
-        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/research-study-party-type")
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/research-study-party-role")
         protected CodeableConcept role;
 
         /**
@@ -1479,7 +1479,7 @@ public class ResearchStudy extends DomainResource {
         /**
          * Inclusion and exclusion criteria.
          */
-        @Child(name = "eligibility", type = {Group.class}, order=3, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "eligibility", type = {Group.class, EvidenceVariable.class}, order=3, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Inclusion and exclusion criteria", formalDefinition="Inclusion and exclusion criteria." )
         protected Reference eligibility;
 
@@ -1641,7 +1641,7 @@ public class ResearchStudy extends DomainResource {
           super.listChildren(children);
           children.add(new Property("targetNumber", "unsignedInt", "Estimated total number of participants to be enrolled.", 0, 1, targetNumber));
           children.add(new Property("actualNumber", "unsignedInt", "Actual total number of participants enrolled in study.", 0, 1, actualNumber));
-          children.add(new Property("eligibility", "Reference(Group)", "Inclusion and exclusion criteria.", 0, 1, eligibility));
+          children.add(new Property("eligibility", "Reference(Group|EvidenceVariable)", "Inclusion and exclusion criteria.", 0, 1, eligibility));
           children.add(new Property("actualGroup", "Reference(Group)", "Group of participants who were enrolled in study.", 0, 1, actualGroup));
         }
 
@@ -1650,7 +1650,7 @@ public class ResearchStudy extends DomainResource {
           switch (_hash) {
           case -682948550: /*targetNumber*/  return new Property("targetNumber", "unsignedInt", "Estimated total number of participants to be enrolled.", 0, 1, targetNumber);
           case 746557047: /*actualNumber*/  return new Property("actualNumber", "unsignedInt", "Actual total number of participants enrolled in study.", 0, 1, actualNumber);
-          case -930847859: /*eligibility*/  return new Property("eligibility", "Reference(Group)", "Inclusion and exclusion criteria.", 0, 1, eligibility);
+          case -930847859: /*eligibility*/  return new Property("eligibility", "Reference(Group|EvidenceVariable)", "Inclusion and exclusion criteria.", 0, 1, eligibility);
           case 1403004305: /*actualGroup*/  return new Property("actualGroup", "Reference(Group)", "Group of participants who were enrolled in study.", 0, 1, actualGroup);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
@@ -2984,10 +2984,10 @@ public class ResearchStudy extends DomainResource {
         /**
          * Describes the nature of the location being specified.
          */
-        @Child(name = "type", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "classifier", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="registry-page|recruitment-page|contact-page", formalDefinition="Describes the nature of the location being specified." )
-        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/research-study-url-type")
-        protected CodeableConcept type;
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/artifact-url-classifier")
+        protected CodeableConcept classifier;
 
         /**
          * The location address.
@@ -2996,7 +2996,7 @@ public class ResearchStudy extends DomainResource {
         @Description(shortDefinition="The location address", formalDefinition="The location address." )
         protected UriType url;
 
-        private static final long serialVersionUID = 397204034L;
+        private static final long serialVersionUID = -1718812997L;
 
     /**
      * Constructor
@@ -3014,26 +3014,26 @@ public class ResearchStudy extends DomainResource {
       }
 
         /**
-         * @return {@link #type} (Describes the nature of the location being specified.)
+         * @return {@link #classifier} (Describes the nature of the location being specified.)
          */
-        public CodeableConcept getType() { 
-          if (this.type == null)
+        public CodeableConcept getClassifier() { 
+          if (this.classifier == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create ResearchStudyWebLocationComponent.type");
+              throw new Error("Attempt to auto-create ResearchStudyWebLocationComponent.classifier");
             else if (Configuration.doAutoCreate())
-              this.type = new CodeableConcept(); // cc
-          return this.type;
+              this.classifier = new CodeableConcept(); // cc
+          return this.classifier;
         }
 
-        public boolean hasType() { 
-          return this.type != null && !this.type.isEmpty();
+        public boolean hasClassifier() { 
+          return this.classifier != null && !this.classifier.isEmpty();
         }
 
         /**
-         * @param value {@link #type} (Describes the nature of the location being specified.)
+         * @param value {@link #classifier} (Describes the nature of the location being specified.)
          */
-        public ResearchStudyWebLocationComponent setType(CodeableConcept value) { 
-          this.type = value;
+        public ResearchStudyWebLocationComponent setClassifier(CodeableConcept value) { 
+          this.classifier = value;
           return this;
         }
 
@@ -3084,14 +3084,14 @@ public class ResearchStudy extends DomainResource {
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("type", "CodeableConcept", "Describes the nature of the location being specified.", 0, 1, type));
+          children.add(new Property("classifier", "CodeableConcept", "Describes the nature of the location being specified.", 0, 1, classifier));
           children.add(new Property("url", "uri", "The location address.", 0, 1, url));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case 3575610: /*type*/  return new Property("type", "CodeableConcept", "Describes the nature of the location being specified.", 0, 1, type);
+          case -281470431: /*classifier*/  return new Property("classifier", "CodeableConcept", "Describes the nature of the location being specified.", 0, 1, classifier);
           case 116079: /*url*/  return new Property("url", "uri", "The location address.", 0, 1, url);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
@@ -3101,7 +3101,7 @@ public class ResearchStudy extends DomainResource {
       @Override
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
-        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
+        case -281470431: /*classifier*/ return this.classifier == null ? new Base[0] : new Base[] {this.classifier}; // CodeableConcept
         case 116079: /*url*/ return this.url == null ? new Base[0] : new Base[] {this.url}; // UriType
         default: return super.getProperty(hash, name, checkValid);
         }
@@ -3111,8 +3111,8 @@ public class ResearchStudy extends DomainResource {
       @Override
       public Base setProperty(int hash, String name, Base value) throws FHIRException {
         switch (hash) {
-        case 3575610: // type
-          this.type = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+        case -281470431: // classifier
+          this.classifier = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
           return value;
         case 116079: // url
           this.url = TypeConvertor.castToUri(value); // UriType
@@ -3124,8 +3124,8 @@ public class ResearchStudy extends DomainResource {
 
       @Override
       public Base setProperty(String name, Base value) throws FHIRException {
-        if (name.equals("type")) {
-          this.type = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+        if (name.equals("classifier")) {
+          this.classifier = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
         } else if (name.equals("url")) {
           this.url = TypeConvertor.castToUri(value); // UriType
         } else
@@ -3136,7 +3136,7 @@ public class ResearchStudy extends DomainResource {
       @Override
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
-        case 3575610:  return getType();
+        case -281470431:  return getClassifier();
         case 116079:  return getUrlElement();
         default: return super.makeProperty(hash, name);
         }
@@ -3146,7 +3146,7 @@ public class ResearchStudy extends DomainResource {
       @Override
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
-        case 3575610: /*type*/ return new String[] {"CodeableConcept"};
+        case -281470431: /*classifier*/ return new String[] {"CodeableConcept"};
         case 116079: /*url*/ return new String[] {"uri"};
         default: return super.getTypesForProperty(hash, name);
         }
@@ -3155,9 +3155,9 @@ public class ResearchStudy extends DomainResource {
 
       @Override
       public Base addChild(String name) throws FHIRException {
-        if (name.equals("type")) {
-          this.type = new CodeableConcept();
-          return this.type;
+        if (name.equals("classifier")) {
+          this.classifier = new CodeableConcept();
+          return this.classifier;
         }
         else if (name.equals("url")) {
           throw new FHIRException("Cannot call addChild on a primitive type ResearchStudy.webLocation.url");
@@ -3174,7 +3174,7 @@ public class ResearchStudy extends DomainResource {
 
       public void copyValues(ResearchStudyWebLocationComponent dst) {
         super.copyValues(dst);
-        dst.type = type == null ? null : type.copy();
+        dst.classifier = classifier == null ? null : classifier.copy();
         dst.url = url == null ? null : url.copy();
       }
 
@@ -3185,7 +3185,7 @@ public class ResearchStudy extends DomainResource {
         if (!(other_ instanceof ResearchStudyWebLocationComponent))
           return false;
         ResearchStudyWebLocationComponent o = (ResearchStudyWebLocationComponent) other_;
-        return compareDeep(type, o.type, true) && compareDeep(url, o.url, true);
+        return compareDeep(classifier, o.classifier, true) && compareDeep(url, o.url, true);
       }
 
       @Override
@@ -3199,7 +3199,7 @@ public class ResearchStudy extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(type, url);
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(classifier, url);
       }
 
   public String fhirType() {
@@ -3238,10 +3238,10 @@ public class ResearchStudy extends DomainResource {
     protected StringType name;
 
     /**
-     * A short, descriptive label for the study particularly for compouter use.
+     * A short, descriptive label for the study particularly for computer use.
      */
     @Child(name = "title", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Name for this study (for computers)", formalDefinition="A short, descriptive label for the study particularly for compouter use." )
+    @Description(shortDefinition="Name for this study (for computers)", formalDefinition="A short, descriptive label for the study particularly for computer use." )
     protected StringType title;
 
     /**
@@ -3693,7 +3693,7 @@ public class ResearchStudy extends DomainResource {
     }
 
     /**
-     * @return {@link #title} (A short, descriptive label for the study particularly for compouter use.). This is the underlying object with id, value and extensions. The accessor "getTitle" gives direct access to the value
+     * @return {@link #title} (A short, descriptive label for the study particularly for computer use.). This is the underlying object with id, value and extensions. The accessor "getTitle" gives direct access to the value
      */
     public StringType getTitleElement() { 
       if (this.title == null)
@@ -3713,7 +3713,7 @@ public class ResearchStudy extends DomainResource {
     }
 
     /**
-     * @param value {@link #title} (A short, descriptive label for the study particularly for compouter use.). This is the underlying object with id, value and extensions. The accessor "getTitle" gives direct access to the value
+     * @param value {@link #title} (A short, descriptive label for the study particularly for computer use.). This is the underlying object with id, value and extensions. The accessor "getTitle" gives direct access to the value
      */
     public ResearchStudy setTitleElement(StringType value) { 
       this.title = value;
@@ -3721,14 +3721,14 @@ public class ResearchStudy extends DomainResource {
     }
 
     /**
-     * @return A short, descriptive label for the study particularly for compouter use.
+     * @return A short, descriptive label for the study particularly for computer use.
      */
     public String getTitle() { 
       return this.title == null ? null : this.title.getValue();
     }
 
     /**
-     * @param value A short, descriptive label for the study particularly for compouter use.
+     * @param value A short, descriptive label for the study particularly for computer use.
      */
     public ResearchStudy setTitle(String value) { 
       if (Utilities.noString(value))
@@ -5220,7 +5220,7 @@ public class ResearchStudy extends DomainResource {
         children.add(new Property("identifier", "Identifier", "Identifiers assigned to this research study by the sponsor or other systems.", 0, java.lang.Integer.MAX_VALUE, identifier));
         children.add(new Property("version", "string", "Business identifier for the study record.", 0, 1, version));
         children.add(new Property("name", "string", "Name for this study (computer friendly).", 0, 1, name));
-        children.add(new Property("title", "string", "A short, descriptive label for the study particularly for compouter use.", 0, 1, title));
+        children.add(new Property("title", "string", "A short, descriptive label for the study particularly for computer use.", 0, 1, title));
         children.add(new Property("label", "", "Additional names for the study.", 0, java.lang.Integer.MAX_VALUE, label));
         children.add(new Property("protocol", "Reference(PlanDefinition)", "The set of steps expected to be performed as part of the execution of the study.", 0, java.lang.Integer.MAX_VALUE, protocol));
         children.add(new Property("partOf", "Reference(ResearchStudy)", "A larger research study of which this particular study is a component or step.", 0, java.lang.Integer.MAX_VALUE, partOf));
@@ -5262,7 +5262,7 @@ public class ResearchStudy extends DomainResource {
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Identifiers assigned to this research study by the sponsor or other systems.", 0, java.lang.Integer.MAX_VALUE, identifier);
         case 351608024: /*version*/  return new Property("version", "string", "Business identifier for the study record.", 0, 1, version);
         case 3373707: /*name*/  return new Property("name", "string", "Name for this study (computer friendly).", 0, 1, name);
-        case 110371416: /*title*/  return new Property("title", "string", "A short, descriptive label for the study particularly for compouter use.", 0, 1, title);
+        case 110371416: /*title*/  return new Property("title", "string", "A short, descriptive label for the study particularly for computer use.", 0, 1, title);
         case 102727412: /*label*/  return new Property("label", "", "Additional names for the study.", 0, java.lang.Integer.MAX_VALUE, label);
         case -989163880: /*protocol*/  return new Property("protocol", "Reference(PlanDefinition)", "The set of steps expected to be performed as part of the execution of the study.", 0, java.lang.Integer.MAX_VALUE, protocol);
         case -995410646: /*partOf*/  return new Property("partOf", "Reference(ResearchStudy)", "A larger research study of which this particular study is a component or step.", 0, java.lang.Integer.MAX_VALUE, partOf);
