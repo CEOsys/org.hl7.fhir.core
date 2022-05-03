@@ -31,7 +31,7 @@ package org.hl7.fhir.r5.formats;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
+// Generated on Mon, May 2, 2022 11:54+0200 for FHIR v5.0.0-cibuild
 
 
 
@@ -3024,7 +3024,7 @@ public class RdfParser extends RdfParserBase {
       composeCoding(t, "BiologicallyDerivedProduct", "productCategory", element.getProductCategory(), -1);
     }
     if (element.hasProductCode()) {
-      composeCodeableConcept(t, "BiologicallyDerivedProduct", "productCode", element.getProductCode(), -1);
+      composeCoding(t, "BiologicallyDerivedProduct", "productCode", element.getProductCode(), -1);
     }
     for (int i = 0; i < element.getParent().size(); i++) {
       composeReference(t, "BiologicallyDerivedProduct", "parent", element.getParent().get(i), i);
@@ -3093,7 +3093,7 @@ public class RdfParser extends RdfParserBase {
     }
     composeBackboneElement(t, "property", name, element, index);
     if (element.hasType()) {
-      composeCodeableConcept(t, "BiologicallyDerivedProductPropertyComponent", "type", element.getType(), -1);
+      composeCoding(t, "BiologicallyDerivedProductPropertyComponent", "type", element.getType(), -1);
     }
     if (element.hasValue()) {
       composeType(t, "BiologicallyDerivedProductPropertyComponent", "value", element.getValue(), -1);
@@ -6845,8 +6845,14 @@ public class RdfParser extends RdfParserBase {
       t = parent.predicate("fhir:"+parentType+'.'+name);
     }
     composeDomainResource(t, "Composition", name, element, index);
+    if (element.hasUrlElement()) {
+      composeUri(t, "Composition", "url", element.getUrlElement(), -1);
+    }
     if (element.hasIdentifier()) {
       composeIdentifier(t, "Composition", "identifier", element.getIdentifier(), -1);
+    }
+    if (element.hasVersionElement()) {
+      composeString(t, "Composition", "version", element.getVersionElement(), -1);
     }
     if (element.hasStatusElement()) {
       composeEnum(t, "Composition", "status", element.getStatusElement(), -1);
@@ -6866,11 +6872,20 @@ public class RdfParser extends RdfParserBase {
     if (element.hasDateElement()) {
       composeDateTime(t, "Composition", "date", element.getDateElement(), -1);
     }
+    for (int i = 0; i < element.getUseContext().size(); i++) {
+      composeUsageContext(t, "Composition", "useContext", element.getUseContext().get(i), i);
+    }
     for (int i = 0; i < element.getAuthor().size(); i++) {
       composeReference(t, "Composition", "author", element.getAuthor().get(i), i);
     }
+    if (element.hasNameElement()) {
+      composeString(t, "Composition", "name", element.getNameElement(), -1);
+    }
     if (element.hasTitleElement()) {
       composeString(t, "Composition", "title", element.getTitleElement(), -1);
+    }
+    for (int i = 0; i < element.getNote().size(); i++) {
+      composeAnnotation(t, "Composition", "note", element.getNote().get(i), i);
     }
     if (element.hasConfidentialityElement()) {
       composeCode(t, "Composition", "confidentiality", element.getConfidentialityElement(), -1);
@@ -10169,8 +10184,8 @@ public class RdfParser extends RdfParserBase {
     if (element.hasSubject()) {
       composeReference(t, "DocumentReference", "subject", element.getSubject(), -1);
     }
-    for (int i = 0; i < element.getEncounter().size(); i++) {
-      composeReference(t, "DocumentReference", "encounter", element.getEncounter().get(i), i);
+    for (int i = 0; i < element.getContext().size(); i++) {
+      composeReference(t, "DocumentReference", "context", element.getContext().get(i), i);
     }
     for (int i = 0; i < element.getEvent().size(); i++) {
       composeCodeableReference(t, "DocumentReference", "event", element.getEvent().get(i), i);
@@ -17210,9 +17225,6 @@ public class RdfParser extends RdfParserBase {
     if (element.hasTypeElement()) {
       composeEnum(t, "MolecularSequence", "type", element.getTypeElement(), -1);
     }
-    if (element.hasCoordinateSystemElement()) {
-      composeInteger(t, "MolecularSequence", "coordinateSystem", element.getCoordinateSystemElement(), -1);
-    }
     if (element.hasPatient()) {
       composeReference(t, "MolecularSequence", "patient", element.getPatient(), -1);
     }
@@ -17225,36 +17237,21 @@ public class RdfParser extends RdfParserBase {
     if (element.hasPerformer()) {
       composeReference(t, "MolecularSequence", "performer", element.getPerformer(), -1);
     }
-    if (element.hasQuantity()) {
-      composeQuantity(t, "MolecularSequence", "quantity", element.getQuantity(), -1);
+    if (element.hasLiteralElement()) {
+      composeString(t, "MolecularSequence", "literal", element.getLiteralElement(), -1);
     }
-    if (element.hasReferenceSeq()) {
-      composeMolecularSequenceReferenceSeqComponent(t, "MolecularSequence", "referenceSeq", element.getReferenceSeq(), -1);
+    for (int i = 0; i < element.getFormatted().size(); i++) {
+      composeAttachment(t, "MolecularSequence", "formatted", element.getFormatted().get(i), i);
     }
-    for (int i = 0; i < element.getVariant().size(); i++) {
-      composeMolecularSequenceVariantComponent(t, "MolecularSequence", "variant", element.getVariant().get(i), i);
-    }
-    if (element.hasObservedSeqElement()) {
-      composeString(t, "MolecularSequence", "observedSeq", element.getObservedSeqElement(), -1);
-    }
-    for (int i = 0; i < element.getQuality().size(); i++) {
-      composeMolecularSequenceQualityComponent(t, "MolecularSequence", "quality", element.getQuality().get(i), i);
-    }
-    if (element.hasReadCoverageElement()) {
-      composeInteger(t, "MolecularSequence", "readCoverage", element.getReadCoverageElement(), -1);
-    }
-    for (int i = 0; i < element.getRepository().size(); i++) {
-      composeMolecularSequenceRepositoryComponent(t, "MolecularSequence", "repository", element.getRepository().get(i), i);
+    if (element.hasRelative()) {
+      composeMolecularSequenceRelativeComponent(t, "MolecularSequence", "relative", element.getRelative(), -1);
     }
     for (int i = 0; i < element.getPointer().size(); i++) {
       composeReference(t, "MolecularSequence", "pointer", element.getPointer().get(i), i);
     }
-    for (int i = 0; i < element.getStructureVariant().size(); i++) {
-      composeMolecularSequenceStructureVariantComponent(t, "MolecularSequence", "structureVariant", element.getStructureVariant().get(i), i);
-    }
   }
 
-  protected void composeMolecularSequenceReferenceSeqComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceReferenceSeqComponent element, int index) {
+  protected void composeMolecularSequenceRelativeComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceRelativeComponent element, int index) {
     if (element == null) 
       return;
     Complex t;
@@ -17263,37 +17260,58 @@ public class RdfParser extends RdfParserBase {
     else {
       t = parent.predicate("fhir:"+parentType+'.'+name);
     }
-    composeBackboneElement(t, "referenceSeq", name, element, index);
+    composeBackboneElement(t, "relative", name, element, index);
+    if (element.hasCoordinateSystem()) {
+      composeCodeableConcept(t, "MolecularSequenceRelativeComponent", "coordinateSystem", element.getCoordinateSystem(), -1);
+    }
+    if (element.hasReference()) {
+      composeMolecularSequenceRelativeReferenceComponent(t, "MolecularSequenceRelativeComponent", "reference", element.getReference(), -1);
+    }
+    for (int i = 0; i < element.getEdit().size(); i++) {
+      composeMolecularSequenceRelativeEditComponent(t, "MolecularSequenceRelativeComponent", "edit", element.getEdit().get(i), i);
+    }
+  }
+
+  protected void composeMolecularSequenceRelativeReferenceComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceRelativeReferenceComponent element, int index) {
+    if (element == null) 
+      return;
+    Complex t;
+    if (Utilities.noString(parentType))
+      t = parent;
+    else {
+      t = parent.predicate("fhir:"+parentType+'.'+name);
+    }
+    composeBackboneElement(t, "reference", name, element, index);
     if (element.hasChromosome()) {
-      composeCodeableConcept(t, "MolecularSequenceReferenceSeqComponent", "chromosome", element.getChromosome(), -1);
+      composeCodeableConcept(t, "MolecularSequenceRelativeReferenceComponent", "chromosome", element.getChromosome(), -1);
     }
     if (element.hasGenomeBuildElement()) {
-      composeString(t, "MolecularSequenceReferenceSeqComponent", "genomeBuild", element.getGenomeBuildElement(), -1);
+      composeString(t, "MolecularSequenceRelativeReferenceComponent", "genomeBuild", element.getGenomeBuildElement(), -1);
     }
     if (element.hasOrientationElement()) {
-      composeEnum(t, "MolecularSequenceReferenceSeqComponent", "orientation", element.getOrientationElement(), -1);
+      composeEnum(t, "MolecularSequenceRelativeReferenceComponent", "orientation", element.getOrientationElement(), -1);
     }
     if (element.hasReferenceSeqId()) {
-      composeCodeableConcept(t, "MolecularSequenceReferenceSeqComponent", "referenceSeqId", element.getReferenceSeqId(), -1);
+      composeCodeableConcept(t, "MolecularSequenceRelativeReferenceComponent", "referenceSeqId", element.getReferenceSeqId(), -1);
     }
     if (element.hasReferenceSeqPointer()) {
-      composeReference(t, "MolecularSequenceReferenceSeqComponent", "referenceSeqPointer", element.getReferenceSeqPointer(), -1);
+      composeReference(t, "MolecularSequenceRelativeReferenceComponent", "referenceSeqPointer", element.getReferenceSeqPointer(), -1);
     }
     if (element.hasReferenceSeqStringElement()) {
-      composeString(t, "MolecularSequenceReferenceSeqComponent", "referenceSeqString", element.getReferenceSeqStringElement(), -1);
+      composeString(t, "MolecularSequenceRelativeReferenceComponent", "referenceSeqString", element.getReferenceSeqStringElement(), -1);
     }
     if (element.hasStrandElement()) {
-      composeEnum(t, "MolecularSequenceReferenceSeqComponent", "strand", element.getStrandElement(), -1);
+      composeEnum(t, "MolecularSequenceRelativeReferenceComponent", "strand", element.getStrandElement(), -1);
     }
     if (element.hasWindowStartElement()) {
-      composeInteger(t, "MolecularSequenceReferenceSeqComponent", "windowStart", element.getWindowStartElement(), -1);
+      composeInteger(t, "MolecularSequenceRelativeReferenceComponent", "windowStart", element.getWindowStartElement(), -1);
     }
     if (element.hasWindowEndElement()) {
-      composeInteger(t, "MolecularSequenceReferenceSeqComponent", "windowEnd", element.getWindowEndElement(), -1);
+      composeInteger(t, "MolecularSequenceRelativeReferenceComponent", "windowEnd", element.getWindowEndElement(), -1);
     }
   }
 
-  protected void composeMolecularSequenceVariantComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceVariantComponent element, int index) {
+  protected void composeMolecularSequenceRelativeEditComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceRelativeEditComponent element, int index) {
     if (element == null) 
       return;
     Complex t;
@@ -17302,207 +17320,21 @@ public class RdfParser extends RdfParserBase {
     else {
       t = parent.predicate("fhir:"+parentType+'.'+name);
     }
-    composeBackboneElement(t, "variant", name, element, index);
+    composeBackboneElement(t, "edit", name, element, index);
     if (element.hasStartElement()) {
-      composeInteger(t, "MolecularSequenceVariantComponent", "start", element.getStartElement(), -1);
+      composeInteger(t, "MolecularSequenceRelativeEditComponent", "start", element.getStartElement(), -1);
     }
     if (element.hasEndElement()) {
-      composeInteger(t, "MolecularSequenceVariantComponent", "end", element.getEndElement(), -1);
+      composeInteger(t, "MolecularSequenceRelativeEditComponent", "end", element.getEndElement(), -1);
     }
     if (element.hasObservedAlleleElement()) {
-      composeString(t, "MolecularSequenceVariantComponent", "observedAllele", element.getObservedAlleleElement(), -1);
+      composeString(t, "MolecularSequenceRelativeEditComponent", "observedAllele", element.getObservedAlleleElement(), -1);
     }
     if (element.hasReferenceAlleleElement()) {
-      composeString(t, "MolecularSequenceVariantComponent", "referenceAllele", element.getReferenceAlleleElement(), -1);
+      composeString(t, "MolecularSequenceRelativeEditComponent", "referenceAllele", element.getReferenceAlleleElement(), -1);
     }
     if (element.hasCigarElement()) {
-      composeString(t, "MolecularSequenceVariantComponent", "cigar", element.getCigarElement(), -1);
-    }
-    if (element.hasVariantPointer()) {
-      composeReference(t, "MolecularSequenceVariantComponent", "variantPointer", element.getVariantPointer(), -1);
-    }
-  }
-
-  protected void composeMolecularSequenceQualityComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceQualityComponent element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeBackboneElement(t, "quality", name, element, index);
-    if (element.hasTypeElement()) {
-      composeEnum(t, "MolecularSequenceQualityComponent", "type", element.getTypeElement(), -1);
-    }
-    if (element.hasStandardSequence()) {
-      composeCodeableConcept(t, "MolecularSequenceQualityComponent", "standardSequence", element.getStandardSequence(), -1);
-    }
-    if (element.hasStartElement()) {
-      composeInteger(t, "MolecularSequenceQualityComponent", "start", element.getStartElement(), -1);
-    }
-    if (element.hasEndElement()) {
-      composeInteger(t, "MolecularSequenceQualityComponent", "end", element.getEndElement(), -1);
-    }
-    if (element.hasScore()) {
-      composeQuantity(t, "MolecularSequenceQualityComponent", "score", element.getScore(), -1);
-    }
-    if (element.hasMethod()) {
-      composeCodeableConcept(t, "MolecularSequenceQualityComponent", "method", element.getMethod(), -1);
-    }
-    if (element.hasTruthTPElement()) {
-      composeDecimal(t, "MolecularSequenceQualityComponent", "truthTP", element.getTruthTPElement(), -1);
-    }
-    if (element.hasQueryTPElement()) {
-      composeDecimal(t, "MolecularSequenceQualityComponent", "queryTP", element.getQueryTPElement(), -1);
-    }
-    if (element.hasTruthFNElement()) {
-      composeDecimal(t, "MolecularSequenceQualityComponent", "truthFN", element.getTruthFNElement(), -1);
-    }
-    if (element.hasQueryFPElement()) {
-      composeDecimal(t, "MolecularSequenceQualityComponent", "queryFP", element.getQueryFPElement(), -1);
-    }
-    if (element.hasGtFPElement()) {
-      composeDecimal(t, "MolecularSequenceQualityComponent", "gtFP", element.getGtFPElement(), -1);
-    }
-    if (element.hasPrecisionElement()) {
-      composeDecimal(t, "MolecularSequenceQualityComponent", "precision", element.getPrecisionElement(), -1);
-    }
-    if (element.hasRecallElement()) {
-      composeDecimal(t, "MolecularSequenceQualityComponent", "recall", element.getRecallElement(), -1);
-    }
-    if (element.hasFScoreElement()) {
-      composeDecimal(t, "MolecularSequenceQualityComponent", "fScore", element.getFScoreElement(), -1);
-    }
-    if (element.hasRoc()) {
-      composeMolecularSequenceQualityRocComponent(t, "MolecularSequenceQualityComponent", "roc", element.getRoc(), -1);
-    }
-  }
-
-  protected void composeMolecularSequenceQualityRocComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceQualityRocComponent element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeBackboneElement(t, "roc", name, element, index);
-    for (int i = 0; i < element.getScore().size(); i++) {
-      composeInteger(t, "MolecularSequenceQualityRocComponent", "score", element.getScore().get(i), i);
-    }
-    for (int i = 0; i < element.getNumTP().size(); i++) {
-      composeInteger(t, "MolecularSequenceQualityRocComponent", "numTP", element.getNumTP().get(i), i);
-    }
-    for (int i = 0; i < element.getNumFP().size(); i++) {
-      composeInteger(t, "MolecularSequenceQualityRocComponent", "numFP", element.getNumFP().get(i), i);
-    }
-    for (int i = 0; i < element.getNumFN().size(); i++) {
-      composeInteger(t, "MolecularSequenceQualityRocComponent", "numFN", element.getNumFN().get(i), i);
-    }
-    for (int i = 0; i < element.getPrecision().size(); i++) {
-      composeDecimal(t, "MolecularSequenceQualityRocComponent", "precision", element.getPrecision().get(i), i);
-    }
-    for (int i = 0; i < element.getSensitivity().size(); i++) {
-      composeDecimal(t, "MolecularSequenceQualityRocComponent", "sensitivity", element.getSensitivity().get(i), i);
-    }
-    for (int i = 0; i < element.getFMeasure().size(); i++) {
-      composeDecimal(t, "MolecularSequenceQualityRocComponent", "fMeasure", element.getFMeasure().get(i), i);
-    }
-  }
-
-  protected void composeMolecularSequenceRepositoryComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceRepositoryComponent element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeBackboneElement(t, "repository", name, element, index);
-    if (element.hasTypeElement()) {
-      composeEnum(t, "MolecularSequenceRepositoryComponent", "type", element.getTypeElement(), -1);
-    }
-    if (element.hasUrlElement()) {
-      composeUri(t, "MolecularSequenceRepositoryComponent", "url", element.getUrlElement(), -1);
-    }
-    if (element.hasNameElement()) {
-      composeString(t, "MolecularSequenceRepositoryComponent", "name", element.getNameElement(), -1);
-    }
-    if (element.hasDatasetIdElement()) {
-      composeString(t, "MolecularSequenceRepositoryComponent", "datasetId", element.getDatasetIdElement(), -1);
-    }
-    if (element.hasVariantsetIdElement()) {
-      composeString(t, "MolecularSequenceRepositoryComponent", "variantsetId", element.getVariantsetIdElement(), -1);
-    }
-    if (element.hasReadsetIdElement()) {
-      composeString(t, "MolecularSequenceRepositoryComponent", "readsetId", element.getReadsetIdElement(), -1);
-    }
-  }
-
-  protected void composeMolecularSequenceStructureVariantComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceStructureVariantComponent element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeBackboneElement(t, "structureVariant", name, element, index);
-    if (element.hasVariantType()) {
-      composeCodeableConcept(t, "MolecularSequenceStructureVariantComponent", "variantType", element.getVariantType(), -1);
-    }
-    if (element.hasExactElement()) {
-      composeBoolean(t, "MolecularSequenceStructureVariantComponent", "exact", element.getExactElement(), -1);
-    }
-    if (element.hasLengthElement()) {
-      composeInteger(t, "MolecularSequenceStructureVariantComponent", "length", element.getLengthElement(), -1);
-    }
-    if (element.hasOuter()) {
-      composeMolecularSequenceStructureVariantOuterComponent(t, "MolecularSequenceStructureVariantComponent", "outer", element.getOuter(), -1);
-    }
-    if (element.hasInner()) {
-      composeMolecularSequenceStructureVariantInnerComponent(t, "MolecularSequenceStructureVariantComponent", "inner", element.getInner(), -1);
-    }
-  }
-
-  protected void composeMolecularSequenceStructureVariantOuterComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceStructureVariantOuterComponent element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeBackboneElement(t, "outer", name, element, index);
-    if (element.hasStartElement()) {
-      composeInteger(t, "MolecularSequenceStructureVariantOuterComponent", "start", element.getStartElement(), -1);
-    }
-    if (element.hasEndElement()) {
-      composeInteger(t, "MolecularSequenceStructureVariantOuterComponent", "end", element.getEndElement(), -1);
-    }
-  }
-
-  protected void composeMolecularSequenceStructureVariantInnerComponent(Complex parent, String parentType, String name, MolecularSequence.MolecularSequenceStructureVariantInnerComponent element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeBackboneElement(t, "inner", name, element, index);
-    if (element.hasStartElement()) {
-      composeInteger(t, "MolecularSequenceStructureVariantInnerComponent", "start", element.getStartElement(), -1);
-    }
-    if (element.hasEndElement()) {
-      composeInteger(t, "MolecularSequenceStructureVariantInnerComponent", "end", element.getEndElement(), -1);
+      composeString(t, "MolecularSequenceRelativeEditComponent", "cigar", element.getCigarElement(), -1);
     }
   }
 
@@ -18148,6 +17980,9 @@ public class RdfParser extends RdfParserBase {
     }
     if (element.hasBodySite()) {
       composeCodeableConcept(t, "Observation", "bodySite", element.getBodySite(), -1);
+    }
+    if (element.hasBodyStructure()) {
+      composeReference(t, "Observation", "bodyStructure", element.getBodyStructure(), -1);
     }
     if (element.hasMethod()) {
       composeCodeableConcept(t, "Observation", "method", element.getMethod(), -1);
@@ -21118,6 +20953,9 @@ public class RdfParser extends RdfParserBase {
     }
     if (element.hasRole()) {
       composeCodeableConcept(t, "ResearchStudyAssociatedPartyComponent", "role", element.getRole(), -1);
+    }
+    for (int i = 0; i < element.getPeriod().size(); i++) {
+      composePeriod(t, "ResearchStudyAssociatedPartyComponent", "period", element.getPeriod().get(i), i);
     }
     for (int i = 0; i < element.getClassifier().size(); i++) {
       composeCodeableConcept(t, "ResearchStudyAssociatedPartyComponent", "classifier", element.getClassifier().get(i), i);

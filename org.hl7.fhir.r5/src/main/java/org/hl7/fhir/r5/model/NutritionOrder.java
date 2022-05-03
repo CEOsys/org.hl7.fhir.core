@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
+// Generated on Mon, May 2, 2022 11:54+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -3829,7 +3829,6 @@ public class NutritionOrder extends DomainResource {
 * [Composition](composition.html): Context of the Composition
 * [DeviceRequest](devicerequest.html): Encounter during which request was created
 * [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made
-* [DocumentReference](documentreference.html): Context of the document  content
 * [Flag](flag.html): Alert relevant during encounter
 * [List](list.html): Context in which list created
 * [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier
@@ -3840,10 +3839,10 @@ public class NutritionOrder extends DomainResource {
 * [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier
 </b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | DocumentReference.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter</b><br>
+   * Path: <b>Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="encounter", path="Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | DocumentReference.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter", description="Multiple Resources: \r\n\r\n* [Composition](composition.html): Context of the Composition\r\n* [DeviceRequest](devicerequest.html): Encounter during which request was created\r\n* [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made\r\n* [DocumentReference](documentreference.html): Context of the document  content\r\n* [Flag](flag.html): Alert relevant during encounter\r\n* [List](list.html): Context in which list created\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier\r\n* [Observation](observation.html): Encounter related to the observation\r\n* [Procedure](procedure.html): The Encounter during which this Procedure was created\r\n* [RiskAssessment](riskassessment.html): Where was assessment performed?\r\n* [ServiceRequest](servicerequest.html): An encounter in which this request is made\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier\r\n", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Encounter") }, target={Encounter.class } )
+  @SearchParamDefinition(name="encounter", path="Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter", description="Multiple Resources: \r\n\r\n* [Composition](composition.html): Context of the Composition\r\n* [DeviceRequest](devicerequest.html): Encounter during which request was created\r\n* [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made\r\n* [Flag](flag.html): Alert relevant during encounter\r\n* [List](list.html): Context in which list created\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier\r\n* [Observation](observation.html): Encounter related to the observation\r\n* [Procedure](procedure.html): The Encounter during which this Procedure was created\r\n* [RiskAssessment](riskassessment.html): Where was assessment performed?\r\n* [ServiceRequest](servicerequest.html): An encounter in which this request is made\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier\r\n", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Encounter") }, target={Encounter.class } )
   public static final String SP_ENCOUNTER = "encounter";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>encounter</b>
@@ -3853,7 +3852,6 @@ public class NutritionOrder extends DomainResource {
 * [Composition](composition.html): Context of the Composition
 * [DeviceRequest](devicerequest.html): Encounter during which request was created
 * [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made
-* [DocumentReference](documentreference.html): Context of the document  content
 * [Flag](flag.html): Alert relevant during encounter
 * [List](list.html): Context in which list created
 * [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier
@@ -3864,7 +3862,7 @@ public class NutritionOrder extends DomainResource {
 * [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier
 </b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | DocumentReference.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter</b><br>
+   * Path: <b>Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ENCOUNTER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ENCOUNTER);

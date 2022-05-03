@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
+// Generated on Mon, May 2, 2022 11:54+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -1760,9 +1760,16 @@ Reflex | Repeat | Re-run.
     protected CodeableConcept bodySite;
 
     /**
+     * Indicates the body structure on the subject's body where the observation was made (i.e. the target site).
+     */
+    @Child(name = "bodyStructure", type = {BodyStructure.class}, order=19, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Observed body structure", formalDefinition="Indicates the body structure on the subject's body where the observation was made (i.e. the target site)." )
+    protected Reference bodyStructure;
+
+    /**
      * Indicates the mechanism used to perform the observation.
      */
-    @Child(name = "method", type = {CodeableConcept.class}, order=19, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "method", type = {CodeableConcept.class}, order=20, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="How it was done", formalDefinition="Indicates the mechanism used to perform the observation." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/observation-methods")
     protected CodeableConcept method;
@@ -1770,46 +1777,46 @@ Reflex | Repeat | Re-run.
     /**
      * The specimen that was used when this observation was made.
      */
-    @Child(name = "specimen", type = {Specimen.class}, order=20, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "specimen", type = {Specimen.class}, order=21, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Specimen used for this observation", formalDefinition="The specimen that was used when this observation was made." )
     protected Reference specimen;
 
     /**
      * The device used to generate the observation data.
      */
-    @Child(name = "device", type = {Device.class, DeviceMetric.class}, order=21, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "device", type = {Device.class, DeviceMetric.class}, order=22, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="(Measurement) Device", formalDefinition="The device used to generate the observation data." )
     protected Reference device;
 
     /**
      * Guidance on how to interpret the value by comparison to a normal or recommended range.  Multiple reference ranges are interpreted as an "OR".   In other words, to represent two distinct target populations, two `referenceRange` elements would be used.
      */
-    @Child(name = "referenceRange", type = {}, order=22, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "referenceRange", type = {}, order=23, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Provides guide for interpretation", formalDefinition="Guidance on how to interpret the value by comparison to a normal or recommended range.  Multiple reference ranges are interpreted as an \"OR\".   In other words, to represent two distinct target populations, two `referenceRange` elements would be used." )
     protected List<ObservationReferenceRangeComponent> referenceRange;
 
     /**
      * This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.
      */
-    @Child(name = "hasMember", type = {Observation.class, QuestionnaireResponse.class, MolecularSequence.class}, order=23, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "hasMember", type = {Observation.class, QuestionnaireResponse.class, MolecularSequence.class}, order=24, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Related resource that belongs to the Observation group", formalDefinition="This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group." )
     protected List<Reference> hasMember;
 
     /**
      * The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.
      */
-    @Child(name = "derivedFrom", type = {DocumentReference.class, ImagingStudy.class, QuestionnaireResponse.class, Observation.class, MolecularSequence.class}, order=24, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="Related measurements the observation is made from", formalDefinition="The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image." )
+    @Child(name = "derivedFrom", type = {DocumentReference.class, ImagingStudy.class, ImagingSelection.class, QuestionnaireResponse.class, Observation.class, MolecularSequence.class}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Related resource from which the observation is made", formalDefinition="The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image." )
     protected List<Reference> derivedFrom;
 
     /**
      * Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.
      */
-    @Child(name = "component", type = {}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "component", type = {}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Component results", formalDefinition="Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations." )
     protected List<ObservationComponentComponent> component;
 
-    private static final long serialVersionUID = -1309488030L;
+    private static final long serialVersionUID = -44103660L;
 
   /**
    * Constructor
@@ -2852,6 +2859,30 @@ Reflex | Repeat | Re-run.
     }
 
     /**
+     * @return {@link #bodyStructure} (Indicates the body structure on the subject's body where the observation was made (i.e. the target site).)
+     */
+    public Reference getBodyStructure() { 
+      if (this.bodyStructure == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Observation.bodyStructure");
+        else if (Configuration.doAutoCreate())
+          this.bodyStructure = new Reference(); // cc
+      return this.bodyStructure;
+    }
+
+    public boolean hasBodyStructure() { 
+      return this.bodyStructure != null && !this.bodyStructure.isEmpty();
+    }
+
+    /**
+     * @param value {@link #bodyStructure} (Indicates the body structure on the subject's body where the observation was made (i.e. the target site).)
+     */
+    public Observation setBodyStructure(Reference value) { 
+      this.bodyStructure = value;
+      return this;
+    }
+
+    /**
      * @return {@link #method} (Indicates the mechanism used to perform the observation.)
      */
     public CodeableConcept getMethod() { 
@@ -3156,12 +3187,13 @@ Reflex | Repeat | Re-run.
         children.add(new Property("interpretation", "CodeableConcept", "A categorical assessment of an observation value.  For example, high, low, normal.", 0, java.lang.Integer.MAX_VALUE, interpretation));
         children.add(new Property("note", "Annotation", "Comments about the observation or the results.", 0, java.lang.Integer.MAX_VALUE, note));
         children.add(new Property("bodySite", "CodeableConcept", "Indicates the site on the subject's body where the observation was made (i.e. the target site).", 0, 1, bodySite));
+        children.add(new Property("bodyStructure", "Reference(BodyStructure)", "Indicates the body structure on the subject's body where the observation was made (i.e. the target site).", 0, 1, bodyStructure));
         children.add(new Property("method", "CodeableConcept", "Indicates the mechanism used to perform the observation.", 0, 1, method));
         children.add(new Property("specimen", "Reference(Specimen)", "The specimen that was used when this observation was made.", 0, 1, specimen));
         children.add(new Property("device", "Reference(Device|DeviceMetric)", "The device used to generate the observation data.", 0, 1, device));
         children.add(new Property("referenceRange", "", "Guidance on how to interpret the value by comparison to a normal or recommended range.  Multiple reference ranges are interpreted as an \"OR\".   In other words, to represent two distinct target populations, two `referenceRange` elements would be used.", 0, java.lang.Integer.MAX_VALUE, referenceRange));
         children.add(new Property("hasMember", "Reference(Observation|QuestionnaireResponse|MolecularSequence)", "This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.", 0, java.lang.Integer.MAX_VALUE, hasMember));
-        children.add(new Property("derivedFrom", "Reference(DocumentReference|ImagingStudy|QuestionnaireResponse|Observation|MolecularSequence)", "The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.", 0, java.lang.Integer.MAX_VALUE, derivedFrom));
+        children.add(new Property("derivedFrom", "Reference(DocumentReference|ImagingStudy|ImagingSelection|QuestionnaireResponse|Observation|MolecularSequence)", "The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.", 0, java.lang.Integer.MAX_VALUE, derivedFrom));
         children.add(new Property("component", "", "Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.", 0, java.lang.Integer.MAX_VALUE, component));
       }
 
@@ -3208,12 +3240,13 @@ Reflex | Repeat | Re-run.
         case -297950712: /*interpretation*/  return new Property("interpretation", "CodeableConcept", "A categorical assessment of an observation value.  For example, high, low, normal.", 0, java.lang.Integer.MAX_VALUE, interpretation);
         case 3387378: /*note*/  return new Property("note", "Annotation", "Comments about the observation or the results.", 0, java.lang.Integer.MAX_VALUE, note);
         case 1702620169: /*bodySite*/  return new Property("bodySite", "CodeableConcept", "Indicates the site on the subject's body where the observation was made (i.e. the target site).", 0, 1, bodySite);
+        case -1001731599: /*bodyStructure*/  return new Property("bodyStructure", "Reference(BodyStructure)", "Indicates the body structure on the subject's body where the observation was made (i.e. the target site).", 0, 1, bodyStructure);
         case -1077554975: /*method*/  return new Property("method", "CodeableConcept", "Indicates the mechanism used to perform the observation.", 0, 1, method);
         case -2132868344: /*specimen*/  return new Property("specimen", "Reference(Specimen)", "The specimen that was used when this observation was made.", 0, 1, specimen);
         case -1335157162: /*device*/  return new Property("device", "Reference(Device|DeviceMetric)", "The device used to generate the observation data.", 0, 1, device);
         case -1912545102: /*referenceRange*/  return new Property("referenceRange", "", "Guidance on how to interpret the value by comparison to a normal or recommended range.  Multiple reference ranges are interpreted as an \"OR\".   In other words, to represent two distinct target populations, two `referenceRange` elements would be used.", 0, java.lang.Integer.MAX_VALUE, referenceRange);
         case -458019372: /*hasMember*/  return new Property("hasMember", "Reference(Observation|QuestionnaireResponse|MolecularSequence)", "This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.", 0, java.lang.Integer.MAX_VALUE, hasMember);
-        case 1077922663: /*derivedFrom*/  return new Property("derivedFrom", "Reference(DocumentReference|ImagingStudy|QuestionnaireResponse|Observation|MolecularSequence)", "The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.", 0, java.lang.Integer.MAX_VALUE, derivedFrom);
+        case 1077922663: /*derivedFrom*/  return new Property("derivedFrom", "Reference(DocumentReference|ImagingStudy|ImagingSelection|QuestionnaireResponse|Observation|MolecularSequence)", "The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.", 0, java.lang.Integer.MAX_VALUE, derivedFrom);
         case -1399907075: /*component*/  return new Property("component", "", "Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.", 0, java.lang.Integer.MAX_VALUE, component);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
@@ -3242,6 +3275,7 @@ Reflex | Repeat | Re-run.
         case -297950712: /*interpretation*/ return this.interpretation == null ? new Base[0] : this.interpretation.toArray(new Base[this.interpretation.size()]); // CodeableConcept
         case 3387378: /*note*/ return this.note == null ? new Base[0] : this.note.toArray(new Base[this.note.size()]); // Annotation
         case 1702620169: /*bodySite*/ return this.bodySite == null ? new Base[0] : new Base[] {this.bodySite}; // CodeableConcept
+        case -1001731599: /*bodyStructure*/ return this.bodyStructure == null ? new Base[0] : new Base[] {this.bodyStructure}; // Reference
         case -1077554975: /*method*/ return this.method == null ? new Base[0] : new Base[] {this.method}; // CodeableConcept
         case -2132868344: /*specimen*/ return this.specimen == null ? new Base[0] : new Base[] {this.specimen}; // Reference
         case -1335157162: /*device*/ return this.device == null ? new Base[0] : new Base[] {this.device}; // Reference
@@ -3315,6 +3349,9 @@ Reflex | Repeat | Re-run.
         case 1702620169: // bodySite
           this.bodySite = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
           return value;
+        case -1001731599: // bodyStructure
+          this.bodyStructure = TypeConvertor.castToReference(value); // Reference
+          return value;
         case -1077554975: // method
           this.method = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
           return value;
@@ -3382,6 +3419,8 @@ Reflex | Repeat | Re-run.
           this.getNote().add(TypeConvertor.castToAnnotation(value));
         } else if (name.equals("bodySite")) {
           this.bodySite = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("bodyStructure")) {
+          this.bodyStructure = TypeConvertor.castToReference(value); // Reference
         } else if (name.equals("method")) {
           this.method = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
         } else if (name.equals("specimen")) {
@@ -3426,6 +3465,7 @@ Reflex | Repeat | Re-run.
         case -297950712:  return addInterpretation(); 
         case 3387378:  return addNote(); 
         case 1702620169:  return getBodySite();
+        case -1001731599:  return getBodyStructure();
         case -1077554975:  return getMethod();
         case -2132868344:  return getSpecimen();
         case -1335157162:  return getDevice();
@@ -3460,6 +3500,7 @@ Reflex | Repeat | Re-run.
         case -297950712: /*interpretation*/ return new String[] {"CodeableConcept"};
         case 3387378: /*note*/ return new String[] {"Annotation"};
         case 1702620169: /*bodySite*/ return new String[] {"CodeableConcept"};
+        case -1001731599: /*bodyStructure*/ return new String[] {"Reference"};
         case -1077554975: /*method*/ return new String[] {"CodeableConcept"};
         case -2132868344: /*specimen*/ return new String[] {"Reference"};
         case -1335157162: /*device*/ return new String[] {"Reference"};
@@ -3599,6 +3640,10 @@ Reflex | Repeat | Re-run.
           this.bodySite = new CodeableConcept();
           return this.bodySite;
         }
+        else if (name.equals("bodyStructure")) {
+          this.bodyStructure = new Reference();
+          return this.bodyStructure;
+        }
         else if (name.equals("method")) {
           this.method = new CodeableConcept();
           return this.method;
@@ -3695,6 +3740,7 @@ Reflex | Repeat | Re-run.
             dst.note.add(i.copy());
         };
         dst.bodySite = bodySite == null ? null : bodySite.copy();
+        dst.bodyStructure = bodyStructure == null ? null : bodyStructure.copy();
         dst.method = method == null ? null : method.copy();
         dst.specimen = specimen == null ? null : specimen.copy();
         dst.device = device == null ? null : device.copy();
@@ -3738,8 +3784,8 @@ Reflex | Repeat | Re-run.
            && compareDeep(effective, o.effective, true) && compareDeep(issued, o.issued, true) && compareDeep(performer, o.performer, true)
            && compareDeep(value, o.value, true) && compareDeep(dataAbsentReason, o.dataAbsentReason, true)
            && compareDeep(interpretation, o.interpretation, true) && compareDeep(note, o.note, true) && compareDeep(bodySite, o.bodySite, true)
-           && compareDeep(method, o.method, true) && compareDeep(specimen, o.specimen, true) && compareDeep(device, o.device, true)
-           && compareDeep(referenceRange, o.referenceRange, true) && compareDeep(hasMember, o.hasMember, true)
+           && compareDeep(bodyStructure, o.bodyStructure, true) && compareDeep(method, o.method, true) && compareDeep(specimen, o.specimen, true)
+           && compareDeep(device, o.device, true) && compareDeep(referenceRange, o.referenceRange, true) && compareDeep(hasMember, o.hasMember, true)
            && compareDeep(derivedFrom, o.derivedFrom, true) && compareDeep(component, o.component, true);
       }
 
@@ -3756,8 +3802,9 @@ Reflex | Repeat | Re-run.
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, instantiates, basedOn
           , triggeredBy, partOf, status, category, code, subject, focus, encounter, effective
-          , issued, performer, value, dataAbsentReason, interpretation, note, bodySite, method
-          , specimen, device, referenceRange, hasMember, derivedFrom, component);
+          , issued, performer, value, dataAbsentReason, interpretation, note, bodySite, bodyStructure
+          , method, specimen, device, referenceRange, hasMember, derivedFrom, component
+          );
       }
 
   @Override
@@ -4159,7 +4206,7 @@ Reflex | Repeat | Re-run.
    * Path: <b>Observation.derivedFrom</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="derived-from", path="Observation.derivedFrom", description="Related measurements the observation is made from", type="reference", target={DocumentReference.class, ImagingStudy.class, MolecularSequence.class, Observation.class, QuestionnaireResponse.class } )
+  @SearchParamDefinition(name="derived-from", path="Observation.derivedFrom", description="Related measurements the observation is made from", type="reference", target={DocumentReference.class, ImagingSelection.class, ImagingStudy.class, MolecularSequence.class, Observation.class, QuestionnaireResponse.class } )
   public static final String SP_DERIVED_FROM = "derived-from";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>derived-from</b>
@@ -4597,7 +4644,6 @@ Reflex | Repeat | Re-run.
 * [Composition](composition.html): Context of the Composition
 * [DeviceRequest](devicerequest.html): Encounter during which request was created
 * [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made
-* [DocumentReference](documentreference.html): Context of the document  content
 * [Flag](flag.html): Alert relevant during encounter
 * [List](list.html): Context in which list created
 * [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier
@@ -4608,10 +4654,10 @@ Reflex | Repeat | Re-run.
 * [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier
 </b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | DocumentReference.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter</b><br>
+   * Path: <b>Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="encounter", path="Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | DocumentReference.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter", description="Multiple Resources: \r\n\r\n* [Composition](composition.html): Context of the Composition\r\n* [DeviceRequest](devicerequest.html): Encounter during which request was created\r\n* [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made\r\n* [DocumentReference](documentreference.html): Context of the document  content\r\n* [Flag](flag.html): Alert relevant during encounter\r\n* [List](list.html): Context in which list created\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier\r\n* [Observation](observation.html): Encounter related to the observation\r\n* [Procedure](procedure.html): The Encounter during which this Procedure was created\r\n* [RiskAssessment](riskassessment.html): Where was assessment performed?\r\n* [ServiceRequest](servicerequest.html): An encounter in which this request is made\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier\r\n", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Encounter") }, target={Encounter.class } )
+  @SearchParamDefinition(name="encounter", path="Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter", description="Multiple Resources: \r\n\r\n* [Composition](composition.html): Context of the Composition\r\n* [DeviceRequest](devicerequest.html): Encounter during which request was created\r\n* [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made\r\n* [Flag](flag.html): Alert relevant during encounter\r\n* [List](list.html): Context in which list created\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier\r\n* [Observation](observation.html): Encounter related to the observation\r\n* [Procedure](procedure.html): The Encounter during which this Procedure was created\r\n* [RiskAssessment](riskassessment.html): Where was assessment performed?\r\n* [ServiceRequest](servicerequest.html): An encounter in which this request is made\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier\r\n", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Encounter") }, target={Encounter.class } )
   public static final String SP_ENCOUNTER = "encounter";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>encounter</b>
@@ -4621,7 +4667,6 @@ Reflex | Repeat | Re-run.
 * [Composition](composition.html): Context of the Composition
 * [DeviceRequest](devicerequest.html): Encounter during which request was created
 * [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made
-* [DocumentReference](documentreference.html): Context of the document  content
 * [Flag](flag.html): Alert relevant during encounter
 * [List](list.html): Context in which list created
 * [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier
@@ -4632,7 +4677,7 @@ Reflex | Repeat | Re-run.
 * [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier
 </b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | DocumentReference.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter</b><br>
+   * Path: <b>Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ENCOUNTER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ENCOUNTER);

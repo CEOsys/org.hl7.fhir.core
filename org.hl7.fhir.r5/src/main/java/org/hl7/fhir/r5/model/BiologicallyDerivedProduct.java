@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
+// Generated on Mon, May 2, 2022 11:54+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -342,10 +342,10 @@ public class BiologicallyDerivedProduct extends DomainResource {
         /**
          * Code that specifies the property. It should reference an established coding system.
          */
-        @Child(name = "type", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
+        @Child(name = "type", type = {Coding.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Code that specifies the property", formalDefinition="Code that specifies the property. It should reference an established coding system." )
-        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/biologicallyderivedproduct-property-type-codes")
-        protected CodeableConcept type;
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/biologicallyderived-product-property-type-codes")
+        protected Coding type;
 
         /**
          * Property values.
@@ -354,7 +354,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
         @Description(shortDefinition="Property values", formalDefinition="Property values." )
         protected DataType value;
 
-        private static final long serialVersionUID = -1659186716L;
+        private static final long serialVersionUID = -1544667497L;
 
     /**
      * Constructor
@@ -366,7 +366,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
     /**
      * Constructor
      */
-      public BiologicallyDerivedProductPropertyComponent(CodeableConcept type, DataType value) {
+      public BiologicallyDerivedProductPropertyComponent(Coding type, DataType value) {
         super();
         this.setType(type);
         this.setValue(value);
@@ -375,12 +375,12 @@ public class BiologicallyDerivedProduct extends DomainResource {
         /**
          * @return {@link #type} (Code that specifies the property. It should reference an established coding system.)
          */
-        public CodeableConcept getType() { 
+        public Coding getType() { 
           if (this.type == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BiologicallyDerivedProductPropertyComponent.type");
             else if (Configuration.doAutoCreate())
-              this.type = new CodeableConcept(); // cc
+              this.type = new Coding(); // cc
           return this.type;
         }
 
@@ -391,7 +391,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
         /**
          * @param value {@link #type} (Code that specifies the property. It should reference an established coding system.)
          */
-        public BiologicallyDerivedProductPropertyComponent setType(CodeableConcept value) { 
+        public BiologicallyDerivedProductPropertyComponent setType(Coding value) { 
           this.type = value;
           return this;
         }
@@ -554,14 +554,14 @@ public class BiologicallyDerivedProduct extends DomainResource {
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("type", "CodeableConcept", "Code that specifies the property. It should reference an established coding system.", 0, 1, type));
+          children.add(new Property("type", "Coding", "Code that specifies the property. It should reference an established coding system.", 0, 1, type));
           children.add(new Property("value[x]", "boolean|integer|CodeableConcept|Period|Quantity|Range|Ratio|string|Attachment", "Property values.", 0, 1, value));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case 3575610: /*type*/  return new Property("type", "CodeableConcept", "Code that specifies the property. It should reference an established coding system.", 0, 1, type);
+          case 3575610: /*type*/  return new Property("type", "Coding", "Code that specifies the property. It should reference an established coding system.", 0, 1, type);
           case -1410166417: /*value[x]*/  return new Property("value[x]", "boolean|integer|CodeableConcept|Period|Quantity|Range|Ratio|string|Attachment", "Property values.", 0, 1, value);
           case 111972721: /*value*/  return new Property("value[x]", "boolean|integer|CodeableConcept|Period|Quantity|Range|Ratio|string|Attachment", "Property values.", 0, 1, value);
           case 733421943: /*valueBoolean*/  return new Property("value[x]", "boolean", "Property values.", 0, 1, value);
@@ -581,7 +581,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
       @Override
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
-        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Coding
         case 111972721: /*value*/ return this.value == null ? new Base[0] : new Base[] {this.value}; // DataType
         default: return super.getProperty(hash, name, checkValid);
         }
@@ -592,7 +592,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
       public Base setProperty(int hash, String name, Base value) throws FHIRException {
         switch (hash) {
         case 3575610: // type
-          this.type = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+          this.type = TypeConvertor.castToCoding(value); // Coding
           return value;
         case 111972721: // value
           this.value = TypeConvertor.castToType(value); // DataType
@@ -605,7 +605,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
       @Override
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("type")) {
-          this.type = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+          this.type = TypeConvertor.castToCoding(value); // Coding
         } else if (name.equals("value[x]")) {
           this.value = TypeConvertor.castToType(value); // DataType
         } else
@@ -627,7 +627,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
       @Override
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
-        case 3575610: /*type*/ return new String[] {"CodeableConcept"};
+        case 3575610: /*type*/ return new String[] {"Coding"};
         case 111972721: /*value*/ return new String[] {"boolean", "integer", "CodeableConcept", "Period", "Quantity", "Range", "Ratio", "string", "Attachment"};
         default: return super.getTypesForProperty(hash, name);
         }
@@ -637,7 +637,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
       @Override
       public Base addChild(String name) throws FHIRException {
         if (name.equals("type")) {
-          this.type = new CodeableConcept();
+          this.type = new Coding();
           return this.type;
         }
         else if (name.equals("valueBoolean")) {
@@ -734,10 +734,10 @@ public class BiologicallyDerivedProduct extends DomainResource {
     /**
      * A codified value that systematically supports characterization and classification of medical products of human origin inclusive of processing conditions such as additives, volumes and handling conditions.
      */
-    @Child(name = "productCode", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "productCode", type = {Coding.class}, order=1, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="A code that identifies the kind of this biologically derived product", formalDefinition="A codified value that systematically supports characterization and classification of medical products of human origin inclusive of processing conditions such as additives, volumes and handling conditions." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/biologicallyderived-product-codes")
-    protected CodeableConcept productCode;
+    protected Coding productCode;
 
     /**
      * Parent product (if any) for this biologically-derived product.
@@ -786,7 +786,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
      */
     @Child(name = "productStatus", type = {Coding.class}, order=8, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="available | unavailable", formalDefinition="Whether the product is currently available." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/biological-product-status")
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/biologicallyderived-product-status")
     protected Coding productStatus;
 
     /**
@@ -817,7 +817,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
     @Description(shortDefinition="A property that is specific to this BiologicallyDerviedProduct instance", formalDefinition="A property that is specific to this BiologicallyDerviedProduct instance." )
     protected List<BiologicallyDerivedProductPropertyComponent> property;
 
-    private static final long serialVersionUID = -1162177650L;
+    private static final long serialVersionUID = 1339732857L;
 
   /**
    * Constructor
@@ -853,12 +853,12 @@ public class BiologicallyDerivedProduct extends DomainResource {
     /**
      * @return {@link #productCode} (A codified value that systematically supports characterization and classification of medical products of human origin inclusive of processing conditions such as additives, volumes and handling conditions.)
      */
-    public CodeableConcept getProductCode() { 
+    public Coding getProductCode() { 
       if (this.productCode == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create BiologicallyDerivedProduct.productCode");
         else if (Configuration.doAutoCreate())
-          this.productCode = new CodeableConcept(); // cc
+          this.productCode = new Coding(); // cc
       return this.productCode;
     }
 
@@ -869,7 +869,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
     /**
      * @param value {@link #productCode} (A codified value that systematically supports characterization and classification of medical products of human origin inclusive of processing conditions such as additives, volumes and handling conditions.)
      */
-    public BiologicallyDerivedProduct setProductCode(CodeableConcept value) { 
+    public BiologicallyDerivedProduct setProductCode(Coding value) { 
       this.productCode = value;
       return this;
     }
@@ -1336,7 +1336,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("productCategory", "Coding", "Broad category of this product.", 0, 1, productCategory));
-        children.add(new Property("productCode", "CodeableConcept", "A codified value that systematically supports characterization and classification of medical products of human origin inclusive of processing conditions such as additives, volumes and handling conditions.", 0, 1, productCode));
+        children.add(new Property("productCode", "Coding", "A codified value that systematically supports characterization and classification of medical products of human origin inclusive of processing conditions such as additives, volumes and handling conditions.", 0, 1, productCode));
         children.add(new Property("parent", "Reference(BiologicallyDerivedProduct)", "Parent product (if any) for this biologically-derived product.", 0, java.lang.Integer.MAX_VALUE, parent));
         children.add(new Property("request", "Reference(ServiceRequest)", "Request to obtain and/or infuse this biologically derived product.", 0, java.lang.Integer.MAX_VALUE, request));
         children.add(new Property("identifier", "Identifier", "Unique instance identifiers assigned to a biologically derived product. Note: This is a business identifier, not a resource identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
@@ -1354,7 +1354,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
         case 197299981: /*productCategory*/  return new Property("productCategory", "Coding", "Broad category of this product.", 0, 1, productCategory);
-        case -1492131972: /*productCode*/  return new Property("productCode", "CodeableConcept", "A codified value that systematically supports characterization and classification of medical products of human origin inclusive of processing conditions such as additives, volumes and handling conditions.", 0, 1, productCode);
+        case -1492131972: /*productCode*/  return new Property("productCode", "Coding", "A codified value that systematically supports characterization and classification of medical products of human origin inclusive of processing conditions such as additives, volumes and handling conditions.", 0, 1, productCode);
         case -995424086: /*parent*/  return new Property("parent", "Reference(BiologicallyDerivedProduct)", "Parent product (if any) for this biologically-derived product.", 0, java.lang.Integer.MAX_VALUE, parent);
         case 1095692943: /*request*/  return new Property("request", "Reference(ServiceRequest)", "Request to obtain and/or infuse this biologically derived product.", 0, java.lang.Integer.MAX_VALUE, request);
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Unique instance identifiers assigned to a biologically derived product. Note: This is a business identifier, not a resource identifier.", 0, java.lang.Integer.MAX_VALUE, identifier);
@@ -1375,7 +1375,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case 197299981: /*productCategory*/ return this.productCategory == null ? new Base[0] : new Base[] {this.productCategory}; // Coding
-        case -1492131972: /*productCode*/ return this.productCode == null ? new Base[0] : new Base[] {this.productCode}; // CodeableConcept
+        case -1492131972: /*productCode*/ return this.productCode == null ? new Base[0] : new Base[] {this.productCode}; // Coding
         case -995424086: /*parent*/ return this.parent == null ? new Base[0] : this.parent.toArray(new Base[this.parent.size()]); // Reference
         case 1095692943: /*request*/ return this.request == null ? new Base[0] : this.request.toArray(new Base[this.request.size()]); // Reference
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
@@ -1399,7 +1399,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
           this.productCategory = TypeConvertor.castToCoding(value); // Coding
           return value;
         case -1492131972: // productCode
-          this.productCode = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+          this.productCode = TypeConvertor.castToCoding(value); // Coding
           return value;
         case -995424086: // parent
           this.getParent().add(TypeConvertor.castToReference(value)); // Reference
@@ -1444,7 +1444,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
         if (name.equals("productCategory")) {
           this.productCategory = TypeConvertor.castToCoding(value); // Coding
         } else if (name.equals("productCode")) {
-          this.productCode = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+          this.productCode = TypeConvertor.castToCoding(value); // Coding
         } else if (name.equals("parent")) {
           this.getParent().add(TypeConvertor.castToReference(value));
         } else if (name.equals("request")) {
@@ -1497,7 +1497,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 197299981: /*productCategory*/ return new String[] {"Coding"};
-        case -1492131972: /*productCode*/ return new String[] {"CodeableConcept"};
+        case -1492131972: /*productCode*/ return new String[] {"Coding"};
         case -995424086: /*parent*/ return new String[] {"Reference"};
         case 1095692943: /*request*/ return new String[] {"Reference"};
         case -1618432855: /*identifier*/ return new String[] {"Identifier"};
@@ -1521,7 +1521,7 @@ public class BiologicallyDerivedProduct extends DomainResource {
           return this.productCategory;
         }
         else if (name.equals("productCode")) {
-          this.productCode = new CodeableConcept();
+          this.productCode = new Coding();
           return this.productCode;
         }
         else if (name.equals("parent")) {

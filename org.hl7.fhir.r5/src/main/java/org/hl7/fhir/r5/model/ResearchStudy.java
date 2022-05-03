@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
+// Generated on Mon, May 2, 2022 11:54+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -833,14 +833,21 @@ public class ResearchStudy extends DomainResource {
          * Type of association.
          */
         @Child(name = "role", type = {CodeableConcept.class}, order=2, min=1, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="sponsor | sponsor-investigator | primary-investigator | collaborator | funding-source | recruitment-contact | sub-investigator | study-director | study-chair", formalDefinition="Type of association." )
+        @Description(shortDefinition="sponsor | lead-sponsor | sponsor-investigator | primary-investigator | collaborator | funding-source | recruitment-contact | sub-investigator | study-director | study-chair", formalDefinition="Type of association." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/research-study-party-role")
         protected CodeableConcept role;
 
         /**
+         * Identifies the start date and the end date of the associated party in the role.
+         */
+        @Child(name = "period", type = {Period.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+        @Description(shortDefinition="When active in the role", formalDefinition="Identifies the start date and the end date of the associated party in the role." )
+        protected List<Period> period;
+
+        /**
          * Organisational type of association.
          */
-        @Child(name = "classifier", type = {CodeableConcept.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+        @Child(name = "classifier", type = {CodeableConcept.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="nih | fda", formalDefinition="Organisational type of association." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/research-study-party-org-type")
         protected List<CodeableConcept> classifier;
@@ -848,11 +855,11 @@ public class ResearchStudy extends DomainResource {
         /**
          * Individual or organization associated with study (use practitionerRole to specify their organisation).
          */
-        @Child(name = "party", type = {Practitioner.class, PractitionerRole.class, Organization.class}, order=4, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "party", type = {Practitioner.class, PractitionerRole.class, Organization.class}, order=5, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Individual or organization associated with study (use practitionerRole to specify their organisation)", formalDefinition="Individual or organization associated with study (use practitionerRole to specify their organisation)." )
         protected Reference party;
 
-        private static final long serialVersionUID = 2116155954L;
+        private static final long serialVersionUID = -1418550998L;
 
     /**
      * Constructor
@@ -943,6 +950,59 @@ public class ResearchStudy extends DomainResource {
         }
 
         /**
+         * @return {@link #period} (Identifies the start date and the end date of the associated party in the role.)
+         */
+        public List<Period> getPeriod() { 
+          if (this.period == null)
+            this.period = new ArrayList<Period>();
+          return this.period;
+        }
+
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public ResearchStudyAssociatedPartyComponent setPeriod(List<Period> thePeriod) { 
+          this.period = thePeriod;
+          return this;
+        }
+
+        public boolean hasPeriod() { 
+          if (this.period == null)
+            return false;
+          for (Period item : this.period)
+            if (!item.isEmpty())
+              return true;
+          return false;
+        }
+
+        public Period addPeriod() { //3
+          Period t = new Period();
+          if (this.period == null)
+            this.period = new ArrayList<Period>();
+          this.period.add(t);
+          return t;
+        }
+
+        public ResearchStudyAssociatedPartyComponent addPeriod(Period t) { //3
+          if (t == null)
+            return this;
+          if (this.period == null)
+            this.period = new ArrayList<Period>();
+          this.period.add(t);
+          return this;
+        }
+
+        /**
+         * @return The first repetition of repeating field {@link #period}, creating it if it does not already exist {3}
+         */
+        public Period getPeriodFirstRep() { 
+          if (getPeriod().isEmpty()) {
+            addPeriod();
+          }
+          return getPeriod().get(0);
+        }
+
+        /**
          * @return {@link #classifier} (Organisational type of association.)
          */
         public List<CodeableConcept> getClassifier() { 
@@ -1023,6 +1083,7 @@ public class ResearchStudy extends DomainResource {
           super.listChildren(children);
           children.add(new Property("name", "string", "Name of associated party.", 0, 1, name));
           children.add(new Property("role", "CodeableConcept", "Type of association.", 0, 1, role));
+          children.add(new Property("period", "Period", "Identifies the start date and the end date of the associated party in the role.", 0, java.lang.Integer.MAX_VALUE, period));
           children.add(new Property("classifier", "CodeableConcept", "Organisational type of association.", 0, java.lang.Integer.MAX_VALUE, classifier));
           children.add(new Property("party", "Reference(Practitioner|PractitionerRole|Organization)", "Individual or organization associated with study (use practitionerRole to specify their organisation).", 0, 1, party));
         }
@@ -1032,6 +1093,7 @@ public class ResearchStudy extends DomainResource {
           switch (_hash) {
           case 3373707: /*name*/  return new Property("name", "string", "Name of associated party.", 0, 1, name);
           case 3506294: /*role*/  return new Property("role", "CodeableConcept", "Type of association.", 0, 1, role);
+          case -991726143: /*period*/  return new Property("period", "Period", "Identifies the start date and the end date of the associated party in the role.", 0, java.lang.Integer.MAX_VALUE, period);
           case -281470431: /*classifier*/  return new Property("classifier", "CodeableConcept", "Organisational type of association.", 0, java.lang.Integer.MAX_VALUE, classifier);
           case 106437350: /*party*/  return new Property("party", "Reference(Practitioner|PractitionerRole|Organization)", "Individual or organization associated with study (use practitionerRole to specify their organisation).", 0, 1, party);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -1044,6 +1106,7 @@ public class ResearchStudy extends DomainResource {
         switch (hash) {
         case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // StringType
         case 3506294: /*role*/ return this.role == null ? new Base[0] : new Base[] {this.role}; // CodeableConcept
+        case -991726143: /*period*/ return this.period == null ? new Base[0] : this.period.toArray(new Base[this.period.size()]); // Period
         case -281470431: /*classifier*/ return this.classifier == null ? new Base[0] : this.classifier.toArray(new Base[this.classifier.size()]); // CodeableConcept
         case 106437350: /*party*/ return this.party == null ? new Base[0] : new Base[] {this.party}; // Reference
         default: return super.getProperty(hash, name, checkValid);
@@ -1059,6 +1122,9 @@ public class ResearchStudy extends DomainResource {
           return value;
         case 3506294: // role
           this.role = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+          return value;
+        case -991726143: // period
+          this.getPeriod().add(TypeConvertor.castToPeriod(value)); // Period
           return value;
         case -281470431: // classifier
           this.getClassifier().add(TypeConvertor.castToCodeableConcept(value)); // CodeableConcept
@@ -1077,6 +1143,8 @@ public class ResearchStudy extends DomainResource {
           this.name = TypeConvertor.castToString(value); // StringType
         } else if (name.equals("role")) {
           this.role = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("period")) {
+          this.getPeriod().add(TypeConvertor.castToPeriod(value));
         } else if (name.equals("classifier")) {
           this.getClassifier().add(TypeConvertor.castToCodeableConcept(value));
         } else if (name.equals("party")) {
@@ -1091,6 +1159,7 @@ public class ResearchStudy extends DomainResource {
         switch (hash) {
         case 3373707:  return getNameElement();
         case 3506294:  return getRole();
+        case -991726143:  return addPeriod(); 
         case -281470431:  return addClassifier(); 
         case 106437350:  return getParty();
         default: return super.makeProperty(hash, name);
@@ -1103,6 +1172,7 @@ public class ResearchStudy extends DomainResource {
         switch (hash) {
         case 3373707: /*name*/ return new String[] {"string"};
         case 3506294: /*role*/ return new String[] {"CodeableConcept"};
+        case -991726143: /*period*/ return new String[] {"Period"};
         case -281470431: /*classifier*/ return new String[] {"CodeableConcept"};
         case 106437350: /*party*/ return new String[] {"Reference"};
         default: return super.getTypesForProperty(hash, name);
@@ -1118,6 +1188,9 @@ public class ResearchStudy extends DomainResource {
         else if (name.equals("role")) {
           this.role = new CodeableConcept();
           return this.role;
+        }
+        else if (name.equals("period")) {
+          return addPeriod();
         }
         else if (name.equals("classifier")) {
           return addClassifier();
@@ -1140,6 +1213,11 @@ public class ResearchStudy extends DomainResource {
         super.copyValues(dst);
         dst.name = name == null ? null : name.copy();
         dst.role = role == null ? null : role.copy();
+        if (period != null) {
+          dst.period = new ArrayList<Period>();
+          for (Period i : period)
+            dst.period.add(i.copy());
+        };
         if (classifier != null) {
           dst.classifier = new ArrayList<CodeableConcept>();
           for (CodeableConcept i : classifier)
@@ -1155,8 +1233,8 @@ public class ResearchStudy extends DomainResource {
         if (!(other_ instanceof ResearchStudyAssociatedPartyComponent))
           return false;
         ResearchStudyAssociatedPartyComponent o = (ResearchStudyAssociatedPartyComponent) other_;
-        return compareDeep(name, o.name, true) && compareDeep(role, o.role, true) && compareDeep(classifier, o.classifier, true)
-           && compareDeep(party, o.party, true);
+        return compareDeep(name, o.name, true) && compareDeep(role, o.role, true) && compareDeep(period, o.period, true)
+           && compareDeep(classifier, o.classifier, true) && compareDeep(party, o.party, true);
       }
 
       @Override
@@ -1170,8 +1248,8 @@ public class ResearchStudy extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(name, role, classifier, party
-          );
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(name, role, period, classifier
+          , party);
       }
 
   public String fhirType() {
@@ -3414,7 +3492,7 @@ public class ResearchStudy extends DomainResource {
      * Current status of the study.
      */
     @Child(name = "currentState", type = {CodeableConcept.class}, order=28, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="active | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | in-review | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | withdrawn", formalDefinition="Current status of the study." )
+    @Description(shortDefinition="active | active-but-not-recruiting | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | enrolling-by-invitation | in-review | not-yet-recruiting | recruiting | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | terminated | withdrawn", formalDefinition="Current status of the study." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/research-study-status")
     protected List<CodeableConcept> currentState;
 
@@ -6269,17 +6347,17 @@ public class ResearchStudy extends DomainResource {
  /**
    * Search parameter: <b>status</b>
    * <p>
-   * Description: <b>active | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | in-review | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | withdrawn</b><br>
+   * Description: <b>active | active-but-not-recruiting | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | enrolling-by-invitation | in-review | not-yet-recruiting | recruiting | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | terminated | withdrawn</b><br>
    * Type: <b>token</b><br>
    * Path: <b>ResearchStudy.status</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="status", path="ResearchStudy.status", description="active | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | in-review | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | withdrawn", type="token" )
+  @SearchParamDefinition(name="status", path="ResearchStudy.status", description="active | active-but-not-recruiting | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | enrolling-by-invitation | in-review | not-yet-recruiting | recruiting | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | terminated | withdrawn", type="token" )
   public static final String SP_STATUS = "status";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>status</b>
    * <p>
-   * Description: <b>active | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | in-review | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | withdrawn</b><br>
+   * Description: <b>active | active-but-not-recruiting | administratively-completed | approved | closed-to-accrual | closed-to-accrual-and-intervention | completed | disapproved | enrolling-by-invitation | in-review | not-yet-recruiting | recruiting | temporarily-closed-to-accrual | temporarily-closed-to-accrual-and-intervention | terminated | withdrawn</b><br>
    * Type: <b>token</b><br>
    * Path: <b>ResearchStudy.status</b><br>
    * </p>

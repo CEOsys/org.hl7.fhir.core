@@ -30,7 +30,7 @@ package org.hl7.fhir.r5.formats;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
+// Generated on Mon, May 2, 2022 11:54+0200 for FHIR v5.0.0-cibuild
 
 
 
@@ -3516,7 +3516,7 @@ public class JsonParser extends JsonParserBase {
     if (json.has("productCategory"))
       res.setProductCategory(parseCoding(getJObject(json, "productCategory")));
     if (json.has("productCode"))
-      res.setProductCode(parseCodeableConcept(getJObject(json, "productCode")));
+      res.setProductCode(parseCoding(getJObject(json, "productCode")));
     if (json.has("parent")) {
       JsonArray array = getJArray(json, "parent");
       for (int i = 0; i < array.size(); i++) {
@@ -3591,7 +3591,7 @@ public class JsonParser extends JsonParserBase {
   protected void parseBiologicallyDerivedProductPropertyComponentProperties(JsonObject json, BiologicallyDerivedProduct.BiologicallyDerivedProductPropertyComponent res) throws IOException, FHIRFormatError {
     parseBackboneElementProperties(json, res);
     if (json.has("type"))
-      res.setType(parseCodeableConcept(getJObject(json, "type")));
+      res.setType(parseCoding(getJObject(json, "type")));
     DataType value = parseType("value", json);
     if (value != null)
       res.setValue(value);
@@ -8595,8 +8595,16 @@ public class JsonParser extends JsonParserBase {
 
   protected void parseCompositionProperties(JsonObject json, Composition res) throws IOException, FHIRFormatError {
     parseDomainResourceProperties(json, res);
+    if (json.has("url"))
+      res.setUrlElement(parseUri(json.get("url").getAsString()));
+    if (json.has("_url"))
+      parseElementProperties(getJObject(json, "_url"), res.getUrlElement());
     if (json.has("identifier"))
       res.setIdentifier(parseIdentifier(getJObject(json, "identifier")));
+    if (json.has("version"))
+      res.setVersionElement(parseString(json.get("version").getAsString()));
+    if (json.has("_version"))
+      parseElementProperties(getJObject(json, "_version"), res.getVersionElement());
     if (json.has("status"))
       res.setStatusElement(parseEnumeration(json.get("status").getAsString(), Enumerations.CompositionStatus.NULL, new Enumerations.CompositionStatusEnumFactory()));
     if (json.has("_status"))
@@ -8617,16 +8625,32 @@ public class JsonParser extends JsonParserBase {
       res.setDateElement(parseDateTime(json.get("date").getAsString()));
     if (json.has("_date"))
       parseElementProperties(getJObject(json, "_date"), res.getDateElement());
+    if (json.has("useContext")) {
+      JsonArray array = getJArray(json, "useContext");
+      for (int i = 0; i < array.size(); i++) {
+        res.getUseContext().add(parseUsageContext(array.get(i).getAsJsonObject()));
+      }
+    };
     if (json.has("author")) {
       JsonArray array = getJArray(json, "author");
       for (int i = 0; i < array.size(); i++) {
         res.getAuthor().add(parseReference(array.get(i).getAsJsonObject()));
       }
     };
+    if (json.has("name"))
+      res.setNameElement(parseString(json.get("name").getAsString()));
+    if (json.has("_name"))
+      parseElementProperties(getJObject(json, "_name"), res.getNameElement());
     if (json.has("title"))
       res.setTitleElement(parseString(json.get("title").getAsString()));
     if (json.has("_title"))
       parseElementProperties(getJObject(json, "_title"), res.getTitleElement());
+    if (json.has("note")) {
+      JsonArray array = getJArray(json, "note");
+      for (int i = 0; i < array.size(); i++) {
+        res.getNote().add(parseAnnotation(array.get(i).getAsJsonObject()));
+      }
+    };
     if (json.has("confidentiality"))
       res.setConfidentialityElement(parseCode(json.get("confidentiality").getAsString()));
     if (json.has("_confidentiality"))
@@ -12740,10 +12764,10 @@ public class JsonParser extends JsonParserBase {
     };
     if (json.has("subject"))
       res.setSubject(parseReference(getJObject(json, "subject")));
-    if (json.has("encounter")) {
-      JsonArray array = getJArray(json, "encounter");
+    if (json.has("context")) {
+      JsonArray array = getJArray(json, "context");
       for (int i = 0; i < array.size(); i++) {
-        res.getEncounter().add(parseReference(array.get(i).getAsJsonObject()));
+        res.getContext().add(parseReference(array.get(i).getAsJsonObject()));
       }
     };
     if (json.has("event")) {
@@ -21442,10 +21466,6 @@ public class JsonParser extends JsonParserBase {
       res.setTypeElement(parseEnumeration(json.get("type").getAsString(), MolecularSequence.SequenceType.NULL, new MolecularSequence.SequenceTypeEnumFactory()));
     if (json.has("_type"))
       parseElementProperties(getJObject(json, "_type"), res.getTypeElement());
-    if (json.has("coordinateSystem"))
-      res.setCoordinateSystemElement(parseInteger(json.get("coordinateSystem").getAsLong()));
-    if (json.has("_coordinateSystem"))
-      parseElementProperties(getJObject(json, "_coordinateSystem"), res.getCoordinateSystemElement());
     if (json.has("patient"))
       res.setPatient(parseReference(getJObject(json, "patient")));
     if (json.has("specimen"))
@@ -21454,57 +21474,53 @@ public class JsonParser extends JsonParserBase {
       res.setDevice(parseReference(getJObject(json, "device")));
     if (json.has("performer"))
       res.setPerformer(parseReference(getJObject(json, "performer")));
-    if (json.has("quantity"))
-      res.setQuantity(parseQuantity(getJObject(json, "quantity")));
-    if (json.has("referenceSeq"))
-      res.setReferenceSeq(parseMolecularSequenceReferenceSeqComponent(getJObject(json, "referenceSeq")));
-    if (json.has("variant")) {
-      JsonArray array = getJArray(json, "variant");
+    if (json.has("literal"))
+      res.setLiteralElement(parseString(json.get("literal").getAsString()));
+    if (json.has("_literal"))
+      parseElementProperties(getJObject(json, "_literal"), res.getLiteralElement());
+    if (json.has("formatted")) {
+      JsonArray array = getJArray(json, "formatted");
       for (int i = 0; i < array.size(); i++) {
-        res.getVariant().add(parseMolecularSequenceVariantComponent(array.get(i).getAsJsonObject()));
+        res.getFormatted().add(parseAttachment(array.get(i).getAsJsonObject()));
       }
     };
-    if (json.has("observedSeq"))
-      res.setObservedSeqElement(parseString(json.get("observedSeq").getAsString()));
-    if (json.has("_observedSeq"))
-      parseElementProperties(getJObject(json, "_observedSeq"), res.getObservedSeqElement());
-    if (json.has("quality")) {
-      JsonArray array = getJArray(json, "quality");
-      for (int i = 0; i < array.size(); i++) {
-        res.getQuality().add(parseMolecularSequenceQualityComponent(array.get(i).getAsJsonObject()));
-      }
-    };
-    if (json.has("readCoverage"))
-      res.setReadCoverageElement(parseInteger(json.get("readCoverage").getAsLong()));
-    if (json.has("_readCoverage"))
-      parseElementProperties(getJObject(json, "_readCoverage"), res.getReadCoverageElement());
-    if (json.has("repository")) {
-      JsonArray array = getJArray(json, "repository");
-      for (int i = 0; i < array.size(); i++) {
-        res.getRepository().add(parseMolecularSequenceRepositoryComponent(array.get(i).getAsJsonObject()));
-      }
-    };
+    if (json.has("relative"))
+      res.setRelative(parseMolecularSequenceRelativeComponent(getJObject(json, "relative")));
     if (json.has("pointer")) {
       JsonArray array = getJArray(json, "pointer");
       for (int i = 0; i < array.size(); i++) {
         res.getPointer().add(parseReference(array.get(i).getAsJsonObject()));
       }
     };
-    if (json.has("structureVariant")) {
-      JsonArray array = getJArray(json, "structureVariant");
+  }
+
+  protected MolecularSequence.MolecularSequenceRelativeComponent parseMolecularSequenceRelativeComponent(JsonObject json) throws IOException, FHIRFormatError {
+    MolecularSequence.MolecularSequenceRelativeComponent res = new MolecularSequence.MolecularSequenceRelativeComponent();
+    parseMolecularSequenceRelativeComponentProperties(json, res);
+    return res;
+  }
+
+  protected void parseMolecularSequenceRelativeComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceRelativeComponent res) throws IOException, FHIRFormatError {
+    parseBackboneElementProperties(json, res);
+    if (json.has("coordinateSystem"))
+      res.setCoordinateSystem(parseCodeableConcept(getJObject(json, "coordinateSystem")));
+    if (json.has("reference"))
+      res.setReference(parseMolecularSequenceRelativeReferenceComponent(getJObject(json, "reference")));
+    if (json.has("edit")) {
+      JsonArray array = getJArray(json, "edit");
       for (int i = 0; i < array.size(); i++) {
-        res.getStructureVariant().add(parseMolecularSequenceStructureVariantComponent(array.get(i).getAsJsonObject()));
+        res.getEdit().add(parseMolecularSequenceRelativeEditComponent(array.get(i).getAsJsonObject()));
       }
     };
   }
 
-  protected MolecularSequence.MolecularSequenceReferenceSeqComponent parseMolecularSequenceReferenceSeqComponent(JsonObject json) throws IOException, FHIRFormatError {
-    MolecularSequence.MolecularSequenceReferenceSeqComponent res = new MolecularSequence.MolecularSequenceReferenceSeqComponent();
-    parseMolecularSequenceReferenceSeqComponentProperties(json, res);
+  protected MolecularSequence.MolecularSequenceRelativeReferenceComponent parseMolecularSequenceRelativeReferenceComponent(JsonObject json) throws IOException, FHIRFormatError {
+    MolecularSequence.MolecularSequenceRelativeReferenceComponent res = new MolecularSequence.MolecularSequenceRelativeReferenceComponent();
+    parseMolecularSequenceRelativeReferenceComponentProperties(json, res);
     return res;
   }
 
-  protected void parseMolecularSequenceReferenceSeqComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceReferenceSeqComponent res) throws IOException, FHIRFormatError {
+  protected void parseMolecularSequenceRelativeReferenceComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceRelativeReferenceComponent res) throws IOException, FHIRFormatError {
     parseBackboneElementProperties(json, res);
     if (json.has("chromosome"))
       res.setChromosome(parseCodeableConcept(getJObject(json, "chromosome")));
@@ -21538,13 +21554,13 @@ public class JsonParser extends JsonParserBase {
       parseElementProperties(getJObject(json, "_windowEnd"), res.getWindowEndElement());
   }
 
-  protected MolecularSequence.MolecularSequenceVariantComponent parseMolecularSequenceVariantComponent(JsonObject json) throws IOException, FHIRFormatError {
-    MolecularSequence.MolecularSequenceVariantComponent res = new MolecularSequence.MolecularSequenceVariantComponent();
-    parseMolecularSequenceVariantComponentProperties(json, res);
+  protected MolecularSequence.MolecularSequenceRelativeEditComponent parseMolecularSequenceRelativeEditComponent(JsonObject json) throws IOException, FHIRFormatError {
+    MolecularSequence.MolecularSequenceRelativeEditComponent res = new MolecularSequence.MolecularSequenceRelativeEditComponent();
+    parseMolecularSequenceRelativeEditComponentProperties(json, res);
     return res;
   }
 
-  protected void parseMolecularSequenceVariantComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceVariantComponent res) throws IOException, FHIRFormatError {
+  protected void parseMolecularSequenceRelativeEditComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceRelativeEditComponent res) throws IOException, FHIRFormatError {
     parseBackboneElementProperties(json, res);
     if (json.has("start"))
       res.setStartElement(parseInteger(json.get("start").getAsLong()));
@@ -21566,307 +21582,6 @@ public class JsonParser extends JsonParserBase {
       res.setCigarElement(parseString(json.get("cigar").getAsString()));
     if (json.has("_cigar"))
       parseElementProperties(getJObject(json, "_cigar"), res.getCigarElement());
-    if (json.has("variantPointer"))
-      res.setVariantPointer(parseReference(getJObject(json, "variantPointer")));
-  }
-
-  protected MolecularSequence.MolecularSequenceQualityComponent parseMolecularSequenceQualityComponent(JsonObject json) throws IOException, FHIRFormatError {
-    MolecularSequence.MolecularSequenceQualityComponent res = new MolecularSequence.MolecularSequenceQualityComponent();
-    parseMolecularSequenceQualityComponentProperties(json, res);
-    return res;
-  }
-
-  protected void parseMolecularSequenceQualityComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceQualityComponent res) throws IOException, FHIRFormatError {
-    parseBackboneElementProperties(json, res);
-    if (json.has("type"))
-      res.setTypeElement(parseEnumeration(json.get("type").getAsString(), MolecularSequence.QualityType.NULL, new MolecularSequence.QualityTypeEnumFactory()));
-    if (json.has("_type"))
-      parseElementProperties(getJObject(json, "_type"), res.getTypeElement());
-    if (json.has("standardSequence"))
-      res.setStandardSequence(parseCodeableConcept(getJObject(json, "standardSequence")));
-    if (json.has("start"))
-      res.setStartElement(parseInteger(json.get("start").getAsLong()));
-    if (json.has("_start"))
-      parseElementProperties(getJObject(json, "_start"), res.getStartElement());
-    if (json.has("end"))
-      res.setEndElement(parseInteger(json.get("end").getAsLong()));
-    if (json.has("_end"))
-      parseElementProperties(getJObject(json, "_end"), res.getEndElement());
-    if (json.has("score"))
-      res.setScore(parseQuantity(getJObject(json, "score")));
-    if (json.has("method"))
-      res.setMethod(parseCodeableConcept(getJObject(json, "method")));
-    if (json.has("truthTP"))
-      res.setTruthTPElement(parseDecimal(json.get("truthTP").getAsBigDecimal()));
-    if (json.has("_truthTP"))
-      parseElementProperties(getJObject(json, "_truthTP"), res.getTruthTPElement());
-    if (json.has("queryTP"))
-      res.setQueryTPElement(parseDecimal(json.get("queryTP").getAsBigDecimal()));
-    if (json.has("_queryTP"))
-      parseElementProperties(getJObject(json, "_queryTP"), res.getQueryTPElement());
-    if (json.has("truthFN"))
-      res.setTruthFNElement(parseDecimal(json.get("truthFN").getAsBigDecimal()));
-    if (json.has("_truthFN"))
-      parseElementProperties(getJObject(json, "_truthFN"), res.getTruthFNElement());
-    if (json.has("queryFP"))
-      res.setQueryFPElement(parseDecimal(json.get("queryFP").getAsBigDecimal()));
-    if (json.has("_queryFP"))
-      parseElementProperties(getJObject(json, "_queryFP"), res.getQueryFPElement());
-    if (json.has("gtFP"))
-      res.setGtFPElement(parseDecimal(json.get("gtFP").getAsBigDecimal()));
-    if (json.has("_gtFP"))
-      parseElementProperties(getJObject(json, "_gtFP"), res.getGtFPElement());
-    if (json.has("precision"))
-      res.setPrecisionElement(parseDecimal(json.get("precision").getAsBigDecimal()));
-    if (json.has("_precision"))
-      parseElementProperties(getJObject(json, "_precision"), res.getPrecisionElement());
-    if (json.has("recall"))
-      res.setRecallElement(parseDecimal(json.get("recall").getAsBigDecimal()));
-    if (json.has("_recall"))
-      parseElementProperties(getJObject(json, "_recall"), res.getRecallElement());
-    if (json.has("fScore"))
-      res.setFScoreElement(parseDecimal(json.get("fScore").getAsBigDecimal()));
-    if (json.has("_fScore"))
-      parseElementProperties(getJObject(json, "_fScore"), res.getFScoreElement());
-    if (json.has("roc"))
-      res.setRoc(parseMolecularSequenceQualityRocComponent(getJObject(json, "roc")));
-  }
-
-  protected MolecularSequence.MolecularSequenceQualityRocComponent parseMolecularSequenceQualityRocComponent(JsonObject json) throws IOException, FHIRFormatError {
-    MolecularSequence.MolecularSequenceQualityRocComponent res = new MolecularSequence.MolecularSequenceQualityRocComponent();
-    parseMolecularSequenceQualityRocComponentProperties(json, res);
-    return res;
-  }
-
-  protected void parseMolecularSequenceQualityRocComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceQualityRocComponent res) throws IOException, FHIRFormatError {
-    parseBackboneElementProperties(json, res);
-    if (json.has("score")) {
-      JsonArray array = getJArray(json, "score");
-      for (int i = 0; i < array.size(); i++) {
-        if (array.get(i).isJsonNull()) {
-          res.getScore().add(new IntegerType());
-        } else {;
-          res.getScore().add(parseInteger(array.get(i).getAsLong()));
-        }
-      }
-    };
-    if (json.has("_score")) {
-      JsonArray array = getJArray(json, "_score");
-      for (int i = 0; i < array.size(); i++) {
-        if (i == res.getScore().size())
-          res.getScore().add(parseInteger(null));
-        if (array.get(i) instanceof JsonObject) 
-          parseElementProperties(array.get(i).getAsJsonObject(), res.getScore().get(i));
-      }
-    };
-    if (json.has("numTP")) {
-      JsonArray array = getJArray(json, "numTP");
-      for (int i = 0; i < array.size(); i++) {
-        if (array.get(i).isJsonNull()) {
-          res.getNumTP().add(new IntegerType());
-        } else {;
-          res.getNumTP().add(parseInteger(array.get(i).getAsLong()));
-        }
-      }
-    };
-    if (json.has("_numTP")) {
-      JsonArray array = getJArray(json, "_numTP");
-      for (int i = 0; i < array.size(); i++) {
-        if (i == res.getNumTP().size())
-          res.getNumTP().add(parseInteger(null));
-        if (array.get(i) instanceof JsonObject) 
-          parseElementProperties(array.get(i).getAsJsonObject(), res.getNumTP().get(i));
-      }
-    };
-    if (json.has("numFP")) {
-      JsonArray array = getJArray(json, "numFP");
-      for (int i = 0; i < array.size(); i++) {
-        if (array.get(i).isJsonNull()) {
-          res.getNumFP().add(new IntegerType());
-        } else {;
-          res.getNumFP().add(parseInteger(array.get(i).getAsLong()));
-        }
-      }
-    };
-    if (json.has("_numFP")) {
-      JsonArray array = getJArray(json, "_numFP");
-      for (int i = 0; i < array.size(); i++) {
-        if (i == res.getNumFP().size())
-          res.getNumFP().add(parseInteger(null));
-        if (array.get(i) instanceof JsonObject) 
-          parseElementProperties(array.get(i).getAsJsonObject(), res.getNumFP().get(i));
-      }
-    };
-    if (json.has("numFN")) {
-      JsonArray array = getJArray(json, "numFN");
-      for (int i = 0; i < array.size(); i++) {
-        if (array.get(i).isJsonNull()) {
-          res.getNumFN().add(new IntegerType());
-        } else {;
-          res.getNumFN().add(parseInteger(array.get(i).getAsLong()));
-        }
-      }
-    };
-    if (json.has("_numFN")) {
-      JsonArray array = getJArray(json, "_numFN");
-      for (int i = 0; i < array.size(); i++) {
-        if (i == res.getNumFN().size())
-          res.getNumFN().add(parseInteger(null));
-        if (array.get(i) instanceof JsonObject) 
-          parseElementProperties(array.get(i).getAsJsonObject(), res.getNumFN().get(i));
-      }
-    };
-    if (json.has("precision")) {
-      JsonArray array = getJArray(json, "precision");
-      for (int i = 0; i < array.size(); i++) {
-        if (array.get(i).isJsonNull()) {
-          res.getPrecision().add(new DecimalType());
-        } else {;
-          res.getPrecision().add(parseDecimal(array.get(i).getAsBigDecimal()));
-        }
-      }
-    };
-    if (json.has("_precision")) {
-      JsonArray array = getJArray(json, "_precision");
-      for (int i = 0; i < array.size(); i++) {
-        if (i == res.getPrecision().size())
-          res.getPrecision().add(parseDecimal(null));
-        if (array.get(i) instanceof JsonObject) 
-          parseElementProperties(array.get(i).getAsJsonObject(), res.getPrecision().get(i));
-      }
-    };
-    if (json.has("sensitivity")) {
-      JsonArray array = getJArray(json, "sensitivity");
-      for (int i = 0; i < array.size(); i++) {
-        if (array.get(i).isJsonNull()) {
-          res.getSensitivity().add(new DecimalType());
-        } else {;
-          res.getSensitivity().add(parseDecimal(array.get(i).getAsBigDecimal()));
-        }
-      }
-    };
-    if (json.has("_sensitivity")) {
-      JsonArray array = getJArray(json, "_sensitivity");
-      for (int i = 0; i < array.size(); i++) {
-        if (i == res.getSensitivity().size())
-          res.getSensitivity().add(parseDecimal(null));
-        if (array.get(i) instanceof JsonObject) 
-          parseElementProperties(array.get(i).getAsJsonObject(), res.getSensitivity().get(i));
-      }
-    };
-    if (json.has("fMeasure")) {
-      JsonArray array = getJArray(json, "fMeasure");
-      for (int i = 0; i < array.size(); i++) {
-        if (array.get(i).isJsonNull()) {
-          res.getFMeasure().add(new DecimalType());
-        } else {;
-          res.getFMeasure().add(parseDecimal(array.get(i).getAsBigDecimal()));
-        }
-      }
-    };
-    if (json.has("_fMeasure")) {
-      JsonArray array = getJArray(json, "_fMeasure");
-      for (int i = 0; i < array.size(); i++) {
-        if (i == res.getFMeasure().size())
-          res.getFMeasure().add(parseDecimal(null));
-        if (array.get(i) instanceof JsonObject) 
-          parseElementProperties(array.get(i).getAsJsonObject(), res.getFMeasure().get(i));
-      }
-    };
-  }
-
-  protected MolecularSequence.MolecularSequenceRepositoryComponent parseMolecularSequenceRepositoryComponent(JsonObject json) throws IOException, FHIRFormatError {
-    MolecularSequence.MolecularSequenceRepositoryComponent res = new MolecularSequence.MolecularSequenceRepositoryComponent();
-    parseMolecularSequenceRepositoryComponentProperties(json, res);
-    return res;
-  }
-
-  protected void parseMolecularSequenceRepositoryComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceRepositoryComponent res) throws IOException, FHIRFormatError {
-    parseBackboneElementProperties(json, res);
-    if (json.has("type"))
-      res.setTypeElement(parseEnumeration(json.get("type").getAsString(), MolecularSequence.RepositoryType.NULL, new MolecularSequence.RepositoryTypeEnumFactory()));
-    if (json.has("_type"))
-      parseElementProperties(getJObject(json, "_type"), res.getTypeElement());
-    if (json.has("url"))
-      res.setUrlElement(parseUri(json.get("url").getAsString()));
-    if (json.has("_url"))
-      parseElementProperties(getJObject(json, "_url"), res.getUrlElement());
-    if (json.has("name"))
-      res.setNameElement(parseString(json.get("name").getAsString()));
-    if (json.has("_name"))
-      parseElementProperties(getJObject(json, "_name"), res.getNameElement());
-    if (json.has("datasetId"))
-      res.setDatasetIdElement(parseString(json.get("datasetId").getAsString()));
-    if (json.has("_datasetId"))
-      parseElementProperties(getJObject(json, "_datasetId"), res.getDatasetIdElement());
-    if (json.has("variantsetId"))
-      res.setVariantsetIdElement(parseString(json.get("variantsetId").getAsString()));
-    if (json.has("_variantsetId"))
-      parseElementProperties(getJObject(json, "_variantsetId"), res.getVariantsetIdElement());
-    if (json.has("readsetId"))
-      res.setReadsetIdElement(parseString(json.get("readsetId").getAsString()));
-    if (json.has("_readsetId"))
-      parseElementProperties(getJObject(json, "_readsetId"), res.getReadsetIdElement());
-  }
-
-  protected MolecularSequence.MolecularSequenceStructureVariantComponent parseMolecularSequenceStructureVariantComponent(JsonObject json) throws IOException, FHIRFormatError {
-    MolecularSequence.MolecularSequenceStructureVariantComponent res = new MolecularSequence.MolecularSequenceStructureVariantComponent();
-    parseMolecularSequenceStructureVariantComponentProperties(json, res);
-    return res;
-  }
-
-  protected void parseMolecularSequenceStructureVariantComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceStructureVariantComponent res) throws IOException, FHIRFormatError {
-    parseBackboneElementProperties(json, res);
-    if (json.has("variantType"))
-      res.setVariantType(parseCodeableConcept(getJObject(json, "variantType")));
-    if (json.has("exact"))
-      res.setExactElement(parseBoolean(json.get("exact").getAsBoolean()));
-    if (json.has("_exact"))
-      parseElementProperties(getJObject(json, "_exact"), res.getExactElement());
-    if (json.has("length"))
-      res.setLengthElement(parseInteger(json.get("length").getAsLong()));
-    if (json.has("_length"))
-      parseElementProperties(getJObject(json, "_length"), res.getLengthElement());
-    if (json.has("outer"))
-      res.setOuter(parseMolecularSequenceStructureVariantOuterComponent(getJObject(json, "outer")));
-    if (json.has("inner"))
-      res.setInner(parseMolecularSequenceStructureVariantInnerComponent(getJObject(json, "inner")));
-  }
-
-  protected MolecularSequence.MolecularSequenceStructureVariantOuterComponent parseMolecularSequenceStructureVariantOuterComponent(JsonObject json) throws IOException, FHIRFormatError {
-    MolecularSequence.MolecularSequenceStructureVariantOuterComponent res = new MolecularSequence.MolecularSequenceStructureVariantOuterComponent();
-    parseMolecularSequenceStructureVariantOuterComponentProperties(json, res);
-    return res;
-  }
-
-  protected void parseMolecularSequenceStructureVariantOuterComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceStructureVariantOuterComponent res) throws IOException, FHIRFormatError {
-    parseBackboneElementProperties(json, res);
-    if (json.has("start"))
-      res.setStartElement(parseInteger(json.get("start").getAsLong()));
-    if (json.has("_start"))
-      parseElementProperties(getJObject(json, "_start"), res.getStartElement());
-    if (json.has("end"))
-      res.setEndElement(parseInteger(json.get("end").getAsLong()));
-    if (json.has("_end"))
-      parseElementProperties(getJObject(json, "_end"), res.getEndElement());
-  }
-
-  protected MolecularSequence.MolecularSequenceStructureVariantInnerComponent parseMolecularSequenceStructureVariantInnerComponent(JsonObject json) throws IOException, FHIRFormatError {
-    MolecularSequence.MolecularSequenceStructureVariantInnerComponent res = new MolecularSequence.MolecularSequenceStructureVariantInnerComponent();
-    parseMolecularSequenceStructureVariantInnerComponentProperties(json, res);
-    return res;
-  }
-
-  protected void parseMolecularSequenceStructureVariantInnerComponentProperties(JsonObject json, MolecularSequence.MolecularSequenceStructureVariantInnerComponent res) throws IOException, FHIRFormatError {
-    parseBackboneElementProperties(json, res);
-    if (json.has("start"))
-      res.setStartElement(parseInteger(json.get("start").getAsLong()));
-    if (json.has("_start"))
-      parseElementProperties(getJObject(json, "_start"), res.getStartElement());
-    if (json.has("end"))
-      res.setEndElement(parseInteger(json.get("end").getAsLong()));
-    if (json.has("_end"))
-      parseElementProperties(getJObject(json, "_end"), res.getEndElement());
   }
 
   protected NamingSystem parseNamingSystem(JsonObject json) throws IOException, FHIRFormatError {
@@ -22685,6 +22400,8 @@ public class JsonParser extends JsonParserBase {
     };
     if (json.has("bodySite"))
       res.setBodySite(parseCodeableConcept(getJObject(json, "bodySite")));
+    if (json.has("bodyStructure"))
+      res.setBodyStructure(parseReference(getJObject(json, "bodyStructure")));
     if (json.has("method"))
       res.setMethod(parseCodeableConcept(getJObject(json, "method")));
     if (json.has("specimen"))
@@ -26553,6 +26270,12 @@ public class JsonParser extends JsonParserBase {
       parseElementProperties(getJObject(json, "_name"), res.getNameElement());
     if (json.has("role"))
       res.setRole(parseCodeableConcept(getJObject(json, "role")));
+    if (json.has("period")) {
+      JsonArray array = getJArray(json, "period");
+      for (int i = 0; i < array.size(); i++) {
+        res.getPeriod().add(parsePeriod(array.get(i).getAsJsonObject()));
+      }
+    };
     if (json.has("classifier")) {
       JsonArray array = getJArray(json, "classifier");
       for (int i = 0; i < array.size(); i++) {
@@ -37632,7 +37355,7 @@ public class JsonParser extends JsonParserBase {
         composeCoding("productCategory", element.getProductCategory());
       }
       if (element.hasProductCode()) {
-        composeCodeableConcept("productCode", element.getProductCode());
+        composeCoding("productCode", element.getProductCode());
       }
       if (element.hasParent()) {
         openArray("parent");
@@ -37718,7 +37441,7 @@ public class JsonParser extends JsonParserBase {
   protected void composeBiologicallyDerivedProductPropertyComponentProperties(BiologicallyDerivedProduct.BiologicallyDerivedProductPropertyComponent element) throws IOException {
     composeBackboneElementProperties(element);
       if (element.hasType()) {
-        composeCodeableConcept("type", element.getType());
+        composeCoding("type", element.getType());
       }
       if (element.hasValue()) {
         composeType("value", element.getValue());
@@ -42918,8 +42641,16 @@ public class JsonParser extends JsonParserBase {
 
   protected void composeCompositionProperties(Composition element) throws IOException {
     composeDomainResourceProperties(element);
+      if (element.hasUrlElement()) {
+        composeUriCore("url", element.getUrlElement(), false);
+        composeUriExtras("url", element.getUrlElement(), false);
+      }
       if (element.hasIdentifier()) {
         composeIdentifier("identifier", element.getIdentifier());
+      }
+      if (element.hasVersionElement()) {
+        composeStringCore("version", element.getVersionElement(), false);
+        composeStringExtras("version", element.getVersionElement(), false);
       }
       if (element.hasStatusElement()) {
         composeEnumerationCore("status", element.getStatusElement(), new Enumerations.CompositionStatusEnumFactory(), false);
@@ -42944,16 +42675,32 @@ public class JsonParser extends JsonParserBase {
         composeDateTimeCore("date", element.getDateElement(), false);
         composeDateTimeExtras("date", element.getDateElement(), false);
       }
+      if (element.hasUseContext()) {
+        openArray("useContext");
+        for (UsageContext e : element.getUseContext()) 
+          composeUsageContext(null, e);
+        closeArray();
+      };
       if (element.hasAuthor()) {
         openArray("author");
         for (Reference e : element.getAuthor()) 
           composeReference(null, e);
         closeArray();
       };
+      if (element.hasNameElement()) {
+        composeStringCore("name", element.getNameElement(), false);
+        composeStringExtras("name", element.getNameElement(), false);
+      }
       if (element.hasTitleElement()) {
         composeStringCore("title", element.getTitleElement(), false);
         composeStringExtras("title", element.getTitleElement(), false);
       }
+      if (element.hasNote()) {
+        openArray("note");
+        for (Annotation e : element.getNote()) 
+          composeAnnotation(null, e);
+        closeArray();
+      };
       if (element.hasConfidentialityElement()) {
         composeCodeCore("confidentiality", element.getConfidentialityElement(), false);
         composeCodeExtras("confidentiality", element.getConfidentialityElement(), false);
@@ -47346,9 +47093,9 @@ public class JsonParser extends JsonParserBase {
       if (element.hasSubject()) {
         composeReference("subject", element.getSubject());
       }
-      if (element.hasEncounter()) {
-        openArray("encounter");
-        for (Reference e : element.getEncounter()) 
+      if (element.hasContext()) {
+        openArray("context");
+        for (Reference e : element.getContext()) 
           composeReference(null, e);
         closeArray();
       };
@@ -56669,10 +56416,6 @@ public class JsonParser extends JsonParserBase {
         composeEnumerationCore("type", element.getTypeElement(), new MolecularSequence.SequenceTypeEnumFactory(), false);
         composeEnumerationExtras("type", element.getTypeElement(), new MolecularSequence.SequenceTypeEnumFactory(), false);
       }
-      if (element.hasCoordinateSystemElement()) {
-        composeIntegerCore("coordinateSystem", element.getCoordinateSystemElement(), false);
-        composeIntegerExtras("coordinateSystem", element.getCoordinateSystemElement(), false);
-      }
       if (element.hasPatient()) {
         composeReference("patient", element.getPatient());
       }
@@ -56685,61 +56428,60 @@ public class JsonParser extends JsonParserBase {
       if (element.hasPerformer()) {
         composeReference("performer", element.getPerformer());
       }
-      if (element.hasQuantity()) {
-        composeQuantity("quantity", element.getQuantity());
+      if (element.hasLiteralElement()) {
+        composeStringCore("literal", element.getLiteralElement(), false);
+        composeStringExtras("literal", element.getLiteralElement(), false);
       }
-      if (element.hasReferenceSeq()) {
-        composeMolecularSequenceReferenceSeqComponent("referenceSeq", element.getReferenceSeq());
-      }
-      if (element.hasVariant()) {
-        openArray("variant");
-        for (MolecularSequence.MolecularSequenceVariantComponent e : element.getVariant()) 
-          composeMolecularSequenceVariantComponent(null, e);
+      if (element.hasFormatted()) {
+        openArray("formatted");
+        for (Attachment e : element.getFormatted()) 
+          composeAttachment(null, e);
         closeArray();
       };
-      if (element.hasObservedSeqElement()) {
-        composeStringCore("observedSeq", element.getObservedSeqElement(), false);
-        composeStringExtras("observedSeq", element.getObservedSeqElement(), false);
+      if (element.hasRelative()) {
+        composeMolecularSequenceRelativeComponent("relative", element.getRelative());
       }
-      if (element.hasQuality()) {
-        openArray("quality");
-        for (MolecularSequence.MolecularSequenceQualityComponent e : element.getQuality()) 
-          composeMolecularSequenceQualityComponent(null, e);
-        closeArray();
-      };
-      if (element.hasReadCoverageElement()) {
-        composeIntegerCore("readCoverage", element.getReadCoverageElement(), false);
-        composeIntegerExtras("readCoverage", element.getReadCoverageElement(), false);
-      }
-      if (element.hasRepository()) {
-        openArray("repository");
-        for (MolecularSequence.MolecularSequenceRepositoryComponent e : element.getRepository()) 
-          composeMolecularSequenceRepositoryComponent(null, e);
-        closeArray();
-      };
       if (element.hasPointer()) {
         openArray("pointer");
         for (Reference e : element.getPointer()) 
           composeReference(null, e);
         closeArray();
       };
-      if (element.hasStructureVariant()) {
-        openArray("structureVariant");
-        for (MolecularSequence.MolecularSequenceStructureVariantComponent e : element.getStructureVariant()) 
-          composeMolecularSequenceStructureVariantComponent(null, e);
-        closeArray();
-      };
   }
 
-  protected void composeMolecularSequenceReferenceSeqComponent(String name, MolecularSequence.MolecularSequenceReferenceSeqComponent element) throws IOException {
+  protected void composeMolecularSequenceRelativeComponent(String name, MolecularSequence.MolecularSequenceRelativeComponent element) throws IOException {
     if (element != null) {
       open(name);
-      composeMolecularSequenceReferenceSeqComponentProperties(element);
+      composeMolecularSequenceRelativeComponentProperties(element);
       close();
     }
   }
 
-  protected void composeMolecularSequenceReferenceSeqComponentProperties(MolecularSequence.MolecularSequenceReferenceSeqComponent element) throws IOException {
+  protected void composeMolecularSequenceRelativeComponentProperties(MolecularSequence.MolecularSequenceRelativeComponent element) throws IOException {
+    composeBackboneElementProperties(element);
+      if (element.hasCoordinateSystem()) {
+        composeCodeableConcept("coordinateSystem", element.getCoordinateSystem());
+      }
+      if (element.hasReference()) {
+        composeMolecularSequenceRelativeReferenceComponent("reference", element.getReference());
+      }
+      if (element.hasEdit()) {
+        openArray("edit");
+        for (MolecularSequence.MolecularSequenceRelativeEditComponent e : element.getEdit()) 
+          composeMolecularSequenceRelativeEditComponent(null, e);
+        closeArray();
+      };
+  }
+
+  protected void composeMolecularSequenceRelativeReferenceComponent(String name, MolecularSequence.MolecularSequenceRelativeReferenceComponent element) throws IOException {
+    if (element != null) {
+      open(name);
+      composeMolecularSequenceRelativeReferenceComponentProperties(element);
+      close();
+    }
+  }
+
+  protected void composeMolecularSequenceRelativeReferenceComponentProperties(MolecularSequence.MolecularSequenceRelativeReferenceComponent element) throws IOException {
     composeBackboneElementProperties(element);
       if (element.hasChromosome()) {
         composeCodeableConcept("chromosome", element.getChromosome());
@@ -56776,15 +56518,15 @@ public class JsonParser extends JsonParserBase {
       }
   }
 
-  protected void composeMolecularSequenceVariantComponent(String name, MolecularSequence.MolecularSequenceVariantComponent element) throws IOException {
+  protected void composeMolecularSequenceRelativeEditComponent(String name, MolecularSequence.MolecularSequenceRelativeEditComponent element) throws IOException {
     if (element != null) {
       open(name);
-      composeMolecularSequenceVariantComponentProperties(element);
+      composeMolecularSequenceRelativeEditComponentProperties(element);
       close();
     }
   }
 
-  protected void composeMolecularSequenceVariantComponentProperties(MolecularSequence.MolecularSequenceVariantComponent element) throws IOException {
+  protected void composeMolecularSequenceRelativeEditComponentProperties(MolecularSequence.MolecularSequenceRelativeEditComponent element) throws IOException {
     composeBackboneElementProperties(element);
       if (element.hasStartElement()) {
         composeIntegerCore("start", element.getStartElement(), false);
@@ -56805,292 +56547,6 @@ public class JsonParser extends JsonParserBase {
       if (element.hasCigarElement()) {
         composeStringCore("cigar", element.getCigarElement(), false);
         composeStringExtras("cigar", element.getCigarElement(), false);
-      }
-      if (element.hasVariantPointer()) {
-        composeReference("variantPointer", element.getVariantPointer());
-      }
-  }
-
-  protected void composeMolecularSequenceQualityComponent(String name, MolecularSequence.MolecularSequenceQualityComponent element) throws IOException {
-    if (element != null) {
-      open(name);
-      composeMolecularSequenceQualityComponentProperties(element);
-      close();
-    }
-  }
-
-  protected void composeMolecularSequenceQualityComponentProperties(MolecularSequence.MolecularSequenceQualityComponent element) throws IOException {
-    composeBackboneElementProperties(element);
-      if (element.hasTypeElement()) {
-        composeEnumerationCore("type", element.getTypeElement(), new MolecularSequence.QualityTypeEnumFactory(), false);
-        composeEnumerationExtras("type", element.getTypeElement(), new MolecularSequence.QualityTypeEnumFactory(), false);
-      }
-      if (element.hasStandardSequence()) {
-        composeCodeableConcept("standardSequence", element.getStandardSequence());
-      }
-      if (element.hasStartElement()) {
-        composeIntegerCore("start", element.getStartElement(), false);
-        composeIntegerExtras("start", element.getStartElement(), false);
-      }
-      if (element.hasEndElement()) {
-        composeIntegerCore("end", element.getEndElement(), false);
-        composeIntegerExtras("end", element.getEndElement(), false);
-      }
-      if (element.hasScore()) {
-        composeQuantity("score", element.getScore());
-      }
-      if (element.hasMethod()) {
-        composeCodeableConcept("method", element.getMethod());
-      }
-      if (element.hasTruthTPElement()) {
-        composeDecimalCore("truthTP", element.getTruthTPElement(), false);
-        composeDecimalExtras("truthTP", element.getTruthTPElement(), false);
-      }
-      if (element.hasQueryTPElement()) {
-        composeDecimalCore("queryTP", element.getQueryTPElement(), false);
-        composeDecimalExtras("queryTP", element.getQueryTPElement(), false);
-      }
-      if (element.hasTruthFNElement()) {
-        composeDecimalCore("truthFN", element.getTruthFNElement(), false);
-        composeDecimalExtras("truthFN", element.getTruthFNElement(), false);
-      }
-      if (element.hasQueryFPElement()) {
-        composeDecimalCore("queryFP", element.getQueryFPElement(), false);
-        composeDecimalExtras("queryFP", element.getQueryFPElement(), false);
-      }
-      if (element.hasGtFPElement()) {
-        composeDecimalCore("gtFP", element.getGtFPElement(), false);
-        composeDecimalExtras("gtFP", element.getGtFPElement(), false);
-      }
-      if (element.hasPrecisionElement()) {
-        composeDecimalCore("precision", element.getPrecisionElement(), false);
-        composeDecimalExtras("precision", element.getPrecisionElement(), false);
-      }
-      if (element.hasRecallElement()) {
-        composeDecimalCore("recall", element.getRecallElement(), false);
-        composeDecimalExtras("recall", element.getRecallElement(), false);
-      }
-      if (element.hasFScoreElement()) {
-        composeDecimalCore("fScore", element.getFScoreElement(), false);
-        composeDecimalExtras("fScore", element.getFScoreElement(), false);
-      }
-      if (element.hasRoc()) {
-        composeMolecularSequenceQualityRocComponent("roc", element.getRoc());
-      }
-  }
-
-  protected void composeMolecularSequenceQualityRocComponent(String name, MolecularSequence.MolecularSequenceQualityRocComponent element) throws IOException {
-    if (element != null) {
-      open(name);
-      composeMolecularSequenceQualityRocComponentProperties(element);
-      close();
-    }
-  }
-
-  protected void composeMolecularSequenceQualityRocComponentProperties(MolecularSequence.MolecularSequenceQualityRocComponent element) throws IOException {
-    composeBackboneElementProperties(element);
-      if (element.hasScore()) {
-        if (anyHasValue(element.getScore())) {
-          openArray("score");
-          for (IntegerType e : element.getScore()) 
-            composeIntegerCore(null, e, e != element.getScore().get(element.getScore().size()-1));
-          closeArray();
-        }
-        if (anyHasExtras(element.getScore())) {
-          openArray("_score");
-          for (IntegerType e : element.getScore()) 
-            composeIntegerExtras(null, e, true);
-          closeArray();
-        }
-      };
-      if (element.hasNumTP()) {
-        if (anyHasValue(element.getNumTP())) {
-          openArray("numTP");
-          for (IntegerType e : element.getNumTP()) 
-            composeIntegerCore(null, e, e != element.getNumTP().get(element.getNumTP().size()-1));
-          closeArray();
-        }
-        if (anyHasExtras(element.getNumTP())) {
-          openArray("_numTP");
-          for (IntegerType e : element.getNumTP()) 
-            composeIntegerExtras(null, e, true);
-          closeArray();
-        }
-      };
-      if (element.hasNumFP()) {
-        if (anyHasValue(element.getNumFP())) {
-          openArray("numFP");
-          for (IntegerType e : element.getNumFP()) 
-            composeIntegerCore(null, e, e != element.getNumFP().get(element.getNumFP().size()-1));
-          closeArray();
-        }
-        if (anyHasExtras(element.getNumFP())) {
-          openArray("_numFP");
-          for (IntegerType e : element.getNumFP()) 
-            composeIntegerExtras(null, e, true);
-          closeArray();
-        }
-      };
-      if (element.hasNumFN()) {
-        if (anyHasValue(element.getNumFN())) {
-          openArray("numFN");
-          for (IntegerType e : element.getNumFN()) 
-            composeIntegerCore(null, e, e != element.getNumFN().get(element.getNumFN().size()-1));
-          closeArray();
-        }
-        if (anyHasExtras(element.getNumFN())) {
-          openArray("_numFN");
-          for (IntegerType e : element.getNumFN()) 
-            composeIntegerExtras(null, e, true);
-          closeArray();
-        }
-      };
-      if (element.hasPrecision()) {
-        if (anyHasValue(element.getPrecision())) {
-          openArray("precision");
-          for (DecimalType e : element.getPrecision()) 
-            composeDecimalCore(null, e, e != element.getPrecision().get(element.getPrecision().size()-1));
-          closeArray();
-        }
-        if (anyHasExtras(element.getPrecision())) {
-          openArray("_precision");
-          for (DecimalType e : element.getPrecision()) 
-            composeDecimalExtras(null, e, true);
-          closeArray();
-        }
-      };
-      if (element.hasSensitivity()) {
-        if (anyHasValue(element.getSensitivity())) {
-          openArray("sensitivity");
-          for (DecimalType e : element.getSensitivity()) 
-            composeDecimalCore(null, e, e != element.getSensitivity().get(element.getSensitivity().size()-1));
-          closeArray();
-        }
-        if (anyHasExtras(element.getSensitivity())) {
-          openArray("_sensitivity");
-          for (DecimalType e : element.getSensitivity()) 
-            composeDecimalExtras(null, e, true);
-          closeArray();
-        }
-      };
-      if (element.hasFMeasure()) {
-        if (anyHasValue(element.getFMeasure())) {
-          openArray("fMeasure");
-          for (DecimalType e : element.getFMeasure()) 
-            composeDecimalCore(null, e, e != element.getFMeasure().get(element.getFMeasure().size()-1));
-          closeArray();
-        }
-        if (anyHasExtras(element.getFMeasure())) {
-          openArray("_fMeasure");
-          for (DecimalType e : element.getFMeasure()) 
-            composeDecimalExtras(null, e, true);
-          closeArray();
-        }
-      };
-  }
-
-  protected void composeMolecularSequenceRepositoryComponent(String name, MolecularSequence.MolecularSequenceRepositoryComponent element) throws IOException {
-    if (element != null) {
-      open(name);
-      composeMolecularSequenceRepositoryComponentProperties(element);
-      close();
-    }
-  }
-
-  protected void composeMolecularSequenceRepositoryComponentProperties(MolecularSequence.MolecularSequenceRepositoryComponent element) throws IOException {
-    composeBackboneElementProperties(element);
-      if (element.hasTypeElement()) {
-        composeEnumerationCore("type", element.getTypeElement(), new MolecularSequence.RepositoryTypeEnumFactory(), false);
-        composeEnumerationExtras("type", element.getTypeElement(), new MolecularSequence.RepositoryTypeEnumFactory(), false);
-      }
-      if (element.hasUrlElement()) {
-        composeUriCore("url", element.getUrlElement(), false);
-        composeUriExtras("url", element.getUrlElement(), false);
-      }
-      if (element.hasNameElement()) {
-        composeStringCore("name", element.getNameElement(), false);
-        composeStringExtras("name", element.getNameElement(), false);
-      }
-      if (element.hasDatasetIdElement()) {
-        composeStringCore("datasetId", element.getDatasetIdElement(), false);
-        composeStringExtras("datasetId", element.getDatasetIdElement(), false);
-      }
-      if (element.hasVariantsetIdElement()) {
-        composeStringCore("variantsetId", element.getVariantsetIdElement(), false);
-        composeStringExtras("variantsetId", element.getVariantsetIdElement(), false);
-      }
-      if (element.hasReadsetIdElement()) {
-        composeStringCore("readsetId", element.getReadsetIdElement(), false);
-        composeStringExtras("readsetId", element.getReadsetIdElement(), false);
-      }
-  }
-
-  protected void composeMolecularSequenceStructureVariantComponent(String name, MolecularSequence.MolecularSequenceStructureVariantComponent element) throws IOException {
-    if (element != null) {
-      open(name);
-      composeMolecularSequenceStructureVariantComponentProperties(element);
-      close();
-    }
-  }
-
-  protected void composeMolecularSequenceStructureVariantComponentProperties(MolecularSequence.MolecularSequenceStructureVariantComponent element) throws IOException {
-    composeBackboneElementProperties(element);
-      if (element.hasVariantType()) {
-        composeCodeableConcept("variantType", element.getVariantType());
-      }
-      if (element.hasExactElement()) {
-        composeBooleanCore("exact", element.getExactElement(), false);
-        composeBooleanExtras("exact", element.getExactElement(), false);
-      }
-      if (element.hasLengthElement()) {
-        composeIntegerCore("length", element.getLengthElement(), false);
-        composeIntegerExtras("length", element.getLengthElement(), false);
-      }
-      if (element.hasOuter()) {
-        composeMolecularSequenceStructureVariantOuterComponent("outer", element.getOuter());
-      }
-      if (element.hasInner()) {
-        composeMolecularSequenceStructureVariantInnerComponent("inner", element.getInner());
-      }
-  }
-
-  protected void composeMolecularSequenceStructureVariantOuterComponent(String name, MolecularSequence.MolecularSequenceStructureVariantOuterComponent element) throws IOException {
-    if (element != null) {
-      open(name);
-      composeMolecularSequenceStructureVariantOuterComponentProperties(element);
-      close();
-    }
-  }
-
-  protected void composeMolecularSequenceStructureVariantOuterComponentProperties(MolecularSequence.MolecularSequenceStructureVariantOuterComponent element) throws IOException {
-    composeBackboneElementProperties(element);
-      if (element.hasStartElement()) {
-        composeIntegerCore("start", element.getStartElement(), false);
-        composeIntegerExtras("start", element.getStartElement(), false);
-      }
-      if (element.hasEndElement()) {
-        composeIntegerCore("end", element.getEndElement(), false);
-        composeIntegerExtras("end", element.getEndElement(), false);
-      }
-  }
-
-  protected void composeMolecularSequenceStructureVariantInnerComponent(String name, MolecularSequence.MolecularSequenceStructureVariantInnerComponent element) throws IOException {
-    if (element != null) {
-      open(name);
-      composeMolecularSequenceStructureVariantInnerComponentProperties(element);
-      close();
-    }
-  }
-
-  protected void composeMolecularSequenceStructureVariantInnerComponentProperties(MolecularSequence.MolecularSequenceStructureVariantInnerComponent element) throws IOException {
-    composeBackboneElementProperties(element);
-      if (element.hasStartElement()) {
-        composeIntegerCore("start", element.getStartElement(), false);
-        composeIntegerExtras("start", element.getStartElement(), false);
-      }
-      if (element.hasEndElement()) {
-        composeIntegerCore("end", element.getEndElement(), false);
-        composeIntegerExtras("end", element.getEndElement(), false);
       }
   }
 
@@ -57962,6 +57418,9 @@ public class JsonParser extends JsonParserBase {
       };
       if (element.hasBodySite()) {
         composeCodeableConcept("bodySite", element.getBodySite());
+      }
+      if (element.hasBodyStructure()) {
+        composeReference("bodyStructure", element.getBodyStructure());
       }
       if (element.hasMethod()) {
         composeCodeableConcept("method", element.getMethod());
@@ -62036,6 +61495,12 @@ public class JsonParser extends JsonParserBase {
       if (element.hasRole()) {
         composeCodeableConcept("role", element.getRole());
       }
+      if (element.hasPeriod()) {
+        openArray("period");
+        for (Period e : element.getPeriod()) 
+          composePeriod(null, e);
+        closeArray();
+      };
       if (element.hasClassifier()) {
         openArray("classifier");
         for (CodeableConcept e : element.getClassifier()) 

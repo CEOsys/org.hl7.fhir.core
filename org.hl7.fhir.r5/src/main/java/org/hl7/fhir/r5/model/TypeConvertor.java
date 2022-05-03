@@ -376,6 +376,13 @@ public class TypeConvertor {
       throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Contributor");
   }
 
+  public static Count castToCount(Base b) throws FHIRException {
+    if (b instanceof Count)
+      return (Count) b;
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Count");
+  }
+
   public static UsageContext castToUsageContext(Base b) throws FHIRException {
     if (b instanceof UsageContext)
       return (UsageContext) b;

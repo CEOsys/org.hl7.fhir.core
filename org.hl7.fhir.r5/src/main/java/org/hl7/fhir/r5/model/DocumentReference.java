@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Thu, Apr 28, 2022 14:17+0200 for FHIR v5.0.0-cibuild
+// Generated on Mon, May 2, 2022 11:54+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -1213,7 +1213,7 @@ public class DocumentReference extends DomainResource {
     /**
      * A procedure that is fulfilled in whole or in part by the creation of this media.
      */
-    @Child(name = "basedOn", type = {ServiceRequest.class, CarePlan.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "basedOn", type = {Appointment.class, AppointmentResponse.class, CarePlan.class, Claim.class, CommunicationRequest.class, Contract.class, CoverageEligibilityRequest.class, DeviceRequest.class, EnrollmentRequest.class, EpisodeOfCare.class, ImmunizationRecommendation.class, MedicationRequest.class, NutritionOrder.class, RequestGroup.class, ServiceRequest.class, SupplyRequest.class, VisionPrescription.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Procedure that caused this media to be created", formalDefinition="A procedure that is fulfilled in whole or in part by the creation of this media." )
     protected List<Reference> basedOn;
 
@@ -1259,9 +1259,9 @@ public class DocumentReference extends DomainResource {
     /**
      * Describes the clinical encounter or type of care that the document content is associated with.
      */
-    @Child(name = "encounter", type = {Encounter.class}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Context of the document  content", formalDefinition="Describes the clinical encounter or type of care that the document content is associated with." )
-    protected List<Reference> encounter;
+    @Child(name = "context", type = {Appointment.class, Encounter.class, EpisodeOfCare.class}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Context of the document content", formalDefinition="Describes the clinical encounter or type of care that the document content is associated with." )
+    protected List<Reference> context;
 
     /**
      * This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the type Code, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
@@ -1365,7 +1365,7 @@ public class DocumentReference extends DomainResource {
     @Description(shortDefinition="Related identifiers or resources", formalDefinition="Related identifiers or resources associated with the DocumentReference." )
     protected List<Reference> related;
 
-    private static final long serialVersionUID = -328663010L;
+    private static final long serialVersionUID = 1353937378L;
 
   /**
    * Constructor
@@ -1685,56 +1685,56 @@ public class DocumentReference extends DomainResource {
     }
 
     /**
-     * @return {@link #encounter} (Describes the clinical encounter or type of care that the document content is associated with.)
+     * @return {@link #context} (Describes the clinical encounter or type of care that the document content is associated with.)
      */
-    public List<Reference> getEncounter() { 
-      if (this.encounter == null)
-        this.encounter = new ArrayList<Reference>();
-      return this.encounter;
+    public List<Reference> getContext() { 
+      if (this.context == null)
+        this.context = new ArrayList<Reference>();
+      return this.context;
     }
 
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public DocumentReference setEncounter(List<Reference> theEncounter) { 
-      this.encounter = theEncounter;
+    public DocumentReference setContext(List<Reference> theContext) { 
+      this.context = theContext;
       return this;
     }
 
-    public boolean hasEncounter() { 
-      if (this.encounter == null)
+    public boolean hasContext() { 
+      if (this.context == null)
         return false;
-      for (Reference item : this.encounter)
+      for (Reference item : this.context)
         if (!item.isEmpty())
           return true;
       return false;
     }
 
-    public Reference addEncounter() { //3
+    public Reference addContext() { //3
       Reference t = new Reference();
-      if (this.encounter == null)
-        this.encounter = new ArrayList<Reference>();
-      this.encounter.add(t);
+      if (this.context == null)
+        this.context = new ArrayList<Reference>();
+      this.context.add(t);
       return t;
     }
 
-    public DocumentReference addEncounter(Reference t) { //3
+    public DocumentReference addContext(Reference t) { //3
       if (t == null)
         return this;
-      if (this.encounter == null)
-        this.encounter = new ArrayList<Reference>();
-      this.encounter.add(t);
+      if (this.context == null)
+        this.context = new ArrayList<Reference>();
+      this.context.add(t);
       return this;
     }
 
     /**
-     * @return The first repetition of repeating field {@link #encounter}, creating it if it does not already exist {3}
+     * @return The first repetition of repeating field {@link #context}, creating it if it does not already exist {3}
      */
-    public Reference getEncounterFirstRep() { 
-      if (getEncounter().isEmpty()) {
-        addEncounter();
+    public Reference getContextFirstRep() { 
+      if (getContext().isEmpty()) {
+        addContext();
       }
-      return getEncounter().get(0);
+      return getContext().get(0);
     }
 
     /**
@@ -2329,13 +2329,13 @@ public class DocumentReference extends DomainResource {
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("identifier", "Identifier", "Other identifiers associated with the document, including version independent identifiers.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        children.add(new Property("basedOn", "Reference(ServiceRequest|CarePlan)", "A procedure that is fulfilled in whole or in part by the creation of this media.", 0, java.lang.Integer.MAX_VALUE, basedOn));
+        children.add(new Property("basedOn", "Reference(Appointment|AppointmentResponse|CarePlan|Claim|CommunicationRequest|Contract|CoverageEligibilityRequest|DeviceRequest|EnrollmentRequest|EpisodeOfCare|ImmunizationRecommendation|MedicationRequest|NutritionOrder|RequestGroup|ServiceRequest|SupplyRequest|VisionPrescription)", "A procedure that is fulfilled in whole or in part by the creation of this media.", 0, java.lang.Integer.MAX_VALUE, basedOn));
         children.add(new Property("status", "code", "The status of this document reference.", 0, 1, status));
         children.add(new Property("docStatus", "code", "The status of the underlying document.", 0, 1, docStatus));
         children.add(new Property("type", "CodeableConcept", "Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced.", 0, 1, type));
         children.add(new Property("category", "CodeableConcept", "A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type.", 0, java.lang.Integer.MAX_VALUE, category));
         children.add(new Property("subject", "Reference(Any)", "Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure).", 0, 1, subject));
-        children.add(new Property("encounter", "Reference(Encounter)", "Describes the clinical encounter or type of care that the document content is associated with.", 0, java.lang.Integer.MAX_VALUE, encounter));
+        children.add(new Property("context", "Reference(Appointment|Encounter|EpisodeOfCare)", "Describes the clinical encounter or type of care that the document content is associated with.", 0, java.lang.Integer.MAX_VALUE, context));
         children.add(new Property("event", "CodeableReference", "This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the type Code, such as a \"History and Physical Report\" in which the procedure being documented is necessarily a \"History and Physical\" act.", 0, java.lang.Integer.MAX_VALUE, event));
         children.add(new Property("facilityType", "CodeableConcept", "The kind of facility where the patient was seen.", 0, 1, facilityType));
         children.add(new Property("practiceSetting", "CodeableConcept", "This property may convey specifics about the practice setting where the content was created, often reflecting the clinical specialty.", 0, 1, practiceSetting));
@@ -2356,13 +2356,13 @@ public class DocumentReference extends DomainResource {
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Other identifiers associated with the document, including version independent identifiers.", 0, java.lang.Integer.MAX_VALUE, identifier);
-        case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(ServiceRequest|CarePlan)", "A procedure that is fulfilled in whole or in part by the creation of this media.", 0, java.lang.Integer.MAX_VALUE, basedOn);
+        case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(Appointment|AppointmentResponse|CarePlan|Claim|CommunicationRequest|Contract|CoverageEligibilityRequest|DeviceRequest|EnrollmentRequest|EpisodeOfCare|ImmunizationRecommendation|MedicationRequest|NutritionOrder|RequestGroup|ServiceRequest|SupplyRequest|VisionPrescription)", "A procedure that is fulfilled in whole or in part by the creation of this media.", 0, java.lang.Integer.MAX_VALUE, basedOn);
         case -892481550: /*status*/  return new Property("status", "code", "The status of this document reference.", 0, 1, status);
         case -23496886: /*docStatus*/  return new Property("docStatus", "code", "The status of the underlying document.", 0, 1, docStatus);
         case 3575610: /*type*/  return new Property("type", "CodeableConcept", "Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced.", 0, 1, type);
         case 50511102: /*category*/  return new Property("category", "CodeableConcept", "A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type.", 0, java.lang.Integer.MAX_VALUE, category);
         case -1867885268: /*subject*/  return new Property("subject", "Reference(Any)", "Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure).", 0, 1, subject);
-        case 1524132147: /*encounter*/  return new Property("encounter", "Reference(Encounter)", "Describes the clinical encounter or type of care that the document content is associated with.", 0, java.lang.Integer.MAX_VALUE, encounter);
+        case 951530927: /*context*/  return new Property("context", "Reference(Appointment|Encounter|EpisodeOfCare)", "Describes the clinical encounter or type of care that the document content is associated with.", 0, java.lang.Integer.MAX_VALUE, context);
         case 96891546: /*event*/  return new Property("event", "CodeableReference", "This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the type Code, such as a \"History and Physical Report\" in which the procedure being documented is necessarily a \"History and Physical\" act.", 0, java.lang.Integer.MAX_VALUE, event);
         case 370698365: /*facilityType*/  return new Property("facilityType", "CodeableConcept", "The kind of facility where the patient was seen.", 0, 1, facilityType);
         case 331373717: /*practiceSetting*/  return new Property("practiceSetting", "CodeableConcept", "This property may convey specifics about the practice setting where the content was created, often reflecting the clinical specialty.", 0, 1, practiceSetting);
@@ -2392,7 +2392,7 @@ public class DocumentReference extends DomainResource {
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
         case 50511102: /*category*/ return this.category == null ? new Base[0] : this.category.toArray(new Base[this.category.size()]); // CodeableConcept
         case -1867885268: /*subject*/ return this.subject == null ? new Base[0] : new Base[] {this.subject}; // Reference
-        case 1524132147: /*encounter*/ return this.encounter == null ? new Base[0] : this.encounter.toArray(new Base[this.encounter.size()]); // Reference
+        case 951530927: /*context*/ return this.context == null ? new Base[0] : this.context.toArray(new Base[this.context.size()]); // Reference
         case 96891546: /*event*/ return this.event == null ? new Base[0] : this.event.toArray(new Base[this.event.size()]); // CodeableReference
         case 370698365: /*facilityType*/ return this.facilityType == null ? new Base[0] : new Base[] {this.facilityType}; // CodeableConcept
         case 331373717: /*practiceSetting*/ return this.practiceSetting == null ? new Base[0] : new Base[] {this.practiceSetting}; // CodeableConcept
@@ -2438,8 +2438,8 @@ public class DocumentReference extends DomainResource {
         case -1867885268: // subject
           this.subject = TypeConvertor.castToReference(value); // Reference
           return value;
-        case 1524132147: // encounter
-          this.getEncounter().add(TypeConvertor.castToReference(value)); // Reference
+        case 951530927: // context
+          this.getContext().add(TypeConvertor.castToReference(value)); // Reference
           return value;
         case 96891546: // event
           this.getEvent().add(TypeConvertor.castToCodeableReference(value)); // CodeableReference
@@ -2506,8 +2506,8 @@ public class DocumentReference extends DomainResource {
           this.getCategory().add(TypeConvertor.castToCodeableConcept(value));
         } else if (name.equals("subject")) {
           this.subject = TypeConvertor.castToReference(value); // Reference
-        } else if (name.equals("encounter")) {
-          this.getEncounter().add(TypeConvertor.castToReference(value));
+        } else if (name.equals("context")) {
+          this.getContext().add(TypeConvertor.castToReference(value));
         } else if (name.equals("event")) {
           this.getEvent().add(TypeConvertor.castToCodeableReference(value));
         } else if (name.equals("facilityType")) {
@@ -2551,7 +2551,7 @@ public class DocumentReference extends DomainResource {
         case 3575610:  return getType();
         case 50511102:  return addCategory(); 
         case -1867885268:  return getSubject();
-        case 1524132147:  return addEncounter(); 
+        case 951530927:  return addContext(); 
         case 96891546:  return addEvent(); 
         case 370698365:  return getFacilityType();
         case 331373717:  return getPracticeSetting();
@@ -2581,7 +2581,7 @@ public class DocumentReference extends DomainResource {
         case 3575610: /*type*/ return new String[] {"CodeableConcept"};
         case 50511102: /*category*/ return new String[] {"CodeableConcept"};
         case -1867885268: /*subject*/ return new String[] {"Reference"};
-        case 1524132147: /*encounter*/ return new String[] {"Reference"};
+        case 951530927: /*context*/ return new String[] {"Reference"};
         case 96891546: /*event*/ return new String[] {"CodeableReference"};
         case 370698365: /*facilityType*/ return new String[] {"CodeableConcept"};
         case 331373717: /*practiceSetting*/ return new String[] {"CodeableConcept"};
@@ -2626,8 +2626,8 @@ public class DocumentReference extends DomainResource {
           this.subject = new Reference();
           return this.subject;
         }
-        else if (name.equals("encounter")) {
-          return addEncounter();
+        else if (name.equals("context")) {
+          return addContext();
         }
         else if (name.equals("event")) {
           return addEvent();
@@ -2712,10 +2712,10 @@ public class DocumentReference extends DomainResource {
             dst.category.add(i.copy());
         };
         dst.subject = subject == null ? null : subject.copy();
-        if (encounter != null) {
-          dst.encounter = new ArrayList<Reference>();
-          for (Reference i : encounter)
-            dst.encounter.add(i.copy());
+        if (context != null) {
+          dst.context = new ArrayList<Reference>();
+          for (Reference i : context)
+            dst.context.add(i.copy());
         };
         if (event != null) {
           dst.event = new ArrayList<CodeableReference>();
@@ -2774,7 +2774,7 @@ public class DocumentReference extends DomainResource {
         DocumentReference o = (DocumentReference) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(basedOn, o.basedOn, true) && compareDeep(status, o.status, true)
            && compareDeep(docStatus, o.docStatus, true) && compareDeep(type, o.type, true) && compareDeep(category, o.category, true)
-           && compareDeep(subject, o.subject, true) && compareDeep(encounter, o.encounter, true) && compareDeep(event, o.event, true)
+           && compareDeep(subject, o.subject, true) && compareDeep(context, o.context, true) && compareDeep(event, o.event, true)
            && compareDeep(facilityType, o.facilityType, true) && compareDeep(practiceSetting, o.practiceSetting, true)
            && compareDeep(period, o.period, true) && compareDeep(date, o.date, true) && compareDeep(author, o.author, true)
            && compareDeep(attester, o.attester, true) && compareDeep(custodian, o.custodian, true) && compareDeep(relatesTo, o.relatesTo, true)
@@ -2796,7 +2796,7 @@ public class DocumentReference extends DomainResource {
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, basedOn, status
-          , docStatus, type, category, subject, encounter, event, facilityType, practiceSetting
+          , docStatus, type, category, subject, context, event, facilityType, practiceSetting
           , period, date, author, attester, custodian, relatesTo, description, securityLabel
           , content, sourcePatientInfo, related);
       }
@@ -2866,7 +2866,7 @@ public class DocumentReference extends DomainResource {
    * Path: <b>DocumentReference.basedOn</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="based-on", path="DocumentReference.basedOn", description="Procedure that caused this media to be created", type="reference", target={CarePlan.class, ServiceRequest.class } )
+  @SearchParamDefinition(name="based-on", path="DocumentReference.basedOn", description="Procedure that caused this media to be created", type="reference", target={Appointment.class, AppointmentResponse.class, CarePlan.class, Claim.class, CommunicationRequest.class, Contract.class, CoverageEligibilityRequest.class, DeviceRequest.class, EnrollmentRequest.class, EpisodeOfCare.class, ImmunizationRecommendation.class, MedicationRequest.class, NutritionOrder.class, RequestGroup.class, ServiceRequest.class, SupplyRequest.class, VisionPrescription.class } )
   public static final String SP_BASED_ON = "based-on";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>based-on</b>
@@ -2923,6 +2923,32 @@ public class DocumentReference extends DomainResource {
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTENTTYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CONTENTTYPE);
+
+ /**
+   * Search parameter: <b>context</b>
+   * <p>
+   * Description: <b>Context of the document content</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DocumentReference.context</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context", path="DocumentReference.context", description="Context of the document content", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Encounter") }, target={Appointment.class, Encounter.class, EpisodeOfCare.class } )
+  public static final String SP_CONTEXT = "context";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context</b>
+   * <p>
+   * Description: <b>Context of the document content</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DocumentReference.context</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_CONTEXT);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>DocumentReference:context</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_CONTEXT = new ca.uhn.fhir.model.api.Include("DocumentReference:context").toLocked();
 
  /**
    * Search parameter: <b>creation</b>
@@ -3399,60 +3425,6 @@ public class DocumentReference extends DomainResource {
    * the path value of "<b>DocumentReference:subject</b>".
    */
   public static final ca.uhn.fhir.model.api.Include INCLUDE_SUBJECT = new ca.uhn.fhir.model.api.Include("DocumentReference:subject").toLocked();
-
- /**
-   * Search parameter: <b>encounter</b>
-   * <p>
-   * Description: <b>Multiple Resources: 
-
-* [Composition](composition.html): Context of the Composition
-* [DeviceRequest](devicerequest.html): Encounter during which request was created
-* [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made
-* [DocumentReference](documentreference.html): Context of the document  content
-* [Flag](flag.html): Alert relevant during encounter
-* [List](list.html): Context in which list created
-* [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier
-* [Observation](observation.html): Encounter related to the observation
-* [Procedure](procedure.html): The Encounter during which this Procedure was created
-* [RiskAssessment](riskassessment.html): Where was assessment performed?
-* [ServiceRequest](servicerequest.html): An encounter in which this request is made
-* [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier
-</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | DocumentReference.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="encounter", path="Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | DocumentReference.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter", description="Multiple Resources: \r\n\r\n* [Composition](composition.html): Context of the Composition\r\n* [DeviceRequest](devicerequest.html): Encounter during which request was created\r\n* [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made\r\n* [DocumentReference](documentreference.html): Context of the document  content\r\n* [Flag](flag.html): Alert relevant during encounter\r\n* [List](list.html): Context in which list created\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier\r\n* [Observation](observation.html): Encounter related to the observation\r\n* [Procedure](procedure.html): The Encounter during which this Procedure was created\r\n* [RiskAssessment](riskassessment.html): Where was assessment performed?\r\n* [ServiceRequest](servicerequest.html): An encounter in which this request is made\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier\r\n", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Base FHIR compartment definition for Encounter") }, target={Encounter.class } )
-  public static final String SP_ENCOUNTER = "encounter";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>encounter</b>
-   * <p>
-   * Description: <b>Multiple Resources: 
-
-* [Composition](composition.html): Context of the Composition
-* [DeviceRequest](devicerequest.html): Encounter during which request was created
-* [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made
-* [DocumentReference](documentreference.html): Context of the document  content
-* [Flag](flag.html): Alert relevant during encounter
-* [List](list.html): Context in which list created
-* [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier
-* [Observation](observation.html): Encounter related to the observation
-* [Procedure](procedure.html): The Encounter during which this Procedure was created
-* [RiskAssessment](riskassessment.html): Where was assessment performed?
-* [ServiceRequest](servicerequest.html): An encounter in which this request is made
-* [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier
-</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Composition.encounter | DeviceRequest.encounter | DiagnosticReport.encounter | DocumentReference.encounter | Flag.encounter | List.encounter | NutritionOrder.encounter | Observation.encounter | Procedure.encounter | RiskAssessment.encounter | ServiceRequest.encounter | VisionPrescription.encounter</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ENCOUNTER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ENCOUNTER);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>DocumentReference:encounter</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_ENCOUNTER = new ca.uhn.fhir.model.api.Include("DocumentReference:encounter").toLocked();
 
  /**
    * Search parameter: <b>identifier</b>
