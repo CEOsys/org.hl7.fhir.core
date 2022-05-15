@@ -113,3 +113,19 @@ public boolean isInlineType() {
 public boolean prohibited() {
   return "0".equals(getMax());
   }
+
+public boolean hasFixedOrPattern() {
+  return hasFixed() || hasPattern();
+  }
+
+public DataType getFixedOrPattern() {
+  return hasFixed() ? getFixed() : getPattern();
+  }
+
+public boolean isProhibited() {
+  return "0".equals(getMax());
+  }
+
+public boolean isRequired() {
+  return getMin() == 1;
+  }
