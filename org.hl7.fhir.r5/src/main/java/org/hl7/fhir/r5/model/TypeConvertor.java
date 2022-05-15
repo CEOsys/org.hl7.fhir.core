@@ -13,196 +13,196 @@ import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 public class TypeConvertor {
 
   // -- converters for property setters
-  
+
   public static DataType castToType(Base b) throws FHIRException {
     if (b instanceof DataType)
       return (DataType) b;
     else if (b.isMetadataBased())
       return ((org.hl7.fhir.r5.elementmodel.Element) b).asType();
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Reference");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Reference");
   }
-  
+
 
   public static BooleanType castToBoolean(Base b) throws FHIRException {
     if (b instanceof BooleanType)
       return (BooleanType) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Boolean");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Boolean");
   }
-  
+
   public static IntegerType castToInteger(Base b) throws FHIRException {
     if (b instanceof IntegerType)
       return (IntegerType) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Integer");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Integer");
   }
-  
+
   public static Integer64Type castToInteger64(Base b) throws FHIRException {
     if (b instanceof Integer64Type)
       return (Integer64Type) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Integer");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Integer");
   }
-  
+
   public static DecimalType castToDecimal(Base b) throws FHIRException {
     if (b instanceof DecimalType)
       return (DecimalType) b;
     else if (b.hasPrimitiveValue())
       return new DecimalType(b.primitiveValue());
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Decimal");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Decimal");
   }
-  
+
   public static Base64BinaryType castToBase64Binary(Base b) throws FHIRException {
     if (b instanceof Base64BinaryType)
       return (Base64BinaryType) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Base64Binary");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Base64Binary");
   }
-  
+
   public static InstantType castToInstant(Base b) throws FHIRException {
     if (b instanceof InstantType)
       return (InstantType) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Instant");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Instant");
   }
-  
+
   public static StringType castToString(Base b) throws FHIRException {
     if (b instanceof StringType)
       return (StringType) b;
     else if (b.hasPrimitiveValue())
       return new StringType(b.primitiveValue());
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a String");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a String");
   }
-  
+
   public static UriType castToUri(Base b) throws FHIRException {
     if (b instanceof UriType)
       return (UriType) b;
     else if (b.hasPrimitiveValue())
       return new UriType(b.primitiveValue());
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Uri");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Uri");
   }
-  
+
   public static UrlType castToUrl(Base b) throws FHIRException {
     if (b instanceof UrlType)
       return (UrlType) b;
     else if (b.hasPrimitiveValue())
       return new UrlType(b.primitiveValue());
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Uri");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Uri");
   }
-  
+
   public static CanonicalType castToCanonical(Base b) throws FHIRException {
     if (b instanceof CanonicalType)
       return (CanonicalType) b;
     else if (b.hasPrimitiveValue())
       return new CanonicalType(b.primitiveValue());
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Uri");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Uri");
   }
-  
+
   public static DateType castToDate(Base b) throws FHIRException {
     if (b instanceof DateType)
       return (DateType) b;
     else if (b.hasPrimitiveValue())
       return new DateType(b.primitiveValue());
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Date");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Date");
   }
-  
+
   public static DateTimeType castToDateTime(Base b) throws FHIRException {
     if (b instanceof DateTimeType)
       return (DateTimeType) b;
     else if (b.fhirType().equals("dateTime"))
       return new DateTimeType(b.primitiveValue());
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a DateTime");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a DateTime");
   }
-  
+
   public static TimeType castToTime(Base b) throws FHIRException {
     if (b instanceof TimeType)
       return (TimeType) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Time");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Time");
   }
-  
+
   public static CodeType castToCode(Base b) throws FHIRException {
     if (b instanceof CodeType)
       return (CodeType) b;
     else if (b.isPrimitive())
       return new CodeType(b.primitiveValue());
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Code");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Code");
   }
-  
+
   public static OidType castToOid(Base b) throws FHIRException {
     if (b instanceof OidType)
       return (OidType) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Oid");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Oid");
   }
-  
+
   public static IdType castToId(Base b) throws FHIRException {
     if (b instanceof IdType)
       return (IdType) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Id");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Id");
   }
-  
+
   public static UnsignedIntType castToUnsignedInt(Base b) throws FHIRException {
     if (b instanceof UnsignedIntType)
       return (UnsignedIntType) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a UnsignedInt");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a UnsignedInt");
   }
-  
+
   public static PositiveIntType castToPositiveInt(Base b) throws FHIRException {
     if (b instanceof PositiveIntType)
       return (PositiveIntType) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a PositiveInt");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a PositiveInt");
   }
-  
+
   public static MarkdownType castToMarkdown(Base b) throws FHIRException {
     if (b instanceof MarkdownType)
       return (MarkdownType) b;
     else if (b.hasPrimitiveValue())
       return new MarkdownType(b.primitiveValue());
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Markdown");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Markdown");
   }
-    
+
   public static Annotation castToAnnotation(Base b) throws FHIRException {
     if (b instanceof Annotation)
       return (Annotation) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to an Annotation");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to an Annotation");
   }
-  
+
   public static Dosage castToDosage(Base b) throws FHIRException {
     if (b instanceof Dosage)
       return (Dosage) b;
-    else      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to an DosageInstruction");
+    else throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to an DosageInstruction");
   }
-  
-  
+
+
   public static Attachment castToAttachment(Base b) throws FHIRException {
     if (b instanceof Attachment)
       return (Attachment) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to an Attachment");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to an Attachment");
   }
-  
+
   public static Identifier castToIdentifier(Base b) throws FHIRException {
     if (b instanceof Identifier)
       return (Identifier) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to an Identifier");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to an Identifier");
   }
-  
+
   public static CodeableConcept castToCodeableConcept(Base b) throws FHIRException {
     if (b instanceof CodeableConcept)
       return (CodeableConcept) b;
@@ -212,14 +212,14 @@ public class TypeConvertor {
       CodeableConcept cc = new CodeableConcept();
       cc.addCoding().setCode(((CodeType) b).asStringValue());
       return cc;
-    } else if(b instanceof StringType) {
+    } else if (b instanceof StringType) {
       CodeableConcept cc = new CodeableConcept();
       cc.addCoding().setCode(((StringType) b).asStringValue());
       return cc;
     } else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a CodeableConcept");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a CodeableConcept");
   }
-  
+
   public static CodeableReference castToCodeableReference(Base b) throws FHIRException {
     if (b instanceof CodeableReference) {
       return (CodeableReference) b;
@@ -231,22 +231,22 @@ public class TypeConvertor {
       CodeableReference cc = new CodeableReference();
       cc.setReference((Reference) b);
       return cc;
-    } else if(b instanceof StringType) {
+    } else if (b instanceof StringType) {
       CodeableReference cc = new CodeableReference();
       cc.getConcept().addCoding().setCode(((StringType) b).asStringValue());
       return cc;
     } else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a CodeableConcept");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a CodeableConcept");
   }
-  
+
   public static Population castToPopulation(Base b) throws FHIRException {
     if (b instanceof Population)
       return (Population) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Population");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Population");
   }
-  
-  
+
+
   public static Coding castToCoding(Base b) throws FHIRException {
     if (b instanceof Coding)
       return (Coding) b;
@@ -254,42 +254,42 @@ public class TypeConvertor {
       ICoding c = ((Element) b).getAsICoding();
       if (c != null) {
         return new Coding().setCode(c.getCode()).setSystem(c.getSystem()).setVersion(c.getVersion()).setDisplay(c.getDisplay());
-      } else if (b.isPrimitive()) {  
+      } else if (b.isPrimitive()) {
         return new Coding().setCode(b.primitiveValue());
       } else {
-        throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Coding");
+        throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Coding");
       }
     } else if (b instanceof ICoding) {
       ICoding c = (ICoding) b;
       return new Coding().setCode(c.getCode()).setSystem(c.getSystem()).setVersion(c.getVersion()).setDisplay(c.getDisplay());
-    } else if (b.isPrimitive()) {  
+    } else if (b.isPrimitive()) {
       return new Coding().setCode(b.primitiveValue());
     } else {
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Coding");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Coding");
     }
   }
-  
+
   public static Quantity castToQuantity(Base b) throws FHIRException {
     if (b instanceof Quantity)
       return (Quantity) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to an Quantity");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to an Quantity");
   }
-  
+
   public static Money castToMoney(Base b) throws FHIRException {
     if (b instanceof Money)
       return (Money) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to an Money");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to an Money");
   }
-  
+
   public static Duration castToDuration(Base b) throws FHIRException {
     if (b instanceof Duration)
       return (Duration) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to an Duration");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to an Duration");
   }
-  
+
   public static SimpleQuantity castToSimpleQuantity(Base b) throws FHIRException {
     if (b instanceof SimpleQuantity)
       return (SimpleQuantity) b;
@@ -303,63 +303,70 @@ public class TypeConvertor {
       sq.setCodeElement(q.getCodeElement());
       return sq;
     } else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to an SimpleQuantity");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to an SimpleQuantity");
   }
-  
+
   public static Range castToRange(Base b) throws FHIRException {
     if (b instanceof Range)
       return (Range) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Range");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Range");
   }
-  
+
   public static Period castToPeriod(Base b) throws FHIRException {
     if (b instanceof Period)
       return (Period) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Period");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Period");
   }
-  
+
   public static Ratio castToRatio(Base b) throws FHIRException {
     if (b instanceof Ratio)
       return (Ratio) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Ratio");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Ratio");
   }
-  
+
   public static SampledData castToSampledData(Base b) throws FHIRException {
     if (b instanceof SampledData)
       return (SampledData) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a SampledData");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a SampledData");
   }
-  
+
   public static Signature castToSignature(Base b) throws FHIRException {
     if (b instanceof Signature)
       return (Signature) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Signature");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Signature");
   }
-  
+
   public static HumanName castToHumanName(Base b) throws FHIRException {
     if (b instanceof HumanName)
       return (HumanName) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a HumanName");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a HumanName");
   }
-  
+
   public static Address castToAddress(Base b) throws FHIRException {
     if (b instanceof Address)
       return (Address) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Address");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a Address");
   }
-  
+
   public static ContactDetail castToContactDetail(Base b) throws FHIRException {
     if (b instanceof ContactDetail)
       return (ContactDetail) b;
     else
-      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a ContactDetail");
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a ContactDetail");
+  }
+
+  public static ExtendedContactDetail castToExtendedContactDetail(Base b) throws FHIRException {
+    if (b instanceof ExtendedContactDetail)
+      return (ExtendedContactDetail) b;
+    else
+      throw new FHIRException("Unable to convert a " + b.getClass().getName() + " to a ExtendedContactDetail");
   }
 
   public static Contributor castToContributor(Base b) throws FHIRException {
@@ -367,6 +374,13 @@ public class TypeConvertor {
       return (Contributor) b;
     else
       throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Contributor");
+  }
+
+  public static Count castToCount(Base b) throws FHIRException {
+    if (b instanceof Count)
+      return (Count) b;
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Count");
   }
 
   public static UsageContext castToUsageContext(Base b) throws FHIRException {
