@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -89,6 +89,7 @@ public class DeviceDefinition extends DomainResource {
             case MODEL: return "model";
             case LOTNUMBERS: return "lot-numbers";
             case SERIALNUMBERS: return "serial-numbers";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +98,7 @@ public class DeviceDefinition extends DomainResource {
             case MODEL: return "http://hl7.org/fhir/device-correctiveactionscope";
             case LOTNUMBERS: return "http://hl7.org/fhir/device-correctiveactionscope";
             case SERIALNUMBERS: return "http://hl7.org/fhir/device-correctiveactionscope";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -105,6 +107,7 @@ public class DeviceDefinition extends DomainResource {
             case MODEL: return "The corrective action was intended for all units of the same model.";
             case LOTNUMBERS: return "The corrective action was intended for a specific batch of units identified by a lot number.";
             case SERIALNUMBERS: return "The corrective action was intended for an individual unit (or a set of units) individually identified by serial number.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +116,7 @@ public class DeviceDefinition extends DomainResource {
             case MODEL: return "Model";
             case LOTNUMBERS: return "Lot Numbers";
             case SERIALNUMBERS: return "Serial Numbers";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -218,6 +222,7 @@ public class DeviceDefinition extends DomainResource {
             case EXPIRATIONDATE: return "expiration-date";
             case BIOLOGICALSOURCE: return "biological-source";
             case SOFTWAREVERSION: return "software-version";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -229,6 +234,7 @@ public class DeviceDefinition extends DomainResource {
             case EXPIRATIONDATE: return "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi";
             case BIOLOGICALSOURCE: return "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi";
             case SOFTWAREVERSION: return "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -240,6 +246,7 @@ public class DeviceDefinition extends DomainResource {
             case EXPIRATIONDATE: return "The label includes the expiration date.";
             case BIOLOGICALSOURCE: return "The label includes the biological source identifier.";
             case SOFTWAREVERSION: return "The label includes the software version.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -251,6 +258,7 @@ public class DeviceDefinition extends DomainResource {
             case EXPIRATIONDATE: return "Expiration date";
             case BIOLOGICALSOURCE: return "Biological source";
             case SOFTWAREVERSION: return "Software Version";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -341,10 +349,10 @@ public class DeviceDefinition extends DomainResource {
         protected UriType jurisdiction;
 
         /**
-         * The organization that assigns the identifier algorithm.
+         * Indicates where and when the device is available on the market.
          */
         @Child(name = "marketDistribution", type = {}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-        @Description(shortDefinition="Indicates whether and when the device is available on the market", formalDefinition="The organization that assigns the identifier algorithm." )
+        @Description(shortDefinition="Indicates whether and when the device is available on the market", formalDefinition="Indicates where and when the device is available on the market." )
         protected List<DeviceDefinitionUdiDeviceIdentifierMarketDistributionComponent> marketDistribution;
 
         private static final long serialVersionUID = -1659077973L;
@@ -502,7 +510,7 @@ public class DeviceDefinition extends DomainResource {
         }
 
         /**
-         * @return {@link #marketDistribution} (The organization that assigns the identifier algorithm.)
+         * @return {@link #marketDistribution} (Indicates where and when the device is available on the market.)
          */
         public List<DeviceDefinitionUdiDeviceIdentifierMarketDistributionComponent> getMarketDistribution() { 
           if (this.marketDistribution == null)
@@ -559,7 +567,7 @@ public class DeviceDefinition extends DomainResource {
           children.add(new Property("deviceIdentifier", "string", "The identifier that is to be associated with every Device that references this DeviceDefintiion for the issuer and jurisdiction provided in the DeviceDefinition.udiDeviceIdentifier.", 0, 1, deviceIdentifier));
           children.add(new Property("issuer", "uri", "The organization that assigns the identifier algorithm.", 0, 1, issuer));
           children.add(new Property("jurisdiction", "uri", "The jurisdiction to which the deviceIdentifier applies.", 0, 1, jurisdiction));
-          children.add(new Property("marketDistribution", "", "The organization that assigns the identifier algorithm.", 0, java.lang.Integer.MAX_VALUE, marketDistribution));
+          children.add(new Property("marketDistribution", "", "Indicates where and when the device is available on the market.", 0, java.lang.Integer.MAX_VALUE, marketDistribution));
         }
 
         @Override
@@ -568,7 +576,7 @@ public class DeviceDefinition extends DomainResource {
           case 1322005407: /*deviceIdentifier*/  return new Property("deviceIdentifier", "string", "The identifier that is to be associated with every Device that references this DeviceDefintiion for the issuer and jurisdiction provided in the DeviceDefinition.udiDeviceIdentifier.", 0, 1, deviceIdentifier);
           case -1179159879: /*issuer*/  return new Property("issuer", "uri", "The organization that assigns the identifier algorithm.", 0, 1, issuer);
           case -507075711: /*jurisdiction*/  return new Property("jurisdiction", "uri", "The jurisdiction to which the deviceIdentifier applies.", 0, 1, jurisdiction);
-          case 530037984: /*marketDistribution*/  return new Property("marketDistribution", "", "The organization that assigns the identifier algorithm.", 0, java.lang.Integer.MAX_VALUE, marketDistribution);
+          case 530037984: /*marketDistribution*/  return new Property("marketDistribution", "", "Indicates where and when the device is available on the market.", 0, java.lang.Integer.MAX_VALUE, marketDistribution);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 

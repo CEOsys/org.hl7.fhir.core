@@ -28,7 +28,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 
 
@@ -60,7 +60,6 @@ Account,
     ClaimResponse,
     ClinicalImpression,
     ClinicalUseDefinition,
-    ClinicalUseIssue,
     CodeSystem,
     Communication,
     CommunicationRequest,
@@ -98,6 +97,7 @@ Account,
     ExplanationOfBenefit,
     FamilyMemberHistory,
     Flag,
+    FormularyItem,
     Goal,
     GraphDefinition,
     Group,
@@ -184,6 +184,7 @@ Account,
     TerminologyCapabilities,
     TestReport,
     TestScript,
+    Transport,
     ValueSet,
     VerificationResult,
     VisionPrescription;
@@ -241,8 +242,6 @@ Account,
       return "clinicalimpression";
     case ClinicalUseDefinition:
       return "clinicalusedefinition";
-    case ClinicalUseIssue:
-      return "clinicaluseissue";
     case CodeSystem:
       return "codesystem";
     case Communication:
@@ -317,6 +316,8 @@ Account,
       return "familymemberhistory";
     case Flag:
       return "flag";
+    case FormularyItem:
+      return "formularyitem";
     case Goal:
       return "goal";
     case GraphDefinition:
@@ -489,6 +490,8 @@ Account,
       return "testreport";
     case TestScript:
       return "testscript";
+    case Transport:
+      return "transport";
     case ValueSet:
       return "valueset";
     case VerificationResult:
@@ -552,8 +555,6 @@ Account,
       return ClinicalImpression;
     if ("ClinicalUseDefinition".equals(code))
       return ClinicalUseDefinition;
-    if ("ClinicalUseIssue".equals(code))
-      return ClinicalUseIssue;
     if ("CodeSystem".equals(code))
       return CodeSystem;
     if ("Communication".equals(code))
@@ -628,6 +629,8 @@ Account,
       return FamilyMemberHistory;
     if ("Flag".equals(code))
       return Flag;
+    if ("FormularyItem".equals(code))
+      return FormularyItem;
     if ("Goal".equals(code))
       return Goal;
     if ("GraphDefinition".equals(code))
@@ -800,6 +803,8 @@ Account,
       return TestReport;
     if ("TestScript".equals(code))
       return TestScript;
+    if ("Transport".equals(code))
+      return Transport;
     if ("ValueSet".equals(code))
       return ValueSet;
     if ("VerificationResult".equals(code))

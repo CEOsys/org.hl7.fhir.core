@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -82,6 +82,7 @@ public class ExampleScenario extends CanonicalResource {
           switch (this) {
             case PERSON: return "person";
             case ENTITY: return "entity";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -89,6 +90,7 @@ public class ExampleScenario extends CanonicalResource {
           switch (this) {
             case PERSON: return "http://hl7.org/fhir/examplescenario-actor-type";
             case ENTITY: return "http://hl7.org/fhir/examplescenario-actor-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -96,6 +98,7 @@ public class ExampleScenario extends CanonicalResource {
           switch (this) {
             case PERSON: return "A person.";
             case ENTITY: return "A system.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -103,6 +106,7 @@ public class ExampleScenario extends CanonicalResource {
           switch (this) {
             case PERSON: return "Person";
             case ENTITY: return "System";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -553,10 +557,10 @@ public class ExampleScenario extends CanonicalResource {
         /**
          * The type of the resource.
          */
-        @Child(name = "resourceType", type = {CodeType.class}, order=2, min=1, max=1, modifier=false, summary=false)
+        @Child(name = "type", type = {CodeType.class}, order=2, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="The type of the resource", formalDefinition="The type of the resource." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/resource-types")
-        protected CodeType resourceType;
+        protected CodeType type;
 
         /**
          * A short name for the resource instance.
@@ -586,7 +590,7 @@ public class ExampleScenario extends CanonicalResource {
         @Description(shortDefinition="Resources contained in the instance", formalDefinition="Resources contained in the instance (e.g. the observations contained in a bundle)." )
         protected List<ExampleScenarioInstanceContainedInstanceComponent> containedInstance;
 
-        private static final long serialVersionUID = -1928273130L;
+        private static final long serialVersionUID = 869705192L;
 
     /**
      * Constructor
@@ -598,10 +602,10 @@ public class ExampleScenario extends CanonicalResource {
     /**
      * Constructor
      */
-      public ExampleScenarioInstanceComponent(String resourceId, String resourceType) {
+      public ExampleScenarioInstanceComponent(String resourceId, String type) {
         super();
         this.setResourceId(resourceId);
-        this.setResourceType(resourceType);
+        this.setType(type);
       }
 
         /**
@@ -650,47 +654,47 @@ public class ExampleScenario extends CanonicalResource {
         }
 
         /**
-         * @return {@link #resourceType} (The type of the resource.). This is the underlying object with id, value and extensions. The accessor "getResourceType" gives direct access to the value
+         * @return {@link #type} (The type of the resource.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public CodeType getResourceTypeElement() { 
-          if (this.resourceType == null)
+        public CodeType getTypeElement() { 
+          if (this.type == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create ExampleScenarioInstanceComponent.resourceType");
+              throw new Error("Attempt to auto-create ExampleScenarioInstanceComponent.type");
             else if (Configuration.doAutoCreate())
-              this.resourceType = new CodeType(); // bb
-          return this.resourceType;
+              this.type = new CodeType(); // bb
+          return this.type;
         }
 
-        public boolean hasResourceTypeElement() { 
-          return this.resourceType != null && !this.resourceType.isEmpty();
+        public boolean hasTypeElement() { 
+          return this.type != null && !this.type.isEmpty();
         }
 
-        public boolean hasResourceType() { 
-          return this.resourceType != null && !this.resourceType.isEmpty();
+        public boolean hasType() { 
+          return this.type != null && !this.type.isEmpty();
         }
 
         /**
-         * @param value {@link #resourceType} (The type of the resource.). This is the underlying object with id, value and extensions. The accessor "getResourceType" gives direct access to the value
+         * @param value {@link #type} (The type of the resource.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public ExampleScenarioInstanceComponent setResourceTypeElement(CodeType value) { 
-          this.resourceType = value;
+        public ExampleScenarioInstanceComponent setTypeElement(CodeType value) { 
+          this.type = value;
           return this;
         }
 
         /**
          * @return The type of the resource.
          */
-        public String getResourceType() { 
-          return this.resourceType == null ? null : this.resourceType.getValue();
+        public String getType() { 
+          return this.type == null ? null : this.type.getValue();
         }
 
         /**
          * @param value The type of the resource.
          */
-        public ExampleScenarioInstanceComponent setResourceType(String value) { 
-            if (this.resourceType == null)
-              this.resourceType = new CodeType();
-            this.resourceType.setValue(value);
+        public ExampleScenarioInstanceComponent setType(String value) { 
+            if (this.type == null)
+              this.type = new CodeType();
+            this.type.setValue(value);
           return this;
         }
 
@@ -901,7 +905,7 @@ public class ExampleScenario extends CanonicalResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("resourceId", "string", "The id of the resource for referencing.", 0, 1, resourceId));
-          children.add(new Property("resourceType", "code", "The type of the resource.", 0, 1, resourceType));
+          children.add(new Property("type", "code", "The type of the resource.", 0, 1, type));
           children.add(new Property("name", "string", "A short name for the resource instance.", 0, 1, name));
           children.add(new Property("description", "markdown", "Human-friendly description of the resource instance.", 0, 1, description));
           children.add(new Property("version", "", "A specific version of the resource.", 0, java.lang.Integer.MAX_VALUE, version));
@@ -912,7 +916,7 @@ public class ExampleScenario extends CanonicalResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case -1345650231: /*resourceId*/  return new Property("resourceId", "string", "The id of the resource for referencing.", 0, 1, resourceId);
-          case -384364440: /*resourceType*/  return new Property("resourceType", "code", "The type of the resource.", 0, 1, resourceType);
+          case 3575610: /*type*/  return new Property("type", "code", "The type of the resource.", 0, 1, type);
           case 3373707: /*name*/  return new Property("name", "string", "A short name for the resource instance.", 0, 1, name);
           case -1724546052: /*description*/  return new Property("description", "markdown", "Human-friendly description of the resource instance.", 0, 1, description);
           case 351608024: /*version*/  return new Property("version", "", "A specific version of the resource.", 0, java.lang.Integer.MAX_VALUE, version);
@@ -926,7 +930,7 @@ public class ExampleScenario extends CanonicalResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case -1345650231: /*resourceId*/ return this.resourceId == null ? new Base[0] : new Base[] {this.resourceId}; // StringType
-        case -384364440: /*resourceType*/ return this.resourceType == null ? new Base[0] : new Base[] {this.resourceType}; // CodeType
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeType
         case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // StringType
         case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // MarkdownType
         case 351608024: /*version*/ return this.version == null ? new Base[0] : this.version.toArray(new Base[this.version.size()]); // ExampleScenarioInstanceVersionComponent
@@ -942,8 +946,8 @@ public class ExampleScenario extends CanonicalResource {
         case -1345650231: // resourceId
           this.resourceId = TypeConvertor.castToString(value); // StringType
           return value;
-        case -384364440: // resourceType
-          this.resourceType = TypeConvertor.castToCode(value); // CodeType
+        case 3575610: // type
+          this.type = TypeConvertor.castToCode(value); // CodeType
           return value;
         case 3373707: // name
           this.name = TypeConvertor.castToString(value); // StringType
@@ -966,8 +970,8 @@ public class ExampleScenario extends CanonicalResource {
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("resourceId")) {
           this.resourceId = TypeConvertor.castToString(value); // StringType
-        } else if (name.equals("resourceType")) {
-          this.resourceType = TypeConvertor.castToCode(value); // CodeType
+        } else if (name.equals("type")) {
+          this.type = TypeConvertor.castToCode(value); // CodeType
         } else if (name.equals("name")) {
           this.name = TypeConvertor.castToString(value); // StringType
         } else if (name.equals("description")) {
@@ -985,7 +989,7 @@ public class ExampleScenario extends CanonicalResource {
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -1345650231:  return getResourceIdElement();
-        case -384364440:  return getResourceTypeElement();
+        case 3575610:  return getTypeElement();
         case 3373707:  return getNameElement();
         case -1724546052:  return getDescriptionElement();
         case 351608024:  return addVersion(); 
@@ -999,7 +1003,7 @@ public class ExampleScenario extends CanonicalResource {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -1345650231: /*resourceId*/ return new String[] {"string"};
-        case -384364440: /*resourceType*/ return new String[] {"code"};
+        case 3575610: /*type*/ return new String[] {"code"};
         case 3373707: /*name*/ return new String[] {"string"};
         case -1724546052: /*description*/ return new String[] {"markdown"};
         case 351608024: /*version*/ return new String[] {};
@@ -1014,8 +1018,8 @@ public class ExampleScenario extends CanonicalResource {
         if (name.equals("resourceId")) {
           throw new FHIRException("Cannot call addChild on a primitive type ExampleScenario.instance.resourceId");
         }
-        else if (name.equals("resourceType")) {
-          throw new FHIRException("Cannot call addChild on a primitive type ExampleScenario.instance.resourceType");
+        else if (name.equals("type")) {
+          throw new FHIRException("Cannot call addChild on a primitive type ExampleScenario.instance.type");
         }
         else if (name.equals("name")) {
           throw new FHIRException("Cannot call addChild on a primitive type ExampleScenario.instance.name");
@@ -1042,7 +1046,7 @@ public class ExampleScenario extends CanonicalResource {
       public void copyValues(ExampleScenarioInstanceComponent dst) {
         super.copyValues(dst);
         dst.resourceId = resourceId == null ? null : resourceId.copy();
-        dst.resourceType = resourceType == null ? null : resourceType.copy();
+        dst.type = type == null ? null : type.copy();
         dst.name = name == null ? null : name.copy();
         dst.description = description == null ? null : description.copy();
         if (version != null) {
@@ -1064,9 +1068,9 @@ public class ExampleScenario extends CanonicalResource {
         if (!(other_ instanceof ExampleScenarioInstanceComponent))
           return false;
         ExampleScenarioInstanceComponent o = (ExampleScenarioInstanceComponent) other_;
-        return compareDeep(resourceId, o.resourceId, true) && compareDeep(resourceType, o.resourceType, true)
-           && compareDeep(name, o.name, true) && compareDeep(description, o.description, true) && compareDeep(version, o.version, true)
-           && compareDeep(containedInstance, o.containedInstance, true);
+        return compareDeep(resourceId, o.resourceId, true) && compareDeep(type, o.type, true) && compareDeep(name, o.name, true)
+           && compareDeep(description, o.description, true) && compareDeep(version, o.version, true) && compareDeep(containedInstance, o.containedInstance, true)
+          ;
       }
 
       @Override
@@ -1076,13 +1080,13 @@ public class ExampleScenario extends CanonicalResource {
         if (!(other_ instanceof ExampleScenarioInstanceComponent))
           return false;
         ExampleScenarioInstanceComponent o = (ExampleScenarioInstanceComponent) other_;
-        return compareValues(resourceId, o.resourceId, true) && compareValues(resourceType, o.resourceType, true)
-           && compareValues(name, o.name, true) && compareValues(description, o.description, true);
+        return compareValues(resourceId, o.resourceId, true) && compareValues(type, o.type, true) && compareValues(name, o.name, true)
+           && compareValues(description, o.description, true);
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(resourceId, resourceType, name
-          , description, version, containedInstance);
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(resourceId, type, name, description
+          , version, containedInstance);
       }
 
   public String fhirType() {

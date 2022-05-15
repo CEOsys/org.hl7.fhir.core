@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -575,10 +575,10 @@ public class ValueSet extends CanonicalResource {
         protected List<ConceptReferenceComponent> concept;
 
         /**
-         * Select concepts by specify a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true.
+         * Select concepts by specifying a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified within the include, they SHALL all be true.
          */
         @Child(name = "filter", type = {}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-        @Description(shortDefinition="Select codes/concepts by their properties (including relationships)", formalDefinition="Select concepts by specify a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true." )
+        @Description(shortDefinition="Select codes/concepts by their properties (including relationships)", formalDefinition="Select concepts by specifying a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified within the include, they SHALL all be true." )
         protected List<ConceptSetFilterComponent> filter;
 
         /**
@@ -756,7 +756,7 @@ public class ValueSet extends CanonicalResource {
         }
 
         /**
-         * @return {@link #filter} (Select concepts by specify a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true.)
+         * @return {@link #filter} (Select concepts by specifying a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified within the include, they SHALL all be true.)
          */
         public List<ConceptSetFilterComponent> getFilter() { 
           if (this.filter == null)
@@ -923,7 +923,7 @@ public class ValueSet extends CanonicalResource {
           children.add(new Property("system", "uri", "An absolute URI which is the code system from which the selected codes come from.", 0, 1, system));
           children.add(new Property("version", "string", "The version of the code system that the codes are selected from, or the special version '*' for all versions.", 0, 1, version));
           children.add(new Property("concept", "", "Specifies a concept to be included or excluded.", 0, java.lang.Integer.MAX_VALUE, concept));
-          children.add(new Property("filter", "", "Select concepts by specify a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true.", 0, java.lang.Integer.MAX_VALUE, filter));
+          children.add(new Property("filter", "", "Select concepts by specifying a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified within the include, they SHALL all be true.", 0, java.lang.Integer.MAX_VALUE, filter));
           children.add(new Property("valueSet", "canonical(ValueSet)", "Selects the concepts found in this value set (based on its value set definition). This is an absolute URI that is a reference to ValueSet.url.  If multiple value sets are specified this includes the intersection of the contents of all of the referenced value sets.", 0, java.lang.Integer.MAX_VALUE, valueSet));
           children.add(new Property("copyright", "string", "A copyright statement for the specific code system asserted by the containing ValueSet.compose.include element's system value (if the associated ValueSet.compose.include.version element is not present); or the code system and version combination (if the associated ValueSet.compose.include.version element is present).", 0, 1, copyright));
         }
@@ -934,7 +934,7 @@ public class ValueSet extends CanonicalResource {
           case -887328209: /*system*/  return new Property("system", "uri", "An absolute URI which is the code system from which the selected codes come from.", 0, 1, system);
           case 351608024: /*version*/  return new Property("version", "string", "The version of the code system that the codes are selected from, or the special version '*' for all versions.", 0, 1, version);
           case 951024232: /*concept*/  return new Property("concept", "", "Specifies a concept to be included or excluded.", 0, java.lang.Integer.MAX_VALUE, concept);
-          case -1274492040: /*filter*/  return new Property("filter", "", "Select concepts by specify a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true.", 0, java.lang.Integer.MAX_VALUE, filter);
+          case -1274492040: /*filter*/  return new Property("filter", "", "Select concepts by specifying a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified within the include, they SHALL all be true.", 0, java.lang.Integer.MAX_VALUE, filter);
           case -1410174671: /*valueSet*/  return new Property("valueSet", "canonical(ValueSet)", "Selects the concepts found in this value set (based on its value set definition). This is an absolute URI that is a reference to ValueSet.url.  If multiple value sets are specified this includes the intersection of the contents of all of the referenced value sets.", 0, java.lang.Integer.MAX_VALUE, valueSet);
           case 1522889671: /*copyright*/  return new Property("copyright", "string", "A copyright statement for the specific code system asserted by the containing ValueSet.compose.include element's system value (if the associated ValueSet.compose.include.version element is not present); or the code system and version combination (if the associated ValueSet.compose.include.version element is present).", 0, 1, copyright);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -4812,10 +4812,10 @@ public class ValueSet extends CanonicalResource {
     protected BooleanType experimental;
 
     /**
-     * The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').
+     * The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.
      */
     @Child(name = "date", type = {DateTimeType.class}, order=7, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Date last changed", formalDefinition="The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition')." )
+    @Description(shortDefinition="Date last changed", formalDefinition="The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised." )
     protected DateTimeType date;
 
     /**
@@ -4890,10 +4890,10 @@ public class ValueSet extends CanonicalResource {
     protected ValueSetExpansionComponent expansion;
 
     /**
-     * Description of the semantic space the Value Set Expansion is intended to cover.
+     * Description of the semantic space the Value Set Expansion is intended to cover and should further clarify the text in ValueSet.description.
      */
     @Child(name = "scope", type = {}, order=18, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Description of the semantic space the Value Set Expansion is intended to cover", formalDefinition="Description of the semantic space the Value Set Expansion is intended to cover." )
+    @Description(shortDefinition="Description of the semantic space the Value Set Expansion is intended to cover and should further clarify the text in ValueSet.description", formalDefinition="Description of the semantic space the Value Set Expansion is intended to cover and should further clarify the text in ValueSet.description." )
     protected ValueSetScopeComponent scope;
 
     private static final long serialVersionUID = 1111958035L;
@@ -5253,7 +5253,7 @@ public class ValueSet extends CanonicalResource {
     }
 
     /**
-     * @return {@link #date} (The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @return {@link #date} (The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public DateTimeType getDateElement() { 
       if (this.date == null)
@@ -5273,7 +5273,7 @@ public class ValueSet extends CanonicalResource {
     }
 
     /**
-     * @param value {@link #date} (The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @param value {@link #date} (The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public ValueSet setDateElement(DateTimeType value) { 
       this.date = value;
@@ -5281,14 +5281,14 @@ public class ValueSet extends CanonicalResource {
     }
 
     /**
-     * @return The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').
+     * @return The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.
      */
     public Date getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
-     * @param value The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').
+     * @param value The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.
      */
     public ValueSet setDate(Date value) { 
       if (value == null)
@@ -5750,7 +5750,7 @@ public class ValueSet extends CanonicalResource {
     }
 
     /**
-     * @return {@link #scope} (Description of the semantic space the Value Set Expansion is intended to cover.)
+     * @return {@link #scope} (Description of the semantic space the Value Set Expansion is intended to cover and should further clarify the text in ValueSet.description.)
      */
     public ValueSetScopeComponent getScope() { 
       if (this.scope == null)
@@ -5766,7 +5766,7 @@ public class ValueSet extends CanonicalResource {
     }
 
     /**
-     * @param value {@link #scope} (Description of the semantic space the Value Set Expansion is intended to cover.)
+     * @param value {@link #scope} (Description of the semantic space the Value Set Expansion is intended to cover and should further clarify the text in ValueSet.description.)
      */
     public ValueSet setScope(ValueSetScopeComponent value) { 
       this.scope = value;
@@ -5782,7 +5782,7 @@ public class ValueSet extends CanonicalResource {
         children.add(new Property("title", "string", "A short, descriptive, user-friendly title for the value set.", 0, 1, title));
         children.add(new Property("status", "code", "The status of this value set. Enables tracking the life-cycle of the content. The status of the value set applies to the value set definition (ValueSet.compose) and the associated ValueSet metadata. Expansions do not have a state.", 0, 1, status));
         children.add(new Property("experimental", "boolean", "A Boolean value to indicate that this value set is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.", 0, 1, experimental));
-        children.add(new Property("date", "dateTime", "The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').", 0, 1, date));
+        children.add(new Property("date", "dateTime", "The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.", 0, 1, date));
         children.add(new Property("publisher", "string", "The name of the organization or individual that published the value set.", 0, 1, publisher));
         children.add(new Property("contact", "ContactDetail", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact));
         children.add(new Property("description", "markdown", "A free text natural language description of the value set from a consumer's perspective. The textual description specifies the span of meanings for concepts to be included within the Value Set Expansion, and also may specify the intended use and limitations of the Value Set.", 0, 1, description));
@@ -5793,7 +5793,7 @@ public class ValueSet extends CanonicalResource {
         children.add(new Property("copyright", "markdown", "A copyright statement relating to the value set and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the value set.", 0, 1, copyright));
         children.add(new Property("compose", "", "A set of criteria that define the contents of the value set by including or excluding codes selected from the specified code system(s) that the value set draws from. This is also known as the Content Logical Definition (CLD).", 0, 1, compose));
         children.add(new Property("expansion", "", "A value set can also be \"expanded\", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.", 0, 1, expansion));
-        children.add(new Property("scope", "", "Description of the semantic space the Value Set Expansion is intended to cover.", 0, 1, scope));
+        children.add(new Property("scope", "", "Description of the semantic space the Value Set Expansion is intended to cover and should further clarify the text in ValueSet.description.", 0, 1, scope));
       }
 
       @Override
@@ -5806,7 +5806,7 @@ public class ValueSet extends CanonicalResource {
         case 110371416: /*title*/  return new Property("title", "string", "A short, descriptive, user-friendly title for the value set.", 0, 1, title);
         case -892481550: /*status*/  return new Property("status", "code", "The status of this value set. Enables tracking the life-cycle of the content. The status of the value set applies to the value set definition (ValueSet.compose) and the associated ValueSet metadata. Expansions do not have a state.", 0, 1, status);
         case -404562712: /*experimental*/  return new Property("experimental", "boolean", "A Boolean value to indicate that this value set is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.", 0, 1, experimental);
-        case 3076014: /*date*/  return new Property("date", "dateTime", "The date (and optionally time) when the value set was created or revised (e.g. the 'content logical definition').", 0, 1, date);
+        case 3076014: /*date*/  return new Property("date", "dateTime", "The date (and optionally time) when the value set metadata or content logical definition (.compose) was created or revised.", 0, 1, date);
         case 1447404028: /*publisher*/  return new Property("publisher", "string", "The name of the organization or individual that published the value set.", 0, 1, publisher);
         case 951526432: /*contact*/  return new Property("contact", "ContactDetail", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact);
         case -1724546052: /*description*/  return new Property("description", "markdown", "A free text natural language description of the value set from a consumer's perspective. The textual description specifies the span of meanings for concepts to be included within the Value Set Expansion, and also may specify the intended use and limitations of the Value Set.", 0, 1, description);
@@ -5817,7 +5817,7 @@ public class ValueSet extends CanonicalResource {
         case 1522889671: /*copyright*/  return new Property("copyright", "markdown", "A copyright statement relating to the value set and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the value set.", 0, 1, copyright);
         case 950497682: /*compose*/  return new Property("compose", "", "A set of criteria that define the contents of the value set by including or excluding codes selected from the specified code system(s) that the value set draws from. This is also known as the Content Logical Definition (CLD).", 0, 1, compose);
         case 17878207: /*expansion*/  return new Property("expansion", "", "A value set can also be \"expanded\", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.", 0, 1, expansion);
-        case 109264468: /*scope*/  return new Property("scope", "", "Description of the semantic space the Value Set Expansion is intended to cover.", 0, 1, scope);
+        case 109264468: /*scope*/  return new Property("scope", "", "Description of the semantic space the Value Set Expansion is intended to cover and should further clarify the text in ValueSet.description.", 0, 1, scope);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 

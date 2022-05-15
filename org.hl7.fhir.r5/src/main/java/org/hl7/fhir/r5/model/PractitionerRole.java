@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -64,10 +64,10 @@ public class PractitionerRole extends DomainResource {
         protected List<Enumeration<DaysOfWeek>> daysOfWeek;
 
         /**
-         * Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).
+         * Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).
          */
         @Child(name = "allDay", type = {BooleanType.class}, order=2, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Always available? e.g. 24 hour service", formalDefinition="Indicates always available, hence times are irrelevant.  (e.g. 24-hour service)." )
+        @Description(shortDefinition="Always available? i.e. 24 hour service", formalDefinition="Indicates always available, hence times are irrelevant.  (i.e. 24-hour service)." )
         protected BooleanType allDay;
 
         /**
@@ -155,7 +155,7 @@ public class PractitionerRole extends DomainResource {
         }
 
         /**
-         * @return {@link #allDay} (Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
+         * @return {@link #allDay} (Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
          */
         public BooleanType getAllDayElement() { 
           if (this.allDay == null)
@@ -175,7 +175,7 @@ public class PractitionerRole extends DomainResource {
         }
 
         /**
-         * @param value {@link #allDay} (Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
+         * @param value {@link #allDay} (Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).). This is the underlying object with id, value and extensions. The accessor "getAllDay" gives direct access to the value
          */
         public PractitionerRoleAvailableTimeComponent setAllDayElement(BooleanType value) { 
           this.allDay = value;
@@ -183,14 +183,14 @@ public class PractitionerRole extends DomainResource {
         }
 
         /**
-         * @return Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).
+         * @return Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).
          */
         public boolean getAllDay() { 
           return this.allDay == null || this.allDay.isEmpty() ? false : this.allDay.getValue();
         }
 
         /**
-         * @param value Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).
+         * @param value Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).
          */
         public PractitionerRoleAvailableTimeComponent setAllDay(boolean value) { 
             if (this.allDay == null)
@@ -300,7 +300,7 @@ public class PractitionerRole extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("daysOfWeek", "code", "Indicates which days of the week are available between the start and end times.", 0, java.lang.Integer.MAX_VALUE, daysOfWeek));
-          children.add(new Property("allDay", "boolean", "Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).", 0, 1, allDay));
+          children.add(new Property("allDay", "boolean", "Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).", 0, 1, allDay));
           children.add(new Property("availableStartTime", "time", "The opening time of day. Note: If the AllDay flag is set, then this time is ignored.", 0, 1, availableStartTime));
           children.add(new Property("availableEndTime", "time", "The closing time of day. Note: If the AllDay flag is set, then this time is ignored.", 0, 1, availableEndTime));
         }
@@ -309,7 +309,7 @@ public class PractitionerRole extends DomainResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 68050338: /*daysOfWeek*/  return new Property("daysOfWeek", "code", "Indicates which days of the week are available between the start and end times.", 0, java.lang.Integer.MAX_VALUE, daysOfWeek);
-          case -1414913477: /*allDay*/  return new Property("allDay", "boolean", "Indicates always available, hence times are irrelevant.  (e.g. 24-hour service).", 0, 1, allDay);
+          case -1414913477: /*allDay*/  return new Property("allDay", "boolean", "Indicates always available, hence times are irrelevant.  (i.e. 24-hour service).", 0, 1, allDay);
           case -1039453818: /*availableStartTime*/  return new Property("availableStartTime", "time", "The opening time of day. Note: If the AllDay flag is set, then this time is ignored.", 0, 1, availableStartTime);
           case 101151551: /*availableEndTime*/  return new Property("availableEndTime", "time", "The closing time of day. Note: If the AllDay flag is set, then this time is ignored.", 0, 1, availableEndTime);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -755,41 +755,48 @@ public class PractitionerRole extends DomainResource {
     protected List<Reference> healthcareService;
 
     /**
+     * The contact details of communication devices available relevant to the specific PractitionerRole. This can include addresses, phone numbers, fax numbers, mobile numbers, email addresses and web sites.
+     */
+    @Child(name = "contact", type = {ExtendedContactDetail.class}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Official contact details relating to this PractitionerRole", formalDefinition="The contact details of communication devices available relevant to the specific PractitionerRole. This can include addresses, phone numbers, fax numbers, mobile numbers, email addresses and web sites." )
+    protected List<ExtendedContactDetail> contact;
+
+    /**
      * Contact details that are specific to the role/location/service.
      */
-    @Child(name = "telecom", type = {ContactPoint.class}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="Contact details that are specific to the role/location/service", formalDefinition="Contact details that are specific to the role/location/service." )
+    @Child(name = "telecom", type = {ContactPoint.class}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Deprecated - use contact.telecom", formalDefinition="Contact details that are specific to the role/location/service." )
     protected List<ContactPoint> telecom;
 
     /**
      * A collection of times the practitioner is available or performing this role at the location and/or healthcareservice.
      */
-    @Child(name = "availableTime", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "availableTime", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Times the Service Site is available", formalDefinition="A collection of times the practitioner is available or performing this role at the location and/or healthcareservice." )
     protected List<PractitionerRoleAvailableTimeComponent> availableTime;
 
     /**
      * The practitioner is not available or performing this role during this period of time due to the provided reason.
      */
-    @Child(name = "notAvailable", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "notAvailable", type = {}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Not available during this time due to provided reason", formalDefinition="The practitioner is not available or performing this role during this period of time due to the provided reason." )
     protected List<PractitionerRoleNotAvailableComponent> notAvailable;
 
     /**
      * A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times.
      */
-    @Child(name = "availabilityExceptions", type = {StringType.class}, order=12, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "availabilityExceptions", type = {StringType.class}, order=13, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Description of availability exceptions", formalDefinition="A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times." )
     protected StringType availabilityExceptions;
 
     /**
      * Technical endpoints providing access to services operated for the practitioner with this role.
      */
-    @Child(name = "endpoint", type = {Endpoint.class}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "endpoint", type = {Endpoint.class}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Technical endpoints providing access to services operated for the practitioner with this role", formalDefinition="Technical endpoints providing access to services operated for the practitioner with this role." )
     protected List<Reference> endpoint;
 
-    private static final long serialVersionUID = 293775464L;
+    private static final long serialVersionUID = 1173713774L;
 
   /**
    * Constructor
@@ -1181,6 +1188,59 @@ public class PractitionerRole extends DomainResource {
     }
 
     /**
+     * @return {@link #contact} (The contact details of communication devices available relevant to the specific PractitionerRole. This can include addresses, phone numbers, fax numbers, mobile numbers, email addresses and web sites.)
+     */
+    public List<ExtendedContactDetail> getContact() { 
+      if (this.contact == null)
+        this.contact = new ArrayList<ExtendedContactDetail>();
+      return this.contact;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public PractitionerRole setContact(List<ExtendedContactDetail> theContact) { 
+      this.contact = theContact;
+      return this;
+    }
+
+    public boolean hasContact() { 
+      if (this.contact == null)
+        return false;
+      for (ExtendedContactDetail item : this.contact)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public ExtendedContactDetail addContact() { //3
+      ExtendedContactDetail t = new ExtendedContactDetail();
+      if (this.contact == null)
+        this.contact = new ArrayList<ExtendedContactDetail>();
+      this.contact.add(t);
+      return t;
+    }
+
+    public PractitionerRole addContact(ExtendedContactDetail t) { //3
+      if (t == null)
+        return this;
+      if (this.contact == null)
+        this.contact = new ArrayList<ExtendedContactDetail>();
+      this.contact.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #contact}, creating it if it does not already exist {3}
+     */
+    public ExtendedContactDetail getContactFirstRep() { 
+      if (getContact().isEmpty()) {
+        addContact();
+      }
+      return getContact().get(0);
+    }
+
+    /**
      * @return {@link #telecom} (Contact details that are specific to the role/location/service.)
      */
     public List<ContactPoint> getTelecom() { 
@@ -1452,6 +1512,7 @@ public class PractitionerRole extends DomainResource {
         children.add(new Property("specialty", "CodeableConcept", "Specific specialty of the practitioner.", 0, java.lang.Integer.MAX_VALUE, specialty));
         children.add(new Property("location", "Reference(Location)", "The location(s) at which this practitioner provides care.", 0, java.lang.Integer.MAX_VALUE, location));
         children.add(new Property("healthcareService", "Reference(HealthcareService)", "The list of healthcare services that this worker provides for this role's Organization/Location(s).", 0, java.lang.Integer.MAX_VALUE, healthcareService));
+        children.add(new Property("contact", "ExtendedContactDetail", "The contact details of communication devices available relevant to the specific PractitionerRole. This can include addresses, phone numbers, fax numbers, mobile numbers, email addresses and web sites.", 0, java.lang.Integer.MAX_VALUE, contact));
         children.add(new Property("telecom", "ContactPoint", "Contact details that are specific to the role/location/service.", 0, java.lang.Integer.MAX_VALUE, telecom));
         children.add(new Property("availableTime", "", "A collection of times the practitioner is available or performing this role at the location and/or healthcareservice.", 0, java.lang.Integer.MAX_VALUE, availableTime));
         children.add(new Property("notAvailable", "", "The practitioner is not available or performing this role during this period of time due to the provided reason.", 0, java.lang.Integer.MAX_VALUE, notAvailable));
@@ -1471,6 +1532,7 @@ public class PractitionerRole extends DomainResource {
         case -1694759682: /*specialty*/  return new Property("specialty", "CodeableConcept", "Specific specialty of the practitioner.", 0, java.lang.Integer.MAX_VALUE, specialty);
         case 1901043637: /*location*/  return new Property("location", "Reference(Location)", "The location(s) at which this practitioner provides care.", 0, java.lang.Integer.MAX_VALUE, location);
         case 1289661064: /*healthcareService*/  return new Property("healthcareService", "Reference(HealthcareService)", "The list of healthcare services that this worker provides for this role's Organization/Location(s).", 0, java.lang.Integer.MAX_VALUE, healthcareService);
+        case 951526432: /*contact*/  return new Property("contact", "ExtendedContactDetail", "The contact details of communication devices available relevant to the specific PractitionerRole. This can include addresses, phone numbers, fax numbers, mobile numbers, email addresses and web sites.", 0, java.lang.Integer.MAX_VALUE, contact);
         case -1429363305: /*telecom*/  return new Property("telecom", "ContactPoint", "Contact details that are specific to the role/location/service.", 0, java.lang.Integer.MAX_VALUE, telecom);
         case 1873069366: /*availableTime*/  return new Property("availableTime", "", "A collection of times the practitioner is available or performing this role at the location and/or healthcareservice.", 0, java.lang.Integer.MAX_VALUE, availableTime);
         case -629572298: /*notAvailable*/  return new Property("notAvailable", "", "The practitioner is not available or performing this role during this period of time due to the provided reason.", 0, java.lang.Integer.MAX_VALUE, notAvailable);
@@ -1493,6 +1555,7 @@ public class PractitionerRole extends DomainResource {
         case -1694759682: /*specialty*/ return this.specialty == null ? new Base[0] : this.specialty.toArray(new Base[this.specialty.size()]); // CodeableConcept
         case 1901043637: /*location*/ return this.location == null ? new Base[0] : this.location.toArray(new Base[this.location.size()]); // Reference
         case 1289661064: /*healthcareService*/ return this.healthcareService == null ? new Base[0] : this.healthcareService.toArray(new Base[this.healthcareService.size()]); // Reference
+        case 951526432: /*contact*/ return this.contact == null ? new Base[0] : this.contact.toArray(new Base[this.contact.size()]); // ExtendedContactDetail
         case -1429363305: /*telecom*/ return this.telecom == null ? new Base[0] : this.telecom.toArray(new Base[this.telecom.size()]); // ContactPoint
         case 1873069366: /*availableTime*/ return this.availableTime == null ? new Base[0] : this.availableTime.toArray(new Base[this.availableTime.size()]); // PractitionerRoleAvailableTimeComponent
         case -629572298: /*notAvailable*/ return this.notAvailable == null ? new Base[0] : this.notAvailable.toArray(new Base[this.notAvailable.size()]); // PractitionerRoleNotAvailableComponent
@@ -1532,6 +1595,9 @@ public class PractitionerRole extends DomainResource {
           return value;
         case 1289661064: // healthcareService
           this.getHealthcareService().add(TypeConvertor.castToReference(value)); // Reference
+          return value;
+        case 951526432: // contact
+          this.getContact().add(TypeConvertor.castToExtendedContactDetail(value)); // ExtendedContactDetail
           return value;
         case -1429363305: // telecom
           this.getTelecom().add(TypeConvertor.castToContactPoint(value)); // ContactPoint
@@ -1573,6 +1639,8 @@ public class PractitionerRole extends DomainResource {
           this.getLocation().add(TypeConvertor.castToReference(value));
         } else if (name.equals("healthcareService")) {
           this.getHealthcareService().add(TypeConvertor.castToReference(value));
+        } else if (name.equals("contact")) {
+          this.getContact().add(TypeConvertor.castToExtendedContactDetail(value));
         } else if (name.equals("telecom")) {
           this.getTelecom().add(TypeConvertor.castToContactPoint(value));
         } else if (name.equals("availableTime")) {
@@ -1600,6 +1668,7 @@ public class PractitionerRole extends DomainResource {
         case -1694759682:  return addSpecialty(); 
         case 1901043637:  return addLocation(); 
         case 1289661064:  return addHealthcareService(); 
+        case 951526432:  return addContact(); 
         case -1429363305:  return addTelecom(); 
         case 1873069366:  return addAvailableTime(); 
         case -629572298:  return addNotAvailable(); 
@@ -1622,6 +1691,7 @@ public class PractitionerRole extends DomainResource {
         case -1694759682: /*specialty*/ return new String[] {"CodeableConcept"};
         case 1901043637: /*location*/ return new String[] {"Reference"};
         case 1289661064: /*healthcareService*/ return new String[] {"Reference"};
+        case 951526432: /*contact*/ return new String[] {"ExtendedContactDetail"};
         case -1429363305: /*telecom*/ return new String[] {"ContactPoint"};
         case 1873069366: /*availableTime*/ return new String[] {};
         case -629572298: /*notAvailable*/ return new String[] {};
@@ -1663,6 +1733,9 @@ public class PractitionerRole extends DomainResource {
         }
         else if (name.equals("healthcareService")) {
           return addHealthcareService();
+        }
+        else if (name.equals("contact")) {
+          return addContact();
         }
         else if (name.equals("telecom")) {
           return addTelecom();
@@ -1725,6 +1798,11 @@ public class PractitionerRole extends DomainResource {
           for (Reference i : healthcareService)
             dst.healthcareService.add(i.copy());
         };
+        if (contact != null) {
+          dst.contact = new ArrayList<ExtendedContactDetail>();
+          for (ExtendedContactDetail i : contact)
+            dst.contact.add(i.copy());
+        };
         if (telecom != null) {
           dst.telecom = new ArrayList<ContactPoint>();
           for (ContactPoint i : telecom)
@@ -1762,8 +1840,8 @@ public class PractitionerRole extends DomainResource {
         return compareDeep(identifier, o.identifier, true) && compareDeep(active, o.active, true) && compareDeep(period, o.period, true)
            && compareDeep(practitioner, o.practitioner, true) && compareDeep(organization, o.organization, true)
            && compareDeep(code, o.code, true) && compareDeep(specialty, o.specialty, true) && compareDeep(location, o.location, true)
-           && compareDeep(healthcareService, o.healthcareService, true) && compareDeep(telecom, o.telecom, true)
-           && compareDeep(availableTime, o.availableTime, true) && compareDeep(notAvailable, o.notAvailable, true)
+           && compareDeep(healthcareService, o.healthcareService, true) && compareDeep(contact, o.contact, true)
+           && compareDeep(telecom, o.telecom, true) && compareDeep(availableTime, o.availableTime, true) && compareDeep(notAvailable, o.notAvailable, true)
            && compareDeep(availabilityExceptions, o.availabilityExceptions, true) && compareDeep(endpoint, o.endpoint, true)
           ;
       }
@@ -1781,8 +1859,8 @@ public class PractitionerRole extends DomainResource {
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, active, period
-          , practitioner, organization, code, specialty, location, healthcareService, telecom
-          , availableTime, notAvailable, availabilityExceptions, endpoint);
+          , practitioner, organization, code, specialty, location, healthcareService, contact
+          , telecom, availableTime, notAvailable, availabilityExceptions, endpoint);
       }
 
   @Override

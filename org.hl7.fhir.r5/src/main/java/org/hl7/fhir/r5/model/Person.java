@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -96,6 +96,7 @@ public class Person extends DomainResource {
             case LEVEL2: return "level2";
             case LEVEL3: return "level3";
             case LEVEL4: return "level4";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -105,6 +106,7 @@ public class Person extends DomainResource {
             case LEVEL2: return "http://hl7.org/fhir/identity-assuranceLevel";
             case LEVEL3: return "http://hl7.org/fhir/identity-assuranceLevel";
             case LEVEL4: return "http://hl7.org/fhir/identity-assuranceLevel";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -114,6 +116,7 @@ public class Person extends DomainResource {
             case LEVEL2: return "Some confidence in the asserted identity's accuracy.";
             case LEVEL3: return "High confidence in the asserted identity's accuracy.";
             case LEVEL4: return "Very high confidence in the asserted identity's accuracy.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -123,6 +126,7 @@ public class Person extends DomainResource {
             case LEVEL2: return "Level 2";
             case LEVEL3: return "Level 3";
             case LEVEL4: return "Level 4";
+            case NULL: return null;
             default: return "?";
           }
         }

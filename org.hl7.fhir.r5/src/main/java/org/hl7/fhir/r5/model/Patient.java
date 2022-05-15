@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -96,6 +96,7 @@ public class Patient extends DomainResource {
             case REPLACES: return "replaces";
             case REFER: return "refer";
             case SEEALSO: return "seealso";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -105,6 +106,7 @@ public class Patient extends DomainResource {
             case REPLACES: return "http://hl7.org/fhir/link-type";
             case REFER: return "http://hl7.org/fhir/link-type";
             case SEEALSO: return "http://hl7.org/fhir/link-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -114,6 +116,7 @@ public class Patient extends DomainResource {
             case REPLACES: return "The patient resource containing this link is the current active patient record. The link points back to an inactive patient resource that has been merged into this resource, and should be consulted to retrieve additional referenced information.";
             case REFER: return "The patient resource containing this link is in use and valid but not considered the main source of information about a patient. The link points forward to another patient resource that should be consulted to retrieve additional patient information.";
             case SEEALSO: return "The patient resource containing this link is in use and valid, but points to another patient resource that is known to contain data about the same person. Data in this resource might overlap or contradict information found in the other patient resource. This link does not indicate any relative importance of the resources concerned, and both should be regarded as equally valid.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -123,6 +126,7 @@ public class Patient extends DomainResource {
             case REPLACES: return "Replaces";
             case REFER: return "Refer";
             case SEEALSO: return "See also";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -1279,10 +1283,10 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     protected Reference managingOrganization;
 
     /**
-     * Link to another patient or RelatedPErson resource that concerns the same actual patient.
+     * Link to a Patient or RelatedPerson resource that concerns the same actual individual.
      */
     @Child(name = "link", type = {}, order=15, min=0, max=Child.MAX_UNLIMITED, modifier=true, summary=true)
-    @Description(shortDefinition="Link to other Patient or RelatedPerson resource(s) that concerns the same actual person", formalDefinition="Link to another patient or RelatedPErson resource that concerns the same actual patient." )
+    @Description(shortDefinition="Link to a Patient or RelatedPerson resource that concerns the same actual individual", formalDefinition="Link to a Patient or RelatedPerson resource that concerns the same actual individual." )
     protected List<PatientLinkComponent> link;
 
     private static final long serialVersionUID = 1376657499L;
@@ -2032,7 +2036,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     }
 
     /**
-     * @return {@link #link} (Link to another patient or RelatedPErson resource that concerns the same actual patient.)
+     * @return {@link #link} (Link to a Patient or RelatedPerson resource that concerns the same actual individual.)
      */
     public List<PatientLinkComponent> getLink() { 
       if (this.link == null)
@@ -2101,7 +2105,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
         children.add(new Property("communication", "", "A language which may be used to communicate with the patient about his or her health.", 0, java.lang.Integer.MAX_VALUE, communication));
         children.add(new Property("generalPractitioner", "Reference(Organization|Practitioner|PractitionerRole)", "Patient's nominated care provider.", 0, java.lang.Integer.MAX_VALUE, generalPractitioner));
         children.add(new Property("managingOrganization", "Reference(Organization)", "Organization that is the custodian of the patient record.", 0, 1, managingOrganization));
-        children.add(new Property("link", "", "Link to another patient or RelatedPErson resource that concerns the same actual patient.", 0, java.lang.Integer.MAX_VALUE, link));
+        children.add(new Property("link", "", "Link to a Patient or RelatedPerson resource that concerns the same actual individual.", 0, java.lang.Integer.MAX_VALUE, link));
       }
 
       @Override
@@ -2128,7 +2132,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
         case -1035284522: /*communication*/  return new Property("communication", "", "A language which may be used to communicate with the patient about his or her health.", 0, java.lang.Integer.MAX_VALUE, communication);
         case 1488292898: /*generalPractitioner*/  return new Property("generalPractitioner", "Reference(Organization|Practitioner|PractitionerRole)", "Patient's nominated care provider.", 0, java.lang.Integer.MAX_VALUE, generalPractitioner);
         case -2058947787: /*managingOrganization*/  return new Property("managingOrganization", "Reference(Organization)", "Organization that is the custodian of the patient record.", 0, 1, managingOrganization);
-        case 3321850: /*link*/  return new Property("link", "", "Link to another patient or RelatedPErson resource that concerns the same actual patient.", 0, java.lang.Integer.MAX_VALUE, link);
+        case 3321850: /*link*/  return new Property("link", "", "Link to a Patient or RelatedPerson resource that concerns the same actual individual.", 0, java.lang.Integer.MAX_VALUE, link);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 

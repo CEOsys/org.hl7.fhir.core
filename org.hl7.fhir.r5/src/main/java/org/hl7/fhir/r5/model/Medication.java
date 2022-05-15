@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -89,6 +89,7 @@ public class Medication extends DomainResource {
             case ACTIVE: return "active";
             case INACTIVE: return "inactive";
             case ENTEREDINERROR: return "entered-in-error";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -97,6 +98,7 @@ public class Medication extends DomainResource {
             case ACTIVE: return "http://hl7.org/fhir/CodeSystem/medication-status";
             case INACTIVE: return "http://hl7.org/fhir/CodeSystem/medication-status";
             case ENTEREDINERROR: return "http://hl7.org/fhir/CodeSystem/medication-status";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -105,6 +107,7 @@ public class Medication extends DomainResource {
             case ACTIVE: return "The medication record is current and is appropriate for reference in new instances.";
             case INACTIVE: return "The medication record is not current and is not is appropriate for reference in new instances.";
             case ENTEREDINERROR: return "The medication record was created erroneously and is not appropriated for reference in new instances.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +116,7 @@ public class Medication extends DomainResource {
             case ACTIVE: return "Active";
             case INACTIVE: return "Inactive";
             case ENTEREDINERROR: return "Entered in Error";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -771,10 +775,10 @@ public class Medication extends DomainResource {
     protected Enumeration<MedicationStatusCodes> status;
 
     /**
-     * Describes the organization that is responsible for the manufacturing of the item and holds the registration to market the product in a jurisdiction. This might not be the company that physically manufactures the product.  May be known as "Sponsor" and is commonly called "Manufacturer".
+     * The company or other legal entity that has authorization, from the appropriate drug regulatory authority,  to market a medicine in one or more jurisdictions.  Typically abbreviated MAH.Note:  The MAH may manufacture the product and may also contract the manufacturing of the product to one or more companies (organizations).
      */
     @Child(name = "marketingAuthorizationHolder", type = {Organization.class}, order=3, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Organization responsible for manufacturing the item", formalDefinition="Describes the organization that is responsible for the manufacturing of the item and holds the registration to market the product in a jurisdiction. This might not be the company that physically manufactures the product.  May be known as \"Sponsor\" and is commonly called \"Manufacturer\"." )
+    @Description(shortDefinition="Organization that has authorization to market medication", formalDefinition="The company or other legal entity that has authorization, from the appropriate drug regulatory authority,  to market a medicine in one or more jurisdictions.  Typically abbreviated MAH.Note:  The MAH may manufacture the product and may also contract the manufacturing of the product to one or more companies (organizations)." )
     protected Reference marketingAuthorizationHolder;
 
     /**
@@ -942,7 +946,7 @@ public class Medication extends DomainResource {
     }
 
     /**
-     * @return {@link #marketingAuthorizationHolder} (Describes the organization that is responsible for the manufacturing of the item and holds the registration to market the product in a jurisdiction. This might not be the company that physically manufactures the product.  May be known as "Sponsor" and is commonly called "Manufacturer".)
+     * @return {@link #marketingAuthorizationHolder} (The company or other legal entity that has authorization, from the appropriate drug regulatory authority,  to market a medicine in one or more jurisdictions.  Typically abbreviated MAH.Note:  The MAH may manufacture the product and may also contract the manufacturing of the product to one or more companies (organizations).)
      */
     public Reference getMarketingAuthorizationHolder() { 
       if (this.marketingAuthorizationHolder == null)
@@ -958,7 +962,7 @@ public class Medication extends DomainResource {
     }
 
     /**
-     * @param value {@link #marketingAuthorizationHolder} (Describes the organization that is responsible for the manufacturing of the item and holds the registration to market the product in a jurisdiction. This might not be the company that physically manufactures the product.  May be known as "Sponsor" and is commonly called "Manufacturer".)
+     * @param value {@link #marketingAuthorizationHolder} (The company or other legal entity that has authorization, from the appropriate drug regulatory authority,  to market a medicine in one or more jurisdictions.  Typically abbreviated MAH.Note:  The MAH may manufacture the product and may also contract the manufacturing of the product to one or more companies (organizations).)
      */
     public Medication setMarketingAuthorizationHolder(Reference value) { 
       this.marketingAuthorizationHolder = value;
@@ -1095,7 +1099,7 @@ public class Medication extends DomainResource {
         children.add(new Property("identifier", "Identifier", "Business identifier for this medication.", 0, java.lang.Integer.MAX_VALUE, identifier));
         children.add(new Property("code", "CodeableConcept", "A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.", 0, 1, code));
         children.add(new Property("status", "code", "A code to indicate if the medication is in active use.", 0, 1, status));
-        children.add(new Property("marketingAuthorizationHolder", "Reference(Organization)", "Describes the organization that is responsible for the manufacturing of the item and holds the registration to market the product in a jurisdiction. This might not be the company that physically manufactures the product.  May be known as \"Sponsor\" and is commonly called \"Manufacturer\".", 0, 1, marketingAuthorizationHolder));
+        children.add(new Property("marketingAuthorizationHolder", "Reference(Organization)", "The company or other legal entity that has authorization, from the appropriate drug regulatory authority,  to market a medicine in one or more jurisdictions.  Typically abbreviated MAH.Note:  The MAH may manufacture the product and may also contract the manufacturing of the product to one or more companies (organizations).", 0, 1, marketingAuthorizationHolder));
         children.add(new Property("doseForm", "CodeableConcept", "Describes the form of the item.  Powder; tablets; capsule.", 0, 1, doseForm));
         children.add(new Property("totalVolume", "Ratio", "When the specified product code does not infer a package size, this is the specific amount of drug in the product.  For example, when specifying a product that has the same strength (For example, Insulin glargine 100 unit per mL solution for injection), this attribute provides additional clarification of the package amount (For example, 3 mL, 10mL, etc.).", 0, 1, totalVolume));
         children.add(new Property("ingredient", "", "Identifies a particular constituent of interest in the product.", 0, java.lang.Integer.MAX_VALUE, ingredient));
@@ -1108,7 +1112,7 @@ public class Medication extends DomainResource {
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Business identifier for this medication.", 0, java.lang.Integer.MAX_VALUE, identifier);
         case 3059181: /*code*/  return new Property("code", "CodeableConcept", "A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.", 0, 1, code);
         case -892481550: /*status*/  return new Property("status", "code", "A code to indicate if the medication is in active use.", 0, 1, status);
-        case -1565971585: /*marketingAuthorizationHolder*/  return new Property("marketingAuthorizationHolder", "Reference(Organization)", "Describes the organization that is responsible for the manufacturing of the item and holds the registration to market the product in a jurisdiction. This might not be the company that physically manufactures the product.  May be known as \"Sponsor\" and is commonly called \"Manufacturer\".", 0, 1, marketingAuthorizationHolder);
+        case -1565971585: /*marketingAuthorizationHolder*/  return new Property("marketingAuthorizationHolder", "Reference(Organization)", "The company or other legal entity that has authorization, from the appropriate drug regulatory authority,  to market a medicine in one or more jurisdictions.  Typically abbreviated MAH.Note:  The MAH may manufacture the product and may also contract the manufacturing of the product to one or more companies (organizations).", 0, 1, marketingAuthorizationHolder);
         case 1303858817: /*doseForm*/  return new Property("doseForm", "CodeableConcept", "Describes the form of the item.  Powder; tablets; capsule.", 0, 1, doseForm);
         case -654431362: /*totalVolume*/  return new Property("totalVolume", "Ratio", "When the specified product code does not infer a package size, this is the specific amount of drug in the product.  For example, when specifying a product that has the same strength (For example, Insulin glargine 100 unit per mL solution for injection), this attribute provides additional clarification of the package amount (For example, 3 mL, 10mL, etc.).", 0, 1, totalVolume);
         case -206409263: /*ingredient*/  return new Property("ingredient", "", "Identifies a particular constituent of interest in the product.", 0, java.lang.Integer.MAX_VALUE, ingredient);

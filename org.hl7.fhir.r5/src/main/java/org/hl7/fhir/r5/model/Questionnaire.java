@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -82,6 +82,7 @@ public class Questionnaire extends MetadataResource {
           switch (this) {
             case ALL: return "all";
             case ANY: return "any";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -89,6 +90,7 @@ public class Questionnaire extends MetadataResource {
           switch (this) {
             case ALL: return "http://hl7.org/fhir/questionnaire-enable-behavior";
             case ANY: return "http://hl7.org/fhir/questionnaire-enable-behavior";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -96,6 +98,7 @@ public class Questionnaire extends MetadataResource {
           switch (this) {
             case ALL: return "Enable the question when all the enableWhen criteria are satisfied.";
             case ANY: return "Enable the question when any of the enableWhen criteria are satisfied.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -103,6 +106,7 @@ public class Questionnaire extends MetadataResource {
           switch (this) {
             case ALL: return "All";
             case ANY: return "Any";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -181,6 +185,7 @@ public class Questionnaire extends MetadataResource {
             case OPTIONSONLY: return "optionsOnly";
             case OPTIONSORTYPE: return "optionsOrType";
             case OPTIONSORSTRING: return "optionsOrString";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -189,6 +194,7 @@ public class Questionnaire extends MetadataResource {
             case OPTIONSONLY: return "http://hl7.org/fhir/questionnaire-answer-constraint";
             case OPTIONSORTYPE: return "http://hl7.org/fhir/questionnaire-answer-constraint";
             case OPTIONSORSTRING: return "http://hl7.org/fhir/questionnaire-answer-constraint";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -197,6 +203,7 @@ public class Questionnaire extends MetadataResource {
             case OPTIONSONLY: return "Only values listed as answerOption or in the expansion of the answerValueSet are permitted";
             case OPTIONSORTYPE: return "In addition to the values listed as answerOption or in the expansion of the answerValueSet, any other values that correspond to the specified item.type are permitted";
             case OPTIONSORSTRING: return "In addition to the values listed as answerOption or in the expansion of the answerValueSet, free-text strings are permitted.  Answers will have a type of 'string'.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -205,6 +212,7 @@ public class Questionnaire extends MetadataResource {
             case OPTIONSONLY: return "Options only";
             case OPTIONSORTYPE: return "Options or 'type'";
             case OPTIONSORSTRING: return "Options or string";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -282,6 +290,7 @@ public class Questionnaire extends MetadataResource {
           switch (this) {
             case HIDDEN: return "hidden";
             case PROTECTED: return "protected";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -289,6 +298,7 @@ public class Questionnaire extends MetadataResource {
           switch (this) {
             case HIDDEN: return "http://hl7.org/fhir/questionnaire-disabled-display";
             case PROTECTED: return "http://hl7.org/fhir/questionnaire-disabled-display";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -296,6 +306,7 @@ public class Questionnaire extends MetadataResource {
           switch (this) {
             case HIDDEN: return "The item (and its children) should not be visible to the user at all.";
             case PROTECTED: return "The item (and possibly its children) should not be selectable or editable but should still be visible - to allow the user to see what questions *could* have been completed had other answers caused the item to be enabled.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -303,6 +314,7 @@ public class Questionnaire extends MetadataResource {
           switch (this) {
             case HIDDEN: return "Hidden";
             case PROTECTED: return "Protected";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -409,6 +421,7 @@ public class Questionnaire extends MetadataResource {
             case LESS_THAN: return "<";
             case GREATER_OR_EQUAL: return ">=";
             case LESS_OR_EQUAL: return "<=";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -421,6 +434,7 @@ public class Questionnaire extends MetadataResource {
             case LESS_THAN: return "http://hl7.org/fhir/questionnaire-enable-operator";
             case GREATER_OR_EQUAL: return "http://hl7.org/fhir/questionnaire-enable-operator";
             case LESS_OR_EQUAL: return "http://hl7.org/fhir/questionnaire-enable-operator";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -433,6 +447,7 @@ public class Questionnaire extends MetadataResource {
             case LESS_THAN: return "True if at least one answer has a value that is less than the enableWhen answer.";
             case GREATER_OR_EQUAL: return "True if at least one answer has a value that is greater or equal to the enableWhen answer.";
             case LESS_OR_EQUAL: return "True if at least one answer has a value that is less or equal to the enableWhen answer.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -445,6 +460,7 @@ public class Questionnaire extends MetadataResource {
             case LESS_THAN: return "Less Than";
             case GREATER_OR_EQUAL: return "Greater or Equals";
             case LESS_OR_EQUAL: return "Less or Equals";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -644,6 +660,7 @@ public class Questionnaire extends MetadataResource {
             case ATTACHMENT: return "attachment";
             case REFERENCE: return "reference";
             case QUANTITY: return "quantity";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -665,6 +682,7 @@ public class Questionnaire extends MetadataResource {
             case ATTACHMENT: return "http://hl7.org/fhir/item-type";
             case REFERENCE: return "http://hl7.org/fhir/item-type";
             case QUANTITY: return "http://hl7.org/fhir/item-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -686,6 +704,7 @@ public class Questionnaire extends MetadataResource {
             case ATTACHMENT: return "Question with binary content such as an image, PDF, etc. as an answer (valueAttachment).";
             case REFERENCE: return "Question with a reference to another resource (practitioner, organization, etc.) as an answer (valueReference).";
             case QUANTITY: return "Question with a combination of a numeric value and unit, potentially with a comparator (<, >, etc.) as an answer. (valueQuantity) There is an extension 'http://hl7.org/fhir/StructureDefinition/questionnaire-unit' that can be used to define what unit should be captured (or the unit that has a ucum conversion from the provided unit).";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -707,6 +726,7 @@ public class Questionnaire extends MetadataResource {
             case ATTACHMENT: return "Attachment";
             case REFERENCE: return "Reference";
             case QUANTITY: return "Quantity";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -4811,7 +4831,7 @@ public QuestionnaireItemComponent getQuestion(String linkId) {
       return 0;
     }
     /**
-     * @return {@link #topic} (Descriptive topics related to the content of the library. Topics provide a high-level categorization of the library that can be useful for filtering and searching.)
+     * @return {@link #topic} (Descriptive topics related to the content of the questionnaire. Topics provide a high-level categorization of the questionnaire that can be useful for filtering and searching.)
      */
     public List<CodeableConcept> getTopic() { 
       return new ArrayList<>();

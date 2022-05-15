@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,6 +103,7 @@ public class CodeSystem extends CanonicalResource {
             case FRAGMENT: return "fragment";
             case COMPLETE: return "complete";
             case SUPPLEMENT: return "supplement";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -113,6 +114,7 @@ public class CodeSystem extends CanonicalResource {
             case FRAGMENT: return "http://hl7.org/fhir/codesystem-content-mode";
             case COMPLETE: return "http://hl7.org/fhir/codesystem-content-mode";
             case SUPPLEMENT: return "http://hl7.org/fhir/codesystem-content-mode";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -123,6 +125,7 @@ public class CodeSystem extends CanonicalResource {
             case FRAGMENT: return "A subset of the code system concepts are included in the code system resource. This is a curated subset released for a specific purpose under the governance of the code system steward, and that the intent, bounds and consequences of the fragmentation are clearly defined in the fragment or the code system documentation. Fragments are also known as partitions.";
             case COMPLETE: return "All the concepts defined by the code system are included in the code system resource.";
             case SUPPLEMENT: return "The resource doesn't define any new concepts; it just provides additional designations and properties to another code system.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -133,6 +136,7 @@ public class CodeSystem extends CanonicalResource {
             case FRAGMENT: return "Fragment";
             case COMPLETE: return "Complete";
             case SUPPLEMENT: return "Supplement";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -236,6 +240,7 @@ public class CodeSystem extends CanonicalResource {
             case ISA: return "is-a";
             case PARTOF: return "part-of";
             case CLASSIFIEDWITH: return "classified-with";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -245,6 +250,7 @@ public class CodeSystem extends CanonicalResource {
             case ISA: return "http://hl7.org/fhir/codesystem-hierarchy-meaning";
             case PARTOF: return "http://hl7.org/fhir/codesystem-hierarchy-meaning";
             case CLASSIFIEDWITH: return "http://hl7.org/fhir/codesystem-hierarchy-meaning";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -254,6 +260,7 @@ public class CodeSystem extends CanonicalResource {
             case ISA: return "A hierarchy where the child concepts have an IS-A relationship with the parents - that is, all the properties of the parent are also true for its child concepts. Not that is-a is a property of the concepts, so additional subsumption relationships may be defined using properties or the [subsumes](extension-codesystem-subsumes.html) extension.";
             case PARTOF: return "Child elements list the individual parts of a composite whole (e.g. body site).";
             case CLASSIFIEDWITH: return "Child concepts in the hierarchy may have only one parent, and there is a presumption that the code system is a \"closed world\" meaning all things must be in the hierarchy. This results in concepts such as \"not otherwise classified.\".";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -263,6 +270,7 @@ public class CodeSystem extends CanonicalResource {
             case ISA: return "Is-A";
             case PARTOF: return "Part Of";
             case CLASSIFIEDWITH: return "Classified With";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -331,7 +339,7 @@ public class CodeSystem extends CanonicalResource {
          */
         STRING, 
         /**
-         * The property value is a string (often used to assign ranking values to concepts for supporting score assessments).
+         * The property value is an integer (often used to assign ranking values to concepts for supporting score assessments).
          */
         INTEGER, 
         /**
@@ -381,6 +389,7 @@ public class CodeSystem extends CanonicalResource {
             case BOOLEAN: return "boolean";
             case DATETIME: return "dateTime";
             case DECIMAL: return "decimal";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -393,6 +402,7 @@ public class CodeSystem extends CanonicalResource {
             case BOOLEAN: return "http://hl7.org/fhir/concept-property-type";
             case DATETIME: return "http://hl7.org/fhir/concept-property-type";
             case DECIMAL: return "http://hl7.org/fhir/concept-property-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -401,10 +411,11 @@ public class CodeSystem extends CanonicalResource {
             case CODE: return "The property value is a code that identifies a concept defined in the code system.";
             case CODING: return "The property  value is a code defined in an external code system. This may be used for translations, but is not the intent.";
             case STRING: return "The property value is a string.";
-            case INTEGER: return "The property value is a string (often used to assign ranking values to concepts for supporting score assessments).";
+            case INTEGER: return "The property value is an integer (often used to assign ranking values to concepts for supporting score assessments).";
             case BOOLEAN: return "The property value is a boolean true | false.";
             case DATETIME: return "The property is a date or a date + time.";
             case DECIMAL: return "The property value is a decimal number.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -417,6 +428,7 @@ public class CodeSystem extends CanonicalResource {
             case BOOLEAN: return "boolean";
             case DATETIME: return "dateTime";
             case DECIMAL: return "decimal";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -2568,10 +2580,10 @@ public class CodeSystem extends CanonicalResource {
     protected StringType title;
 
     /**
-     * The date (and optionally time) when the code system resource was created or revised.
+     * The status of this code system. Enables tracking the life-cycle of the content.
      */
     @Child(name = "status", type = {CodeType.class}, order=5, min=1, max=1, modifier=true, summary=true)
-    @Description(shortDefinition="draft | active | retired | unknown", formalDefinition="The date (and optionally time) when the code system resource was created or revised." )
+    @Description(shortDefinition="draft | active | retired | unknown", formalDefinition="The status of this code system. Enables tracking the life-cycle of the content." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/publication-status")
     protected Enumeration<PublicationStatus> status;
 
@@ -2647,10 +2659,10 @@ public class CodeSystem extends CanonicalResource {
     protected BooleanType caseSensitive;
 
     /**
-     * Canonical reference to the value set that contains the entire code system.
+     * Canonical reference to the value set that contains all codes in the code system independent of code status.
      */
     @Child(name = "valueSet", type = {CanonicalType.class}, order=16, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Canonical reference to the value set with entire code system", formalDefinition="Canonical reference to the value set that contains the entire code system." )
+    @Description(shortDefinition="Canonical reference to the value set with entire code system", formalDefinition="Canonical reference to the value set that contains all codes in the code system independent of code status." )
     protected CanonicalType valueSet;
 
     /**
@@ -2986,7 +2998,7 @@ public class CodeSystem extends CanonicalResource {
     }
 
     /**
-     * @return {@link #status} (The date (and optionally time) when the code system resource was created or revised.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
+     * @return {@link #status} (The status of this code system. Enables tracking the life-cycle of the content.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
     public Enumeration<PublicationStatus> getStatusElement() { 
       if (this.status == null)
@@ -3006,7 +3018,7 @@ public class CodeSystem extends CanonicalResource {
     }
 
     /**
-     * @param value {@link #status} (The date (and optionally time) when the code system resource was created or revised.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
+     * @param value {@link #status} (The status of this code system. Enables tracking the life-cycle of the content.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
     public CodeSystem setStatusElement(Enumeration<PublicationStatus> value) { 
       this.status = value;
@@ -3014,14 +3026,14 @@ public class CodeSystem extends CanonicalResource {
     }
 
     /**
-     * @return The date (and optionally time) when the code system resource was created or revised.
+     * @return The status of this code system. Enables tracking the life-cycle of the content.
      */
     public PublicationStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
-     * @param value The date (and optionally time) when the code system resource was created or revised.
+     * @param value The status of this code system. Enables tracking the life-cycle of the content.
      */
     public CodeSystem setStatus(PublicationStatus value) { 
         if (this.status == null)
@@ -3525,7 +3537,7 @@ public class CodeSystem extends CanonicalResource {
     }
 
     /**
-     * @return {@link #valueSet} (Canonical reference to the value set that contains the entire code system.). This is the underlying object with id, value and extensions. The accessor "getValueSet" gives direct access to the value
+     * @return {@link #valueSet} (Canonical reference to the value set that contains all codes in the code system independent of code status.). This is the underlying object with id, value and extensions. The accessor "getValueSet" gives direct access to the value
      */
     public CanonicalType getValueSetElement() { 
       if (this.valueSet == null)
@@ -3545,7 +3557,7 @@ public class CodeSystem extends CanonicalResource {
     }
 
     /**
-     * @param value {@link #valueSet} (Canonical reference to the value set that contains the entire code system.). This is the underlying object with id, value and extensions. The accessor "getValueSet" gives direct access to the value
+     * @param value {@link #valueSet} (Canonical reference to the value set that contains all codes in the code system independent of code status.). This is the underlying object with id, value and extensions. The accessor "getValueSet" gives direct access to the value
      */
     public CodeSystem setValueSetElement(CanonicalType value) { 
       this.valueSet = value;
@@ -3553,14 +3565,14 @@ public class CodeSystem extends CanonicalResource {
     }
 
     /**
-     * @return Canonical reference to the value set that contains the entire code system.
+     * @return Canonical reference to the value set that contains all codes in the code system independent of code status.
      */
     public String getValueSet() { 
       return this.valueSet == null ? null : this.valueSet.getValue();
     }
 
     /**
-     * @param value Canonical reference to the value set that contains the entire code system.
+     * @param value Canonical reference to the value set that contains all codes in the code system independent of code status.
      */
     public CodeSystem setValueSet(String value) { 
       if (Utilities.noString(value))
@@ -4017,7 +4029,7 @@ public class CodeSystem extends CanonicalResource {
         children.add(new Property("version", "string", "The identifier that is used to identify this version of the code system when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the code system author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence. This is used in [Coding](datatypes.html#Coding).version.", 0, 1, version));
         children.add(new Property("name", "string", "A natural language name identifying the code system. This name should be usable as an identifier for the module by machine processing applications such as code generation.", 0, 1, name));
         children.add(new Property("title", "string", "A short, descriptive, user-friendly title for the code system.", 0, 1, title));
-        children.add(new Property("status", "code", "The date (and optionally time) when the code system resource was created or revised.", 0, 1, status));
+        children.add(new Property("status", "code", "The status of this code system. Enables tracking the life-cycle of the content.", 0, 1, status));
         children.add(new Property("experimental", "boolean", "A Boolean value to indicate that this code system is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.", 0, 1, experimental));
         children.add(new Property("date", "dateTime", "The date  (and optionally time) when the code system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the code system changes.", 0, 1, date));
         children.add(new Property("publisher", "string", "The name of the organization or individual that published the code system.", 0, 1, publisher));
@@ -4028,7 +4040,7 @@ public class CodeSystem extends CanonicalResource {
         children.add(new Property("purpose", "markdown", "Explanation of why this code system is needed and why it has been designed as it has.", 0, 1, purpose));
         children.add(new Property("copyright", "markdown", "A copyright statement relating to the code system and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the code system.", 0, 1, copyright));
         children.add(new Property("caseSensitive", "boolean", "If code comparison is case sensitive when codes within this system are compared to each other.", 0, 1, caseSensitive));
-        children.add(new Property("valueSet", "canonical(ValueSet)", "Canonical reference to the value set that contains the entire code system.", 0, 1, valueSet));
+        children.add(new Property("valueSet", "canonical(ValueSet)", "Canonical reference to the value set that contains all codes in the code system independent of code status.", 0, 1, valueSet));
         children.add(new Property("hierarchyMeaning", "code", "The meaning of the hierarchy of concepts as represented in this resource.", 0, 1, hierarchyMeaning));
         children.add(new Property("compositional", "boolean", "The code system defines a compositional (post-coordination) grammar.", 0, 1, compositional));
         children.add(new Property("versionNeeded", "boolean", "This flag is used to signify that the code system does not commit to concept permanence across versions. If true, a version must be specified when referencing this code system.", 0, 1, versionNeeded));
@@ -4048,7 +4060,7 @@ public class CodeSystem extends CanonicalResource {
         case 351608024: /*version*/  return new Property("version", "string", "The identifier that is used to identify this version of the code system when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the code system author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence. This is used in [Coding](datatypes.html#Coding).version.", 0, 1, version);
         case 3373707: /*name*/  return new Property("name", "string", "A natural language name identifying the code system. This name should be usable as an identifier for the module by machine processing applications such as code generation.", 0, 1, name);
         case 110371416: /*title*/  return new Property("title", "string", "A short, descriptive, user-friendly title for the code system.", 0, 1, title);
-        case -892481550: /*status*/  return new Property("status", "code", "The date (and optionally time) when the code system resource was created or revised.", 0, 1, status);
+        case -892481550: /*status*/  return new Property("status", "code", "The status of this code system. Enables tracking the life-cycle of the content.", 0, 1, status);
         case -404562712: /*experimental*/  return new Property("experimental", "boolean", "A Boolean value to indicate that this code system is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.", 0, 1, experimental);
         case 3076014: /*date*/  return new Property("date", "dateTime", "The date  (and optionally time) when the code system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the code system changes.", 0, 1, date);
         case 1447404028: /*publisher*/  return new Property("publisher", "string", "The name of the organization or individual that published the code system.", 0, 1, publisher);
@@ -4059,7 +4071,7 @@ public class CodeSystem extends CanonicalResource {
         case -220463842: /*purpose*/  return new Property("purpose", "markdown", "Explanation of why this code system is needed and why it has been designed as it has.", 0, 1, purpose);
         case 1522889671: /*copyright*/  return new Property("copyright", "markdown", "A copyright statement relating to the code system and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the code system.", 0, 1, copyright);
         case -35616442: /*caseSensitive*/  return new Property("caseSensitive", "boolean", "If code comparison is case sensitive when codes within this system are compared to each other.", 0, 1, caseSensitive);
-        case -1410174671: /*valueSet*/  return new Property("valueSet", "canonical(ValueSet)", "Canonical reference to the value set that contains the entire code system.", 0, 1, valueSet);
+        case -1410174671: /*valueSet*/  return new Property("valueSet", "canonical(ValueSet)", "Canonical reference to the value set that contains all codes in the code system independent of code status.", 0, 1, valueSet);
         case 1913078280: /*hierarchyMeaning*/  return new Property("hierarchyMeaning", "code", "The meaning of the hierarchy of concepts as represented in this resource.", 0, 1, hierarchyMeaning);
         case 1248023381: /*compositional*/  return new Property("compositional", "boolean", "The code system defines a compositional (post-coordination) grammar.", 0, 1, compositional);
         case 617270957: /*versionNeeded*/  return new Property("versionNeeded", "boolean", "This flag is used to signify that the code system does not commit to concept permanence across versions. If true, a version must be specified when referencing this code system.", 0, 1, versionNeeded);

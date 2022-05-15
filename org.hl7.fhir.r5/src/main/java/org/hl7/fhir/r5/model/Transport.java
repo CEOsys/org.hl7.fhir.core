@@ -48,14 +48,14 @@ import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 
 /**
- * A task to be performed.
+ * Record of transport.
  */
-@ResourceDef(name="Task", profile="http://hl7.org/fhir/StructureDefinition/Task")
-public class Task extends DomainResource {
+@ResourceDef(name="Transport", profile="http://hl7.org/fhir/StructureDefinition/Transport")
+public class Transport extends DomainResource {
 
-    public enum TaskIntent {
+    public enum TransportIntent {
         /**
-         * The intent is not known.  When dealing with Task, it's not always known (or relevant) how the task was initiated - i.e. whether it was proposed, planned, ordered or just done spontaneously.
+         * The intent is not known.  When dealing with Transport, it's not always known (or relevant) how the transport was initiated - i.e. whether it was proposed, planned, ordered or just done spontaneously.
          */
         UNKNOWN, 
         /**
@@ -94,7 +94,7 @@ public class Task extends DomainResource {
          * added to help the parsers with the generic types
          */
         NULL;
-        public static TaskIntent fromCode(String codeString) throws FHIRException {
+        public static TransportIntent fromCode(String codeString) throws FHIRException {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("unknown".equals(codeString))
@@ -118,7 +118,7 @@ public class Task extends DomainResource {
         if (Configuration.isAcceptInvalidEnums())
           return null;
         else
-          throw new FHIRException("Unknown TaskIntent code '"+codeString+"'");
+          throw new FHIRException("Unknown TransportIntent code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -137,7 +137,7 @@ public class Task extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case UNKNOWN: return "http://hl7.org/fhir/task-intent";
+            case UNKNOWN: return "http://hl7.org/fhir/transport-intent";
             case PROPOSAL: return "http://hl7.org/fhir/request-intent";
             case PLAN: return "http://hl7.org/fhir/request-intent";
             case ORDER: return "http://hl7.org/fhir/request-intent";
@@ -152,7 +152,7 @@ public class Task extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case UNKNOWN: return "The intent is not known.  When dealing with Task, it's not always known (or relevant) how the task was initiated - i.e. whether it was proposed, planned, ordered or just done spontaneously.";
+            case UNKNOWN: return "The intent is not known.  When dealing with Transport, it's not always known (or relevant) how the transport was initiated - i.e. whether it was proposed, planned, ordered or just done spontaneously.";
             case PROPOSAL: return "The request is a suggestion made by someone/something that does not have an intention to ensure it occurs and without providing an authorization to act.";
             case PLAN: return "The request represents an intention to ensure something occurs without providing an authorization for others to act.";
             case ORDER: return "The request represents a request/demand and authorization for action by a Practitioner.";
@@ -182,183 +182,127 @@ public class Task extends DomainResource {
         }
     }
 
-  public static class TaskIntentEnumFactory implements EnumFactory<TaskIntent> {
-    public TaskIntent fromCode(String codeString) throws IllegalArgumentException {
+  public static class TransportIntentEnumFactory implements EnumFactory<TransportIntent> {
+    public TransportIntent fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("unknown".equals(codeString))
-          return TaskIntent.UNKNOWN;
+          return TransportIntent.UNKNOWN;
         if ("proposal".equals(codeString))
-          return TaskIntent.PROPOSAL;
+          return TransportIntent.PROPOSAL;
         if ("plan".equals(codeString))
-          return TaskIntent.PLAN;
+          return TransportIntent.PLAN;
         if ("order".equals(codeString))
-          return TaskIntent.ORDER;
+          return TransportIntent.ORDER;
         if ("original-order".equals(codeString))
-          return TaskIntent.ORIGINALORDER;
+          return TransportIntent.ORIGINALORDER;
         if ("reflex-order".equals(codeString))
-          return TaskIntent.REFLEXORDER;
+          return TransportIntent.REFLEXORDER;
         if ("filler-order".equals(codeString))
-          return TaskIntent.FILLERORDER;
+          return TransportIntent.FILLERORDER;
         if ("instance-order".equals(codeString))
-          return TaskIntent.INSTANCEORDER;
+          return TransportIntent.INSTANCEORDER;
         if ("option".equals(codeString))
-          return TaskIntent.OPTION;
-        throw new IllegalArgumentException("Unknown TaskIntent code '"+codeString+"'");
+          return TransportIntent.OPTION;
+        throw new IllegalArgumentException("Unknown TransportIntent code '"+codeString+"'");
         }
-        public Enumeration<TaskIntent> fromType(Base code) throws FHIRException {
+        public Enumeration<TransportIntent> fromType(Base code) throws FHIRException {
           if (code == null)
             return null;
           if (code.isEmpty())
-            return new Enumeration<TaskIntent>(this);
+            return new Enumeration<TransportIntent>(this);
           String codeString = ((PrimitiveType) code).asStringValue();
           if (codeString == null || "".equals(codeString))
             return null;
         if ("unknown".equals(codeString))
-          return new Enumeration<TaskIntent>(this, TaskIntent.UNKNOWN);
+          return new Enumeration<TransportIntent>(this, TransportIntent.UNKNOWN);
         if ("proposal".equals(codeString))
-          return new Enumeration<TaskIntent>(this, TaskIntent.PROPOSAL);
+          return new Enumeration<TransportIntent>(this, TransportIntent.PROPOSAL);
         if ("plan".equals(codeString))
-          return new Enumeration<TaskIntent>(this, TaskIntent.PLAN);
+          return new Enumeration<TransportIntent>(this, TransportIntent.PLAN);
         if ("order".equals(codeString))
-          return new Enumeration<TaskIntent>(this, TaskIntent.ORDER);
+          return new Enumeration<TransportIntent>(this, TransportIntent.ORDER);
         if ("original-order".equals(codeString))
-          return new Enumeration<TaskIntent>(this, TaskIntent.ORIGINALORDER);
+          return new Enumeration<TransportIntent>(this, TransportIntent.ORIGINALORDER);
         if ("reflex-order".equals(codeString))
-          return new Enumeration<TaskIntent>(this, TaskIntent.REFLEXORDER);
+          return new Enumeration<TransportIntent>(this, TransportIntent.REFLEXORDER);
         if ("filler-order".equals(codeString))
-          return new Enumeration<TaskIntent>(this, TaskIntent.FILLERORDER);
+          return new Enumeration<TransportIntent>(this, TransportIntent.FILLERORDER);
         if ("instance-order".equals(codeString))
-          return new Enumeration<TaskIntent>(this, TaskIntent.INSTANCEORDER);
+          return new Enumeration<TransportIntent>(this, TransportIntent.INSTANCEORDER);
         if ("option".equals(codeString))
-          return new Enumeration<TaskIntent>(this, TaskIntent.OPTION);
-        throw new FHIRException("Unknown TaskIntent code '"+codeString+"'");
+          return new Enumeration<TransportIntent>(this, TransportIntent.OPTION);
+        throw new FHIRException("Unknown TransportIntent code '"+codeString+"'");
         }
-    public String toCode(TaskIntent code) {
-      if (code == TaskIntent.UNKNOWN)
+    public String toCode(TransportIntent code) {
+      if (code == TransportIntent.UNKNOWN)
         return "unknown";
-      if (code == TaskIntent.PROPOSAL)
+      if (code == TransportIntent.PROPOSAL)
         return "proposal";
-      if (code == TaskIntent.PLAN)
+      if (code == TransportIntent.PLAN)
         return "plan";
-      if (code == TaskIntent.ORDER)
+      if (code == TransportIntent.ORDER)
         return "order";
-      if (code == TaskIntent.ORIGINALORDER)
+      if (code == TransportIntent.ORIGINALORDER)
         return "original-order";
-      if (code == TaskIntent.REFLEXORDER)
+      if (code == TransportIntent.REFLEXORDER)
         return "reflex-order";
-      if (code == TaskIntent.FILLERORDER)
+      if (code == TransportIntent.FILLERORDER)
         return "filler-order";
-      if (code == TaskIntent.INSTANCEORDER)
+      if (code == TransportIntent.INSTANCEORDER)
         return "instance-order";
-      if (code == TaskIntent.OPTION)
+      if (code == TransportIntent.OPTION)
         return "option";
       return "?";
       }
-    public String toSystem(TaskIntent code) {
+    public String toSystem(TransportIntent code) {
       return code.getSystem();
       }
     }
 
-    public enum TaskStatus {
+    public enum TransportStatus {
         /**
-         * The task is not yet ready to be acted upon.
-         */
-        DRAFT, 
-        /**
-         * The task is ready to be acted upon and action is sought.
-         */
-        REQUESTED, 
-        /**
-         * A potential performer has claimed ownership of the task and is evaluating whether to perform it.
-         */
-        RECEIVED, 
-        /**
-         * The potential performer has agreed to execute the task but has not yet started work.
-         */
-        ACCEPTED, 
-        /**
-         * The potential performer who claimed ownership of the task has decided not to execute it prior to performing any action.
-         */
-        REJECTED, 
-        /**
-         * The task is ready to be performed, but no action has yet been taken.  Used in place of requested/received/accepted/rejected when request assignment and acceptance is a given.
-         */
-        READY, 
-        /**
-         * The task was not completed.
-         */
-        CANCELLED, 
-        /**
-         * The task has been started but is not yet complete.
+         * Supply has been requested, but not delivered.
          */
         INPROGRESS, 
         /**
-         * The task has been started but work has been paused.
-         */
-        ONHOLD, 
-        /**
-         * The task was attempted but could not be completed due to some error.
-         */
-        FAILED, 
-        /**
-         * The task has been completed.
+         * Supply has been delivered (\"completed\").
          */
         COMPLETED, 
         /**
-         * The task should never have existed and is retained only because of the possibility it may have used.
+         * Delivery was not completed.
+         */
+        ABANDONED, 
+        /**
+         * This electronic record should never have existed, though it is possible that real-world decisions were based on it. (If real-world activity has occurred, the status should be \"abandoned\" rather than \"entered-in-error\".).
          */
         ENTEREDINERROR, 
         /**
          * added to help the parsers with the generic types
          */
         NULL;
-        public static TaskStatus fromCode(String codeString) throws FHIRException {
+        public static TransportStatus fromCode(String codeString) throws FHIRException {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("draft".equals(codeString))
-          return DRAFT;
-        if ("requested".equals(codeString))
-          return REQUESTED;
-        if ("received".equals(codeString))
-          return RECEIVED;
-        if ("accepted".equals(codeString))
-          return ACCEPTED;
-        if ("rejected".equals(codeString))
-          return REJECTED;
-        if ("ready".equals(codeString))
-          return READY;
-        if ("cancelled".equals(codeString))
-          return CANCELLED;
         if ("in-progress".equals(codeString))
           return INPROGRESS;
-        if ("on-hold".equals(codeString))
-          return ONHOLD;
-        if ("failed".equals(codeString))
-          return FAILED;
         if ("completed".equals(codeString))
           return COMPLETED;
+        if ("abandoned".equals(codeString))
+          return ABANDONED;
         if ("entered-in-error".equals(codeString))
           return ENTEREDINERROR;
         if (Configuration.isAcceptInvalidEnums())
           return null;
         else
-          throw new FHIRException("Unknown TaskStatus code '"+codeString+"'");
+          throw new FHIRException("Unknown TransportStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case DRAFT: return "draft";
-            case REQUESTED: return "requested";
-            case RECEIVED: return "received";
-            case ACCEPTED: return "accepted";
-            case REJECTED: return "rejected";
-            case READY: return "ready";
-            case CANCELLED: return "cancelled";
             case INPROGRESS: return "in-progress";
-            case ONHOLD: return "on-hold";
-            case FAILED: return "failed";
             case COMPLETED: return "completed";
+            case ABANDONED: return "abandoned";
             case ENTEREDINERROR: return "entered-in-error";
             case NULL: return null;
             default: return "?";
@@ -366,159 +310,87 @@ public class Task extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case DRAFT: return "http://hl7.org/fhir/task-status";
-            case REQUESTED: return "http://hl7.org/fhir/task-status";
-            case RECEIVED: return "http://hl7.org/fhir/task-status";
-            case ACCEPTED: return "http://hl7.org/fhir/task-status";
-            case REJECTED: return "http://hl7.org/fhir/task-status";
-            case READY: return "http://hl7.org/fhir/task-status";
-            case CANCELLED: return "http://hl7.org/fhir/task-status";
-            case INPROGRESS: return "http://hl7.org/fhir/task-status";
-            case ONHOLD: return "http://hl7.org/fhir/task-status";
-            case FAILED: return "http://hl7.org/fhir/task-status";
-            case COMPLETED: return "http://hl7.org/fhir/task-status";
-            case ENTEREDINERROR: return "http://hl7.org/fhir/task-status";
+            case INPROGRESS: return "http://hl7.org/fhir/supplydelivery-status";
+            case COMPLETED: return "http://hl7.org/fhir/supplydelivery-status";
+            case ABANDONED: return "http://hl7.org/fhir/supplydelivery-status";
+            case ENTEREDINERROR: return "http://hl7.org/fhir/supplydelivery-status";
             case NULL: return null;
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case DRAFT: return "The task is not yet ready to be acted upon.";
-            case REQUESTED: return "The task is ready to be acted upon and action is sought.";
-            case RECEIVED: return "A potential performer has claimed ownership of the task and is evaluating whether to perform it.";
-            case ACCEPTED: return "The potential performer has agreed to execute the task but has not yet started work.";
-            case REJECTED: return "The potential performer who claimed ownership of the task has decided not to execute it prior to performing any action.";
-            case READY: return "The task is ready to be performed, but no action has yet been taken.  Used in place of requested/received/accepted/rejected when request assignment and acceptance is a given.";
-            case CANCELLED: return "The task was not completed.";
-            case INPROGRESS: return "The task has been started but is not yet complete.";
-            case ONHOLD: return "The task has been started but work has been paused.";
-            case FAILED: return "The task was attempted but could not be completed due to some error.";
-            case COMPLETED: return "The task has been completed.";
-            case ENTEREDINERROR: return "The task should never have existed and is retained only because of the possibility it may have used.";
+            case INPROGRESS: return "Supply has been requested, but not delivered.";
+            case COMPLETED: return "Supply has been delivered (\"completed\").";
+            case ABANDONED: return "Delivery was not completed.";
+            case ENTEREDINERROR: return "This electronic record should never have existed, though it is possible that real-world decisions were based on it. (If real-world activity has occurred, the status should be \"abandoned\" rather than \"entered-in-error\".).";
             case NULL: return null;
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case DRAFT: return "Draft";
-            case REQUESTED: return "Requested";
-            case RECEIVED: return "Received";
-            case ACCEPTED: return "Accepted";
-            case REJECTED: return "Rejected";
-            case READY: return "Ready";
-            case CANCELLED: return "Cancelled";
             case INPROGRESS: return "In Progress";
-            case ONHOLD: return "On Hold";
-            case FAILED: return "Failed";
-            case COMPLETED: return "Completed";
-            case ENTEREDINERROR: return "Entered in Error";
+            case COMPLETED: return "Delivered";
+            case ABANDONED: return "Abandoned";
+            case ENTEREDINERROR: return "Entered In Error";
             case NULL: return null;
             default: return "?";
           }
         }
     }
 
-  public static class TaskStatusEnumFactory implements EnumFactory<TaskStatus> {
-    public TaskStatus fromCode(String codeString) throws IllegalArgumentException {
+  public static class TransportStatusEnumFactory implements EnumFactory<TransportStatus> {
+    public TransportStatus fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("draft".equals(codeString))
-          return TaskStatus.DRAFT;
-        if ("requested".equals(codeString))
-          return TaskStatus.REQUESTED;
-        if ("received".equals(codeString))
-          return TaskStatus.RECEIVED;
-        if ("accepted".equals(codeString))
-          return TaskStatus.ACCEPTED;
-        if ("rejected".equals(codeString))
-          return TaskStatus.REJECTED;
-        if ("ready".equals(codeString))
-          return TaskStatus.READY;
-        if ("cancelled".equals(codeString))
-          return TaskStatus.CANCELLED;
         if ("in-progress".equals(codeString))
-          return TaskStatus.INPROGRESS;
-        if ("on-hold".equals(codeString))
-          return TaskStatus.ONHOLD;
-        if ("failed".equals(codeString))
-          return TaskStatus.FAILED;
+          return TransportStatus.INPROGRESS;
         if ("completed".equals(codeString))
-          return TaskStatus.COMPLETED;
+          return TransportStatus.COMPLETED;
+        if ("abandoned".equals(codeString))
+          return TransportStatus.ABANDONED;
         if ("entered-in-error".equals(codeString))
-          return TaskStatus.ENTEREDINERROR;
-        throw new IllegalArgumentException("Unknown TaskStatus code '"+codeString+"'");
+          return TransportStatus.ENTEREDINERROR;
+        throw new IllegalArgumentException("Unknown TransportStatus code '"+codeString+"'");
         }
-        public Enumeration<TaskStatus> fromType(Base code) throws FHIRException {
+        public Enumeration<TransportStatus> fromType(Base code) throws FHIRException {
           if (code == null)
             return null;
           if (code.isEmpty())
-            return new Enumeration<TaskStatus>(this);
+            return new Enumeration<TransportStatus>(this);
           String codeString = ((PrimitiveType) code).asStringValue();
           if (codeString == null || "".equals(codeString))
             return null;
-        if ("draft".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.DRAFT);
-        if ("requested".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.REQUESTED);
-        if ("received".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.RECEIVED);
-        if ("accepted".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.ACCEPTED);
-        if ("rejected".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.REJECTED);
-        if ("ready".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.READY);
-        if ("cancelled".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.CANCELLED);
         if ("in-progress".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.INPROGRESS);
-        if ("on-hold".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.ONHOLD);
-        if ("failed".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.FAILED);
+          return new Enumeration<TransportStatus>(this, TransportStatus.INPROGRESS);
         if ("completed".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.COMPLETED);
+          return new Enumeration<TransportStatus>(this, TransportStatus.COMPLETED);
+        if ("abandoned".equals(codeString))
+          return new Enumeration<TransportStatus>(this, TransportStatus.ABANDONED);
         if ("entered-in-error".equals(codeString))
-          return new Enumeration<TaskStatus>(this, TaskStatus.ENTEREDINERROR);
-        throw new FHIRException("Unknown TaskStatus code '"+codeString+"'");
+          return new Enumeration<TransportStatus>(this, TransportStatus.ENTEREDINERROR);
+        throw new FHIRException("Unknown TransportStatus code '"+codeString+"'");
         }
-    public String toCode(TaskStatus code) {
-      if (code == TaskStatus.DRAFT)
-        return "draft";
-      if (code == TaskStatus.REQUESTED)
-        return "requested";
-      if (code == TaskStatus.RECEIVED)
-        return "received";
-      if (code == TaskStatus.ACCEPTED)
-        return "accepted";
-      if (code == TaskStatus.REJECTED)
-        return "rejected";
-      if (code == TaskStatus.READY)
-        return "ready";
-      if (code == TaskStatus.CANCELLED)
-        return "cancelled";
-      if (code == TaskStatus.INPROGRESS)
+    public String toCode(TransportStatus code) {
+      if (code == TransportStatus.INPROGRESS)
         return "in-progress";
-      if (code == TaskStatus.ONHOLD)
-        return "on-hold";
-      if (code == TaskStatus.FAILED)
-        return "failed";
-      if (code == TaskStatus.COMPLETED)
+      if (code == TransportStatus.COMPLETED)
         return "completed";
-      if (code == TaskStatus.ENTEREDINERROR)
+      if (code == TransportStatus.ABANDONED)
+        return "abandoned";
+      if (code == TransportStatus.ENTEREDINERROR)
         return "entered-in-error";
       return "?";
       }
-    public String toSystem(TaskStatus code) {
+    public String toSystem(TransportStatus code) {
       return code.getSystem();
       }
     }
 
     @Block()
-    public static class TaskRestrictionComponent extends BackboneElement implements IBaseBackboneElement {
+    public static class TransportRestrictionComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Indicates the number of times the requested action should occur.
          */
@@ -545,7 +417,7 @@ public class Task extends DomainResource {
     /**
      * Constructor
      */
-      public TaskRestrictionComponent() {
+      public TransportRestrictionComponent() {
         super();
       }
 
@@ -555,7 +427,7 @@ public class Task extends DomainResource {
         public PositiveIntType getRepetitionsElement() { 
           if (this.repetitions == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create TaskRestrictionComponent.repetitions");
+              throw new Error("Attempt to auto-create TransportRestrictionComponent.repetitions");
             else if (Configuration.doAutoCreate())
               this.repetitions = new PositiveIntType(); // bb
           return this.repetitions;
@@ -572,7 +444,7 @@ public class Task extends DomainResource {
         /**
          * @param value {@link #repetitions} (Indicates the number of times the requested action should occur.). This is the underlying object with id, value and extensions. The accessor "getRepetitions" gives direct access to the value
          */
-        public TaskRestrictionComponent setRepetitionsElement(PositiveIntType value) { 
+        public TransportRestrictionComponent setRepetitionsElement(PositiveIntType value) { 
           this.repetitions = value;
           return this;
         }
@@ -587,7 +459,7 @@ public class Task extends DomainResource {
         /**
          * @param value Indicates the number of times the requested action should occur.
          */
-        public TaskRestrictionComponent setRepetitions(int value) { 
+        public TransportRestrictionComponent setRepetitions(int value) { 
             if (this.repetitions == null)
               this.repetitions = new PositiveIntType();
             this.repetitions.setValue(value);
@@ -600,7 +472,7 @@ public class Task extends DomainResource {
         public Period getPeriod() { 
           if (this.period == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create TaskRestrictionComponent.period");
+              throw new Error("Attempt to auto-create TransportRestrictionComponent.period");
             else if (Configuration.doAutoCreate())
               this.period = new Period(); // cc
           return this.period;
@@ -613,7 +485,7 @@ public class Task extends DomainResource {
         /**
          * @param value {@link #period} (Over what time-period is fulfillment sought.)
          */
-        public TaskRestrictionComponent setPeriod(Period value) { 
+        public TransportRestrictionComponent setPeriod(Period value) { 
           this.period = value;
           return this;
         }
@@ -630,7 +502,7 @@ public class Task extends DomainResource {
         /**
          * @return Returns a reference to <code>this</code> for easy method chaining
          */
-        public TaskRestrictionComponent setRecipient(List<Reference> theRecipient) { 
+        public TransportRestrictionComponent setRecipient(List<Reference> theRecipient) { 
           this.recipient = theRecipient;
           return this;
         }
@@ -652,7 +524,7 @@ public class Task extends DomainResource {
           return t;
         }
 
-        public TaskRestrictionComponent addRecipient(Reference t) { //3
+        public TransportRestrictionComponent addRecipient(Reference t) { //3
           if (t == null)
             return this;
           if (this.recipient == null)
@@ -755,7 +627,7 @@ public class Task extends DomainResource {
       @Override
       public Base addChild(String name) throws FHIRException {
         if (name.equals("repetitions")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Task.restriction.repetitions");
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.restriction.repetitions");
         }
         else if (name.equals("period")) {
           this.period = new Period();
@@ -768,13 +640,13 @@ public class Task extends DomainResource {
           return super.addChild(name);
       }
 
-      public TaskRestrictionComponent copy() {
-        TaskRestrictionComponent dst = new TaskRestrictionComponent();
+      public TransportRestrictionComponent copy() {
+        TransportRestrictionComponent dst = new TransportRestrictionComponent();
         copyValues(dst);
         return dst;
       }
 
-      public void copyValues(TaskRestrictionComponent dst) {
+      public void copyValues(TransportRestrictionComponent dst) {
         super.copyValues(dst);
         dst.repetitions = repetitions == null ? null : repetitions.copy();
         dst.period = period == null ? null : period.copy();
@@ -789,9 +661,9 @@ public class Task extends DomainResource {
       public boolean equalsDeep(Base other_) {
         if (!super.equalsDeep(other_))
           return false;
-        if (!(other_ instanceof TaskRestrictionComponent))
+        if (!(other_ instanceof TransportRestrictionComponent))
           return false;
-        TaskRestrictionComponent o = (TaskRestrictionComponent) other_;
+        TransportRestrictionComponent o = (TransportRestrictionComponent) other_;
         return compareDeep(repetitions, o.repetitions, true) && compareDeep(period, o.period, true) && compareDeep(recipient, o.recipient, true)
           ;
       }
@@ -800,9 +672,9 @@ public class Task extends DomainResource {
       public boolean equalsShallow(Base other_) {
         if (!super.equalsShallow(other_))
           return false;
-        if (!(other_ instanceof TaskRestrictionComponent))
+        if (!(other_ instanceof TransportRestrictionComponent))
           return false;
-        TaskRestrictionComponent o = (TaskRestrictionComponent) other_;
+        TransportRestrictionComponent o = (TransportRestrictionComponent) other_;
         return compareValues(repetitions, o.repetitions, true);
       }
 
@@ -812,7 +684,7 @@ public class Task extends DomainResource {
       }
 
   public String fhirType() {
-    return "Task.restriction";
+    return "Transport.restriction";
 
   }
 
@@ -821,17 +693,17 @@ public class Task extends DomainResource {
     @Block()
     public static class ParameterComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * A code or description indicating how the input is intended to be used as part of the task execution.
+         * A code or description indicating how the input is intended to be used as part of the transport execution.
          */
         @Child(name = "type", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Label for the input", formalDefinition="A code or description indicating how the input is intended to be used as part of the task execution." )
+        @Description(shortDefinition="Label for the input", formalDefinition="A code or description indicating how the input is intended to be used as part of the transport execution." )
         protected CodeableConcept type;
 
         /**
          * The value of the input parameter as a basic type.
          */
         @Child(name = "value", type = {Base64BinaryType.class, BooleanType.class, CanonicalType.class, CodeType.class, DateType.class, DateTimeType.class, DecimalType.class, IdType.class, InstantType.class, IntegerType.class, Integer64Type.class, MarkdownType.class, OidType.class, PositiveIntType.class, StringType.class, TimeType.class, UnsignedIntType.class, UriType.class, UrlType.class, UuidType.class, Address.class, Age.class, Annotation.class, Attachment.class, CodeableConcept.class, CodeableReference.class, Coding.class, ContactPoint.class, Count.class, Distance.class, Duration.class, HumanName.class, Identifier.class, Money.class, Period.class, Quantity.class, Range.class, Ratio.class, RatioRange.class, Reference.class, SampledData.class, Signature.class, Timing.class, ContactDetail.class, Contributor.class, DataRequirement.class, Expression.class, ParameterDefinition.class, RelatedArtifact.class, TriggerDefinition.class, UsageContext.class, Dosage.class, Meta.class}, order=2, min=1, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Content to use in performing the task", formalDefinition="The value of the input parameter as a basic type." )
+        @Description(shortDefinition="Content to use in performing the transport", formalDefinition="The value of the input parameter as a basic type." )
         protected DataType value;
 
         private static final long serialVersionUID = -1659186716L;
@@ -853,7 +725,7 @@ public class Task extends DomainResource {
       }
 
         /**
-         * @return {@link #type} (A code or description indicating how the input is intended to be used as part of the task execution.)
+         * @return {@link #type} (A code or description indicating how the input is intended to be used as part of the transport execution.)
          */
         public CodeableConcept getType() { 
           if (this.type == null)
@@ -869,7 +741,7 @@ public class Task extends DomainResource {
         }
 
         /**
-         * @param value {@link #type} (A code or description indicating how the input is intended to be used as part of the task execution.)
+         * @param value {@link #type} (A code or description indicating how the input is intended to be used as part of the transport execution.)
          */
         public ParameterComponent setType(CodeableConcept value) { 
           this.type = value;
@@ -1687,21 +1559,21 @@ public class Task extends DomainResource {
          */
         public ParameterComponent setValue(DataType value) { 
           if (value != null && !(value instanceof Base64BinaryType || value instanceof BooleanType || value instanceof CanonicalType || value instanceof CodeType || value instanceof DateType || value instanceof DateTimeType || value instanceof DecimalType || value instanceof IdType || value instanceof InstantType || value instanceof IntegerType || value instanceof Integer64Type || value instanceof MarkdownType || value instanceof OidType || value instanceof PositiveIntType || value instanceof StringType || value instanceof TimeType || value instanceof UnsignedIntType || value instanceof UriType || value instanceof UrlType || value instanceof UuidType || value instanceof Address || value instanceof Age || value instanceof Annotation || value instanceof Attachment || value instanceof CodeableConcept || value instanceof CodeableReference || value instanceof Coding || value instanceof ContactPoint || value instanceof Count || value instanceof Distance || value instanceof Duration || value instanceof HumanName || value instanceof Identifier || value instanceof Money || value instanceof Period || value instanceof Quantity || value instanceof Range || value instanceof Ratio || value instanceof RatioRange || value instanceof Reference || value instanceof SampledData || value instanceof Signature || value instanceof Timing || value instanceof ContactDetail || value instanceof Contributor || value instanceof DataRequirement || value instanceof Expression || value instanceof ParameterDefinition || value instanceof RelatedArtifact || value instanceof TriggerDefinition || value instanceof UsageContext || value instanceof Dosage || value instanceof Meta))
-            throw new Error("Not the right type for Task.input.value[x]: "+value.fhirType());
+            throw new Error("Not the right type for Transport.input.value[x]: "+value.fhirType());
           this.value = value;
           return this;
         }
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("type", "CodeableConcept", "A code or description indicating how the input is intended to be used as part of the task execution.", 0, 1, type));
+          children.add(new Property("type", "CodeableConcept", "A code or description indicating how the input is intended to be used as part of the transport execution.", 0, 1, type));
           children.add(new Property("value[x]", "base64Binary|boolean|canonical|code|date|dateTime|decimal|id|instant|integer|integer64|markdown|oid|positiveInt|string|time|unsignedInt|uri|url|uuid|Address|Age|Annotation|Attachment|CodeableConcept|CodeableReference|Coding|ContactPoint|Count|Distance|Duration|HumanName|Identifier|Money|Period|Quantity|Range|Ratio|RatioRange|Reference|SampledData|Signature|Timing|ContactDetail|Contributor|DataRequirement|Expression|ParameterDefinition|RelatedArtifact|TriggerDefinition|UsageContext|Dosage|Meta", "The value of the input parameter as a basic type.", 0, 1, value));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case 3575610: /*type*/  return new Property("type", "CodeableConcept", "A code or description indicating how the input is intended to be used as part of the task execution.", 0, 1, type);
+          case 3575610: /*type*/  return new Property("type", "CodeableConcept", "A code or description indicating how the input is intended to be used as part of the transport execution.", 0, 1, type);
           case -1410166417: /*value[x]*/  return new Property("value[x]", "base64Binary|boolean|canonical|code|date|dateTime|decimal|id|instant|integer|integer64|markdown|oid|positiveInt|string|time|unsignedInt|uri|url|uuid|Address|Age|Annotation|Attachment|CodeableConcept|CodeableReference|Coding|ContactPoint|Count|Distance|Duration|HumanName|Identifier|Money|Period|Quantity|Range|Ratio|RatioRange|Reference|SampledData|Signature|Timing|ContactDetail|Contributor|DataRequirement|Expression|ParameterDefinition|RelatedArtifact|TriggerDefinition|UsageContext|Dosage|Meta", "The value of the input parameter as a basic type.", 0, 1, value);
           case 111972721: /*value*/  return new Property("value[x]", "base64Binary|boolean|canonical|code|date|dateTime|decimal|id|instant|integer|integer64|markdown|oid|positiveInt|string|time|unsignedInt|uri|url|uuid|Address|Age|Annotation|Attachment|CodeableConcept|CodeableReference|Coding|ContactPoint|Count|Distance|Duration|HumanName|Identifier|Money|Period|Quantity|Range|Ratio|RatioRange|Reference|SampledData|Signature|Timing|ContactDetail|Contributor|DataRequirement|Expression|ParameterDefinition|RelatedArtifact|TriggerDefinition|UsageContext|Dosage|Meta", "The value of the input parameter as a basic type.", 0, 1, value);
           case -1535024575: /*valueBase64Binary*/  return new Property("value[x]", "base64Binary", "The value of the input parameter as a basic type.", 0, 1, value);
@@ -2077,14 +1949,14 @@ public class Task extends DomainResource {
       }
 
   public String fhirType() {
-    return "Task.input";
+    return "Transport.input";
 
   }
 
   }
 
     @Block()
-    public static class TaskOutputComponent extends BackboneElement implements IBaseBackboneElement {
+    public static class TransportOutputComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The name of the Output parameter.
          */
@@ -2104,14 +1976,14 @@ public class Task extends DomainResource {
     /**
      * Constructor
      */
-      public TaskOutputComponent() {
+      public TransportOutputComponent() {
         super();
       }
 
     /**
      * Constructor
      */
-      public TaskOutputComponent(CodeableConcept type, DataType value) {
+      public TransportOutputComponent(CodeableConcept type, DataType value) {
         super();
         this.setType(type);
         this.setValue(value);
@@ -2123,7 +1995,7 @@ public class Task extends DomainResource {
         public CodeableConcept getType() { 
           if (this.type == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create TaskOutputComponent.type");
+              throw new Error("Attempt to auto-create TransportOutputComponent.type");
             else if (Configuration.doAutoCreate())
               this.type = new CodeableConcept(); // cc
           return this.type;
@@ -2136,7 +2008,7 @@ public class Task extends DomainResource {
         /**
          * @param value {@link #type} (The name of the Output parameter.)
          */
-        public TaskOutputComponent setType(CodeableConcept value) { 
+        public TransportOutputComponent setType(CodeableConcept value) { 
           this.type = value;
           return this;
         }
@@ -2950,9 +2822,9 @@ public class Task extends DomainResource {
         /**
          * @param value {@link #value} (The value of the Output parameter as a basic type.)
          */
-        public TaskOutputComponent setValue(DataType value) { 
+        public TransportOutputComponent setValue(DataType value) { 
           if (value != null && !(value instanceof Base64BinaryType || value instanceof BooleanType || value instanceof CanonicalType || value instanceof CodeType || value instanceof DateType || value instanceof DateTimeType || value instanceof DecimalType || value instanceof IdType || value instanceof InstantType || value instanceof IntegerType || value instanceof Integer64Type || value instanceof MarkdownType || value instanceof OidType || value instanceof PositiveIntType || value instanceof StringType || value instanceof TimeType || value instanceof UnsignedIntType || value instanceof UriType || value instanceof UrlType || value instanceof UuidType || value instanceof Address || value instanceof Age || value instanceof Annotation || value instanceof Attachment || value instanceof CodeableConcept || value instanceof CodeableReference || value instanceof Coding || value instanceof ContactPoint || value instanceof Count || value instanceof Distance || value instanceof Duration || value instanceof HumanName || value instanceof Identifier || value instanceof Money || value instanceof Period || value instanceof Quantity || value instanceof Range || value instanceof Ratio || value instanceof RatioRange || value instanceof Reference || value instanceof SampledData || value instanceof Signature || value instanceof Timing || value instanceof ContactDetail || value instanceof Contributor || value instanceof DataRequirement || value instanceof Expression || value instanceof ParameterDefinition || value instanceof RelatedArtifact || value instanceof TriggerDefinition || value instanceof UsageContext || value instanceof Dosage || value instanceof Meta))
-            throw new Error("Not the right type for Task.output.value[x]: "+value.fhirType());
+            throw new Error("Not the right type for Transport.output.value[x]: "+value.fhirType());
           this.value = value;
           return this;
         }
@@ -3305,13 +3177,13 @@ public class Task extends DomainResource {
           return super.addChild(name);
       }
 
-      public TaskOutputComponent copy() {
-        TaskOutputComponent dst = new TaskOutputComponent();
+      public TransportOutputComponent copy() {
+        TransportOutputComponent dst = new TransportOutputComponent();
         copyValues(dst);
         return dst;
       }
 
-      public void copyValues(TaskOutputComponent dst) {
+      public void copyValues(TransportOutputComponent dst) {
         super.copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.value = value == null ? null : value.copy();
@@ -3321,9 +3193,9 @@ public class Task extends DomainResource {
       public boolean equalsDeep(Base other_) {
         if (!super.equalsDeep(other_))
           return false;
-        if (!(other_ instanceof TaskOutputComponent))
+        if (!(other_ instanceof TransportOutputComponent))
           return false;
-        TaskOutputComponent o = (TaskOutputComponent) other_;
+        TransportOutputComponent o = (TransportOutputComponent) other_;
         return compareDeep(type, o.type, true) && compareDeep(value, o.value, true);
       }
 
@@ -3331,9 +3203,9 @@ public class Task extends DomainResource {
       public boolean equalsShallow(Base other_) {
         if (!super.equalsShallow(other_))
           return false;
-        if (!(other_ instanceof TaskOutputComponent))
+        if (!(other_ instanceof TransportOutputComponent))
           return false;
-        TaskOutputComponent o = (TaskOutputComponent) other_;
+        TransportOutputComponent o = (TransportOutputComponent) other_;
         return true;
       }
 
@@ -3342,254 +3214,269 @@ public class Task extends DomainResource {
       }
 
   public String fhirType() {
-    return "Task.output";
+    return "Transport.output";
 
   }
 
   }
 
     /**
-     * The business identifier for this task.
+     * Identifier for the transport event that is used to identify it across multiple disparate systems.
      */
     @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Task Instance Identifier", formalDefinition="The business identifier for this task." )
+    @Description(shortDefinition="External identifier", formalDefinition="Identifier for the transport event that is used to identify it across multiple disparate systems." )
     protected List<Identifier> identifier;
 
     /**
-     * The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
+     * The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.
      */
     @Child(name = "instantiatesCanonical", type = {CanonicalType.class}, order=1, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Formal definition of task", formalDefinition="The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task." )
+    @Description(shortDefinition="Formal definition of transport", formalDefinition="The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport." )
     protected CanonicalType instantiatesCanonical;
 
     /**
-     * The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
+     * The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.
      */
     @Child(name = "instantiatesUri", type = {UriType.class}, order=2, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Formal definition of task", formalDefinition="The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task." )
+    @Description(shortDefinition="Formal definition of transport", formalDefinition="The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport." )
     protected UriType instantiatesUri;
 
     /**
-     * BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a "request" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the "request" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient.
+     * BasedOn refers to a higher-level authorization that triggered the creation of the transport.  It references a "request" resource such as a ServiceRequest or Transport, which is distinct from the "request" resource the Transport is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a transport is created to fulfill a procedureRequest ( = FocusOn ) to transport a specimen to the lab.
      */
     @Child(name = "basedOn", type = {Reference.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="Request fulfilled by this task", formalDefinition="BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a \"request\" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the \"request\" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient." )
+    @Description(shortDefinition="Request fulfilled by this transport", formalDefinition="BasedOn refers to a higher-level authorization that triggered the creation of the transport.  It references a \"request\" resource such as a ServiceRequest or Transport, which is distinct from the \"request\" resource the Transport is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a transport is created to fulfill a procedureRequest ( = FocusOn ) to transport a specimen to the lab." )
     protected List<Reference> basedOn;
 
     /**
-     * An identifier that links together multiple tasks and other requests that were created in the same context.
+     * An identifier that links together multiple transports and other requests that were created in the same context.
      */
     @Child(name = "groupIdentifier", type = {Identifier.class}, order=4, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Requisition or grouper id", formalDefinition="An identifier that links together multiple tasks and other requests that were created in the same context." )
+    @Description(shortDefinition="Requisition or grouper id", formalDefinition="An identifier that links together multiple transports and other requests that were created in the same context." )
     protected Identifier groupIdentifier;
 
     /**
-     * Task that this particular task is part of.
+     * A larger event of which this particular event is a component or step.
      */
-    @Child(name = "partOf", type = {Task.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="Composite task", formalDefinition="Task that this particular task is part of." )
+    @Child(name = "partOf", type = {Transport.class, Contract.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Part of referenced event", formalDefinition="A larger event of which this particular event is a component or step." )
     protected List<Reference> partOf;
 
     /**
-     * The current status of the task.
+     * A code specifying the state of the dispense event.
      */
-    @Child(name = "status", type = {CodeType.class}, order=6, min=1, max=1, modifier=true, summary=true)
-    @Description(shortDefinition="draft | requested | received | accepted | +", formalDefinition="The current status of the task." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/task-status")
-    protected Enumeration<TaskStatus> status;
+    @Child(name = "status", type = {CodeType.class}, order=6, min=0, max=1, modifier=true, summary=true)
+    @Description(shortDefinition="in-progress | completed | abandoned | entered-in-error", formalDefinition="A code specifying the state of the dispense event." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/transport-status")
+    protected Enumeration<TransportStatus> status;
 
     /**
-     * An explanation as to why this task is held, failed, was refused, etc.
+     * An explanation as to why this transport is held, failed, was refused, etc.
      */
     @Child(name = "statusReason", type = {CodeableConcept.class}, order=7, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Reason for current status", formalDefinition="An explanation as to why this task is held, failed, was refused, etc." )
+    @Description(shortDefinition="Reason for current status", formalDefinition="An explanation as to why this transport is held, failed, was refused, etc." )
     protected CodeableConcept statusReason;
 
     /**
-     * Contains business-specific nuances of the business state.
+     * Indicates the "level" of actionability associated with the Transport, i.e. i+R[9]Cs this a proposed transport, a planned transport, an actionable transport, etc.
      */
-    @Child(name = "businessStatus", type = {CodeableConcept.class}, order=8, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="E.g. \"Specimen collected\", \"IV prepped\"", formalDefinition="Contains business-specific nuances of the business state." )
-    protected CodeableConcept businessStatus;
+    @Child(name = "intent", type = {CodeType.class}, order=8, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="unknown | proposal | plan | order | original-order | reflex-order | filler-order | instance-order | option", formalDefinition="Indicates the \"level\" of actionability associated with the Transport, i.e. i+R[9]Cs this a proposed transport, a planned transport, an actionable transport, etc." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/transport-intent")
+    protected Enumeration<TransportIntent> intent;
 
     /**
-     * Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.
+     * Indicates how quickly the Transport should be addressed with respect to other requests.
      */
-    @Child(name = "intent", type = {CodeType.class}, order=9, min=1, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="unknown | proposal | plan | order | original-order | reflex-order | filler-order | instance-order | option", formalDefinition="Indicates the \"level\" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/task-intent")
-    protected Enumeration<TaskIntent> intent;
-
-    /**
-     * Indicates how quickly the Task should be addressed with respect to other requests.
-     */
-    @Child(name = "priority", type = {CodeType.class}, order=10, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="routine | urgent | asap | stat", formalDefinition="Indicates how quickly the Task should be addressed with respect to other requests." )
+    @Child(name = "priority", type = {CodeType.class}, order=9, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="routine | urgent | asap | stat", formalDefinition="Indicates how quickly the Transport should be addressed with respect to other requests." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/request-priority")
     protected Enumeration<RequestPriority> priority;
 
     /**
-     * A name or code (or both) briefly describing what the task involves.
+     * A name or code (or both) briefly describing what the transport involves.
      */
-    @Child(name = "code", type = {CodeableConcept.class}, order=11, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Task Type", formalDefinition="A name or code (or both) briefly describing what the task involves." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/task-code")
+    @Child(name = "code", type = {CodeableConcept.class}, order=10, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Transport Type", formalDefinition="A name or code (or both) briefly describing what the transport involves." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/transport-code")
     protected CodeableConcept code;
 
     /**
      * A free-text description of what is to be performed.
      */
-    @Child(name = "description", type = {StringType.class}, order=12, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Human-readable explanation of task", formalDefinition="A free-text description of what is to be performed." )
+    @Child(name = "description", type = {StringType.class}, order=11, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Human-readable explanation of transport", formalDefinition="A free-text description of what is to be performed." )
     protected StringType description;
 
     /**
-     * The request being actioned or the resource being manipulated by this task.
+     * The request being actioned or the resource being manipulated by this transport.
      */
-    @Child(name = "focus", type = {Reference.class}, order=13, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="What task is acting on", formalDefinition="The request being actioned or the resource being manipulated by this task." )
+    @Child(name = "focus", type = {Reference.class}, order=12, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="What transport is acting on", formalDefinition="The request being actioned or the resource being manipulated by this transport." )
     protected Reference focus;
 
     /**
-     * The entity who benefits from the performance of the service specified in the task (e.g., the patient).
+     * The entity who benefits from the performance of the service specified in the transport (e.g., the patient).
      */
-    @Child(name = "for", type = {Reference.class}, order=14, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Beneficiary of the Task", formalDefinition="The entity who benefits from the performance of the service specified in the task (e.g., the patient)." )
+    @Child(name = "for", type = {Reference.class}, order=13, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Beneficiary of the Transport", formalDefinition="The entity who benefits from the performance of the service specified in the transport (e.g., the patient)." )
     protected Reference for_;
 
     /**
-     * The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.
+     * The healthcare event  (e.g. a patient and healthcare provider interaction) during which this transport was created.
      */
-    @Child(name = "encounter", type = {Encounter.class}, order=15, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Healthcare event during which this task originated", formalDefinition="The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created." )
+    @Child(name = "encounter", type = {Encounter.class}, order=14, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Healthcare event during which this transport originated", formalDefinition="The healthcare event  (e.g. a patient and healthcare provider interaction) during which this transport was created." )
     protected Reference encounter;
 
     /**
-     * Identifies the time action was first taken against the task (start) and/or the time final action was taken against the task prior to marking it as completed (end).
+     * Identifies the completion time of the event (the occurrence).
      */
-    @Child(name = "executionPeriod", type = {Period.class}, order=16, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Start and end time of execution", formalDefinition="Identifies the time action was first taken against the task (start) and/or the time final action was taken against the task prior to marking it as completed (end)." )
-    protected Period executionPeriod;
+    @Child(name = "completionTime", type = {DateTimeType.class}, order=15, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Completion time of the event (the occurrence)", formalDefinition="Identifies the completion time of the event (the occurrence)." )
+    protected DateTimeType completionTime;
 
     /**
-     * The date and time this task was created.
+     * The date and time this transport was created.
      */
-    @Child(name = "authoredOn", type = {DateTimeType.class}, order=17, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Task Creation Date", formalDefinition="The date and time this task was created." )
+    @Child(name = "authoredOn", type = {DateTimeType.class}, order=16, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Transport Creation Date", formalDefinition="The date and time this transport was created." )
     protected DateTimeType authoredOn;
 
     /**
-     * The date and time of last modification to this task.
+     * The date and time of last modification to this transport.
      */
-    @Child(name = "lastModified", type = {DateTimeType.class}, order=18, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Task Last Modified Date", formalDefinition="The date and time of last modification to this task." )
+    @Child(name = "lastModified", type = {DateTimeType.class}, order=17, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Transport Last Modified Date", formalDefinition="The date and time of last modification to this transport." )
     protected DateTimeType lastModified;
 
     /**
-     * The creator of the task.
+     * The creator of the transport.
      */
-    @Child(name = "requester", type = {Device.class, Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class}, order=19, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Who is asking for task to be done", formalDefinition="The creator of the task." )
+    @Child(name = "requester", type = {Device.class, Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class}, order=18, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Who is asking for transport to be done", formalDefinition="The creator of the transport." )
     protected Reference requester;
 
     /**
-     * The kind of participant that should perform the task.
+     * The kind of participant that should perform the transport.
      */
-    @Child(name = "performerType", type = {CodeableConcept.class}, order=20, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Requested performer", formalDefinition="The kind of participant that should perform the task." )
+    @Child(name = "performerType", type = {CodeableConcept.class}, order=19, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Requested performer", formalDefinition="The kind of participant that should perform the transport." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/performer-role")
     protected List<CodeableConcept> performerType;
 
     /**
-     * Individual organization or Device currently responsible for task execution.
+     * Individual organization or Device currently responsible for transport execution.
      */
-    @Child(name = "owner", type = {Practitioner.class, PractitionerRole.class, Organization.class, CareTeam.class, HealthcareService.class, Patient.class, Device.class, RelatedPerson.class}, order=21, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Responsible individual", formalDefinition="Individual organization or Device currently responsible for task execution." )
+    @Child(name = "owner", type = {Practitioner.class, PractitionerRole.class, Organization.class, CareTeam.class, HealthcareService.class, Patient.class, Device.class, RelatedPerson.class}, order=20, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Responsible individual", formalDefinition="Individual organization or Device currently responsible for transport execution." )
     protected Reference owner;
 
     /**
-     * Principal physical location where the this task is performed.
+     * Principal physical location where the this transport is performed.
      */
-    @Child(name = "location", type = {Location.class}, order=22, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Where task occurs", formalDefinition="Principal physical location where the this task is performed." )
+    @Child(name = "location", type = {Location.class}, order=21, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Where transport occurs", formalDefinition="Principal physical location where the this transport is performed." )
     protected Reference location;
 
     /**
-     * A description or code indicating why this task needs to be performed.
+     * A description or code indicating why this transport needs to be performed.
      */
-    @Child(name = "reasonCode", type = {CodeableConcept.class}, order=23, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Why task is needed", formalDefinition="A description or code indicating why this task needs to be performed." )
+    @Child(name = "reasonCode", type = {CodeableConcept.class}, order=22, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Why transport is needed", formalDefinition="A description or code indicating why this transport needs to be performed." )
     protected CodeableConcept reasonCode;
 
     /**
-     * A resource reference indicating why this task needs to be performed.
+     * A resource reference indicating why this transport needs to be performed.
      */
-    @Child(name = "reasonReference", type = {Reference.class}, order=24, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Why task is needed", formalDefinition="A resource reference indicating why this task needs to be performed." )
+    @Child(name = "reasonReference", type = {Reference.class}, order=23, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Why transport is needed", formalDefinition="A resource reference indicating why this transport needs to be performed." )
     protected Reference reasonReference;
 
     /**
-     * Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task.
+     * Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Transport.
      */
-    @Child(name = "insurance", type = {Coverage.class, ClaimResponse.class}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Associated insurance coverage", formalDefinition="Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task." )
+    @Child(name = "insurance", type = {Coverage.class, ClaimResponse.class}, order=24, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Associated insurance coverage", formalDefinition="Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Transport." )
     protected List<Reference> insurance;
 
     /**
-     * Free-text information captured about the task as it progresses.
+     * Free-text information captured about the transport as it progresses.
      */
-    @Child(name = "note", type = {Annotation.class}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Comments made about the task", formalDefinition="Free-text information captured about the task as it progresses." )
+    @Child(name = "note", type = {Annotation.class}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Comments made about the transport", formalDefinition="Free-text information captured about the transport as it progresses." )
     protected List<Annotation> note;
 
     /**
-     * Links to Provenance records for past versions of this Task that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the task.
+     * Links to Provenance records for past versions of this Transport that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the transport.
      */
-    @Child(name = "relevantHistory", type = {Provenance.class}, order=27, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Key events in history of the Task", formalDefinition="Links to Provenance records for past versions of this Task that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the task." )
+    @Child(name = "relevantHistory", type = {Provenance.class}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Key events in history of the Transport", formalDefinition="Links to Provenance records for past versions of this Transport that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the transport." )
     protected List<Reference> relevantHistory;
 
     /**
-     * If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.
+     * If the Transport.focus is a request resource and the transport is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.
      */
-    @Child(name = "restriction", type = {}, order=28, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Constraints on fulfillment tasks", formalDefinition="If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned." )
-    protected TaskRestrictionComponent restriction;
+    @Child(name = "restriction", type = {}, order=27, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Constraints on fulfillment transports", formalDefinition="If the Transport.focus is a request resource and the transport is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned." )
+    protected TransportRestrictionComponent restriction;
 
     /**
-     * Additional information that may be needed in the execution of the task.
+     * Additional information that may be needed in the execution of the transport.
      */
-    @Child(name = "input", type = {}, order=29, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Information used to perform task", formalDefinition="Additional information that may be needed in the execution of the task." )
+    @Child(name = "input", type = {}, order=28, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Information used to perform transport", formalDefinition="Additional information that may be needed in the execution of the transport." )
     protected List<ParameterComponent> input;
 
     /**
-     * Outputs produced by the Task.
+     * Outputs produced by the Transport.
      */
-    @Child(name = "output", type = {}, order=30, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Information produced as part of task", formalDefinition="Outputs produced by the Task." )
-    protected List<TaskOutputComponent> output;
+    @Child(name = "output", type = {}, order=29, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Information produced as part of transport", formalDefinition="Outputs produced by the Transport." )
+    protected List<TransportOutputComponent> output;
 
-    private static final long serialVersionUID = -1820039698L;
+    /**
+     * The desired or final location for the transport.
+     */
+    @Child(name = "requestedLocation", type = {Location.class}, order=30, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="The desired location", formalDefinition="The desired or final location for the transport." )
+    protected Reference requestedLocation;
+
+    /**
+     * The current location for the entity to be transported.
+     */
+    @Child(name = "currentLocation", type = {Location.class}, order=31, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="The current location", formalDefinition="The current location for the entity to be transported." )
+    protected Reference currentLocation;
+
+    /**
+     * The transport event prior to this one.
+     */
+    @Child(name = "history", type = {Transport.class}, order=32, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Parent (or preceding) transport", formalDefinition="The transport event prior to this one." )
+    protected Reference history;
+
+    private static final long serialVersionUID = 991678619L;
 
   /**
    * Constructor
    */
-    public Task() {
+    public Transport() {
       super();
     }
 
   /**
    * Constructor
    */
-    public Task(TaskStatus status, TaskIntent intent) {
+    public Transport(TransportIntent intent, Reference requestedLocation, Reference currentLocation) {
       super();
-      this.setStatus(status);
       this.setIntent(intent);
+      this.setRequestedLocation(requestedLocation);
+      this.setCurrentLocation(currentLocation);
     }
 
     /**
-     * @return {@link #identifier} (The business identifier for this task.)
+     * @return {@link #identifier} (Identifier for the transport event that is used to identify it across multiple disparate systems.)
      */
     public List<Identifier> getIdentifier() { 
       if (this.identifier == null)
@@ -3600,7 +3487,7 @@ public class Task extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Task setIdentifier(List<Identifier> theIdentifier) { 
+    public Transport setIdentifier(List<Identifier> theIdentifier) { 
       this.identifier = theIdentifier;
       return this;
     }
@@ -3622,7 +3509,7 @@ public class Task extends DomainResource {
       return t;
     }
 
-    public Task addIdentifier(Identifier t) { //3
+    public Transport addIdentifier(Identifier t) { //3
       if (t == null)
         return this;
       if (this.identifier == null)
@@ -3642,12 +3529,12 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #instantiatesCanonical} (The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesCanonical" gives direct access to the value
+     * @return {@link #instantiatesCanonical} (The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesCanonical" gives direct access to the value
      */
     public CanonicalType getInstantiatesCanonicalElement() { 
       if (this.instantiatesCanonical == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.instantiatesCanonical");
+          throw new Error("Attempt to auto-create Transport.instantiatesCanonical");
         else if (Configuration.doAutoCreate())
           this.instantiatesCanonical = new CanonicalType(); // bb
       return this.instantiatesCanonical;
@@ -3662,24 +3549,24 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #instantiatesCanonical} (The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesCanonical" gives direct access to the value
+     * @param value {@link #instantiatesCanonical} (The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesCanonical" gives direct access to the value
      */
-    public Task setInstantiatesCanonicalElement(CanonicalType value) { 
+    public Transport setInstantiatesCanonicalElement(CanonicalType value) { 
       this.instantiatesCanonical = value;
       return this;
     }
 
     /**
-     * @return The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
+     * @return The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.
      */
     public String getInstantiatesCanonical() { 
       return this.instantiatesCanonical == null ? null : this.instantiatesCanonical.getValue();
     }
 
     /**
-     * @param value The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
+     * @param value The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.
      */
-    public Task setInstantiatesCanonical(String value) { 
+    public Transport setInstantiatesCanonical(String value) { 
       if (Utilities.noString(value))
         this.instantiatesCanonical = null;
       else {
@@ -3691,12 +3578,12 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #instantiatesUri} (The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesUri" gives direct access to the value
+     * @return {@link #instantiatesUri} (The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesUri" gives direct access to the value
      */
     public UriType getInstantiatesUriElement() { 
       if (this.instantiatesUri == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.instantiatesUri");
+          throw new Error("Attempt to auto-create Transport.instantiatesUri");
         else if (Configuration.doAutoCreate())
           this.instantiatesUri = new UriType(); // bb
       return this.instantiatesUri;
@@ -3711,24 +3598,24 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #instantiatesUri} (The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesUri" gives direct access to the value
+     * @param value {@link #instantiatesUri} (The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesUri" gives direct access to the value
      */
-    public Task setInstantiatesUriElement(UriType value) { 
+    public Transport setInstantiatesUriElement(UriType value) { 
       this.instantiatesUri = value;
       return this;
     }
 
     /**
-     * @return The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
+     * @return The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.
      */
     public String getInstantiatesUri() { 
       return this.instantiatesUri == null ? null : this.instantiatesUri.getValue();
     }
 
     /**
-     * @param value The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
+     * @param value The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.
      */
-    public Task setInstantiatesUri(String value) { 
+    public Transport setInstantiatesUri(String value) { 
       if (Utilities.noString(value))
         this.instantiatesUri = null;
       else {
@@ -3740,7 +3627,7 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #basedOn} (BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a "request" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the "request" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient.)
+     * @return {@link #basedOn} (BasedOn refers to a higher-level authorization that triggered the creation of the transport.  It references a "request" resource such as a ServiceRequest or Transport, which is distinct from the "request" resource the Transport is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a transport is created to fulfill a procedureRequest ( = FocusOn ) to transport a specimen to the lab.)
      */
     public List<Reference> getBasedOn() { 
       if (this.basedOn == null)
@@ -3751,7 +3638,7 @@ public class Task extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Task setBasedOn(List<Reference> theBasedOn) { 
+    public Transport setBasedOn(List<Reference> theBasedOn) { 
       this.basedOn = theBasedOn;
       return this;
     }
@@ -3773,7 +3660,7 @@ public class Task extends DomainResource {
       return t;
     }
 
-    public Task addBasedOn(Reference t) { //3
+    public Transport addBasedOn(Reference t) { //3
       if (t == null)
         return this;
       if (this.basedOn == null)
@@ -3793,12 +3680,12 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #groupIdentifier} (An identifier that links together multiple tasks and other requests that were created in the same context.)
+     * @return {@link #groupIdentifier} (An identifier that links together multiple transports and other requests that were created in the same context.)
      */
     public Identifier getGroupIdentifier() { 
       if (this.groupIdentifier == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.groupIdentifier");
+          throw new Error("Attempt to auto-create Transport.groupIdentifier");
         else if (Configuration.doAutoCreate())
           this.groupIdentifier = new Identifier(); // cc
       return this.groupIdentifier;
@@ -3809,15 +3696,15 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #groupIdentifier} (An identifier that links together multiple tasks and other requests that were created in the same context.)
+     * @param value {@link #groupIdentifier} (An identifier that links together multiple transports and other requests that were created in the same context.)
      */
-    public Task setGroupIdentifier(Identifier value) { 
+    public Transport setGroupIdentifier(Identifier value) { 
       this.groupIdentifier = value;
       return this;
     }
 
     /**
-     * @return {@link #partOf} (Task that this particular task is part of.)
+     * @return {@link #partOf} (A larger event of which this particular event is a component or step.)
      */
     public List<Reference> getPartOf() { 
       if (this.partOf == null)
@@ -3828,7 +3715,7 @@ public class Task extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Task setPartOf(List<Reference> thePartOf) { 
+    public Transport setPartOf(List<Reference> thePartOf) { 
       this.partOf = thePartOf;
       return this;
     }
@@ -3850,7 +3737,7 @@ public class Task extends DomainResource {
       return t;
     }
 
-    public Task addPartOf(Reference t) { //3
+    public Transport addPartOf(Reference t) { //3
       if (t == null)
         return this;
       if (this.partOf == null)
@@ -3870,14 +3757,14 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #status} (The current status of the task.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
+     * @return {@link #status} (A code specifying the state of the dispense event.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<TaskStatus> getStatusElement() { 
+    public Enumeration<TransportStatus> getStatusElement() { 
       if (this.status == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.status");
+          throw new Error("Attempt to auto-create Transport.status");
         else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<TaskStatus>(new TaskStatusEnumFactory()); // bb
+          this.status = new Enumeration<TransportStatus>(new TransportStatusEnumFactory()); // bb
       return this.status;
     }
 
@@ -3890,37 +3777,41 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #status} (The current status of the task.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
+     * @param value {@link #status} (A code specifying the state of the dispense event.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Task setStatusElement(Enumeration<TaskStatus> value) { 
+    public Transport setStatusElement(Enumeration<TransportStatus> value) { 
       this.status = value;
       return this;
     }
 
     /**
-     * @return The current status of the task.
+     * @return A code specifying the state of the dispense event.
      */
-    public TaskStatus getStatus() { 
+    public TransportStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
-     * @param value The current status of the task.
+     * @param value A code specifying the state of the dispense event.
      */
-    public Task setStatus(TaskStatus value) { 
+    public Transport setStatus(TransportStatus value) { 
+      if (value == null)
+        this.status = null;
+      else {
         if (this.status == null)
-          this.status = new Enumeration<TaskStatus>(new TaskStatusEnumFactory());
+          this.status = new Enumeration<TransportStatus>(new TransportStatusEnumFactory());
         this.status.setValue(value);
+      }
       return this;
     }
 
     /**
-     * @return {@link #statusReason} (An explanation as to why this task is held, failed, was refused, etc.)
+     * @return {@link #statusReason} (An explanation as to why this transport is held, failed, was refused, etc.)
      */
     public CodeableConcept getStatusReason() { 
       if (this.statusReason == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.statusReason");
+          throw new Error("Attempt to auto-create Transport.statusReason");
         else if (Configuration.doAutoCreate())
           this.statusReason = new CodeableConcept(); // cc
       return this.statusReason;
@@ -3931,46 +3822,22 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #statusReason} (An explanation as to why this task is held, failed, was refused, etc.)
+     * @param value {@link #statusReason} (An explanation as to why this transport is held, failed, was refused, etc.)
      */
-    public Task setStatusReason(CodeableConcept value) { 
+    public Transport setStatusReason(CodeableConcept value) { 
       this.statusReason = value;
       return this;
     }
 
     /**
-     * @return {@link #businessStatus} (Contains business-specific nuances of the business state.)
+     * @return {@link #intent} (Indicates the "level" of actionability associated with the Transport, i.e. i+R[9]Cs this a proposed transport, a planned transport, an actionable transport, etc.). This is the underlying object with id, value and extensions. The accessor "getIntent" gives direct access to the value
      */
-    public CodeableConcept getBusinessStatus() { 
-      if (this.businessStatus == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.businessStatus");
-        else if (Configuration.doAutoCreate())
-          this.businessStatus = new CodeableConcept(); // cc
-      return this.businessStatus;
-    }
-
-    public boolean hasBusinessStatus() { 
-      return this.businessStatus != null && !this.businessStatus.isEmpty();
-    }
-
-    /**
-     * @param value {@link #businessStatus} (Contains business-specific nuances of the business state.)
-     */
-    public Task setBusinessStatus(CodeableConcept value) { 
-      this.businessStatus = value;
-      return this;
-    }
-
-    /**
-     * @return {@link #intent} (Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.). This is the underlying object with id, value and extensions. The accessor "getIntent" gives direct access to the value
-     */
-    public Enumeration<TaskIntent> getIntentElement() { 
+    public Enumeration<TransportIntent> getIntentElement() { 
       if (this.intent == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.intent");
+          throw new Error("Attempt to auto-create Transport.intent");
         else if (Configuration.doAutoCreate())
-          this.intent = new Enumeration<TaskIntent>(new TaskIntentEnumFactory()); // bb
+          this.intent = new Enumeration<TransportIntent>(new TransportIntentEnumFactory()); // bb
       return this.intent;
     }
 
@@ -3983,37 +3850,37 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #intent} (Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.). This is the underlying object with id, value and extensions. The accessor "getIntent" gives direct access to the value
+     * @param value {@link #intent} (Indicates the "level" of actionability associated with the Transport, i.e. i+R[9]Cs this a proposed transport, a planned transport, an actionable transport, etc.). This is the underlying object with id, value and extensions. The accessor "getIntent" gives direct access to the value
      */
-    public Task setIntentElement(Enumeration<TaskIntent> value) { 
+    public Transport setIntentElement(Enumeration<TransportIntent> value) { 
       this.intent = value;
       return this;
     }
 
     /**
-     * @return Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.
+     * @return Indicates the "level" of actionability associated with the Transport, i.e. i+R[9]Cs this a proposed transport, a planned transport, an actionable transport, etc.
      */
-    public TaskIntent getIntent() { 
+    public TransportIntent getIntent() { 
       return this.intent == null ? null : this.intent.getValue();
     }
 
     /**
-     * @param value Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.
+     * @param value Indicates the "level" of actionability associated with the Transport, i.e. i+R[9]Cs this a proposed transport, a planned transport, an actionable transport, etc.
      */
-    public Task setIntent(TaskIntent value) { 
+    public Transport setIntent(TransportIntent value) { 
         if (this.intent == null)
-          this.intent = new Enumeration<TaskIntent>(new TaskIntentEnumFactory());
+          this.intent = new Enumeration<TransportIntent>(new TransportIntentEnumFactory());
         this.intent.setValue(value);
       return this;
     }
 
     /**
-     * @return {@link #priority} (Indicates how quickly the Task should be addressed with respect to other requests.). This is the underlying object with id, value and extensions. The accessor "getPriority" gives direct access to the value
+     * @return {@link #priority} (Indicates how quickly the Transport should be addressed with respect to other requests.). This is the underlying object with id, value and extensions. The accessor "getPriority" gives direct access to the value
      */
     public Enumeration<RequestPriority> getPriorityElement() { 
       if (this.priority == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.priority");
+          throw new Error("Attempt to auto-create Transport.priority");
         else if (Configuration.doAutoCreate())
           this.priority = new Enumeration<RequestPriority>(new RequestPriorityEnumFactory()); // bb
       return this.priority;
@@ -4028,24 +3895,24 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #priority} (Indicates how quickly the Task should be addressed with respect to other requests.). This is the underlying object with id, value and extensions. The accessor "getPriority" gives direct access to the value
+     * @param value {@link #priority} (Indicates how quickly the Transport should be addressed with respect to other requests.). This is the underlying object with id, value and extensions. The accessor "getPriority" gives direct access to the value
      */
-    public Task setPriorityElement(Enumeration<RequestPriority> value) { 
+    public Transport setPriorityElement(Enumeration<RequestPriority> value) { 
       this.priority = value;
       return this;
     }
 
     /**
-     * @return Indicates how quickly the Task should be addressed with respect to other requests.
+     * @return Indicates how quickly the Transport should be addressed with respect to other requests.
      */
     public RequestPriority getPriority() { 
       return this.priority == null ? null : this.priority.getValue();
     }
 
     /**
-     * @param value Indicates how quickly the Task should be addressed with respect to other requests.
+     * @param value Indicates how quickly the Transport should be addressed with respect to other requests.
      */
-    public Task setPriority(RequestPriority value) { 
+    public Transport setPriority(RequestPriority value) { 
       if (value == null)
         this.priority = null;
       else {
@@ -4057,12 +3924,12 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #code} (A name or code (or both) briefly describing what the task involves.)
+     * @return {@link #code} (A name or code (or both) briefly describing what the transport involves.)
      */
     public CodeableConcept getCode() { 
       if (this.code == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.code");
+          throw new Error("Attempt to auto-create Transport.code");
         else if (Configuration.doAutoCreate())
           this.code = new CodeableConcept(); // cc
       return this.code;
@@ -4073,9 +3940,9 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #code} (A name or code (or both) briefly describing what the task involves.)
+     * @param value {@link #code} (A name or code (or both) briefly describing what the transport involves.)
      */
-    public Task setCode(CodeableConcept value) { 
+    public Transport setCode(CodeableConcept value) { 
       this.code = value;
       return this;
     }
@@ -4086,7 +3953,7 @@ public class Task extends DomainResource {
     public StringType getDescriptionElement() { 
       if (this.description == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.description");
+          throw new Error("Attempt to auto-create Transport.description");
         else if (Configuration.doAutoCreate())
           this.description = new StringType(); // bb
       return this.description;
@@ -4103,7 +3970,7 @@ public class Task extends DomainResource {
     /**
      * @param value {@link #description} (A free-text description of what is to be performed.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
-    public Task setDescriptionElement(StringType value) { 
+    public Transport setDescriptionElement(StringType value) { 
       this.description = value;
       return this;
     }
@@ -4118,7 +3985,7 @@ public class Task extends DomainResource {
     /**
      * @param value A free-text description of what is to be performed.
      */
-    public Task setDescription(String value) { 
+    public Transport setDescription(String value) { 
       if (Utilities.noString(value))
         this.description = null;
       else {
@@ -4130,12 +3997,12 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #focus} (The request being actioned or the resource being manipulated by this task.)
+     * @return {@link #focus} (The request being actioned or the resource being manipulated by this transport.)
      */
     public Reference getFocus() { 
       if (this.focus == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.focus");
+          throw new Error("Attempt to auto-create Transport.focus");
         else if (Configuration.doAutoCreate())
           this.focus = new Reference(); // cc
       return this.focus;
@@ -4146,20 +4013,20 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #focus} (The request being actioned or the resource being manipulated by this task.)
+     * @param value {@link #focus} (The request being actioned or the resource being manipulated by this transport.)
      */
-    public Task setFocus(Reference value) { 
+    public Transport setFocus(Reference value) { 
       this.focus = value;
       return this;
     }
 
     /**
-     * @return {@link #for_} (The entity who benefits from the performance of the service specified in the task (e.g., the patient).)
+     * @return {@link #for_} (The entity who benefits from the performance of the service specified in the transport (e.g., the patient).)
      */
     public Reference getFor() { 
       if (this.for_ == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.for_");
+          throw new Error("Attempt to auto-create Transport.for_");
         else if (Configuration.doAutoCreate())
           this.for_ = new Reference(); // cc
       return this.for_;
@@ -4170,20 +4037,20 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #for_} (The entity who benefits from the performance of the service specified in the task (e.g., the patient).)
+     * @param value {@link #for_} (The entity who benefits from the performance of the service specified in the transport (e.g., the patient).)
      */
-    public Task setFor(Reference value) { 
+    public Transport setFor(Reference value) { 
       this.for_ = value;
       return this;
     }
 
     /**
-     * @return {@link #encounter} (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
+     * @return {@link #encounter} (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this transport was created.)
      */
     public Reference getEncounter() { 
       if (this.encounter == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.encounter");
+          throw new Error("Attempt to auto-create Transport.encounter");
         else if (Configuration.doAutoCreate())
           this.encounter = new Reference(); // cc
       return this.encounter;
@@ -4194,44 +4061,69 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #encounter} (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
+     * @param value {@link #encounter} (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this transport was created.)
      */
-    public Task setEncounter(Reference value) { 
+    public Transport setEncounter(Reference value) { 
       this.encounter = value;
       return this;
     }
 
     /**
-     * @return {@link #executionPeriod} (Identifies the time action was first taken against the task (start) and/or the time final action was taken against the task prior to marking it as completed (end).)
+     * @return {@link #completionTime} (Identifies the completion time of the event (the occurrence).). This is the underlying object with id, value and extensions. The accessor "getCompletionTime" gives direct access to the value
      */
-    public Period getExecutionPeriod() { 
-      if (this.executionPeriod == null)
+    public DateTimeType getCompletionTimeElement() { 
+      if (this.completionTime == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.executionPeriod");
+          throw new Error("Attempt to auto-create Transport.completionTime");
         else if (Configuration.doAutoCreate())
-          this.executionPeriod = new Period(); // cc
-      return this.executionPeriod;
+          this.completionTime = new DateTimeType(); // bb
+      return this.completionTime;
     }
 
-    public boolean hasExecutionPeriod() { 
-      return this.executionPeriod != null && !this.executionPeriod.isEmpty();
+    public boolean hasCompletionTimeElement() { 
+      return this.completionTime != null && !this.completionTime.isEmpty();
+    }
+
+    public boolean hasCompletionTime() { 
+      return this.completionTime != null && !this.completionTime.isEmpty();
     }
 
     /**
-     * @param value {@link #executionPeriod} (Identifies the time action was first taken against the task (start) and/or the time final action was taken against the task prior to marking it as completed (end).)
+     * @param value {@link #completionTime} (Identifies the completion time of the event (the occurrence).). This is the underlying object with id, value and extensions. The accessor "getCompletionTime" gives direct access to the value
      */
-    public Task setExecutionPeriod(Period value) { 
-      this.executionPeriod = value;
+    public Transport setCompletionTimeElement(DateTimeType value) { 
+      this.completionTime = value;
       return this;
     }
 
     /**
-     * @return {@link #authoredOn} (The date and time this task was created.). This is the underlying object with id, value and extensions. The accessor "getAuthoredOn" gives direct access to the value
+     * @return Identifies the completion time of the event (the occurrence).
+     */
+    public Date getCompletionTime() { 
+      return this.completionTime == null ? null : this.completionTime.getValue();
+    }
+
+    /**
+     * @param value Identifies the completion time of the event (the occurrence).
+     */
+    public Transport setCompletionTime(Date value) { 
+      if (value == null)
+        this.completionTime = null;
+      else {
+        if (this.completionTime == null)
+          this.completionTime = new DateTimeType();
+        this.completionTime.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #authoredOn} (The date and time this transport was created.). This is the underlying object with id, value and extensions. The accessor "getAuthoredOn" gives direct access to the value
      */
     public DateTimeType getAuthoredOnElement() { 
       if (this.authoredOn == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.authoredOn");
+          throw new Error("Attempt to auto-create Transport.authoredOn");
         else if (Configuration.doAutoCreate())
           this.authoredOn = new DateTimeType(); // bb
       return this.authoredOn;
@@ -4246,24 +4138,24 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #authoredOn} (The date and time this task was created.). This is the underlying object with id, value and extensions. The accessor "getAuthoredOn" gives direct access to the value
+     * @param value {@link #authoredOn} (The date and time this transport was created.). This is the underlying object with id, value and extensions. The accessor "getAuthoredOn" gives direct access to the value
      */
-    public Task setAuthoredOnElement(DateTimeType value) { 
+    public Transport setAuthoredOnElement(DateTimeType value) { 
       this.authoredOn = value;
       return this;
     }
 
     /**
-     * @return The date and time this task was created.
+     * @return The date and time this transport was created.
      */
     public Date getAuthoredOn() { 
       return this.authoredOn == null ? null : this.authoredOn.getValue();
     }
 
     /**
-     * @param value The date and time this task was created.
+     * @param value The date and time this transport was created.
      */
-    public Task setAuthoredOn(Date value) { 
+    public Transport setAuthoredOn(Date value) { 
       if (value == null)
         this.authoredOn = null;
       else {
@@ -4275,12 +4167,12 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #lastModified} (The date and time of last modification to this task.). This is the underlying object with id, value and extensions. The accessor "getLastModified" gives direct access to the value
+     * @return {@link #lastModified} (The date and time of last modification to this transport.). This is the underlying object with id, value and extensions. The accessor "getLastModified" gives direct access to the value
      */
     public DateTimeType getLastModifiedElement() { 
       if (this.lastModified == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.lastModified");
+          throw new Error("Attempt to auto-create Transport.lastModified");
         else if (Configuration.doAutoCreate())
           this.lastModified = new DateTimeType(); // bb
       return this.lastModified;
@@ -4295,24 +4187,24 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #lastModified} (The date and time of last modification to this task.). This is the underlying object with id, value and extensions. The accessor "getLastModified" gives direct access to the value
+     * @param value {@link #lastModified} (The date and time of last modification to this transport.). This is the underlying object with id, value and extensions. The accessor "getLastModified" gives direct access to the value
      */
-    public Task setLastModifiedElement(DateTimeType value) { 
+    public Transport setLastModifiedElement(DateTimeType value) { 
       this.lastModified = value;
       return this;
     }
 
     /**
-     * @return The date and time of last modification to this task.
+     * @return The date and time of last modification to this transport.
      */
     public Date getLastModified() { 
       return this.lastModified == null ? null : this.lastModified.getValue();
     }
 
     /**
-     * @param value The date and time of last modification to this task.
+     * @param value The date and time of last modification to this transport.
      */
-    public Task setLastModified(Date value) { 
+    public Transport setLastModified(Date value) { 
       if (value == null)
         this.lastModified = null;
       else {
@@ -4324,12 +4216,12 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #requester} (The creator of the task.)
+     * @return {@link #requester} (The creator of the transport.)
      */
     public Reference getRequester() { 
       if (this.requester == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.requester");
+          throw new Error("Attempt to auto-create Transport.requester");
         else if (Configuration.doAutoCreate())
           this.requester = new Reference(); // cc
       return this.requester;
@@ -4340,15 +4232,15 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #requester} (The creator of the task.)
+     * @param value {@link #requester} (The creator of the transport.)
      */
-    public Task setRequester(Reference value) { 
+    public Transport setRequester(Reference value) { 
       this.requester = value;
       return this;
     }
 
     /**
-     * @return {@link #performerType} (The kind of participant that should perform the task.)
+     * @return {@link #performerType} (The kind of participant that should perform the transport.)
      */
     public List<CodeableConcept> getPerformerType() { 
       if (this.performerType == null)
@@ -4359,7 +4251,7 @@ public class Task extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Task setPerformerType(List<CodeableConcept> thePerformerType) { 
+    public Transport setPerformerType(List<CodeableConcept> thePerformerType) { 
       this.performerType = thePerformerType;
       return this;
     }
@@ -4381,7 +4273,7 @@ public class Task extends DomainResource {
       return t;
     }
 
-    public Task addPerformerType(CodeableConcept t) { //3
+    public Transport addPerformerType(CodeableConcept t) { //3
       if (t == null)
         return this;
       if (this.performerType == null)
@@ -4401,12 +4293,12 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #owner} (Individual organization or Device currently responsible for task execution.)
+     * @return {@link #owner} (Individual organization or Device currently responsible for transport execution.)
      */
     public Reference getOwner() { 
       if (this.owner == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.owner");
+          throw new Error("Attempt to auto-create Transport.owner");
         else if (Configuration.doAutoCreate())
           this.owner = new Reference(); // cc
       return this.owner;
@@ -4417,20 +4309,20 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #owner} (Individual organization or Device currently responsible for task execution.)
+     * @param value {@link #owner} (Individual organization or Device currently responsible for transport execution.)
      */
-    public Task setOwner(Reference value) { 
+    public Transport setOwner(Reference value) { 
       this.owner = value;
       return this;
     }
 
     /**
-     * @return {@link #location} (Principal physical location where the this task is performed.)
+     * @return {@link #location} (Principal physical location where the this transport is performed.)
      */
     public Reference getLocation() { 
       if (this.location == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.location");
+          throw new Error("Attempt to auto-create Transport.location");
         else if (Configuration.doAutoCreate())
           this.location = new Reference(); // cc
       return this.location;
@@ -4441,20 +4333,20 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #location} (Principal physical location where the this task is performed.)
+     * @param value {@link #location} (Principal physical location where the this transport is performed.)
      */
-    public Task setLocation(Reference value) { 
+    public Transport setLocation(Reference value) { 
       this.location = value;
       return this;
     }
 
     /**
-     * @return {@link #reasonCode} (A description or code indicating why this task needs to be performed.)
+     * @return {@link #reasonCode} (A description or code indicating why this transport needs to be performed.)
      */
     public CodeableConcept getReasonCode() { 
       if (this.reasonCode == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.reasonCode");
+          throw new Error("Attempt to auto-create Transport.reasonCode");
         else if (Configuration.doAutoCreate())
           this.reasonCode = new CodeableConcept(); // cc
       return this.reasonCode;
@@ -4465,20 +4357,20 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #reasonCode} (A description or code indicating why this task needs to be performed.)
+     * @param value {@link #reasonCode} (A description or code indicating why this transport needs to be performed.)
      */
-    public Task setReasonCode(CodeableConcept value) { 
+    public Transport setReasonCode(CodeableConcept value) { 
       this.reasonCode = value;
       return this;
     }
 
     /**
-     * @return {@link #reasonReference} (A resource reference indicating why this task needs to be performed.)
+     * @return {@link #reasonReference} (A resource reference indicating why this transport needs to be performed.)
      */
     public Reference getReasonReference() { 
       if (this.reasonReference == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.reasonReference");
+          throw new Error("Attempt to auto-create Transport.reasonReference");
         else if (Configuration.doAutoCreate())
           this.reasonReference = new Reference(); // cc
       return this.reasonReference;
@@ -4489,15 +4381,15 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #reasonReference} (A resource reference indicating why this task needs to be performed.)
+     * @param value {@link #reasonReference} (A resource reference indicating why this transport needs to be performed.)
      */
-    public Task setReasonReference(Reference value) { 
+    public Transport setReasonReference(Reference value) { 
       this.reasonReference = value;
       return this;
     }
 
     /**
-     * @return {@link #insurance} (Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task.)
+     * @return {@link #insurance} (Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Transport.)
      */
     public List<Reference> getInsurance() { 
       if (this.insurance == null)
@@ -4508,7 +4400,7 @@ public class Task extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Task setInsurance(List<Reference> theInsurance) { 
+    public Transport setInsurance(List<Reference> theInsurance) { 
       this.insurance = theInsurance;
       return this;
     }
@@ -4530,7 +4422,7 @@ public class Task extends DomainResource {
       return t;
     }
 
-    public Task addInsurance(Reference t) { //3
+    public Transport addInsurance(Reference t) { //3
       if (t == null)
         return this;
       if (this.insurance == null)
@@ -4550,7 +4442,7 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #note} (Free-text information captured about the task as it progresses.)
+     * @return {@link #note} (Free-text information captured about the transport as it progresses.)
      */
     public List<Annotation> getNote() { 
       if (this.note == null)
@@ -4561,7 +4453,7 @@ public class Task extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Task setNote(List<Annotation> theNote) { 
+    public Transport setNote(List<Annotation> theNote) { 
       this.note = theNote;
       return this;
     }
@@ -4583,7 +4475,7 @@ public class Task extends DomainResource {
       return t;
     }
 
-    public Task addNote(Annotation t) { //3
+    public Transport addNote(Annotation t) { //3
       if (t == null)
         return this;
       if (this.note == null)
@@ -4603,7 +4495,7 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #relevantHistory} (Links to Provenance records for past versions of this Task that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the task.)
+     * @return {@link #relevantHistory} (Links to Provenance records for past versions of this Transport that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the transport.)
      */
     public List<Reference> getRelevantHistory() { 
       if (this.relevantHistory == null)
@@ -4614,7 +4506,7 @@ public class Task extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Task setRelevantHistory(List<Reference> theRelevantHistory) { 
+    public Transport setRelevantHistory(List<Reference> theRelevantHistory) { 
       this.relevantHistory = theRelevantHistory;
       return this;
     }
@@ -4636,7 +4528,7 @@ public class Task extends DomainResource {
       return t;
     }
 
-    public Task addRelevantHistory(Reference t) { //3
+    public Transport addRelevantHistory(Reference t) { //3
       if (t == null)
         return this;
       if (this.relevantHistory == null)
@@ -4656,14 +4548,14 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #restriction} (If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.)
+     * @return {@link #restriction} (If the Transport.focus is a request resource and the transport is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.)
      */
-    public TaskRestrictionComponent getRestriction() { 
+    public TransportRestrictionComponent getRestriction() { 
       if (this.restriction == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.restriction");
+          throw new Error("Attempt to auto-create Transport.restriction");
         else if (Configuration.doAutoCreate())
-          this.restriction = new TaskRestrictionComponent(); // cc
+          this.restriction = new TransportRestrictionComponent(); // cc
       return this.restriction;
     }
 
@@ -4672,15 +4564,15 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @param value {@link #restriction} (If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.)
+     * @param value {@link #restriction} (If the Transport.focus is a request resource and the transport is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.)
      */
-    public Task setRestriction(TaskRestrictionComponent value) { 
+    public Transport setRestriction(TransportRestrictionComponent value) { 
       this.restriction = value;
       return this;
     }
 
     /**
-     * @return {@link #input} (Additional information that may be needed in the execution of the task.)
+     * @return {@link #input} (Additional information that may be needed in the execution of the transport.)
      */
     public List<ParameterComponent> getInput() { 
       if (this.input == null)
@@ -4691,7 +4583,7 @@ public class Task extends DomainResource {
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Task setInput(List<ParameterComponent> theInput) { 
+    public Transport setInput(List<ParameterComponent> theInput) { 
       this.input = theInput;
       return this;
     }
@@ -4713,7 +4605,7 @@ public class Task extends DomainResource {
       return t;
     }
 
-    public Task addInput(ParameterComponent t) { //3
+    public Transport addInput(ParameterComponent t) { //3
       if (t == null)
         return this;
       if (this.input == null)
@@ -4733,18 +4625,18 @@ public class Task extends DomainResource {
     }
 
     /**
-     * @return {@link #output} (Outputs produced by the Task.)
+     * @return {@link #output} (Outputs produced by the Transport.)
      */
-    public List<TaskOutputComponent> getOutput() { 
+    public List<TransportOutputComponent> getOutput() { 
       if (this.output == null)
-        this.output = new ArrayList<TaskOutputComponent>();
+        this.output = new ArrayList<TransportOutputComponent>();
       return this.output;
     }
 
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Task setOutput(List<TaskOutputComponent> theOutput) { 
+    public Transport setOutput(List<TransportOutputComponent> theOutput) { 
       this.output = theOutput;
       return this;
     }
@@ -4752,25 +4644,25 @@ public class Task extends DomainResource {
     public boolean hasOutput() { 
       if (this.output == null)
         return false;
-      for (TaskOutputComponent item : this.output)
+      for (TransportOutputComponent item : this.output)
         if (!item.isEmpty())
           return true;
       return false;
     }
 
-    public TaskOutputComponent addOutput() { //3
-      TaskOutputComponent t = new TaskOutputComponent();
+    public TransportOutputComponent addOutput() { //3
+      TransportOutputComponent t = new TransportOutputComponent();
       if (this.output == null)
-        this.output = new ArrayList<TaskOutputComponent>();
+        this.output = new ArrayList<TransportOutputComponent>();
       this.output.add(t);
       return t;
     }
 
-    public Task addOutput(TaskOutputComponent t) { //3
+    public Transport addOutput(TransportOutputComponent t) { //3
       if (t == null)
         return this;
       if (this.output == null)
-        this.output = new ArrayList<TaskOutputComponent>();
+        this.output = new ArrayList<TransportOutputComponent>();
       this.output.add(t);
       return this;
     }
@@ -4778,82 +4670,158 @@ public class Task extends DomainResource {
     /**
      * @return The first repetition of repeating field {@link #output}, creating it if it does not already exist {3}
      */
-    public TaskOutputComponent getOutputFirstRep() { 
+    public TransportOutputComponent getOutputFirstRep() { 
       if (getOutput().isEmpty()) {
         addOutput();
       }
       return getOutput().get(0);
     }
 
+    /**
+     * @return {@link #requestedLocation} (The desired or final location for the transport.)
+     */
+    public Reference getRequestedLocation() { 
+      if (this.requestedLocation == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Transport.requestedLocation");
+        else if (Configuration.doAutoCreate())
+          this.requestedLocation = new Reference(); // cc
+      return this.requestedLocation;
+    }
+
+    public boolean hasRequestedLocation() { 
+      return this.requestedLocation != null && !this.requestedLocation.isEmpty();
+    }
+
+    /**
+     * @param value {@link #requestedLocation} (The desired or final location for the transport.)
+     */
+    public Transport setRequestedLocation(Reference value) { 
+      this.requestedLocation = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #currentLocation} (The current location for the entity to be transported.)
+     */
+    public Reference getCurrentLocation() { 
+      if (this.currentLocation == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Transport.currentLocation");
+        else if (Configuration.doAutoCreate())
+          this.currentLocation = new Reference(); // cc
+      return this.currentLocation;
+    }
+
+    public boolean hasCurrentLocation() { 
+      return this.currentLocation != null && !this.currentLocation.isEmpty();
+    }
+
+    /**
+     * @param value {@link #currentLocation} (The current location for the entity to be transported.)
+     */
+    public Transport setCurrentLocation(Reference value) { 
+      this.currentLocation = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #history} (The transport event prior to this one.)
+     */
+    public Reference getHistory() { 
+      if (this.history == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Transport.history");
+        else if (Configuration.doAutoCreate())
+          this.history = new Reference(); // cc
+      return this.history;
+    }
+
+    public boolean hasHistory() { 
+      return this.history != null && !this.history.isEmpty();
+    }
+
+    /**
+     * @param value {@link #history} (The transport event prior to this one.)
+     */
+    public Transport setHistory(Reference value) { 
+      this.history = value;
+      return this;
+    }
+
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
-        children.add(new Property("identifier", "Identifier", "The business identifier for this task.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        children.add(new Property("instantiatesCanonical", "canonical(ActivityDefinition)", "The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.", 0, 1, instantiatesCanonical));
-        children.add(new Property("instantiatesUri", "uri", "The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.", 0, 1, instantiatesUri));
-        children.add(new Property("basedOn", "Reference(Any)", "BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a \"request\" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the \"request\" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient.", 0, java.lang.Integer.MAX_VALUE, basedOn));
-        children.add(new Property("groupIdentifier", "Identifier", "An identifier that links together multiple tasks and other requests that were created in the same context.", 0, 1, groupIdentifier));
-        children.add(new Property("partOf", "Reference(Task)", "Task that this particular task is part of.", 0, java.lang.Integer.MAX_VALUE, partOf));
-        children.add(new Property("status", "code", "The current status of the task.", 0, 1, status));
-        children.add(new Property("statusReason", "CodeableConcept", "An explanation as to why this task is held, failed, was refused, etc.", 0, 1, statusReason));
-        children.add(new Property("businessStatus", "CodeableConcept", "Contains business-specific nuances of the business state.", 0, 1, businessStatus));
-        children.add(new Property("intent", "code", "Indicates the \"level\" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.", 0, 1, intent));
-        children.add(new Property("priority", "code", "Indicates how quickly the Task should be addressed with respect to other requests.", 0, 1, priority));
-        children.add(new Property("code", "CodeableConcept", "A name or code (or both) briefly describing what the task involves.", 0, 1, code));
+        children.add(new Property("identifier", "Identifier", "Identifier for the transport event that is used to identify it across multiple disparate systems.", 0, java.lang.Integer.MAX_VALUE, identifier));
+        children.add(new Property("instantiatesCanonical", "canonical(ActivityDefinition)", "The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.", 0, 1, instantiatesCanonical));
+        children.add(new Property("instantiatesUri", "uri", "The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.", 0, 1, instantiatesUri));
+        children.add(new Property("basedOn", "Reference(Any)", "BasedOn refers to a higher-level authorization that triggered the creation of the transport.  It references a \"request\" resource such as a ServiceRequest or Transport, which is distinct from the \"request\" resource the Transport is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a transport is created to fulfill a procedureRequest ( = FocusOn ) to transport a specimen to the lab.", 0, java.lang.Integer.MAX_VALUE, basedOn));
+        children.add(new Property("groupIdentifier", "Identifier", "An identifier that links together multiple transports and other requests that were created in the same context.", 0, 1, groupIdentifier));
+        children.add(new Property("partOf", "Reference(Transport|Contract)", "A larger event of which this particular event is a component or step.", 0, java.lang.Integer.MAX_VALUE, partOf));
+        children.add(new Property("status", "code", "A code specifying the state of the dispense event.", 0, 1, status));
+        children.add(new Property("statusReason", "CodeableConcept", "An explanation as to why this transport is held, failed, was refused, etc.", 0, 1, statusReason));
+        children.add(new Property("intent", "code", "Indicates the \"level\" of actionability associated with the Transport, i.e. i+R[9]Cs this a proposed transport, a planned transport, an actionable transport, etc.", 0, 1, intent));
+        children.add(new Property("priority", "code", "Indicates how quickly the Transport should be addressed with respect to other requests.", 0, 1, priority));
+        children.add(new Property("code", "CodeableConcept", "A name or code (or both) briefly describing what the transport involves.", 0, 1, code));
         children.add(new Property("description", "string", "A free-text description of what is to be performed.", 0, 1, description));
-        children.add(new Property("focus", "Reference(Any)", "The request being actioned or the resource being manipulated by this task.", 0, 1, focus));
-        children.add(new Property("for", "Reference(Any)", "The entity who benefits from the performance of the service specified in the task (e.g., the patient).", 0, 1, for_));
-        children.add(new Property("encounter", "Reference(Encounter)", "The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.", 0, 1, encounter));
-        children.add(new Property("executionPeriod", "Period", "Identifies the time action was first taken against the task (start) and/or the time final action was taken against the task prior to marking it as completed (end).", 0, 1, executionPeriod));
-        children.add(new Property("authoredOn", "dateTime", "The date and time this task was created.", 0, 1, authoredOn));
-        children.add(new Property("lastModified", "dateTime", "The date and time of last modification to this task.", 0, 1, lastModified));
-        children.add(new Property("requester", "Reference(Device|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson)", "The creator of the task.", 0, 1, requester));
-        children.add(new Property("performerType", "CodeableConcept", "The kind of participant that should perform the task.", 0, java.lang.Integer.MAX_VALUE, performerType));
-        children.add(new Property("owner", "Reference(Practitioner|PractitionerRole|Organization|CareTeam|HealthcareService|Patient|Device|RelatedPerson)", "Individual organization or Device currently responsible for task execution.", 0, 1, owner));
-        children.add(new Property("location", "Reference(Location)", "Principal physical location where the this task is performed.", 0, 1, location));
-        children.add(new Property("reasonCode", "CodeableConcept", "A description or code indicating why this task needs to be performed.", 0, 1, reasonCode));
-        children.add(new Property("reasonReference", "Reference(Any)", "A resource reference indicating why this task needs to be performed.", 0, 1, reasonReference));
-        children.add(new Property("insurance", "Reference(Coverage|ClaimResponse)", "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task.", 0, java.lang.Integer.MAX_VALUE, insurance));
-        children.add(new Property("note", "Annotation", "Free-text information captured about the task as it progresses.", 0, java.lang.Integer.MAX_VALUE, note));
-        children.add(new Property("relevantHistory", "Reference(Provenance)", "Links to Provenance records for past versions of this Task that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the task.", 0, java.lang.Integer.MAX_VALUE, relevantHistory));
-        children.add(new Property("restriction", "", "If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.", 0, 1, restriction));
-        children.add(new Property("input", "", "Additional information that may be needed in the execution of the task.", 0, java.lang.Integer.MAX_VALUE, input));
-        children.add(new Property("output", "", "Outputs produced by the Task.", 0, java.lang.Integer.MAX_VALUE, output));
+        children.add(new Property("focus", "Reference(Any)", "The request being actioned or the resource being manipulated by this transport.", 0, 1, focus));
+        children.add(new Property("for", "Reference(Any)", "The entity who benefits from the performance of the service specified in the transport (e.g., the patient).", 0, 1, for_));
+        children.add(new Property("encounter", "Reference(Encounter)", "The healthcare event  (e.g. a patient and healthcare provider interaction) during which this transport was created.", 0, 1, encounter));
+        children.add(new Property("completionTime", "dateTime", "Identifies the completion time of the event (the occurrence).", 0, 1, completionTime));
+        children.add(new Property("authoredOn", "dateTime", "The date and time this transport was created.", 0, 1, authoredOn));
+        children.add(new Property("lastModified", "dateTime", "The date and time of last modification to this transport.", 0, 1, lastModified));
+        children.add(new Property("requester", "Reference(Device|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson)", "The creator of the transport.", 0, 1, requester));
+        children.add(new Property("performerType", "CodeableConcept", "The kind of participant that should perform the transport.", 0, java.lang.Integer.MAX_VALUE, performerType));
+        children.add(new Property("owner", "Reference(Practitioner|PractitionerRole|Organization|CareTeam|HealthcareService|Patient|Device|RelatedPerson)", "Individual organization or Device currently responsible for transport execution.", 0, 1, owner));
+        children.add(new Property("location", "Reference(Location)", "Principal physical location where the this transport is performed.", 0, 1, location));
+        children.add(new Property("reasonCode", "CodeableConcept", "A description or code indicating why this transport needs to be performed.", 0, 1, reasonCode));
+        children.add(new Property("reasonReference", "Reference(Any)", "A resource reference indicating why this transport needs to be performed.", 0, 1, reasonReference));
+        children.add(new Property("insurance", "Reference(Coverage|ClaimResponse)", "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Transport.", 0, java.lang.Integer.MAX_VALUE, insurance));
+        children.add(new Property("note", "Annotation", "Free-text information captured about the transport as it progresses.", 0, java.lang.Integer.MAX_VALUE, note));
+        children.add(new Property("relevantHistory", "Reference(Provenance)", "Links to Provenance records for past versions of this Transport that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the transport.", 0, java.lang.Integer.MAX_VALUE, relevantHistory));
+        children.add(new Property("restriction", "", "If the Transport.focus is a request resource and the transport is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.", 0, 1, restriction));
+        children.add(new Property("input", "", "Additional information that may be needed in the execution of the transport.", 0, java.lang.Integer.MAX_VALUE, input));
+        children.add(new Property("output", "", "Outputs produced by the Transport.", 0, java.lang.Integer.MAX_VALUE, output));
+        children.add(new Property("requestedLocation", "Reference(Location)", "The desired or final location for the transport.", 0, 1, requestedLocation));
+        children.add(new Property("currentLocation", "Reference(Location)", "The current location for the entity to be transported.", 0, 1, currentLocation));
+        children.add(new Property("history", "Reference(Transport)", "The transport event prior to this one.", 0, 1, history));
       }
 
       @Override
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
-        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "The business identifier for this task.", 0, java.lang.Integer.MAX_VALUE, identifier);
-        case 8911915: /*instantiatesCanonical*/  return new Property("instantiatesCanonical", "canonical(ActivityDefinition)", "The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.", 0, 1, instantiatesCanonical);
-        case -1926393373: /*instantiatesUri*/  return new Property("instantiatesUri", "uri", "The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.", 0, 1, instantiatesUri);
-        case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(Any)", "BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a \"request\" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the \"request\" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient.", 0, java.lang.Integer.MAX_VALUE, basedOn);
-        case -445338488: /*groupIdentifier*/  return new Property("groupIdentifier", "Identifier", "An identifier that links together multiple tasks and other requests that were created in the same context.", 0, 1, groupIdentifier);
-        case -995410646: /*partOf*/  return new Property("partOf", "Reference(Task)", "Task that this particular task is part of.", 0, java.lang.Integer.MAX_VALUE, partOf);
-        case -892481550: /*status*/  return new Property("status", "code", "The current status of the task.", 0, 1, status);
-        case 2051346646: /*statusReason*/  return new Property("statusReason", "CodeableConcept", "An explanation as to why this task is held, failed, was refused, etc.", 0, 1, statusReason);
-        case 2008591314: /*businessStatus*/  return new Property("businessStatus", "CodeableConcept", "Contains business-specific nuances of the business state.", 0, 1, businessStatus);
-        case -1183762788: /*intent*/  return new Property("intent", "code", "Indicates the \"level\" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.", 0, 1, intent);
-        case -1165461084: /*priority*/  return new Property("priority", "code", "Indicates how quickly the Task should be addressed with respect to other requests.", 0, 1, priority);
-        case 3059181: /*code*/  return new Property("code", "CodeableConcept", "A name or code (or both) briefly describing what the task involves.", 0, 1, code);
+        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Identifier for the transport event that is used to identify it across multiple disparate systems.", 0, java.lang.Integer.MAX_VALUE, identifier);
+        case 8911915: /*instantiatesCanonical*/  return new Property("instantiatesCanonical", "canonical(ActivityDefinition)", "The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.", 0, 1, instantiatesCanonical);
+        case -1926393373: /*instantiatesUri*/  return new Property("instantiatesUri", "uri", "The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Transport.", 0, 1, instantiatesUri);
+        case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(Any)", "BasedOn refers to a higher-level authorization that triggered the creation of the transport.  It references a \"request\" resource such as a ServiceRequest or Transport, which is distinct from the \"request\" resource the Transport is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a transport is created to fulfill a procedureRequest ( = FocusOn ) to transport a specimen to the lab.", 0, java.lang.Integer.MAX_VALUE, basedOn);
+        case -445338488: /*groupIdentifier*/  return new Property("groupIdentifier", "Identifier", "An identifier that links together multiple transports and other requests that were created in the same context.", 0, 1, groupIdentifier);
+        case -995410646: /*partOf*/  return new Property("partOf", "Reference(Transport|Contract)", "A larger event of which this particular event is a component or step.", 0, java.lang.Integer.MAX_VALUE, partOf);
+        case -892481550: /*status*/  return new Property("status", "code", "A code specifying the state of the dispense event.", 0, 1, status);
+        case 2051346646: /*statusReason*/  return new Property("statusReason", "CodeableConcept", "An explanation as to why this transport is held, failed, was refused, etc.", 0, 1, statusReason);
+        case -1183762788: /*intent*/  return new Property("intent", "code", "Indicates the \"level\" of actionability associated with the Transport, i.e. i+R[9]Cs this a proposed transport, a planned transport, an actionable transport, etc.", 0, 1, intent);
+        case -1165461084: /*priority*/  return new Property("priority", "code", "Indicates how quickly the Transport should be addressed with respect to other requests.", 0, 1, priority);
+        case 3059181: /*code*/  return new Property("code", "CodeableConcept", "A name or code (or both) briefly describing what the transport involves.", 0, 1, code);
         case -1724546052: /*description*/  return new Property("description", "string", "A free-text description of what is to be performed.", 0, 1, description);
-        case 97604824: /*focus*/  return new Property("focus", "Reference(Any)", "The request being actioned or the resource being manipulated by this task.", 0, 1, focus);
-        case 101577: /*for*/  return new Property("for", "Reference(Any)", "The entity who benefits from the performance of the service specified in the task (e.g., the patient).", 0, 1, for_);
-        case 1524132147: /*encounter*/  return new Property("encounter", "Reference(Encounter)", "The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.", 0, 1, encounter);
-        case 1218624249: /*executionPeriod*/  return new Property("executionPeriod", "Period", "Identifies the time action was first taken against the task (start) and/or the time final action was taken against the task prior to marking it as completed (end).", 0, 1, executionPeriod);
-        case -1500852503: /*authoredOn*/  return new Property("authoredOn", "dateTime", "The date and time this task was created.", 0, 1, authoredOn);
-        case 1959003007: /*lastModified*/  return new Property("lastModified", "dateTime", "The date and time of last modification to this task.", 0, 1, lastModified);
-        case 693933948: /*requester*/  return new Property("requester", "Reference(Device|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson)", "The creator of the task.", 0, 1, requester);
-        case -901444568: /*performerType*/  return new Property("performerType", "CodeableConcept", "The kind of participant that should perform the task.", 0, java.lang.Integer.MAX_VALUE, performerType);
-        case 106164915: /*owner*/  return new Property("owner", "Reference(Practitioner|PractitionerRole|Organization|CareTeam|HealthcareService|Patient|Device|RelatedPerson)", "Individual organization or Device currently responsible for task execution.", 0, 1, owner);
-        case 1901043637: /*location*/  return new Property("location", "Reference(Location)", "Principal physical location where the this task is performed.", 0, 1, location);
-        case 722137681: /*reasonCode*/  return new Property("reasonCode", "CodeableConcept", "A description or code indicating why this task needs to be performed.", 0, 1, reasonCode);
-        case -1146218137: /*reasonReference*/  return new Property("reasonReference", "Reference(Any)", "A resource reference indicating why this task needs to be performed.", 0, 1, reasonReference);
-        case 73049818: /*insurance*/  return new Property("insurance", "Reference(Coverage|ClaimResponse)", "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task.", 0, java.lang.Integer.MAX_VALUE, insurance);
-        case 3387378: /*note*/  return new Property("note", "Annotation", "Free-text information captured about the task as it progresses.", 0, java.lang.Integer.MAX_VALUE, note);
-        case 1538891575: /*relevantHistory*/  return new Property("relevantHistory", "Reference(Provenance)", "Links to Provenance records for past versions of this Task that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the task.", 0, java.lang.Integer.MAX_VALUE, relevantHistory);
-        case -1561062452: /*restriction*/  return new Property("restriction", "", "If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.", 0, 1, restriction);
-        case 100358090: /*input*/  return new Property("input", "", "Additional information that may be needed in the execution of the task.", 0, java.lang.Integer.MAX_VALUE, input);
-        case -1005512447: /*output*/  return new Property("output", "", "Outputs produced by the Task.", 0, java.lang.Integer.MAX_VALUE, output);
+        case 97604824: /*focus*/  return new Property("focus", "Reference(Any)", "The request being actioned or the resource being manipulated by this transport.", 0, 1, focus);
+        case 101577: /*for*/  return new Property("for", "Reference(Any)", "The entity who benefits from the performance of the service specified in the transport (e.g., the patient).", 0, 1, for_);
+        case 1524132147: /*encounter*/  return new Property("encounter", "Reference(Encounter)", "The healthcare event  (e.g. a patient and healthcare provider interaction) during which this transport was created.", 0, 1, encounter);
+        case 1146641609: /*completionTime*/  return new Property("completionTime", "dateTime", "Identifies the completion time of the event (the occurrence).", 0, 1, completionTime);
+        case -1500852503: /*authoredOn*/  return new Property("authoredOn", "dateTime", "The date and time this transport was created.", 0, 1, authoredOn);
+        case 1959003007: /*lastModified*/  return new Property("lastModified", "dateTime", "The date and time of last modification to this transport.", 0, 1, lastModified);
+        case 693933948: /*requester*/  return new Property("requester", "Reference(Device|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson)", "The creator of the transport.", 0, 1, requester);
+        case -901444568: /*performerType*/  return new Property("performerType", "CodeableConcept", "The kind of participant that should perform the transport.", 0, java.lang.Integer.MAX_VALUE, performerType);
+        case 106164915: /*owner*/  return new Property("owner", "Reference(Practitioner|PractitionerRole|Organization|CareTeam|HealthcareService|Patient|Device|RelatedPerson)", "Individual organization or Device currently responsible for transport execution.", 0, 1, owner);
+        case 1901043637: /*location*/  return new Property("location", "Reference(Location)", "Principal physical location where the this transport is performed.", 0, 1, location);
+        case 722137681: /*reasonCode*/  return new Property("reasonCode", "CodeableConcept", "A description or code indicating why this transport needs to be performed.", 0, 1, reasonCode);
+        case -1146218137: /*reasonReference*/  return new Property("reasonReference", "Reference(Any)", "A resource reference indicating why this transport needs to be performed.", 0, 1, reasonReference);
+        case 73049818: /*insurance*/  return new Property("insurance", "Reference(Coverage|ClaimResponse)", "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Transport.", 0, java.lang.Integer.MAX_VALUE, insurance);
+        case 3387378: /*note*/  return new Property("note", "Annotation", "Free-text information captured about the transport as it progresses.", 0, java.lang.Integer.MAX_VALUE, note);
+        case 1538891575: /*relevantHistory*/  return new Property("relevantHistory", "Reference(Provenance)", "Links to Provenance records for past versions of this Transport that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the transport.", 0, java.lang.Integer.MAX_VALUE, relevantHistory);
+        case -1561062452: /*restriction*/  return new Property("restriction", "", "If the Transport.focus is a request resource and the transport is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.", 0, 1, restriction);
+        case 100358090: /*input*/  return new Property("input", "", "Additional information that may be needed in the execution of the transport.", 0, java.lang.Integer.MAX_VALUE, input);
+        case -1005512447: /*output*/  return new Property("output", "", "Outputs produced by the Transport.", 0, java.lang.Integer.MAX_VALUE, output);
+        case -1788392125: /*requestedLocation*/  return new Property("requestedLocation", "Reference(Location)", "The desired or final location for the transport.", 0, 1, requestedLocation);
+        case -140429234: /*currentLocation*/  return new Property("currentLocation", "Reference(Location)", "The current location for the entity to be transported.", 0, 1, currentLocation);
+        case 926934164: /*history*/  return new Property("history", "Reference(Transport)", "The transport event prior to this one.", 0, 1, history);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -4868,17 +4836,16 @@ public class Task extends DomainResource {
         case -332612366: /*basedOn*/ return this.basedOn == null ? new Base[0] : this.basedOn.toArray(new Base[this.basedOn.size()]); // Reference
         case -445338488: /*groupIdentifier*/ return this.groupIdentifier == null ? new Base[0] : new Base[] {this.groupIdentifier}; // Identifier
         case -995410646: /*partOf*/ return this.partOf == null ? new Base[0] : this.partOf.toArray(new Base[this.partOf.size()]); // Reference
-        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<TaskStatus>
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<TransportStatus>
         case 2051346646: /*statusReason*/ return this.statusReason == null ? new Base[0] : new Base[] {this.statusReason}; // CodeableConcept
-        case 2008591314: /*businessStatus*/ return this.businessStatus == null ? new Base[0] : new Base[] {this.businessStatus}; // CodeableConcept
-        case -1183762788: /*intent*/ return this.intent == null ? new Base[0] : new Base[] {this.intent}; // Enumeration<TaskIntent>
+        case -1183762788: /*intent*/ return this.intent == null ? new Base[0] : new Base[] {this.intent}; // Enumeration<TransportIntent>
         case -1165461084: /*priority*/ return this.priority == null ? new Base[0] : new Base[] {this.priority}; // Enumeration<RequestPriority>
         case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // CodeableConcept
         case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
         case 97604824: /*focus*/ return this.focus == null ? new Base[0] : new Base[] {this.focus}; // Reference
         case 101577: /*for*/ return this.for_ == null ? new Base[0] : new Base[] {this.for_}; // Reference
         case 1524132147: /*encounter*/ return this.encounter == null ? new Base[0] : new Base[] {this.encounter}; // Reference
-        case 1218624249: /*executionPeriod*/ return this.executionPeriod == null ? new Base[0] : new Base[] {this.executionPeriod}; // Period
+        case 1146641609: /*completionTime*/ return this.completionTime == null ? new Base[0] : new Base[] {this.completionTime}; // DateTimeType
         case -1500852503: /*authoredOn*/ return this.authoredOn == null ? new Base[0] : new Base[] {this.authoredOn}; // DateTimeType
         case 1959003007: /*lastModified*/ return this.lastModified == null ? new Base[0] : new Base[] {this.lastModified}; // DateTimeType
         case 693933948: /*requester*/ return this.requester == null ? new Base[0] : new Base[] {this.requester}; // Reference
@@ -4890,9 +4857,12 @@ public class Task extends DomainResource {
         case 73049818: /*insurance*/ return this.insurance == null ? new Base[0] : this.insurance.toArray(new Base[this.insurance.size()]); // Reference
         case 3387378: /*note*/ return this.note == null ? new Base[0] : this.note.toArray(new Base[this.note.size()]); // Annotation
         case 1538891575: /*relevantHistory*/ return this.relevantHistory == null ? new Base[0] : this.relevantHistory.toArray(new Base[this.relevantHistory.size()]); // Reference
-        case -1561062452: /*restriction*/ return this.restriction == null ? new Base[0] : new Base[] {this.restriction}; // TaskRestrictionComponent
+        case -1561062452: /*restriction*/ return this.restriction == null ? new Base[0] : new Base[] {this.restriction}; // TransportRestrictionComponent
         case 100358090: /*input*/ return this.input == null ? new Base[0] : this.input.toArray(new Base[this.input.size()]); // ParameterComponent
-        case -1005512447: /*output*/ return this.output == null ? new Base[0] : this.output.toArray(new Base[this.output.size()]); // TaskOutputComponent
+        case -1005512447: /*output*/ return this.output == null ? new Base[0] : this.output.toArray(new Base[this.output.size()]); // TransportOutputComponent
+        case -1788392125: /*requestedLocation*/ return this.requestedLocation == null ? new Base[0] : new Base[] {this.requestedLocation}; // Reference
+        case -140429234: /*currentLocation*/ return this.currentLocation == null ? new Base[0] : new Base[] {this.currentLocation}; // Reference
+        case 926934164: /*history*/ return this.history == null ? new Base[0] : new Base[] {this.history}; // Reference
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -4920,18 +4890,15 @@ public class Task extends DomainResource {
           this.getPartOf().add(TypeConvertor.castToReference(value)); // Reference
           return value;
         case -892481550: // status
-          value = new TaskStatusEnumFactory().fromType(TypeConvertor.castToCode(value));
-          this.status = (Enumeration) value; // Enumeration<TaskStatus>
+          value = new TransportStatusEnumFactory().fromType(TypeConvertor.castToCode(value));
+          this.status = (Enumeration) value; // Enumeration<TransportStatus>
           return value;
         case 2051346646: // statusReason
           this.statusReason = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
           return value;
-        case 2008591314: // businessStatus
-          this.businessStatus = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
-          return value;
         case -1183762788: // intent
-          value = new TaskIntentEnumFactory().fromType(TypeConvertor.castToCode(value));
-          this.intent = (Enumeration) value; // Enumeration<TaskIntent>
+          value = new TransportIntentEnumFactory().fromType(TypeConvertor.castToCode(value));
+          this.intent = (Enumeration) value; // Enumeration<TransportIntent>
           return value;
         case -1165461084: // priority
           value = new RequestPriorityEnumFactory().fromType(TypeConvertor.castToCode(value));
@@ -4952,8 +4919,8 @@ public class Task extends DomainResource {
         case 1524132147: // encounter
           this.encounter = TypeConvertor.castToReference(value); // Reference
           return value;
-        case 1218624249: // executionPeriod
-          this.executionPeriod = TypeConvertor.castToPeriod(value); // Period
+        case 1146641609: // completionTime
+          this.completionTime = TypeConvertor.castToDateTime(value); // DateTimeType
           return value;
         case -1500852503: // authoredOn
           this.authoredOn = TypeConvertor.castToDateTime(value); // DateTimeType
@@ -4989,13 +4956,22 @@ public class Task extends DomainResource {
           this.getRelevantHistory().add(TypeConvertor.castToReference(value)); // Reference
           return value;
         case -1561062452: // restriction
-          this.restriction = (TaskRestrictionComponent) value; // TaskRestrictionComponent
+          this.restriction = (TransportRestrictionComponent) value; // TransportRestrictionComponent
           return value;
         case 100358090: // input
           this.getInput().add((ParameterComponent) value); // ParameterComponent
           return value;
         case -1005512447: // output
-          this.getOutput().add((TaskOutputComponent) value); // TaskOutputComponent
+          this.getOutput().add((TransportOutputComponent) value); // TransportOutputComponent
+          return value;
+        case -1788392125: // requestedLocation
+          this.requestedLocation = TypeConvertor.castToReference(value); // Reference
+          return value;
+        case -140429234: // currentLocation
+          this.currentLocation = TypeConvertor.castToReference(value); // Reference
+          return value;
+        case 926934164: // history
+          this.history = TypeConvertor.castToReference(value); // Reference
           return value;
         default: return super.setProperty(hash, name, value);
         }
@@ -5017,15 +4993,13 @@ public class Task extends DomainResource {
         } else if (name.equals("partOf")) {
           this.getPartOf().add(TypeConvertor.castToReference(value));
         } else if (name.equals("status")) {
-          value = new TaskStatusEnumFactory().fromType(TypeConvertor.castToCode(value));
-          this.status = (Enumeration) value; // Enumeration<TaskStatus>
+          value = new TransportStatusEnumFactory().fromType(TypeConvertor.castToCode(value));
+          this.status = (Enumeration) value; // Enumeration<TransportStatus>
         } else if (name.equals("statusReason")) {
           this.statusReason = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
-        } else if (name.equals("businessStatus")) {
-          this.businessStatus = TypeConvertor.castToCodeableConcept(value); // CodeableConcept
         } else if (name.equals("intent")) {
-          value = new TaskIntentEnumFactory().fromType(TypeConvertor.castToCode(value));
-          this.intent = (Enumeration) value; // Enumeration<TaskIntent>
+          value = new TransportIntentEnumFactory().fromType(TypeConvertor.castToCode(value));
+          this.intent = (Enumeration) value; // Enumeration<TransportIntent>
         } else if (name.equals("priority")) {
           value = new RequestPriorityEnumFactory().fromType(TypeConvertor.castToCode(value));
           this.priority = (Enumeration) value; // Enumeration<RequestPriority>
@@ -5039,8 +5013,8 @@ public class Task extends DomainResource {
           this.for_ = TypeConvertor.castToReference(value); // Reference
         } else if (name.equals("encounter")) {
           this.encounter = TypeConvertor.castToReference(value); // Reference
-        } else if (name.equals("executionPeriod")) {
-          this.executionPeriod = TypeConvertor.castToPeriod(value); // Period
+        } else if (name.equals("completionTime")) {
+          this.completionTime = TypeConvertor.castToDateTime(value); // DateTimeType
         } else if (name.equals("authoredOn")) {
           this.authoredOn = TypeConvertor.castToDateTime(value); // DateTimeType
         } else if (name.equals("lastModified")) {
@@ -5064,11 +5038,17 @@ public class Task extends DomainResource {
         } else if (name.equals("relevantHistory")) {
           this.getRelevantHistory().add(TypeConvertor.castToReference(value));
         } else if (name.equals("restriction")) {
-          this.restriction = (TaskRestrictionComponent) value; // TaskRestrictionComponent
+          this.restriction = (TransportRestrictionComponent) value; // TransportRestrictionComponent
         } else if (name.equals("input")) {
           this.getInput().add((ParameterComponent) value);
         } else if (name.equals("output")) {
-          this.getOutput().add((TaskOutputComponent) value);
+          this.getOutput().add((TransportOutputComponent) value);
+        } else if (name.equals("requestedLocation")) {
+          this.requestedLocation = TypeConvertor.castToReference(value); // Reference
+        } else if (name.equals("currentLocation")) {
+          this.currentLocation = TypeConvertor.castToReference(value); // Reference
+        } else if (name.equals("history")) {
+          this.history = TypeConvertor.castToReference(value); // Reference
         } else
           return super.setProperty(name, value);
         return value;
@@ -5085,7 +5065,6 @@ public class Task extends DomainResource {
         case -995410646:  return addPartOf(); 
         case -892481550:  return getStatusElement();
         case 2051346646:  return getStatusReason();
-        case 2008591314:  return getBusinessStatus();
         case -1183762788:  return getIntentElement();
         case -1165461084:  return getPriorityElement();
         case 3059181:  return getCode();
@@ -5093,7 +5072,7 @@ public class Task extends DomainResource {
         case 97604824:  return getFocus();
         case 101577:  return getFor();
         case 1524132147:  return getEncounter();
-        case 1218624249:  return getExecutionPeriod();
+        case 1146641609:  return getCompletionTimeElement();
         case -1500852503:  return getAuthoredOnElement();
         case 1959003007:  return getLastModifiedElement();
         case 693933948:  return getRequester();
@@ -5108,6 +5087,9 @@ public class Task extends DomainResource {
         case -1561062452:  return getRestriction();
         case 100358090:  return addInput(); 
         case -1005512447:  return addOutput(); 
+        case -1788392125:  return getRequestedLocation();
+        case -140429234:  return getCurrentLocation();
+        case 926934164:  return getHistory();
         default: return super.makeProperty(hash, name);
         }
 
@@ -5124,7 +5106,6 @@ public class Task extends DomainResource {
         case -995410646: /*partOf*/ return new String[] {"Reference"};
         case -892481550: /*status*/ return new String[] {"code"};
         case 2051346646: /*statusReason*/ return new String[] {"CodeableConcept"};
-        case 2008591314: /*businessStatus*/ return new String[] {"CodeableConcept"};
         case -1183762788: /*intent*/ return new String[] {"code"};
         case -1165461084: /*priority*/ return new String[] {"code"};
         case 3059181: /*code*/ return new String[] {"CodeableConcept"};
@@ -5132,7 +5113,7 @@ public class Task extends DomainResource {
         case 97604824: /*focus*/ return new String[] {"Reference"};
         case 101577: /*for*/ return new String[] {"Reference"};
         case 1524132147: /*encounter*/ return new String[] {"Reference"};
-        case 1218624249: /*executionPeriod*/ return new String[] {"Period"};
+        case 1146641609: /*completionTime*/ return new String[] {"dateTime"};
         case -1500852503: /*authoredOn*/ return new String[] {"dateTime"};
         case 1959003007: /*lastModified*/ return new String[] {"dateTime"};
         case 693933948: /*requester*/ return new String[] {"Reference"};
@@ -5147,6 +5128,9 @@ public class Task extends DomainResource {
         case -1561062452: /*restriction*/ return new String[] {};
         case 100358090: /*input*/ return new String[] {};
         case -1005512447: /*output*/ return new String[] {};
+        case -1788392125: /*requestedLocation*/ return new String[] {"Reference"};
+        case -140429234: /*currentLocation*/ return new String[] {"Reference"};
+        case 926934164: /*history*/ return new String[] {"Reference"};
         default: return super.getTypesForProperty(hash, name);
         }
 
@@ -5158,10 +5142,10 @@ public class Task extends DomainResource {
           return addIdentifier();
         }
         else if (name.equals("instantiatesCanonical")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Task.instantiatesCanonical");
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.instantiatesCanonical");
         }
         else if (name.equals("instantiatesUri")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Task.instantiatesUri");
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.instantiatesUri");
         }
         else if (name.equals("basedOn")) {
           return addBasedOn();
@@ -5174,28 +5158,24 @@ public class Task extends DomainResource {
           return addPartOf();
         }
         else if (name.equals("status")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Task.status");
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.status");
         }
         else if (name.equals("statusReason")) {
           this.statusReason = new CodeableConcept();
           return this.statusReason;
         }
-        else if (name.equals("businessStatus")) {
-          this.businessStatus = new CodeableConcept();
-          return this.businessStatus;
-        }
         else if (name.equals("intent")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Task.intent");
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.intent");
         }
         else if (name.equals("priority")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Task.priority");
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.priority");
         }
         else if (name.equals("code")) {
           this.code = new CodeableConcept();
           return this.code;
         }
         else if (name.equals("description")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Task.description");
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.description");
         }
         else if (name.equals("focus")) {
           this.focus = new Reference();
@@ -5209,15 +5189,14 @@ public class Task extends DomainResource {
           this.encounter = new Reference();
           return this.encounter;
         }
-        else if (name.equals("executionPeriod")) {
-          this.executionPeriod = new Period();
-          return this.executionPeriod;
+        else if (name.equals("completionTime")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.completionTime");
         }
         else if (name.equals("authoredOn")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Task.authoredOn");
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.authoredOn");
         }
         else if (name.equals("lastModified")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Task.lastModified");
+          throw new FHIRException("Cannot call addChild on a primitive type Transport.lastModified");
         }
         else if (name.equals("requester")) {
           this.requester = new Reference();
@@ -5252,7 +5231,7 @@ public class Task extends DomainResource {
           return addRelevantHistory();
         }
         else if (name.equals("restriction")) {
-          this.restriction = new TaskRestrictionComponent();
+          this.restriction = new TransportRestrictionComponent();
           return this.restriction;
         }
         else if (name.equals("input")) {
@@ -5261,22 +5240,34 @@ public class Task extends DomainResource {
         else if (name.equals("output")) {
           return addOutput();
         }
+        else if (name.equals("requestedLocation")) {
+          this.requestedLocation = new Reference();
+          return this.requestedLocation;
+        }
+        else if (name.equals("currentLocation")) {
+          this.currentLocation = new Reference();
+          return this.currentLocation;
+        }
+        else if (name.equals("history")) {
+          this.history = new Reference();
+          return this.history;
+        }
         else
           return super.addChild(name);
       }
 
   public String fhirType() {
-    return "Task";
+    return "Transport";
 
   }
 
-      public Task copy() {
-        Task dst = new Task();
+      public Transport copy() {
+        Transport dst = new Transport();
         copyValues(dst);
         return dst;
       }
 
-      public void copyValues(Task dst) {
+      public void copyValues(Transport dst) {
         super.copyValues(dst);
         if (identifier != null) {
           dst.identifier = new ArrayList<Identifier>();
@@ -5298,7 +5289,6 @@ public class Task extends DomainResource {
         };
         dst.status = status == null ? null : status.copy();
         dst.statusReason = statusReason == null ? null : statusReason.copy();
-        dst.businessStatus = businessStatus == null ? null : businessStatus.copy();
         dst.intent = intent == null ? null : intent.copy();
         dst.priority = priority == null ? null : priority.copy();
         dst.code = code == null ? null : code.copy();
@@ -5306,7 +5296,7 @@ public class Task extends DomainResource {
         dst.focus = focus == null ? null : focus.copy();
         dst.for_ = for_ == null ? null : for_.copy();
         dst.encounter = encounter == null ? null : encounter.copy();
-        dst.executionPeriod = executionPeriod == null ? null : executionPeriod.copy();
+        dst.completionTime = completionTime == null ? null : completionTime.copy();
         dst.authoredOn = authoredOn == null ? null : authoredOn.copy();
         dst.lastModified = lastModified == null ? null : lastModified.copy();
         dst.requester = requester == null ? null : requester.copy();
@@ -5341,13 +5331,16 @@ public class Task extends DomainResource {
             dst.input.add(i.copy());
         };
         if (output != null) {
-          dst.output = new ArrayList<TaskOutputComponent>();
-          for (TaskOutputComponent i : output)
+          dst.output = new ArrayList<TransportOutputComponent>();
+          for (TransportOutputComponent i : output)
             dst.output.add(i.copy());
         };
+        dst.requestedLocation = requestedLocation == null ? null : requestedLocation.copy();
+        dst.currentLocation = currentLocation == null ? null : currentLocation.copy();
+        dst.history = history == null ? null : history.copy();
       }
 
-      protected Task typedCopy() {
+      protected Transport typedCopy() {
         return copy();
       }
 
@@ -5355,478 +5348,92 @@ public class Task extends DomainResource {
       public boolean equalsDeep(Base other_) {
         if (!super.equalsDeep(other_))
           return false;
-        if (!(other_ instanceof Task))
+        if (!(other_ instanceof Transport))
           return false;
-        Task o = (Task) other_;
+        Transport o = (Transport) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(instantiatesCanonical, o.instantiatesCanonical, true)
            && compareDeep(instantiatesUri, o.instantiatesUri, true) && compareDeep(basedOn, o.basedOn, true)
            && compareDeep(groupIdentifier, o.groupIdentifier, true) && compareDeep(partOf, o.partOf, true)
-           && compareDeep(status, o.status, true) && compareDeep(statusReason, o.statusReason, true) && compareDeep(businessStatus, o.businessStatus, true)
-           && compareDeep(intent, o.intent, true) && compareDeep(priority, o.priority, true) && compareDeep(code, o.code, true)
-           && compareDeep(description, o.description, true) && compareDeep(focus, o.focus, true) && compareDeep(for_, o.for_, true)
-           && compareDeep(encounter, o.encounter, true) && compareDeep(executionPeriod, o.executionPeriod, true)
-           && compareDeep(authoredOn, o.authoredOn, true) && compareDeep(lastModified, o.lastModified, true)
-           && compareDeep(requester, o.requester, true) && compareDeep(performerType, o.performerType, true)
-           && compareDeep(owner, o.owner, true) && compareDeep(location, o.location, true) && compareDeep(reasonCode, o.reasonCode, true)
-           && compareDeep(reasonReference, o.reasonReference, true) && compareDeep(insurance, o.insurance, true)
-           && compareDeep(note, o.note, true) && compareDeep(relevantHistory, o.relevantHistory, true) && compareDeep(restriction, o.restriction, true)
-           && compareDeep(input, o.input, true) && compareDeep(output, o.output, true);
+           && compareDeep(status, o.status, true) && compareDeep(statusReason, o.statusReason, true) && compareDeep(intent, o.intent, true)
+           && compareDeep(priority, o.priority, true) && compareDeep(code, o.code, true) && compareDeep(description, o.description, true)
+           && compareDeep(focus, o.focus, true) && compareDeep(for_, o.for_, true) && compareDeep(encounter, o.encounter, true)
+           && compareDeep(completionTime, o.completionTime, true) && compareDeep(authoredOn, o.authoredOn, true)
+           && compareDeep(lastModified, o.lastModified, true) && compareDeep(requester, o.requester, true)
+           && compareDeep(performerType, o.performerType, true) && compareDeep(owner, o.owner, true) && compareDeep(location, o.location, true)
+           && compareDeep(reasonCode, o.reasonCode, true) && compareDeep(reasonReference, o.reasonReference, true)
+           && compareDeep(insurance, o.insurance, true) && compareDeep(note, o.note, true) && compareDeep(relevantHistory, o.relevantHistory, true)
+           && compareDeep(restriction, o.restriction, true) && compareDeep(input, o.input, true) && compareDeep(output, o.output, true)
+           && compareDeep(requestedLocation, o.requestedLocation, true) && compareDeep(currentLocation, o.currentLocation, true)
+           && compareDeep(history, o.history, true);
       }
 
       @Override
       public boolean equalsShallow(Base other_) {
         if (!super.equalsShallow(other_))
           return false;
-        if (!(other_ instanceof Task))
+        if (!(other_ instanceof Transport))
           return false;
-        Task o = (Task) other_;
+        Transport o = (Transport) other_;
         return compareValues(instantiatesCanonical, o.instantiatesCanonical, true) && compareValues(instantiatesUri, o.instantiatesUri, true)
            && compareValues(status, o.status, true) && compareValues(intent, o.intent, true) && compareValues(priority, o.priority, true)
-           && compareValues(description, o.description, true) && compareValues(authoredOn, o.authoredOn, true)
-           && compareValues(lastModified, o.lastModified, true);
+           && compareValues(description, o.description, true) && compareValues(completionTime, o.completionTime, true)
+           && compareValues(authoredOn, o.authoredOn, true) && compareValues(lastModified, o.lastModified, true)
+          ;
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, instantiatesCanonical
-          , instantiatesUri, basedOn, groupIdentifier, partOf, status, statusReason, businessStatus
-          , intent, priority, code, description, focus, for_, encounter, executionPeriod
-          , authoredOn, lastModified, requester, performerType, owner, location, reasonCode
-          , reasonReference, insurance, note, relevantHistory, restriction, input, output
-          );
+          , instantiatesUri, basedOn, groupIdentifier, partOf, status, statusReason, intent
+          , priority, code, description, focus, for_, encounter, completionTime, authoredOn
+          , lastModified, requester, performerType, owner, location, reasonCode, reasonReference
+          , insurance, note, relevantHistory, restriction, input, output, requestedLocation
+          , currentLocation, history);
       }
 
   @Override
   public ResourceType getResourceType() {
-    return ResourceType.Task;
+    return ResourceType.Transport;
    }
-
- /**
-   * Search parameter: <b>authored-on</b>
-   * <p>
-   * Description: <b>Search by creation date</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Task.authoredOn</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="authored-on", path="Task.authoredOn", description="Search by creation date", type="date" )
-  public static final String SP_AUTHORED_ON = "authored-on";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>authored-on</b>
-   * <p>
-   * Description: <b>Search by creation date</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Task.authoredOn</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.DateClientParam AUTHORED_ON = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_AUTHORED_ON);
-
- /**
-   * Search parameter: <b>based-on</b>
-   * <p>
-   * Description: <b>Search by requests this task is based on</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.basedOn</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="based-on", path="Task.basedOn", description="Search by requests this task is based on", type="reference", target={Account.class, ActivityDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CapabilityStatement2.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, ConceptMap2.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentManifest.class, DocumentReference.class, Encounter.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, FormularyItem.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationUsage.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestGroup.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestReport.class, TestScript.class, Transport.class, ValueSet.class, VerificationResult.class, VisionPrescription.class } )
-  public static final String SP_BASED_ON = "based-on";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>based-on</b>
-   * <p>
-   * Description: <b>Search by requests this task is based on</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.basedOn</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam BASED_ON = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_BASED_ON);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Task:based-on</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_BASED_ON = new ca.uhn.fhir.model.api.Include("Task:based-on").toLocked();
-
- /**
-   * Search parameter: <b>business-status</b>
-   * <p>
-   * Description: <b>Search by business status</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.businessStatus</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="business-status", path="Task.businessStatus", description="Search by business status", type="token" )
-  public static final String SP_BUSINESS_STATUS = "business-status";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>business-status</b>
-   * <p>
-   * Description: <b>Search by business status</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.businessStatus</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam BUSINESS_STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_BUSINESS_STATUS);
-
- /**
-   * Search parameter: <b>code</b>
-   * <p>
-   * Description: <b>Search by task code</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.code</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="code", path="Task.code", description="Search by task code", type="token" )
-  public static final String SP_CODE = "code";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>code</b>
-   * <p>
-   * Description: <b>Search by task code</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.code</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CODE);
-
- /**
-   * Search parameter: <b>encounter</b>
-   * <p>
-   * Description: <b>Search by encounter</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.encounter</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="encounter", path="Task.encounter", description="Search by encounter", type="reference", target={Encounter.class } )
-  public static final String SP_ENCOUNTER = "encounter";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>encounter</b>
-   * <p>
-   * Description: <b>Search by encounter</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.encounter</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ENCOUNTER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ENCOUNTER);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Task:encounter</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_ENCOUNTER = new ca.uhn.fhir.model.api.Include("Task:encounter").toLocked();
-
- /**
-   * Search parameter: <b>focus</b>
-   * <p>
-   * Description: <b>Search by task focus</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.focus</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="focus", path="Task.focus", description="Search by task focus", type="reference", target={Account.class, ActivityDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CapabilityStatement2.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, ConceptMap2.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentManifest.class, DocumentReference.class, Encounter.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, FormularyItem.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationUsage.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestGroup.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestReport.class, TestScript.class, Transport.class, ValueSet.class, VerificationResult.class, VisionPrescription.class } )
-  public static final String SP_FOCUS = "focus";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>focus</b>
-   * <p>
-   * Description: <b>Search by task focus</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.focus</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam FOCUS = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_FOCUS);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Task:focus</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_FOCUS = new ca.uhn.fhir.model.api.Include("Task:focus").toLocked();
-
- /**
-   * Search parameter: <b>group-identifier</b>
-   * <p>
-   * Description: <b>Search by group identifier</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.groupIdentifier</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="group-identifier", path="Task.groupIdentifier", description="Search by group identifier", type="token" )
-  public static final String SP_GROUP_IDENTIFIER = "group-identifier";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>group-identifier</b>
-   * <p>
-   * Description: <b>Search by group identifier</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.groupIdentifier</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam GROUP_IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_GROUP_IDENTIFIER);
 
  /**
    * Search parameter: <b>identifier</b>
    * <p>
-   * Description: <b>Search for a task instance by its business identifier</b><br>
+   * Description: <b>External identifier</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Task.identifier</b><br>
+   * Path: <b>Transport.identifier</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="identifier", path="Task.identifier", description="Search for a task instance by its business identifier", type="token" )
+  @SearchParamDefinition(name="identifier", path="Transport.identifier", description="External identifier", type="token" )
   public static final String SP_IDENTIFIER = "identifier";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
    * <p>
-   * Description: <b>Search for a task instance by its business identifier</b><br>
+   * Description: <b>External identifier</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Task.identifier</b><br>
+   * Path: <b>Transport.identifier</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
 
  /**
-   * Search parameter: <b>intent</b>
-   * <p>
-   * Description: <b>Search by task intent</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.intent</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="intent", path="Task.intent", description="Search by task intent", type="token" )
-  public static final String SP_INTENT = "intent";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>intent</b>
-   * <p>
-   * Description: <b>Search by task intent</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.intent</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam INTENT = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_INTENT);
-
- /**
-   * Search parameter: <b>modified</b>
-   * <p>
-   * Description: <b>Search by last modification date</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Task.lastModified</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="modified", path="Task.lastModified", description="Search by last modification date", type="date" )
-  public static final String SP_MODIFIED = "modified";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>modified</b>
-   * <p>
-   * Description: <b>Search by last modification date</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Task.lastModified</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.DateClientParam MODIFIED = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_MODIFIED);
-
- /**
-   * Search parameter: <b>owner</b>
-   * <p>
-   * Description: <b>Search by task owner</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.owner</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="owner", path="Task.owner", description="Search by task owner", type="reference", target={CareTeam.class, Device.class, HealthcareService.class, Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
-  public static final String SP_OWNER = "owner";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>owner</b>
-   * <p>
-   * Description: <b>Search by task owner</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.owner</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam OWNER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_OWNER);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Task:owner</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_OWNER = new ca.uhn.fhir.model.api.Include("Task:owner").toLocked();
-
- /**
-   * Search parameter: <b>part-of</b>
-   * <p>
-   * Description: <b>Search by task this task is part of</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.partOf</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="part-of", path="Task.partOf", description="Search by task this task is part of", type="reference", target={Task.class } )
-  public static final String SP_PART_OF = "part-of";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>part-of</b>
-   * <p>
-   * Description: <b>Search by task this task is part of</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.partOf</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PART_OF = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PART_OF);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Task:part-of</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PART_OF = new ca.uhn.fhir.model.api.Include("Task:part-of").toLocked();
-
- /**
-   * Search parameter: <b>patient</b>
-   * <p>
-   * Description: <b>Search by patient</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.for.where(resolve() is Patient)</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="patient", path="Task.for.where(resolve() is Patient)", description="Search by patient", type="reference", target={Account.class, ActivityDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CapabilityStatement2.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, ConceptMap2.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentManifest.class, DocumentReference.class, Encounter.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, FormularyItem.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationUsage.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestGroup.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestReport.class, TestScript.class, Transport.class, ValueSet.class, VerificationResult.class, VisionPrescription.class } )
-  public static final String SP_PATIENT = "patient";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
-   * <p>
-   * Description: <b>Search by patient</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.for.where(resolve() is Patient)</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Task:patient</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("Task:patient").toLocked();
-
- /**
-   * Search parameter: <b>performer</b>
-   * <p>
-   * Description: <b>Search by recommended type of performer (e.g., Requester, Performer, Scheduler).</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.performerType</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="performer", path="Task.performerType", description="Search by recommended type of performer (e.g., Requester, Performer, Scheduler).", type="token" )
-  public static final String SP_PERFORMER = "performer";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>performer</b>
-   * <p>
-   * Description: <b>Search by recommended type of performer (e.g., Requester, Performer, Scheduler).</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.performerType</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam PERFORMER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_PERFORMER);
-
- /**
-   * Search parameter: <b>period</b>
-   * <p>
-   * Description: <b>Search by period Task is/was underway</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Task.executionPeriod</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="period", path="Task.executionPeriod", description="Search by period Task is/was underway", type="date" )
-  public static final String SP_PERIOD = "period";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>period</b>
-   * <p>
-   * Description: <b>Search by period Task is/was underway</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Task.executionPeriod</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.DateClientParam PERIOD = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_PERIOD);
-
- /**
-   * Search parameter: <b>priority</b>
-   * <p>
-   * Description: <b>Search by task priority</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.priority</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="priority", path="Task.priority", description="Search by task priority", type="token" )
-  public static final String SP_PRIORITY = "priority";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>priority</b>
-   * <p>
-   * Description: <b>Search by task priority</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Task.priority</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam PRIORITY = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_PRIORITY);
-
- /**
-   * Search parameter: <b>requester</b>
-   * <p>
-   * Description: <b>Search by task requester</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.requester</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="requester", path="Task.requester", description="Search by task requester", type="reference", target={Device.class, Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
-  public static final String SP_REQUESTER = "requester";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>requester</b>
-   * <p>
-   * Description: <b>Search by task requester</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.requester</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REQUESTER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REQUESTER);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Task:requester</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_REQUESTER = new ca.uhn.fhir.model.api.Include("Task:requester").toLocked();
-
- /**
    * Search parameter: <b>status</b>
    * <p>
-   * Description: <b>Search by task status</b><br>
+   * Description: <b>in-progress | completed | entered-in-error</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Task.status</b><br>
+   * Path: <b>Transport.status</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="status", path="Task.status", description="Search by task status", type="token" )
+  @SearchParamDefinition(name="status", path="Transport.status", description="in-progress | completed | entered-in-error", type="token" )
   public static final String SP_STATUS = "status";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>status</b>
    * <p>
-   * Description: <b>Search by task status</b><br>
+   * Description: <b>in-progress | completed | entered-in-error</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Task.status</b><br>
+   * Path: <b>Transport.status</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
-
- /**
-   * Search parameter: <b>subject</b>
-   * <p>
-   * Description: <b>Search by subject</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.for</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="subject", path="Task.for", description="Search by subject", type="reference", target={Account.class, ActivityDefinition.class, AdministrableProductDefinition.class, AdverseEvent.class, AllergyIntolerance.class, Appointment.class, AppointmentResponse.class, ArtifactAssessment.class, AuditEvent.class, Basic.class, Binary.class, BiologicallyDerivedProduct.class, BodyStructure.class, Bundle.class, CapabilityStatement.class, CapabilityStatement2.class, CarePlan.class, CareTeam.class, ChargeItem.class, ChargeItemDefinition.class, Citation.class, Claim.class, ClaimResponse.class, ClinicalImpression.class, ClinicalUseDefinition.class, CodeSystem.class, Communication.class, CommunicationRequest.class, CompartmentDefinition.class, Composition.class, ConceptMap.class, ConceptMap2.class, Condition.class, ConditionDefinition.class, Consent.class, Contract.class, Coverage.class, CoverageEligibilityRequest.class, CoverageEligibilityResponse.class, DetectedIssue.class, Device.class, DeviceDefinition.class, DeviceDispense.class, DeviceMetric.class, DeviceRequest.class, DeviceUsage.class, DiagnosticReport.class, DocumentManifest.class, DocumentReference.class, Encounter.class, Endpoint.class, EnrollmentRequest.class, EnrollmentResponse.class, EpisodeOfCare.class, EventDefinition.class, Evidence.class, EvidenceReport.class, EvidenceVariable.class, ExampleScenario.class, ExplanationOfBenefit.class, FamilyMemberHistory.class, Flag.class, FormularyItem.class, Goal.class, GraphDefinition.class, Group.class, GuidanceResponse.class, HealthcareService.class, ImagingSelection.class, ImagingStudy.class, Immunization.class, ImmunizationEvaluation.class, ImmunizationRecommendation.class, ImplementationGuide.class, Ingredient.class, InsurancePlan.class, InventoryReport.class, Invoice.class, Library.class, Linkage.class, ListResource.class, Location.class, ManufacturedItemDefinition.class, Measure.class, MeasureReport.class, Medication.class, MedicationAdministration.class, MedicationDispense.class, MedicationKnowledge.class, MedicationRequest.class, MedicationUsage.class, MedicinalProductDefinition.class, MessageDefinition.class, MessageHeader.class, MolecularSequence.class, NamingSystem.class, NutritionIntake.class, NutritionOrder.class, NutritionProduct.class, Observation.class, ObservationDefinition.class, OperationDefinition.class, OperationOutcome.class, Organization.class, OrganizationAffiliation.class, PackagedProductDefinition.class, Patient.class, PaymentNotice.class, PaymentReconciliation.class, Permission.class, Person.class, PlanDefinition.class, Practitioner.class, PractitionerRole.class, Procedure.class, Provenance.class, Questionnaire.class, QuestionnaireResponse.class, RegulatedAuthorization.class, RelatedPerson.class, RequestGroup.class, ResearchStudy.class, ResearchSubject.class, RiskAssessment.class, Schedule.class, SearchParameter.class, ServiceRequest.class, Slot.class, Specimen.class, SpecimenDefinition.class, StructureDefinition.class, StructureMap.class, Subscription.class, SubscriptionStatus.class, SubscriptionTopic.class, Substance.class, SubstanceDefinition.class, SubstanceNucleicAcid.class, SubstancePolymer.class, SubstanceProtein.class, SubstanceReferenceInformation.class, SubstanceSourceMaterial.class, SupplyDelivery.class, SupplyRequest.class, Task.class, TerminologyCapabilities.class, TestReport.class, TestScript.class, Transport.class, ValueSet.class, VerificationResult.class, VisionPrescription.class } )
-  public static final String SP_SUBJECT = "subject";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>subject</b>
-   * <p>
-   * Description: <b>Search by subject</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.for</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam SUBJECT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_SUBJECT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Task:subject</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_SUBJECT = new ca.uhn.fhir.model.api.Include("Task:subject").toLocked();
 
 
 }

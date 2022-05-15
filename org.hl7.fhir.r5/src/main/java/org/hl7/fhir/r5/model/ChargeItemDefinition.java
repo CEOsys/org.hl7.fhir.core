@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -1157,7 +1157,7 @@ public class ChargeItemDefinition extends MetadataResource {
     /**
      * The defined billing details in this resource pertain to the given product instance(s).
      */
-    @Child(name = "instance", type = {Medication.class, Substance.class, Device.class}, order=20, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "instance", type = {Medication.class, Substance.class, Device.class, DeviceDefinition.class, ActivityDefinition.class, PlanDefinition.class, HealthcareService.class}, order=20, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Instances this definition applies to", formalDefinition="The defined billing details in this resource pertain to the given product instance(s)." )
     protected List<Reference> instance;
 
@@ -2402,7 +2402,7 @@ public class ChargeItemDefinition extends MetadataResource {
       return 0;
     }
     /**
-     * @return {@link #topic} (Descriptive topics related to the content of the library. Topics provide a high-level categorization of the library that can be useful for filtering and searching.)
+     * @return {@link #topic} (Descriptive topics related to the content of the charge item definition. Topics provide a high-level categorization of the charge item definition that can be useful for filtering and searching.)
      */
     public List<CodeableConcept> getTopic() { 
       return new ArrayList<>();
@@ -2626,7 +2626,7 @@ public class ChargeItemDefinition extends MetadataResource {
         children.add(new Property("lastReviewDate", "date", "The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.", 0, 1, lastReviewDate));
         children.add(new Property("effectivePeriod", "Period", "The period during which the charge item definition content was or is planned to be in active use.", 0, 1, effectivePeriod));
         children.add(new Property("code", "CodeableConcept", "The defined billing details in this resource pertain to the given billing code.", 0, 1, code));
-        children.add(new Property("instance", "Reference(Medication|Substance|Device)", "The defined billing details in this resource pertain to the given product instance(s).", 0, java.lang.Integer.MAX_VALUE, instance));
+        children.add(new Property("instance", "Reference(Medication|Substance|Device|DeviceDefinition|ActivityDefinition|PlanDefinition|HealthcareService)", "The defined billing details in this resource pertain to the given product instance(s).", 0, java.lang.Integer.MAX_VALUE, instance));
         children.add(new Property("applicability", "", "Expressions that describe applicability criteria for the billing code.", 0, java.lang.Integer.MAX_VALUE, applicability));
         children.add(new Property("propertyGroup", "", "Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply.", 0, java.lang.Integer.MAX_VALUE, propertyGroup));
       }
@@ -2654,7 +2654,7 @@ public class ChargeItemDefinition extends MetadataResource {
         case -1687512484: /*lastReviewDate*/  return new Property("lastReviewDate", "date", "The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.", 0, 1, lastReviewDate);
         case -403934648: /*effectivePeriod*/  return new Property("effectivePeriod", "Period", "The period during which the charge item definition content was or is planned to be in active use.", 0, 1, effectivePeriod);
         case 3059181: /*code*/  return new Property("code", "CodeableConcept", "The defined billing details in this resource pertain to the given billing code.", 0, 1, code);
-        case 555127957: /*instance*/  return new Property("instance", "Reference(Medication|Substance|Device)", "The defined billing details in this resource pertain to the given product instance(s).", 0, java.lang.Integer.MAX_VALUE, instance);
+        case 555127957: /*instance*/  return new Property("instance", "Reference(Medication|Substance|Device|DeviceDefinition|ActivityDefinition|PlanDefinition|HealthcareService)", "The defined billing details in this resource pertain to the given product instance(s).", 0, java.lang.Integer.MAX_VALUE, instance);
         case -1526770491: /*applicability*/  return new Property("applicability", "", "Expressions that describe applicability criteria for the billing code.", 0, java.lang.Integer.MAX_VALUE, applicability);
         case -1041594966: /*propertyGroup*/  return new Property("propertyGroup", "", "Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply.", 0, java.lang.Integer.MAX_VALUE, propertyGroup);
         default: return super.getNamedProperty(_hash, _name, _checkValid);

@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,7 +51,7 @@ import ca.uhn.fhir.model.api.annotation.Block;
  * A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models.
  */
 @ResourceDef(name="ConceptMap2", profile="http://hl7.org/fhir/StructureDefinition/ConceptMap2")
-public class ConceptMap2 extends CanonicalResource {
+public class ConceptMap2 extends MetadataResource {
 
     @Block()
     public static class ConceptMap2GroupComponent extends BackboneElement implements IBaseBackboneElement {
@@ -948,10 +948,10 @@ public class ConceptMap2 extends CanonicalResource {
         protected List<OtherElementComponent> dependsOn;
 
         /**
-         * A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the relationship (e.g., equivalent) cannot be relied on.
+         * Product is the output of a ConceptMap that provides additional values relevant to the interpretation of the mapping target.
          */
         @Child(name = "product", type = {OtherElementComponent.class}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-        @Description(shortDefinition="Other concepts that this mapping also produces", formalDefinition="A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the relationship (e.g., equivalent) cannot be relied on." )
+        @Description(shortDefinition="Other concepts that this mapping also produces", formalDefinition="Product is the output of a ConceptMap that provides additional values relevant to the interpretation of the mapping target." )
         protected List<OtherElementComponent> product;
 
         private static final long serialVersionUID = 1705844456L;
@@ -1266,7 +1266,7 @@ public class ConceptMap2 extends CanonicalResource {
         }
 
         /**
-         * @return {@link #product} (A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the relationship (e.g., equivalent) cannot be relied on.)
+         * @return {@link #product} (Product is the output of a ConceptMap that provides additional values relevant to the interpretation of the mapping target.)
          */
         public List<OtherElementComponent> getProduct() { 
           if (this.product == null)
@@ -1326,7 +1326,7 @@ public class ConceptMap2 extends CanonicalResource {
           children.add(new Property("relationship", "code", "The relationship between the source and target concepts. The relationship is read from source to target (e.g. source-is-narrower-than-target).", 0, 1, relationship));
           children.add(new Property("comment", "string", "A description of status/issues in mapping that conveys additional information not represented in  the structured data.", 0, 1, comment));
           children.add(new Property("dependsOn", "", "A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.", 0, java.lang.Integer.MAX_VALUE, dependsOn));
-          children.add(new Property("product", "@ConceptMap2.group.element.target.dependsOn", "A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the relationship (e.g., equivalent) cannot be relied on.", 0, java.lang.Integer.MAX_VALUE, product));
+          children.add(new Property("product", "@ConceptMap2.group.element.target.dependsOn", "Product is the output of a ConceptMap that provides additional values relevant to the interpretation of the mapping target.", 0, java.lang.Integer.MAX_VALUE, product));
         }
 
         @Override
@@ -1338,7 +1338,7 @@ public class ConceptMap2 extends CanonicalResource {
           case -261851592: /*relationship*/  return new Property("relationship", "code", "The relationship between the source and target concepts. The relationship is read from source to target (e.g. source-is-narrower-than-target).", 0, 1, relationship);
           case 950398559: /*comment*/  return new Property("comment", "string", "A description of status/issues in mapping that conveys additional information not represented in  the structured data.", 0, 1, comment);
           case -1109214266: /*dependsOn*/  return new Property("dependsOn", "", "A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.", 0, java.lang.Integer.MAX_VALUE, dependsOn);
-          case -309474065: /*product*/  return new Property("product", "@ConceptMap2.group.element.target.dependsOn", "A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the relationship (e.g., equivalent) cannot be relied on.", 0, java.lang.Integer.MAX_VALUE, product);
+          case -309474065: /*product*/  return new Property("product", "@ConceptMap2.group.element.target.dependsOn", "Product is the output of a ConceptMap that provides additional values relevant to the interpretation of the mapping target.", 0, java.lang.Integer.MAX_VALUE, product);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -1531,10 +1531,10 @@ public class ConceptMap2 extends CanonicalResource {
     @Block()
     public static class OtherElementComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * A reference to an element that holds a coded value that corresponds to a code system property. The idea is that the information model carries an element somewhere that is labeled to correspond with a code system property.
+         * A reference to a property that holds a value the map depends on. This value can be supplied to the $translate operation to select the appropriate targets.
          */
         @Child(name = "property", type = {UriType.class}, order=1, min=1, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Reference to property mapping depends on", formalDefinition="A reference to an element that holds a coded value that corresponds to a code system property. The idea is that the information model carries an element somewhere that is labeled to correspond with a code system property." )
+        @Description(shortDefinition="A reference to a property that may be required to refine the mapping", formalDefinition="A reference to a property that holds a value the map depends on. This value can be supplied to the $translate operation to select the appropriate targets." )
         protected UriType property;
 
         /**
@@ -1563,7 +1563,7 @@ public class ConceptMap2 extends CanonicalResource {
       }
 
         /**
-         * @return {@link #property} (A reference to an element that holds a coded value that corresponds to a code system property. The idea is that the information model carries an element somewhere that is labeled to correspond with a code system property.). This is the underlying object with id, value and extensions. The accessor "getProperty" gives direct access to the value
+         * @return {@link #property} (A reference to a property that holds a value the map depends on. This value can be supplied to the $translate operation to select the appropriate targets.). This is the underlying object with id, value and extensions. The accessor "getProperty" gives direct access to the value
          */
         public UriType getPropertyElement() { 
           if (this.property == null)
@@ -1583,7 +1583,7 @@ public class ConceptMap2 extends CanonicalResource {
         }
 
         /**
-         * @param value {@link #property} (A reference to an element that holds a coded value that corresponds to a code system property. The idea is that the information model carries an element somewhere that is labeled to correspond with a code system property.). This is the underlying object with id, value and extensions. The accessor "getProperty" gives direct access to the value
+         * @param value {@link #property} (A reference to a property that holds a value the map depends on. This value can be supplied to the $translate operation to select the appropriate targets.). This is the underlying object with id, value and extensions. The accessor "getProperty" gives direct access to the value
          */
         public OtherElementComponent setPropertyElement(UriType value) { 
           this.property = value;
@@ -1591,14 +1591,14 @@ public class ConceptMap2 extends CanonicalResource {
         }
 
         /**
-         * @return A reference to an element that holds a coded value that corresponds to a code system property. The idea is that the information model carries an element somewhere that is labeled to correspond with a code system property.
+         * @return A reference to a property that holds a value the map depends on. This value can be supplied to the $translate operation to select the appropriate targets.
          */
         public String getProperty() { 
           return this.property == null ? null : this.property.getValue();
         }
 
         /**
-         * @param value A reference to an element that holds a coded value that corresponds to a code system property. The idea is that the information model carries an element somewhere that is labeled to correspond with a code system property.
+         * @param value A reference to a property that holds a value the map depends on. This value can be supplied to the $translate operation to select the appropriate targets.
          */
         public OtherElementComponent setProperty(String value) { 
             if (this.property == null)
@@ -1765,14 +1765,14 @@ public class ConceptMap2 extends CanonicalResource {
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("property", "uri", "A reference to an element that holds a coded value that corresponds to a code system property. The idea is that the information model carries an element somewhere that is labeled to correspond with a code system property.", 0, 1, property));
+          children.add(new Property("property", "uri", "A reference to a property that holds a value the map depends on. This value can be supplied to the $translate operation to select the appropriate targets.", 0, 1, property));
           children.add(new Property("value[x]", "code|Coding|string|integer|boolean|dateTime|decimal|uri|id", "Property value that the map depends on.", 0, 1, value));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case -993141291: /*property*/  return new Property("property", "uri", "A reference to an element that holds a coded value that corresponds to a code system property. The idea is that the information model carries an element somewhere that is labeled to correspond with a code system property.", 0, 1, property);
+          case -993141291: /*property*/  return new Property("property", "uri", "A reference to a property that holds a value the map depends on. This value can be supplied to the $translate operation to select the appropriate targets.", 0, 1, property);
           case -1410166417: /*value[x]*/  return new Property("value[x]", "code|Coding|string|integer|boolean|dateTime|decimal|uri|id", "Property value that the map depends on.", 0, 1, value);
           case 111972721: /*value*/  return new Property("value[x]", "code|Coding|string|integer|boolean|dateTime|decimal|uri|id", "Property value that the map depends on.", 0, 1, value);
           case -766209282: /*valueCode*/  return new Property("value[x]", "code", "Property value that the map depends on.", 0, 1, value);
@@ -3445,6 +3445,311 @@ public class ConceptMap2 extends CanonicalResource {
       return getGroup().get(0);
     }
 
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getApprovalDateMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #approvalDate} (The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.). This is the underlying object with id, value and extensions. The accessor "getApprovalDate" gives direct access to the value
+     */
+    public DateType getApprovalDateElement() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"approvalDate\"");
+    }
+
+    public boolean hasApprovalDateElement() { 
+      return false;
+    }
+    public boolean hasApprovalDate() {
+      return false;
+    }
+
+    /**
+     * @param value {@link #approvalDate} (The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.). This is the underlying object with id, value and extensions. The accessor "getApprovalDate" gives direct access to the value
+     */
+    public ConceptMap2 setApprovalDateElement(DateType value) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"approvalDate\"");
+    }
+    public Date getApprovalDate() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"approvalDate\"");
+    }
+    /**
+     * @param value The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
+     */
+    public ConceptMap2 setApprovalDate(Date value) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"approvalDate\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getLastReviewDateMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #lastReviewDate} (The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.). This is the underlying object with id, value and extensions. The accessor "getLastReviewDate" gives direct access to the value
+     */
+    public DateType getLastReviewDateElement() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"lastReviewDate\"");
+    }
+
+    public boolean hasLastReviewDateElement() { 
+      return false;
+    }
+    public boolean hasLastReviewDate() {
+      return false;
+    }
+
+    /**
+     * @param value {@link #lastReviewDate} (The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.). This is the underlying object with id, value and extensions. The accessor "getLastReviewDate" gives direct access to the value
+     */
+    public ConceptMap2 setLastReviewDateElement(DateType value) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"lastReviewDate\"");
+    }
+    public Date getLastReviewDate() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"lastReviewDate\"");
+    }
+    /**
+     * @param value The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
+     */
+    public ConceptMap2 setLastReviewDate(Date value) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"lastReviewDate\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getEffectivePeriodMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #effectivePeriod} (The period during which the concept map2 content was or is planned to be in active use.)
+     */
+    public Period getEffectivePeriod() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"effectivePeriod\"");
+    }
+    public boolean hasEffectivePeriod() { 
+      return false;
+    }
+    /**
+     * @param value {@link #effectivePeriod} (The period during which the concept map2 content was or is planned to be in active use.)
+     */
+    public ConceptMap2 setEffectivePeriod(Period value) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"effectivePeriod\"");
+    }
+
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getTopicMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #topic} (Descriptive topics related to the content of the concept map2. Topics provide a high-level categorization of the concept map2 that can be useful for filtering and searching.)
+     */
+    public List<CodeableConcept> getTopic() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ConceptMap2 setTopic(List<CodeableConcept> theTopic) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"topic\"");
+    }
+    public boolean hasTopic() { 
+      return false;
+    }
+
+    public CodeableConcept addTopic() { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"topic\"");
+    }
+    public ConceptMap2 addTopic(CodeableConcept t) { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"topic\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #topic}, creating it if it does not already exist {2}
+     */
+    public CodeableConcept getTopicFirstRep() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"topic\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getAuthorMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #author} (An individiual or organization primarily involved in the creation and maintenance of the concept map2.)
+     */
+    public List<ContactDetail> getAuthor() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ConceptMap2 setAuthor(List<ContactDetail> theAuthor) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"author\"");
+    }
+    public boolean hasAuthor() { 
+      return false;
+    }
+
+    public ContactDetail addAuthor() { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"author\"");
+    }
+    public ConceptMap2 addAuthor(ContactDetail t) { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"author\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #author}, creating it if it does not already exist {2}
+     */
+    public ContactDetail getAuthorFirstRep() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"author\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getEditorMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #editor} (An individual or organization primarily responsible for internal coherence of the concept map2.)
+     */
+    public List<ContactDetail> getEditor() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ConceptMap2 setEditor(List<ContactDetail> theEditor) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"editor\"");
+    }
+    public boolean hasEditor() { 
+      return false;
+    }
+
+    public ContactDetail addEditor() { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"editor\"");
+    }
+    public ConceptMap2 addEditor(ContactDetail t) { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"editor\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #editor}, creating it if it does not already exist {2}
+     */
+    public ContactDetail getEditorFirstRep() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"editor\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getReviewerMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #reviewer} (An individual or organization primarily responsible for review of some aspect of the concept map2.)
+     */
+    public List<ContactDetail> getReviewer() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ConceptMap2 setReviewer(List<ContactDetail> theReviewer) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"reviewer\"");
+    }
+    public boolean hasReviewer() { 
+      return false;
+    }
+
+    public ContactDetail addReviewer() { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"reviewer\"");
+    }
+    public ConceptMap2 addReviewer(ContactDetail t) { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"reviewer\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #reviewer}, creating it if it does not already exist {2}
+     */
+    public ContactDetail getReviewerFirstRep() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"reviewer\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getEndorserMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #endorser} (An individual or organization responsible for officially endorsing the concept map2 for use in some setting.)
+     */
+    public List<ContactDetail> getEndorser() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ConceptMap2 setEndorser(List<ContactDetail> theEndorser) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"endorser\"");
+    }
+    public boolean hasEndorser() { 
+      return false;
+    }
+
+    public ContactDetail addEndorser() { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"endorser\"");
+    }
+    public ConceptMap2 addEndorser(ContactDetail t) { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"endorser\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #endorser}, creating it if it does not already exist {2}
+     */
+    public ContactDetail getEndorserFirstRep() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"endorser\"");
+    }
+    /**
+     * not supported on this implementation
+     */
+    @Override
+    public int getRelatedArtifactMax() { 
+      return 0;
+    }
+    /**
+     * @return {@link #relatedArtifact} (Related artifacts such as additional documentation, justification, dependencies, bibliographic references, and predecessor and successor artifacts.)
+     */
+    public List<RelatedArtifact> getRelatedArtifact() { 
+      return new ArrayList<>();
+    }
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ConceptMap2 setRelatedArtifact(List<RelatedArtifact> theRelatedArtifact) { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"relatedArtifact\"");
+    }
+    public boolean hasRelatedArtifact() { 
+      return false;
+    }
+
+    public RelatedArtifact addRelatedArtifact() { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"relatedArtifact\"");
+    }
+    public ConceptMap2 addRelatedArtifact(RelatedArtifact t) { //3
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"relatedArtifact\"");
+    }
+    /**
+     * @return The first repetition of repeating field {@link #relatedArtifact}, creating it if it does not already exist {2}
+     */
+    public RelatedArtifact getRelatedArtifactFirstRep() { 
+      throw new Error("The resource type \"ConceptMap2\" does not implement the property \"relatedArtifact\"");
+    }
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("url", "uri", "An absolute URI that is used to identify this concept map when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this concept map is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the concept map is stored on different servers.", 0, 1, url));

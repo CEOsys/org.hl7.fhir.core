@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Sun, May 15, 2022 21:38+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -124,6 +124,7 @@ public class EvidenceReport extends MetadataResource {
             case AMENDEDWITH: return "amendedWith";
             case APPENDEDWITH: return "appendedWith";
             case TRANSFORMEDWITH: return "transformedWith";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -137,6 +138,7 @@ public class EvidenceReport extends MetadataResource {
             case AMENDEDWITH: return "http://hl7.org/fhir/report-relation-type";
             case APPENDEDWITH: return "http://hl7.org/fhir/report-relation-type";
             case TRANSFORMEDWITH: return "http://hl7.org/fhir/report-relation-type";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -150,6 +152,7 @@ public class EvidenceReport extends MetadataResource {
             case AMENDEDWITH: return "This document was.";
             case APPENDEDWITH: return "This document was.";
             case TRANSFORMEDWITH: return "This document was.";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -163,6 +166,7 @@ public class EvidenceReport extends MetadataResource {
             case AMENDEDWITH: return "Amended With";
             case APPENDEDWITH: return "Appended With";
             case TRANSFORMEDWITH: return "Transformed With";
+            case NULL: return null;
             default: return "?";
           }
         }
@@ -3834,7 +3838,7 @@ public class EvidenceReport extends MetadataResource {
       return 0;
     }
     /**
-     * @return {@link #topic} (Descriptive topics related to the content of the library. Topics provide a high-level categorization of the library that can be useful for filtering and searching.)
+     * @return {@link #topic} (Descriptive topics related to the content of the evidence report. Topics provide a high-level categorization of the evidence report that can be useful for filtering and searching.)
      */
     public List<CodeableConcept> getTopic() { 
       return new ArrayList<>();
