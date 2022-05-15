@@ -558,7 +558,7 @@ public class GraphQLEngine implements IGraphQLEngine {
               throw new EGraphQLException("Unknown property "+sel.getField().getName()+" on "+source.fhirType());
 
           if ("id".equals(prop.getName()) && context != null) {
-            prop.getValues().set(0, new IdType(context.getIdPart()));
+            prop.getValues().set(0, new IdType(context.getId()));
           }
 
             List<Base> vl = filter(context, prop, sel.getField().getName(), sel.getField().getArguments(), prop.getValues(), sel.getField().getName().startsWith("_"));
@@ -663,7 +663,7 @@ public class GraphQLEngine implements IGraphQLEngine {
     Argument arg = new Argument();
     params.add(arg);
     arg.setName(getSingleValue(parg));
-    arg.addValue(new StringValue(source.fhirType()+"/"+source.getIdPart()));
+    arg.addValue(new StringValue(source.fhirType()+"/"+source.getId()));
     services.listResources(appInfo, field.getName().substring(0, field.getName().length() - 4), params, list);
     arg = null;
     ObjectValue obj = null;
