@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Sep 5, 2022 20:11+1000 for FHIR vcurrent
+// Generated on Tue, Sep 6, 2022 22:46+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -3283,7 +3283,7 @@ public class Bundle extends Resource implements IBaseBundle {
       } 
     } 
     BundleLinkComponent retVal = new BundleLinkComponent(); 
-    retVal.setRelation(Bundle.LinkRelationTypes.fromCode(theRelation)); 
+    retVal.setRelation(theRelation); 
     getLink().add(retVal); 
     return retVal; 
   }
@@ -5335,7 +5335,7 @@ public class Bundle extends Resource implements IBaseBundle {
       } 
     } 
     BundleLinkComponent retVal = new BundleLinkComponent(); 
-    retVal.setRelation(Bundle.LinkRelationTypes.fromCode(theRelation)); 
+    retVal.setRelation(theRelation); 
     getLink().add(retVal); 
     return retVal; 
   }

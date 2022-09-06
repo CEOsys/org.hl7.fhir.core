@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Tue, Dec 28, 2021 07:16+1100 for FHIR v5.0.0-snapshot1
+// Generated on Tue, Sep 6, 2022 22:46+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -119,25 +119,16 @@ public abstract class Resource extends BaseResource implements IAnyResource {
       return this;
     }
 
-  /**
-   * @return The most complete id value of the resource, containing all
-   * available context and history. Once assigned this value never changes.
-   * NOTE: this value is NOT limited to just the logical id property of a
-   * resource id.
-   * @see IdType
-   * @see IdType#getValue()
-   */
+    /**
+     * @return The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
+     */
     public String getId() { 
       return this.id == null ? null : this.id.getValue();
     }
 
-  /**
-   * @param value The id value of the resource. Once assigned, this value
-   *              never changes.
-   *
-   * @see IdType
-   * @see IdType#setValue(String)
-   */
+    /**
+     * @param value The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
+     */
     public Resource setId(String value) { 
       if (Utilities.noString(value))
         this.id = null;
@@ -148,14 +139,6 @@ public abstract class Resource extends BaseResource implements IAnyResource {
       }
       return this;
     }
-
-  /**
-   * @return  the logical ID part of this resource's id
-   * @see IdType#getIdPart()
-   */
-  public String getIdPart() {
-    return getIdElement().getIdPart();
-  }
 
     /**
      * @return {@link #meta} (The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.)
@@ -431,8 +414,8 @@ public abstract class Resource extends BaseResource implements IAnyResource {
           , language);
       }
 
-  // Manual code (from Configuration.txt):
-  @Override
+// Manual code (from Configuration.txt):
+@Override
   public String getIdBase() {
     return getId();
   }

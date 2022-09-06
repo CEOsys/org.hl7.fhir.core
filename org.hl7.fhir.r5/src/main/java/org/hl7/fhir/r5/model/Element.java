@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Sep 5, 2022 20:11+1000 for FHIR vcurrent
+// Generated on Tue, Sep 6, 2022 22:46+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -56,9 +56,9 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
     /**
      * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
      */
-    @Child(name = "id", type = {StringType.class}, order=0, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "id", type = {IdType.class}, order=0, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Unique id for inter-element referencing", formalDefinition="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." )
-    protected StringType id;
+    protected IdType id;
 
     /**
      * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
@@ -79,12 +79,12 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
     /**
      * @return {@link #id} (Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.). This is the underlying object with id, value and extensions. The accessor "getId" gives direct access to the value
      */
-    public StringType getIdElement() { 
+    public IdType getIdElement() { 
       if (this.id == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Element.id");
         else if (Configuration.doAutoCreate())
-          this.id = new StringType(); // bb
+          this.id = new IdType(); // bb
       return this.id;
     }
 
@@ -99,7 +99,7 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
     /**
      * @param value {@link #id} (Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.). This is the underlying object with id, value and extensions. The accessor "getId" gives direct access to the value
      */
-    public Element setIdElement(StringType value) { 
+    public Element setIdElement(IdType value) { 
       this.id = value;
       return this;
     }
@@ -119,7 +119,7 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
         this.id = null;
       else {
         if (this.id == null)
-          this.id = new StringType();
+          this.id = new IdType();
         this.id.setValue(value);
       }
       return this;
@@ -208,7 +208,7 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
       public Base setProperty(int hash, String name, Base value) throws FHIRException {
         switch (hash) {
         case 3355: // id
-          this.id = TypeConvertor.castToString(value); // IdType
+          this.id = TypeConvertor.castToId(value); // IdType
           return value;
         case -612557761: // extension
           this.getExtension().add(TypeConvertor.castToExtension(value)); // Extension
@@ -221,7 +221,7 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
       @Override
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("id")) {
-          this.id = TypeConvertor.castToString(value); // IdType
+          this.id = TypeConvertor.castToId(value); // IdType
         } else if (name.equals("extension")) {
           this.getExtension().add(TypeConvertor.castToExtension(value));
         } else

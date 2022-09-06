@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Sep 5, 2022 20:11+1000 for FHIR vcurrent
+// Generated on Tue, Sep 6, 2022 22:46+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -1050,7 +1050,7 @@ public class SearchParameter extends CanonicalResource {
     @Child(name = "base", type = {CodeType.class}, order=16, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="The resource type(s) this search parameter applies to", formalDefinition="The base resource type(s) that this search parameter can be used against." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/all-resource-types")
-    protected List<CodeType> base;
+    protected List<Enumeration<AllResourceTypes>> base;
 
     /**
      * The type of value that a search parameter may contain, and how the content is interpreted.
@@ -1068,9 +1068,16 @@ public class SearchParameter extends CanonicalResource {
     protected StringType expression;
 
     /**
+     * An XPath expression that returns a set of elements for the search parameter.
+     */
+    @Child(name = "xpath", type = {StringType.class}, order=19, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="XPath that extracts the values", formalDefinition="An XPath expression that returns a set of elements for the search parameter." )
+    protected StringType xpath;
+
+    /**
      * How the search parameter relates to the set of elements returned by evaluating the expression query.
      */
-    @Child(name = "processingMode", type = {CodeType.class}, order=19, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "processingMode", type = {CodeType.class}, order=20, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="normal | phonetic | other", formalDefinition="How the search parameter relates to the set of elements returned by evaluating the expression query." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/search-processingmode")
     protected Enumeration<SearchProcessingModeType> processingMode;
@@ -1078,14 +1085,14 @@ public class SearchParameter extends CanonicalResource {
     /**
      * FHIRPath expression that defines/sets a complex constraint for when this SearchParameter is applicable.
      */
-    @Child(name = "constraint", type = {StringType.class}, order=20, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "constraint", type = {StringType.class}, order=21, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="FHIRPath expression that constraints the usage of this SearchParamete", formalDefinition="FHIRPath expression that defines/sets a complex constraint for when this SearchParameter is applicable." )
     protected StringType constraint;
 
     /**
      * Types of resource (if a resource is referenced).
      */
-    @Child(name = "target", type = {CodeType.class}, order=21, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "target", type = {CodeType.class}, order=22, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Types of resource (if a resource reference)", formalDefinition="Types of resource (if a resource is referenced)." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/resource-types")
     protected List<CodeType> target;
@@ -1093,21 +1100,21 @@ public class SearchParameter extends CanonicalResource {
     /**
      * Whether multiple values are allowed for each time the parameter exists. Values are separated by commas, and the parameter matches if any of the values match.
      */
-    @Child(name = "multipleOr", type = {BooleanType.class}, order=22, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "multipleOr", type = {BooleanType.class}, order=23, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Allow multiple values per parameter (or)", formalDefinition="Whether multiple values are allowed for each time the parameter exists. Values are separated by commas, and the parameter matches if any of the values match." )
     protected BooleanType multipleOr;
 
     /**
      * Whether multiple parameters are allowed - e.g. more than one parameter with the same name. The search matches if all the parameters match.
      */
-    @Child(name = "multipleAnd", type = {BooleanType.class}, order=23, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "multipleAnd", type = {BooleanType.class}, order=24, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Allow multiple parameters (and)", formalDefinition="Whether multiple parameters are allowed - e.g. more than one parameter with the same name. The search matches if all the parameters match." )
     protected BooleanType multipleAnd;
 
     /**
      * Comparators supported for the search parameter.
      */
-    @Child(name = "comparator", type = {CodeType.class}, order=24, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "comparator", type = {CodeType.class}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="eq | ne | gt | lt | ge | le | sa | eb | ap", formalDefinition="Comparators supported for the search parameter." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/search-comparator")
     protected List<Enumeration<SearchComparator>> comparator;
@@ -1115,7 +1122,7 @@ public class SearchParameter extends CanonicalResource {
     /**
      * A modifier supported for the search parameter.
      */
-    @Child(name = "modifier", type = {CodeType.class}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "modifier", type = {CodeType.class}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="missing | exact | contains | not | text | in | not-in | below | above | type | identifier | of-type | code-text | text-advanced | iterate", formalDefinition="A modifier supported for the search parameter." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/search-modifier-code")
     protected List<Enumeration<SearchModifierCode>> modifier;
@@ -1123,18 +1130,18 @@ public class SearchParameter extends CanonicalResource {
     /**
      * Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from SearchParameter.code for a parameter on the target resource type.
      */
-    @Child(name = "chain", type = {StringType.class}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "chain", type = {StringType.class}, order=27, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Chained names supported", formalDefinition="Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from SearchParameter.code for a parameter on the target resource type." )
     protected List<StringType> chain;
 
     /**
      * Used to define the parts of a composite search parameter.
      */
-    @Child(name = "component", type = {}, order=27, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "component", type = {}, order=28, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="For Composite resources to define the parts", formalDefinition="Used to define the parts of a composite search parameter." )
     protected List<SearchParameterComponentComponent> component;
 
-    private static final long serialVersionUID = 1875846540L;
+    private static final long serialVersionUID = -314448918L;
 
   /**
    * Constructor
@@ -1146,7 +1153,7 @@ public class SearchParameter extends CanonicalResource {
   /**
    * Constructor
    */
-    public SearchParameter(String url, String name, PublicationStatus status, String description, String code, String base, SearchParamType type) {
+    public SearchParameter(String url, String name, PublicationStatus status, String description, String code, AllResourceTypes base, SearchParamType type) {
       super();
       this.setUrl(url);
       this.setName(name);
@@ -1934,16 +1941,16 @@ public class SearchParameter extends CanonicalResource {
     /**
      * @return {@link #base} (The base resource type(s) that this search parameter can be used against.)
      */
-    public List<CodeType> getBase() { 
+    public List<Enumeration<AllResourceTypes>> getBase() { 
       if (this.base == null)
-        this.base = new ArrayList<CodeType>();
+        this.base = new ArrayList<Enumeration<AllResourceTypes>>();
       return this.base;
     }
 
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public SearchParameter setBase(List<CodeType> theBase) { 
+    public SearchParameter setBase(List<Enumeration<AllResourceTypes>> theBase) { 
       this.base = theBase;
       return this;
     }
@@ -1951,7 +1958,7 @@ public class SearchParameter extends CanonicalResource {
     public boolean hasBase() { 
       if (this.base == null)
         return false;
-      for (CodeType item : this.base)
+      for (Enumeration<AllResourceTypes> item : this.base)
         if (!item.isEmpty())
           return true;
       return false;
@@ -1960,10 +1967,10 @@ public class SearchParameter extends CanonicalResource {
     /**
      * @return {@link #base} (The base resource type(s) that this search parameter can be used against.)
      */
-    public CodeType addBaseElement() {//2 
-      CodeType t = new CodeType();
+    public Enumeration<AllResourceTypes> addBaseElement() {//2 
+      Enumeration<AllResourceTypes> t = new Enumeration<AllResourceTypes>(new AllResourceTypesEnumFactory());
       if (this.base == null)
-        this.base = new ArrayList<CodeType>();
+        this.base = new ArrayList<Enumeration<AllResourceTypes>>();
       this.base.add(t);
       return t;
     }
@@ -1971,11 +1978,11 @@ public class SearchParameter extends CanonicalResource {
     /**
      * @param value {@link #base} (The base resource type(s) that this search parameter can be used against.)
      */
-    public SearchParameter addBase(String code) { //1
-      CodeType t = new CodeType();
-      t.setValue(code);
+    public SearchParameter addBase(AllResourceTypes value) { //1
+      Enumeration<AllResourceTypes> t = new Enumeration<AllResourceTypes>(new AllResourceTypesEnumFactory());
+      t.setValue(value);
       if (this.base == null)
-        this.base = new ArrayList<CodeType>();
+        this.base = new ArrayList<Enumeration<AllResourceTypes>>();
       this.base.add(t);
       return this;
     }
@@ -1983,11 +1990,11 @@ public class SearchParameter extends CanonicalResource {
     /**
      * @param value {@link #base} (The base resource type(s) that this search parameter can be used against.)
      */
-    public boolean hasBase(String code) { 
+    public boolean hasBase(AllResourceTypes value) { 
       if (this.base == null)
         return false;
-      for (CodeType v : this.base)
-        if (v.getValue().equals(code)) // code
+      for (Enumeration<AllResourceTypes> v : this.base)
+        if (v.getValue().equals(value)) // code
           return true;
       return false;
     }
@@ -2082,6 +2089,55 @@ public class SearchParameter extends CanonicalResource {
         if (this.expression == null)
           this.expression = new StringType();
         this.expression.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #xpath} (An XPath expression that returns a set of elements for the search parameter.). This is the underlying object with id, value and extensions. The accessor "getXpath" gives direct access to the value
+     */
+    public StringType getXpathElement() { 
+      if (this.xpath == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create SearchParameter.xpath");
+        else if (Configuration.doAutoCreate())
+          this.xpath = new StringType(); // bb
+      return this.xpath;
+    }
+
+    public boolean hasXpathElement() { 
+      return this.xpath != null && !this.xpath.isEmpty();
+    }
+
+    public boolean hasXpath() { 
+      return this.xpath != null && !this.xpath.isEmpty();
+    }
+
+    /**
+     * @param value {@link #xpath} (An XPath expression that returns a set of elements for the search parameter.). This is the underlying object with id, value and extensions. The accessor "getXpath" gives direct access to the value
+     */
+    public SearchParameter setXpathElement(StringType value) { 
+      this.xpath = value;
+      return this;
+    }
+
+    /**
+     * @return An XPath expression that returns a set of elements for the search parameter.
+     */
+    public String getXpath() { 
+      return this.xpath == null ? null : this.xpath.getValue();
+    }
+
+    /**
+     * @param value An XPath expression that returns a set of elements for the search parameter.
+     */
+    public SearchParameter setXpath(String value) { 
+      if (Utilities.noString(value))
+        this.xpath = null;
+      else {
+        if (this.xpath == null)
+          this.xpath = new StringType();
+        this.xpath.setValue(value);
       }
       return this;
     }
@@ -2699,6 +2755,7 @@ public class SearchParameter extends CanonicalResource {
         children.add(new Property("base", "code", "The base resource type(s) that this search parameter can be used against.", 0, java.lang.Integer.MAX_VALUE, base));
         children.add(new Property("type", "code", "The type of value that a search parameter may contain, and how the content is interpreted.", 0, 1, type));
         children.add(new Property("expression", "string", "A FHIRPath expression that returns a set of elements for the search parameter.", 0, 1, expression));
+        children.add(new Property("xpath", "string", "An XPath expression that returns a set of elements for the search parameter.", 0, 1, xpath));
         children.add(new Property("processingMode", "code", "How the search parameter relates to the set of elements returned by evaluating the expression query.", 0, 1, processingMode));
         children.add(new Property("constraint", "string", "FHIRPath expression that defines/sets a complex constraint for when this SearchParameter is applicable.", 0, 1, constraint));
         children.add(new Property("target", "code", "Types of resource (if a resource is referenced).", 0, java.lang.Integer.MAX_VALUE, target));
@@ -2735,6 +2792,7 @@ public class SearchParameter extends CanonicalResource {
         case 3016401: /*base*/  return new Property("base", "code", "The base resource type(s) that this search parameter can be used against.", 0, java.lang.Integer.MAX_VALUE, base);
         case 3575610: /*type*/  return new Property("type", "code", "The type of value that a search parameter may contain, and how the content is interpreted.", 0, 1, type);
         case -1795452264: /*expression*/  return new Property("expression", "string", "A FHIRPath expression that returns a set of elements for the search parameter.", 0, 1, expression);
+        case 114256029: /*xpath*/  return new Property("xpath", "string", "An XPath expression that returns a set of elements for the search parameter.", 0, 1, xpath);
         case 195763030: /*processingMode*/  return new Property("processingMode", "code", "How the search parameter relates to the set of elements returned by evaluating the expression query.", 0, 1, processingMode);
         case -190376483: /*constraint*/  return new Property("constraint", "string", "FHIRPath expression that defines/sets a complex constraint for when this SearchParameter is applicable.", 0, 1, constraint);
         case -880905839: /*target*/  return new Property("target", "code", "Types of resource (if a resource is referenced).", 0, java.lang.Integer.MAX_VALUE, target);
@@ -2771,6 +2829,7 @@ public class SearchParameter extends CanonicalResource {
         case 3016401: /*base*/ return this.base == null ? new Base[0] : this.base.toArray(new Base[this.base.size()]); // Enumeration<AllResourceTypes>
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Enumeration<SearchParamType>
         case -1795452264: /*expression*/ return this.expression == null ? new Base[0] : new Base[] {this.expression}; // StringType
+        case 114256029: /*xpath*/ return this.xpath == null ? new Base[0] : new Base[] {this.xpath}; // StringType
         case 195763030: /*processingMode*/ return this.processingMode == null ? new Base[0] : new Base[] {this.processingMode}; // Enumeration<SearchProcessingModeType>
         case -190376483: /*constraint*/ return this.constraint == null ? new Base[0] : new Base[] {this.constraint}; // StringType
         case -880905839: /*target*/ return this.target == null ? new Base[0] : this.target.toArray(new Base[this.target.size()]); // CodeType
@@ -2838,8 +2897,8 @@ public class SearchParameter extends CanonicalResource {
           this.code = TypeConvertor.castToCode(value); // CodeType
           return value;
         case 3016401: // base
-          value = TypeConvertor.castToCode(value);
-          this.getBase().add((CodeType) value); // Enumeration<AllResourceTypes>
+          value = new AllResourceTypesEnumFactory().fromType(TypeConvertor.castToCode(value));
+          this.getBase().add((Enumeration) value); // Enumeration<AllResourceTypes>
           return value;
         case 3575610: // type
           value = new SearchParamTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
@@ -2847,6 +2906,9 @@ public class SearchParameter extends CanonicalResource {
           return value;
         case -1795452264: // expression
           this.expression = TypeConvertor.castToString(value); // StringType
+          return value;
+        case 114256029: // xpath
+          this.xpath = TypeConvertor.castToString(value); // StringType
           return value;
         case 195763030: // processingMode
           value = new SearchProcessingModeTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
@@ -2919,13 +2981,15 @@ public class SearchParameter extends CanonicalResource {
         } else if (name.equals("code")) {
           this.code = TypeConvertor.castToCode(value); // CodeType
         } else if (name.equals("base")) {
-          value = TypeConvertor.castToCode(value);
-          this.getBase().add((CodeType) value);
+          value = new AllResourceTypesEnumFactory().fromType(TypeConvertor.castToCode(value));
+          this.getBase().add((Enumeration) value);
         } else if (name.equals("type")) {
           value = new SearchParamTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
           this.type = (Enumeration) value; // Enumeration<SearchParamType>
         } else if (name.equals("expression")) {
           this.expression = TypeConvertor.castToString(value); // StringType
+        } else if (name.equals("xpath")) {
+          this.xpath = TypeConvertor.castToString(value); // StringType
         } else if (name.equals("processingMode")) {
           value = new SearchProcessingModeTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
           this.processingMode = (Enumeration) value; // Enumeration<SearchProcessingModeType>
@@ -2975,6 +3039,7 @@ public class SearchParameter extends CanonicalResource {
         case 3016401:  return addBaseElement();
         case 3575610:  return getTypeElement();
         case -1795452264:  return getExpressionElement();
+        case 114256029:  return getXpathElement();
         case 195763030:  return getProcessingModeElement();
         case -190376483:  return getConstraintElement();
         case -880905839:  return addTargetElement();
@@ -3011,6 +3076,7 @@ public class SearchParameter extends CanonicalResource {
         case 3016401: /*base*/ return new String[] {"code"};
         case 3575610: /*type*/ return new String[] {"code"};
         case -1795452264: /*expression*/ return new String[] {"string"};
+        case 114256029: /*xpath*/ return new String[] {"string"};
         case 195763030: /*processingMode*/ return new String[] {"code"};
         case -190376483: /*constraint*/ return new String[] {"string"};
         case -880905839: /*target*/ return new String[] {"code"};
@@ -3089,6 +3155,9 @@ public class SearchParameter extends CanonicalResource {
         else if (name.equals("expression")) {
           throw new FHIRException("Cannot call addChild on a primitive type SearchParameter.expression");
         }
+        else if (name.equals("xpath")) {
+          throw new FHIRException("Cannot call addChild on a primitive type SearchParameter.xpath");
+        }
         else if (name.equals("processingMode")) {
           throw new FHIRException("Cannot call addChild on a primitive type SearchParameter.processingMode");
         }
@@ -3162,12 +3231,13 @@ public class SearchParameter extends CanonicalResource {
         dst.purpose = purpose == null ? null : purpose.copy();
         dst.code = code == null ? null : code.copy();
         if (base != null) {
-          dst.base = new ArrayList<CodeType>();
-          for (CodeType i : base)
+          dst.base = new ArrayList<Enumeration<AllResourceTypes>>();
+          for (Enumeration<AllResourceTypes> i : base)
             dst.base.add(i.copy());
         };
         dst.type = type == null ? null : type.copy();
         dst.expression = expression == null ? null : expression.copy();
+        dst.xpath = xpath == null ? null : xpath.copy();
         dst.processingMode = processingMode == null ? null : processingMode.copy();
         dst.constraint = constraint == null ? null : constraint.copy();
         if (target != null) {
@@ -3216,11 +3286,11 @@ public class SearchParameter extends CanonicalResource {
            && compareDeep(publisher, o.publisher, true) && compareDeep(contact, o.contact, true) && compareDeep(description, o.description, true)
            && compareDeep(useContext, o.useContext, true) && compareDeep(jurisdiction, o.jurisdiction, true)
            && compareDeep(purpose, o.purpose, true) && compareDeep(code, o.code, true) && compareDeep(base, o.base, true)
-           && compareDeep(type, o.type, true) && compareDeep(expression, o.expression, true) && compareDeep(processingMode, o.processingMode, true)
-           && compareDeep(constraint, o.constraint, true) && compareDeep(target, o.target, true) && compareDeep(multipleOr, o.multipleOr, true)
-           && compareDeep(multipleAnd, o.multipleAnd, true) && compareDeep(comparator, o.comparator, true)
-           && compareDeep(modifier, o.modifier, true) && compareDeep(chain, o.chain, true) && compareDeep(component, o.component, true)
-          ;
+           && compareDeep(type, o.type, true) && compareDeep(expression, o.expression, true) && compareDeep(xpath, o.xpath, true)
+           && compareDeep(processingMode, o.processingMode, true) && compareDeep(constraint, o.constraint, true)
+           && compareDeep(target, o.target, true) && compareDeep(multipleOr, o.multipleOr, true) && compareDeep(multipleAnd, o.multipleAnd, true)
+           && compareDeep(comparator, o.comparator, true) && compareDeep(modifier, o.modifier, true) && compareDeep(chain, o.chain, true)
+           && compareDeep(component, o.component, true);
       }
 
       @Override
@@ -3235,7 +3305,7 @@ public class SearchParameter extends CanonicalResource {
            && compareValues(experimental, o.experimental, true) && compareValues(date, o.date, true) && compareValues(publisher, o.publisher, true)
            && compareValues(description, o.description, true) && compareValues(purpose, o.purpose, true) && compareValues(code, o.code, true)
            && compareValues(base, o.base, true) && compareValues(type, o.type, true) && compareValues(expression, o.expression, true)
-           && compareValues(processingMode, o.processingMode, true) && compareValues(constraint, o.constraint, true)
+           && compareValues(xpath, o.xpath, true) && compareValues(processingMode, o.processingMode, true) && compareValues(constraint, o.constraint, true)
            && compareValues(target, o.target, true) && compareValues(multipleOr, o.multipleOr, true) && compareValues(multipleAnd, o.multipleAnd, true)
            && compareValues(comparator, o.comparator, true) && compareValues(modifier, o.modifier, true) && compareValues(chain, o.chain, true)
           ;
@@ -3244,7 +3314,7 @@ public class SearchParameter extends CanonicalResource {
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(url, version, versionAlgorithm
           , name, title, derivedFrom, status, experimental, date, publisher, contact, description
-          , useContext, jurisdiction, purpose, code, base, type, expression, processingMode
+          , useContext, jurisdiction, purpose, code, base, type, expression, xpath, processingMode
           , constraint, target, multipleOr, multipleAnd, comparator, modifier, chain, component
           );
       }

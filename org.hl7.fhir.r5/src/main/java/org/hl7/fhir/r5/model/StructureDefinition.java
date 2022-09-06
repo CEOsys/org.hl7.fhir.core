@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Sep 5, 2022 20:11+1000 for FHIR vcurrent
+// Generated on Tue, Sep 6, 2022 22:46+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -1559,10 +1559,10 @@ public class StructureDefinition extends CanonicalResource {
     protected List<Coding> keyword;
 
     /**
-     * The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.6.0. for this version.
+     * The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 5.0.0-cibuild. for this version.
      */
     @Child(name = "fhirVersion", type = {CodeType.class}, order=18, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="FHIR Version this StructureDefinition targets", formalDefinition="The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.6.0. for this version." )
+    @Description(shortDefinition="FHIR Version this StructureDefinition targets", formalDefinition="The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 5.0.0-cibuild. for this version." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/FHIR-version")
     protected Enumeration<FHIRVersion> fhirVersion;
 
@@ -2550,7 +2550,7 @@ public class StructureDefinition extends CanonicalResource {
     }
 
     /**
-     * @return {@link #fhirVersion} (The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.6.0. for this version.). This is the underlying object with id, value and extensions. The accessor "getFhirVersion" gives direct access to the value
+     * @return {@link #fhirVersion} (The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 5.0.0-cibuild. for this version.). This is the underlying object with id, value and extensions. The accessor "getFhirVersion" gives direct access to the value
      */
     public Enumeration<FHIRVersion> getFhirVersionElement() { 
       if (this.fhirVersion == null)
@@ -2570,7 +2570,7 @@ public class StructureDefinition extends CanonicalResource {
     }
 
     /**
-     * @param value {@link #fhirVersion} (The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.6.0. for this version.). This is the underlying object with id, value and extensions. The accessor "getFhirVersion" gives direct access to the value
+     * @param value {@link #fhirVersion} (The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 5.0.0-cibuild. for this version.). This is the underlying object with id, value and extensions. The accessor "getFhirVersion" gives direct access to the value
      */
     public StructureDefinition setFhirVersionElement(Enumeration<FHIRVersion> value) { 
       this.fhirVersion = value;
@@ -2578,14 +2578,14 @@ public class StructureDefinition extends CanonicalResource {
     }
 
     /**
-     * @return The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.6.0. for this version.
+     * @return The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 5.0.0-cibuild. for this version.
      */
     public FHIRVersion getFhirVersion() { 
       return this.fhirVersion == null ? null : this.fhirVersion.getValue();
     }
 
     /**
-     * @param value The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.6.0. for this version.
+     * @param value The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 5.0.0-cibuild. for this version.
      */
     public StructureDefinition setFhirVersion(FHIRVersion value) { 
       if (value == null)
@@ -3066,7 +3066,7 @@ public class StructureDefinition extends CanonicalResource {
         children.add(new Property("copyright", "markdown", "A copyright statement relating to the structure definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the structure definition.  The short copyright declaration (e.g. (c) '2015+ xyz organization' should be sent in the copyrightLabel element.", 0, 1, copyright));
         children.add(new Property("copyrightLabel", "string", "A short string (<50 characters), suitable for inclusion in a page footer that identifies the copyright holder, effective period, and optionally whether rights are resctricted. (e.g. 'All rights reserved', 'Some rights reserved').", 0, 1, copyrightLabel));
         children.add(new Property("keyword", "Coding", "(DEPRECATED) A set of key words or terms from external terminologies that may be used to assist with indexing and searching of templates nby describing the use of this structure definition, or the content it describes.", 0, java.lang.Integer.MAX_VALUE, keyword));
-        children.add(new Property("fhirVersion", "code", "The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.6.0. for this version.", 0, 1, fhirVersion));
+        children.add(new Property("fhirVersion", "code", "The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 5.0.0-cibuild. for this version.", 0, 1, fhirVersion));
         children.add(new Property("mapping", "", "An external specification that the content is mapped to.", 0, java.lang.Integer.MAX_VALUE, mapping));
         children.add(new Property("kind", "code", "Defines the kind of structure that this definition is describing.", 0, 1, kind));
         children.add(new Property("abstract", "boolean", "Whether structure this definition describes is abstract or not  - that is, whether the structure is not intended to be instantiated. For Resources and Data types, abstract types will never be exchanged  between systems.", 0, 1, abstract_));
@@ -3103,7 +3103,7 @@ public class StructureDefinition extends CanonicalResource {
         case 1522889671: /*copyright*/  return new Property("copyright", "markdown", "A copyright statement relating to the structure definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the structure definition.  The short copyright declaration (e.g. (c) '2015+ xyz organization' should be sent in the copyrightLabel element.", 0, 1, copyright);
         case 765157229: /*copyrightLabel*/  return new Property("copyrightLabel", "string", "A short string (<50 characters), suitable for inclusion in a page footer that identifies the copyright holder, effective period, and optionally whether rights are resctricted. (e.g. 'All rights reserved', 'Some rights reserved').", 0, 1, copyrightLabel);
         case -814408215: /*keyword*/  return new Property("keyword", "Coding", "(DEPRECATED) A set of key words or terms from external terminologies that may be used to assist with indexing and searching of templates nby describing the use of this structure definition, or the content it describes.", 0, java.lang.Integer.MAX_VALUE, keyword);
-        case 461006061: /*fhirVersion*/  return new Property("fhirVersion", "code", "The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.6.0. for this version.", 0, 1, fhirVersion);
+        case 461006061: /*fhirVersion*/  return new Property("fhirVersion", "code", "The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 5.0.0-cibuild. for this version.", 0, 1, fhirVersion);
         case 837556430: /*mapping*/  return new Property("mapping", "", "An external specification that the content is mapped to.", 0, java.lang.Integer.MAX_VALUE, mapping);
         case 3292052: /*kind*/  return new Property("kind", "code", "Defines the kind of structure that this definition is describing.", 0, 1, kind);
         case 1732898850: /*abstract*/  return new Property("abstract", "boolean", "Whether structure this definition describes is abstract or not  - that is, whether the structure is not intended to be instantiated. For Resources and Data types, abstract types will never be exchanged  between systems.", 0, 1, abstract_);

@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Sep 5, 2022 20:11+1000 for FHIR vcurrent
+// Generated on Tue, Sep 6, 2022 22:46+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -4023,17 +4023,17 @@ Reflex | Repeat | Re-run.
    * <p>
    * Description: <b>The value or component value of the observation, if the value is a CodeableConcept</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>(Observation.value as CodeableConcept) | (Observation.component.value as CodeableConcept)</b><br>
+   * Path: <b>Observation.value.ofType(CodeableConcept) | Observation.component.value.ofType(CodeableConcept)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="combo-value-concept", path="(Observation.value as CodeableConcept) | (Observation.component.value as CodeableConcept)", description="The value or component value of the observation, if the value is a CodeableConcept", type="token" )
+  @SearchParamDefinition(name="combo-value-concept", path="Observation.value.ofType(CodeableConcept) | Observation.component.value.ofType(CodeableConcept)", description="The value or component value of the observation, if the value is a CodeableConcept", type="token" )
   public static final String SP_COMBO_VALUE_CONCEPT = "combo-value-concept";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>combo-value-concept</b>
    * <p>
    * Description: <b>The value or component value of the observation, if the value is a CodeableConcept</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>(Observation.value as CodeableConcept) | (Observation.component.value as CodeableConcept)</b><br>
+   * Path: <b>Observation.value.ofType(CodeableConcept) | Observation.component.value.ofType(CodeableConcept)</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam COMBO_VALUE_CONCEPT = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_COMBO_VALUE_CONCEPT);
@@ -4043,17 +4043,17 @@ Reflex | Repeat | Re-run.
    * <p>
    * Description: <b>The value or component value of the observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)</b><br>
    * Type: <b>quantity</b><br>
-   * Path: <b>(Observation.value as Quantity) | (Observation.value as SampledData) | (Observation.component.value as Quantity) | (Observation.component.value as SampledData)</b><br>
+   * Path: <b>Observation.value.ofType(Quantity) | Observation.value.ofType(SampledData) | Observation.component.value.ofType(Quantity) | Observation.component.value.ofType(SampledData)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="combo-value-quantity", path="(Observation.value as Quantity) | (Observation.value as SampledData) | (Observation.component.value as Quantity) | (Observation.component.value as SampledData)", description="The value or component value of the observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)", type="quantity" )
+  @SearchParamDefinition(name="combo-value-quantity", path="Observation.value.ofType(Quantity) | Observation.value.ofType(SampledData) | Observation.component.value.ofType(Quantity) | Observation.component.value.ofType(SampledData)", description="The value or component value of the observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)", type="quantity" )
   public static final String SP_COMBO_VALUE_QUANTITY = "combo-value-quantity";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>combo-value-quantity</b>
    * <p>
    * Description: <b>The value or component value of the observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)</b><br>
    * Type: <b>quantity</b><br>
-   * Path: <b>(Observation.value as Quantity) | (Observation.value as SampledData) | (Observation.component.value as Quantity) | (Observation.component.value as SampledData)</b><br>
+   * Path: <b>Observation.value.ofType(Quantity) | Observation.value.ofType(SampledData) | Observation.component.value.ofType(Quantity) | Observation.component.value.ofType(SampledData)</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.QuantityClientParam COMBO_VALUE_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(SP_COMBO_VALUE_QUANTITY);
@@ -4143,17 +4143,17 @@ Reflex | Repeat | Re-run.
    * <p>
    * Description: <b>The value of the component observation, if the value is a CodeableConcept</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>(Observation.component.value as CodeableConcept)</b><br>
+   * Path: <b>Observation.component.value.ofType(CodeableConcept)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="component-value-concept", path="(Observation.component.value as CodeableConcept)", description="The value of the component observation, if the value is a CodeableConcept", type="token" )
+  @SearchParamDefinition(name="component-value-concept", path="Observation.component.value.ofType(CodeableConcept)", description="The value of the component observation, if the value is a CodeableConcept", type="token" )
   public static final String SP_COMPONENT_VALUE_CONCEPT = "component-value-concept";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>component-value-concept</b>
    * <p>
    * Description: <b>The value of the component observation, if the value is a CodeableConcept</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>(Observation.component.value as CodeableConcept)</b><br>
+   * Path: <b>Observation.component.value.ofType(CodeableConcept)</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam COMPONENT_VALUE_CONCEPT = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_COMPONENT_VALUE_CONCEPT);
@@ -4163,17 +4163,17 @@ Reflex | Repeat | Re-run.
    * <p>
    * Description: <b>The value of the component observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)</b><br>
    * Type: <b>quantity</b><br>
-   * Path: <b>(Observation.component.value as Quantity) | (Observation.component.value as SampledData)</b><br>
+   * Path: <b>Observation.component.value.ofType(Quantity) | Observation.component.value.ofType(SampledData)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="component-value-quantity", path="(Observation.component.value as Quantity) | (Observation.component.value as SampledData)", description="The value of the component observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)", type="quantity" )
+  @SearchParamDefinition(name="component-value-quantity", path="Observation.component.value.ofType(Quantity) | Observation.component.value.ofType(SampledData)", description="The value of the component observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)", type="quantity" )
   public static final String SP_COMPONENT_VALUE_QUANTITY = "component-value-quantity";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>component-value-quantity</b>
    * <p>
    * Description: <b>The value of the component observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)</b><br>
    * Type: <b>quantity</b><br>
-   * Path: <b>(Observation.component.value as Quantity) | (Observation.component.value as SampledData)</b><br>
+   * Path: <b>Observation.component.value.ofType(Quantity) | Observation.component.value.ofType(SampledData)</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.QuantityClientParam COMPONENT_VALUE_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(SP_COMPONENT_VALUE_QUANTITY);
@@ -4451,17 +4451,17 @@ Reflex | Repeat | Re-run.
    * <p>
    * Description: <b>The value of the observation, if the value is a CodeableConcept</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>(Observation.value as CodeableConcept)</b><br>
+   * Path: <b>Observation.value.ofType(CodeableConcept)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="value-concept", path="(Observation.value as CodeableConcept)", description="The value of the observation, if the value is a CodeableConcept", type="token" )
+  @SearchParamDefinition(name="value-concept", path="Observation.value.ofType(CodeableConcept)", description="The value of the observation, if the value is a CodeableConcept", type="token" )
   public static final String SP_VALUE_CONCEPT = "value-concept";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>value-concept</b>
    * <p>
    * Description: <b>The value of the observation, if the value is a CodeableConcept</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>(Observation.value as CodeableConcept)</b><br>
+   * Path: <b>Observation.value.ofType(CodeableConcept)</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam VALUE_CONCEPT = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_VALUE_CONCEPT);
@@ -4471,17 +4471,17 @@ Reflex | Repeat | Re-run.
    * <p>
    * Description: <b>The value of the observation, if the value is a date or period of time</b><br>
    * Type: <b>date</b><br>
-   * Path: <b>(Observation.value as dateTime) | (Observation.value as Period)</b><br>
+   * Path: <b>Observation.value.ofType(dateTime) | Observation.value.ofType(Period)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="value-date", path="(Observation.value as dateTime) | (Observation.value as Period)", description="The value of the observation, if the value is a date or period of time", type="date" )
+  @SearchParamDefinition(name="value-date", path="Observation.value.ofType(dateTime) | Observation.value.ofType(Period)", description="The value of the observation, if the value is a date or period of time", type="date" )
   public static final String SP_VALUE_DATE = "value-date";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>value-date</b>
    * <p>
    * Description: <b>The value of the observation, if the value is a date or period of time</b><br>
    * Type: <b>date</b><br>
-   * Path: <b>(Observation.value as dateTime) | (Observation.value as Period)</b><br>
+   * Path: <b>Observation.value.ofType(dateTime) | Observation.value.ofType(Period)</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.DateClientParam VALUE_DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_VALUE_DATE);
@@ -4491,17 +4491,17 @@ Reflex | Repeat | Re-run.
    * <p>
    * Description: <b>The value of the observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)</b><br>
    * Type: <b>quantity</b><br>
-   * Path: <b>(Observation.value as Quantity) | (Observation.value as SampledData)</b><br>
+   * Path: <b>Observation.value.ofType(Quantity) | Observation.value.ofType(SampledData)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="value-quantity", path="(Observation.value as Quantity) | (Observation.value as SampledData)", description="The value of the observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)", type="quantity" )
+  @SearchParamDefinition(name="value-quantity", path="Observation.value.ofType(Quantity) | Observation.value.ofType(SampledData)", description="The value of the observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)", type="quantity" )
   public static final String SP_VALUE_QUANTITY = "value-quantity";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>value-quantity</b>
    * <p>
    * Description: <b>The value of the observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)</b><br>
    * Type: <b>quantity</b><br>
-   * Path: <b>(Observation.value as Quantity) | (Observation.value as SampledData)</b><br>
+   * Path: <b>Observation.value.ofType(Quantity) | Observation.value.ofType(SampledData)</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.QuantityClientParam VALUE_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(SP_VALUE_QUANTITY);
@@ -4511,17 +4511,17 @@ Reflex | Repeat | Re-run.
    * <p>
    * Description: <b>The value of the observation, if the value is a string, and also searches in CodeableConcept.text</b><br>
    * Type: <b>string</b><br>
-   * Path: <b>(Observation.value as string) | (Observation.value as CodeableConcept).text</b><br>
+   * Path: <b>Observation.value.ofType(string) | Observation.value.ofType(CodeableConcept).text</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="value-string", path="(Observation.value as string) | (Observation.value as CodeableConcept).text", description="The value of the observation, if the value is a string, and also searches in CodeableConcept.text", type="string" )
+  @SearchParamDefinition(name="value-string", path="Observation.value.ofType(string) | Observation.value.ofType(CodeableConcept).text", description="The value of the observation, if the value is a string, and also searches in CodeableConcept.text", type="string" )
   public static final String SP_VALUE_STRING = "value-string";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>value-string</b>
    * <p>
    * Description: <b>The value of the observation, if the value is a string, and also searches in CodeableConcept.text</b><br>
    * Type: <b>string</b><br>
-   * Path: <b>(Observation.value as string) | (Observation.value as CodeableConcept).text</b><br>
+   * Path: <b>Observation.value.ofType(string) | Observation.value.ofType(CodeableConcept).text</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.StringClientParam VALUE_STRING = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_VALUE_STRING);

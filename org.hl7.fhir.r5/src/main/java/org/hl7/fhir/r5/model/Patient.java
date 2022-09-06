@@ -29,7 +29,7 @@ package org.hl7.fhir.r5.model;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Sep 5, 2022 20:11+1000 for FHIR vcurrent
+// Generated on Tue, Sep 6, 2022 22:46+0200 for FHIR v5.0.0-cibuild
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -2686,19 +2686,19 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
  /**
    * Search parameter: <b>part-agree</b>
    * <p>
-   * Description: <b>Search by url for a participation agreement, which is stored in a DocumentReference</b><br>
+   * Description: <b>Search by url for a participation agreement, which is stored as an extension referencing a DocumentReference</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement').value</b><br>
+   * Path: <b>Patient.extension('http://example.org/fhir/StructureDefinition/participation-agreement').value</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="part-agree", path="DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement').value", description="Search by url for a participation agreement, which is stored in a DocumentReference", type="reference", target={DocumentReference.class } )
+  @SearchParamDefinition(name="part-agree", path="Patient.extension('http://example.org/fhir/StructureDefinition/participation-agreement').value", description="Search by url for a participation agreement, which is stored as an extension referencing a DocumentReference", type="reference", target={DocumentReference.class } )
   public static final String SP_PART_AGREE = "part-agree";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>part-agree</b>
    * <p>
-   * Description: <b>Search by url for a participation agreement, which is stored in a DocumentReference</b><br>
+   * Description: <b>Search by url for a participation agreement, which is stored as an extension referencing a DocumentReference</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement').value</b><br>
+   * Path: <b>Patient.extension('http://example.org/fhir/StructureDefinition/participation-agreement').value</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PART_AGREE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PART_AGREE);

@@ -31,7 +31,7 @@ package org.hl7.fhir.r5.formats;
   POSSIBILITY OF SUCH DAMAGE.
   */
 
-// Generated on Mon, Sep 5, 2022 20:11+1000 for FHIR vcurrent
+// Generated on Tue, Sep 6, 2022 22:46+0200 for FHIR v5.0.0-cibuild
 
 
 
@@ -246,7 +246,7 @@ public class RdfParser extends RdfParserBase {
   protected void composeElement(Complex t, String parentType, String name, Element element, int index) {
     composeBase(t, parentType, name, element, index);
     if (element.hasIdElement()) {
-      composeString(t, "Element", "id", element.getIdElement(), -1);
+      composeId(t, "Element", "id", element.getIdElement(), -1);
     }
     for (int i = 0; i < element.getExtension().size(); i++) {
       composeExtension(t, "Element", "extension", element.getExtension().get(i), i);
@@ -19914,10 +19914,10 @@ public class RdfParser extends RdfParserBase {
       composeEnum(t, "RuleComponent", "type", element.getTypeElement(), -1);
     }
     for (int i = 0; i < element.getData().size(); i++) {
-      composePermissionRuleDataComponent(t, "RuleComponent", "data", element.getData().get(i), i);
+      composePermissionruleDataComponent(t, "RuleComponent", "data", element.getData().get(i), i);
     }
     for (int i = 0; i < element.getActivity().size(); i++) {
-      composePermissionRuleActivityComponent(t, "RuleComponent", "activity", element.getActivity().get(i), i);
+      composePermissionruleActivityComponent(t, "RuleComponent", "activity", element.getActivity().get(i), i);
     }
     for (int i = 0; i < element.getLimit().size(); i++) {
       composeCodeableConcept(t, "RuleComponent", "limit", element.getLimit().get(i), i);
@@ -19935,7 +19935,7 @@ public class RdfParser extends RdfParserBase {
     }
     composeBackboneElement(t, "data", name, element, index);
     for (int i = 0; i < element.getResource().size(); i++) {
-      composePermissionRuleDataResourceComponent(t, "RuleDataComponent", "resource", element.getResource().get(i), i);
+      composePermissionruleDataResourceComponent(t, "RuleDataComponent", "resource", element.getResource().get(i), i);
     }
     for (int i = 0; i < element.getSecurity().size(); i++) {
       composeCoding(t, "RuleDataComponent", "security", element.getSecurity().get(i), i);
@@ -21310,216 +21310,6 @@ public class RdfParser extends RdfParserBase {
     }
   }
 
-  protected void composeRequestGroup(Complex parent, String parentType, String name, RequestGroup element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeDomainResource(t, "RequestGroup", name, element, index);
-    for (int i = 0; i < element.getIdentifier().size(); i++) {
-      composeIdentifier(t, "RequestGroup", "identifier", element.getIdentifier().get(i), i);
-    }
-    for (int i = 0; i < element.getInstantiatesCanonical().size(); i++) {
-      composeCanonical(t, "RequestGroup", "instantiatesCanonical", element.getInstantiatesCanonical().get(i), i);
-    }
-    for (int i = 0; i < element.getInstantiatesUri().size(); i++) {
-      composeUri(t, "RequestGroup", "instantiatesUri", element.getInstantiatesUri().get(i), i);
-    }
-    for (int i = 0; i < element.getBasedOn().size(); i++) {
-      composeReference(t, "RequestGroup", "basedOn", element.getBasedOn().get(i), i);
-    }
-    for (int i = 0; i < element.getReplaces().size(); i++) {
-      composeReference(t, "RequestGroup", "replaces", element.getReplaces().get(i), i);
-    }
-    if (element.hasGroupIdentifier()) {
-      composeIdentifier(t, "RequestGroup", "groupIdentifier", element.getGroupIdentifier(), -1);
-    }
-    if (element.hasStatusElement()) {
-      composeCode(t, "RequestGroup", "status", element.getStatusElement(), -1);
-    }
-    if (element.hasIntentElement()) {
-      composeCode(t, "RequestGroup", "intent", element.getIntentElement(), -1);
-    }
-    if (element.hasPriorityElement()) {
-      composeCode(t, "RequestGroup", "priority", element.getPriorityElement(), -1);
-    }
-    if (element.hasCode()) {
-      composeCodeableConcept(t, "RequestGroup", "code", element.getCode(), -1);
-    }
-    if (element.hasSubject()) {
-      composeReference(t, "RequestGroup", "subject", element.getSubject(), -1);
-    }
-    if (element.hasEncounter()) {
-      composeReference(t, "RequestGroup", "encounter", element.getEncounter(), -1);
-    }
-    if (element.hasAuthoredOnElement()) {
-      composeDateTime(t, "RequestGroup", "authoredOn", element.getAuthoredOnElement(), -1);
-    }
-    if (element.hasAuthor()) {
-      composeReference(t, "RequestGroup", "author", element.getAuthor(), -1);
-    }
-    for (int i = 0; i < element.getReason().size(); i++) {
-      composeCodeableReference(t, "RequestGroup", "reason", element.getReason().get(i), i);
-    }
-    for (int i = 0; i < element.getGoal().size(); i++) {
-      composeReference(t, "RequestGroup", "goal", element.getGoal().get(i), i);
-    }
-    for (int i = 0; i < element.getNote().size(); i++) {
-      composeAnnotation(t, "RequestGroup", "note", element.getNote().get(i), i);
-    }
-    for (int i = 0; i < element.getAction().size(); i++) {
-      composeRequestGroupActionComponent(t, "RequestGroup", "action", element.getAction().get(i), i);
-    }
-  }
-
-  protected void composeRequestGroupActionComponent(Complex parent, String parentType, String name, RequestGroup.RequestGroupActionComponent element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeBackboneElement(t, "action", name, element, index);
-    if (element.hasLinkIdElement()) {
-      composeString(t, "RequestGroupActionComponent", "linkId", element.getLinkIdElement(), -1);
-    }
-    if (element.hasPrefixElement()) {
-      composeString(t, "RequestGroupActionComponent", "prefix", element.getPrefixElement(), -1);
-    }
-    if (element.hasTitleElement()) {
-      composeString(t, "RequestGroupActionComponent", "title", element.getTitleElement(), -1);
-    }
-    if (element.hasDescriptionElement()) {
-      composeString(t, "RequestGroupActionComponent", "description", element.getDescriptionElement(), -1);
-    }
-    if (element.hasTextEquivalentElement()) {
-      composeString(t, "RequestGroupActionComponent", "textEquivalent", element.getTextEquivalentElement(), -1);
-    }
-    if (element.hasPriorityElement()) {
-      composeCode(t, "RequestGroupActionComponent", "priority", element.getPriorityElement(), -1);
-    }
-    for (int i = 0; i < element.getCode().size(); i++) {
-      composeCodeableConcept(t, "RequestGroupActionComponent", "code", element.getCode().get(i), i);
-    }
-    for (int i = 0; i < element.getDocumentation().size(); i++) {
-      composeRelatedArtifact(t, "RequestGroupActionComponent", "documentation", element.getDocumentation().get(i), i);
-    }
-    for (int i = 0; i < element.getGoal().size(); i++) {
-      composeReference(t, "RequestGroupActionComponent", "goal", element.getGoal().get(i), i);
-    }
-    for (int i = 0; i < element.getCondition().size(); i++) {
-      composeRequestGroupActionConditionComponent(t, "RequestGroupActionComponent", "condition", element.getCondition().get(i), i);
-    }
-    for (int i = 0; i < element.getRelatedAction().size(); i++) {
-      composeRequestGroupActionRelatedActionComponent(t, "RequestGroupActionComponent", "relatedAction", element.getRelatedAction().get(i), i);
-    }
-    if (element.hasTiming()) {
-      composeType(t, "RequestGroupActionComponent", "timing", element.getTiming(), -1);
-    }
-    if (element.hasLocation()) {
-      composeCodeableReference(t, "RequestGroupActionComponent", "location", element.getLocation(), -1);
-    }
-    for (int i = 0; i < element.getParticipant().size(); i++) {
-      composeRequestGroupActionParticipantComponent(t, "RequestGroupActionComponent", "participant", element.getParticipant().get(i), i);
-    }
-    if (element.hasType()) {
-      composeCodeableConcept(t, "RequestGroupActionComponent", "type", element.getType(), -1);
-    }
-    if (element.hasGroupingBehaviorElement()) {
-      composeCode(t, "RequestGroupActionComponent", "groupingBehavior", element.getGroupingBehaviorElement(), -1);
-    }
-    if (element.hasSelectionBehaviorElement()) {
-      composeCode(t, "RequestGroupActionComponent", "selectionBehavior", element.getSelectionBehaviorElement(), -1);
-    }
-    if (element.hasRequiredBehaviorElement()) {
-      composeCode(t, "RequestGroupActionComponent", "requiredBehavior", element.getRequiredBehaviorElement(), -1);
-    }
-    if (element.hasPrecheckBehaviorElement()) {
-      composeCode(t, "RequestGroupActionComponent", "precheckBehavior", element.getPrecheckBehaviorElement(), -1);
-    }
-    if (element.hasCardinalityBehaviorElement()) {
-      composeCode(t, "RequestGroupActionComponent", "cardinalityBehavior", element.getCardinalityBehaviorElement(), -1);
-    }
-    if (element.hasResource()) {
-      composeReference(t, "RequestGroupActionComponent", "resource", element.getResource(), -1);
-    }
-    for (int i = 0; i < element.getAction().size(); i++) {
-      composeRequestGroupActionComponent(t, "RequestGroupActionComponent", "action", element.getAction().get(i), i);
-    }
-  }
-
-  protected void composeRequestGroupActionConditionComponent(Complex parent, String parentType, String name, RequestGroup.RequestGroupActionConditionComponent element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeBackboneElement(t, "condition", name, element, index);
-    if (element.hasKindElement()) {
-      composeCode(t, "RequestGroupActionConditionComponent", "kind", element.getKindElement(), -1);
-    }
-    if (element.hasExpression()) {
-      composeExpression(t, "RequestGroupActionConditionComponent", "expression", element.getExpression(), -1);
-    }
-  }
-
-  protected void composeRequestGroupActionRelatedActionComponent(Complex parent, String parentType, String name, RequestGroup.RequestGroupActionRelatedActionComponent element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeBackboneElement(t, "relatedAction", name, element, index);
-    if (element.hasTargetIdElement()) {
-      composeId(t, "RequestGroupActionRelatedActionComponent", "targetId", element.getTargetIdElement(), -1);
-    }
-    if (element.hasRelationshipElement()) {
-      composeCode(t, "RequestGroupActionRelatedActionComponent", "relationship", element.getRelationshipElement(), -1);
-    }
-    if (element.hasOffset()) {
-      composeType(t, "RequestGroupActionRelatedActionComponent", "offset", element.getOffset(), -1);
-    }
-  }
-
-  protected void composeRequestGroupActionParticipantComponent(Complex parent, String parentType, String name, RequestGroup.RequestGroupActionParticipantComponent element, int index) {
-    if (element == null) 
-      return;
-    Complex t;
-    if (Utilities.noString(parentType))
-      t = parent;
-    else {
-      t = parent.predicate("fhir:"+parentType+'.'+name);
-    }
-    composeBackboneElement(t, "participant", name, element, index);
-    if (element.hasTypeElement()) {
-      composeCode(t, "RequestGroupActionParticipantComponent", "type", element.getTypeElement(), -1);
-    }
-    if (element.hasTypeReference()) {
-      composeReference(t, "RequestGroupActionParticipantComponent", "typeReference", element.getTypeReference(), -1);
-    }
-    if (element.hasRole()) {
-      composeCodeableConcept(t, "RequestGroupActionParticipantComponent", "role", element.getRole(), -1);
-    }
-    if (element.hasFunction()) {
-      composeCodeableConcept(t, "RequestGroupActionParticipantComponent", "function", element.getFunction(), -1);
-    }
-    if (element.hasActor()) {
-      composeReference(t, "RequestGroupActionParticipantComponent", "actor", element.getActor(), -1);
-    }
-  }
-
   protected void composeRequestOrchestration(Complex parent, String parentType, String name, RequestOrchestration element, int index) {
     if (element == null) 
       return;
@@ -21893,8 +21683,8 @@ public class RdfParser extends RdfParserBase {
     if (element.hasLabelElement()) {
       composeString(t, "RequirementsStatementComponent", "label", element.getLabelElement(), -1);
     }
-    for (int i = 0; i < element.getConformance().size(); i++) {
-      composeEnum(t, "RequirementsStatementComponent", "conformance", element.getConformance().get(i), i);
+    if (element.hasConformanceElement()) {
+      composeEnum(t, "RequirementsStatementComponent", "conformance", element.getConformanceElement(), -1);
     }
     if (element.hasRequirementElement()) {
       composeMarkdown(t, "RequirementsStatementComponent", "requirement", element.getRequirementElement(), -1);
@@ -22485,13 +22275,16 @@ public class RdfParser extends RdfParserBase {
       composeCode(t, "SearchParameter", "code", element.getCodeElement(), -1);
     }
     for (int i = 0; i < element.getBase().size(); i++) {
-      composeCode(t, "SearchParameter", "base", element.getBase().get(i), i);
+      composeEnum(t, "SearchParameter", "base", element.getBase().get(i), i);
     }
     if (element.hasTypeElement()) {
       composeEnum(t, "SearchParameter", "type", element.getTypeElement(), -1);
     }
     if (element.hasExpressionElement()) {
       composeString(t, "SearchParameter", "expression", element.getExpressionElement(), -1);
+    }
+    if (element.hasXpathElement()) {
+      composeString(t, "SearchParameter", "xpath", element.getXpathElement(), -1);
     }
     if (element.hasProcessingModeElement()) {
       composeEnum(t, "SearchParameter", "processingMode", element.getProcessingModeElement(), -1);
@@ -22872,7 +22665,7 @@ public class RdfParser extends RdfParserBase {
       composeUri(t, "SpecimenDefinition", "url", element.getUrlElement(), -1);
     }
     if (element.hasIdentifier()) {
-      composeIdentifier(t, "SpecimenDefinition", "identifier", element.getIdentifierFirstRep(), -1);
+      composeIdentifier(t, "SpecimenDefinition", "identifier", element.getIdentifier(), -1);
     }
     if (element.hasVersionElement()) {
       composeString(t, "SpecimenDefinition", "version", element.getVersionElement(), -1);
@@ -23551,9 +23344,6 @@ public class RdfParser extends RdfParserBase {
     }
     if (element.hasEndElement()) {
       composeInstant(t, "Subscription", "end", element.getEndElement(), -1);
-    }
-    if (element.hasManagingEntity()) {
-      composeReference(t, "Subscription", "managingEntity", element.getManagingEntity(), -1);
     }
     if (element.hasReasonElement()) {
       composeString(t, "Subscription", "reason", element.getReasonElement(), -1);
@@ -27330,8 +27120,6 @@ public class RdfParser extends RdfParserBase {
       composeRegulatedAuthorization(parent, null, "RegulatedAuthorization", (RegulatedAuthorization)resource, -1);
     } else if (resource instanceof RelatedPerson) {
       composeRelatedPerson(parent, null, "RelatedPerson", (RelatedPerson)resource, -1);
-    } else if (resource instanceof RequestGroup) {
-      composeRequestGroup(parent, null, "RequestGroup", (RequestGroup)resource, -1);
     } else if (resource instanceof RequestOrchestration) {
       composeRequestOrchestration(parent, null, "RequestOrchestration", (RequestOrchestration)resource, -1);
     } else if (resource instanceof Requirements) {
