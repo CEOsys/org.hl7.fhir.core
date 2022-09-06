@@ -1999,6 +1999,15 @@ public class SearchParameter extends CanonicalResource {
       return false;
     }
 
+  public boolean hasBase(String value) {
+    if (this.base == null)
+      return false;
+    for (Enumeration<AllResourceTypes> v : this.base)
+      if (v.getValue().equals(value)) // code
+        return true;
+    return false;
+  }
+
     /**
      * @return {@link #type} (The type of value that a search parameter may contain, and how the content is interpreted.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
      */
