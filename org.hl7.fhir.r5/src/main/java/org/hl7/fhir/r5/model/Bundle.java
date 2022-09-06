@@ -2615,6 +2615,16 @@ public class Bundle extends Resource implements IBaseBundle {
           return this;
         }
 
+      /**
+       * @param value A name which details the functional use for this link - see [http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1](http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1).
+       */
+      public BundleLinkComponent setRelation(String value) {
+        if (this.relation == null)
+          this.relation = new Enumeration<LinkRelationTypes>(new LinkRelationTypesEnumFactory());
+        this.relation.setValue(new LinkRelationTypesEnumFactory().fromCode(value));
+        return this;
+      }
+
         /**
          * @return {@link #url} (The reference details for the link.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
          */
@@ -5304,7 +5314,7 @@ public class Bundle extends Resource implements IBaseBundle {
    * @see IBaseBundle#LINK_PREV 
    * @see IBaseBundle#LINK_SELF 
    */ 
-  public BundleLinkComponent getLink(String theRelation) { 
+  public BundleLinkComponent getLink(String theRelation) {
     org.apache.commons.lang3.Validate.notBlank(theRelation, "theRelation may not be null or empty"); 
     for (BundleLinkComponent next : getLink()) { 
       if (theRelation.equals(next.getRelation())) { 
