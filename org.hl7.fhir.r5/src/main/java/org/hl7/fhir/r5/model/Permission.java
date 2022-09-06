@@ -622,14 +622,14 @@ public class Permission extends DomainResource {
          */
         @Child(name = "data", type = {}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
         @Description(shortDefinition="The selection criteria to identify data that is within scope of this provision", formalDefinition="A description or definition of which activities are allowed to be done on the data." )
-        protected List<ruleDataComponent> data;
+        protected List<RuleDataComponent> data;
 
         /**
          * A description or definition of which activities are allowed to be done on the data.
          */
         @Child(name = "activity", type = {}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
         @Description(shortDefinition="A description or definition of which activities are allowed to be done on the data", formalDefinition="A description or definition of which activities are allowed to be done on the data." )
-        protected List<ruleActivityComponent> activity;
+        protected List<RuleActivityComponent> activity;
 
         /**
          * What limits apply to the use of the data.
@@ -700,16 +700,16 @@ public class Permission extends DomainResource {
         /**
          * @return {@link #data} (A description or definition of which activities are allowed to be done on the data.)
          */
-        public List<ruleDataComponent> getData() { 
+        public List<RuleDataComponent> getData() { 
           if (this.data == null)
-            this.data = new ArrayList<ruleDataComponent>();
+            this.data = new ArrayList<RuleDataComponent>();
           return this.data;
         }
 
         /**
          * @return Returns a reference to <code>this</code> for easy method chaining
          */
-        public RuleComponent setData(List<ruleDataComponent> theData) { 
+        public RuleComponent setData(List<RuleDataComponent> theData) { 
           this.data = theData;
           return this;
         }
@@ -717,25 +717,25 @@ public class Permission extends DomainResource {
         public boolean hasData() { 
           if (this.data == null)
             return false;
-          for (ruleDataComponent item : this.data)
+          for (RuleDataComponent item : this.data)
             if (!item.isEmpty())
               return true;
           return false;
         }
 
-        public ruleDataComponent addData() { //3
-          ruleDataComponent t = new ruleDataComponent();
+        public RuleDataComponent addData() { //3
+          RuleDataComponent t = new RuleDataComponent();
           if (this.data == null)
-            this.data = new ArrayList<ruleDataComponent>();
+            this.data = new ArrayList<RuleDataComponent>();
           this.data.add(t);
           return t;
         }
 
-        public RuleComponent addData(ruleDataComponent t) { //3
+        public RuleComponent addData(RuleDataComponent t) { //3
           if (t == null)
             return this;
           if (this.data == null)
-            this.data = new ArrayList<ruleDataComponent>();
+            this.data = new ArrayList<RuleDataComponent>();
           this.data.add(t);
           return this;
         }
@@ -743,7 +743,7 @@ public class Permission extends DomainResource {
         /**
          * @return The first repetition of repeating field {@link #data}, creating it if it does not already exist {3}
          */
-        public ruleDataComponent getDataFirstRep() { 
+        public RuleDataComponent getDataFirstRep() { 
           if (getData().isEmpty()) {
             addData();
           }
@@ -753,16 +753,16 @@ public class Permission extends DomainResource {
         /**
          * @return {@link #activity} (A description or definition of which activities are allowed to be done on the data.)
          */
-        public List<ruleActivityComponent> getActivity() { 
+        public List<RuleActivityComponent> getActivity() { 
           if (this.activity == null)
-            this.activity = new ArrayList<ruleActivityComponent>();
+            this.activity = new ArrayList<RuleActivityComponent>();
           return this.activity;
         }
 
         /**
          * @return Returns a reference to <code>this</code> for easy method chaining
          */
-        public RuleComponent setActivity(List<ruleActivityComponent> theActivity) { 
+        public RuleComponent setActivity(List<RuleActivityComponent> theActivity) { 
           this.activity = theActivity;
           return this;
         }
@@ -770,25 +770,25 @@ public class Permission extends DomainResource {
         public boolean hasActivity() { 
           if (this.activity == null)
             return false;
-          for (ruleActivityComponent item : this.activity)
+          for (RuleActivityComponent item : this.activity)
             if (!item.isEmpty())
               return true;
           return false;
         }
 
-        public ruleActivityComponent addActivity() { //3
-          ruleActivityComponent t = new ruleActivityComponent();
+        public RuleActivityComponent addActivity() { //3
+          RuleActivityComponent t = new RuleActivityComponent();
           if (this.activity == null)
-            this.activity = new ArrayList<ruleActivityComponent>();
+            this.activity = new ArrayList<RuleActivityComponent>();
           this.activity.add(t);
           return t;
         }
 
-        public RuleComponent addActivity(ruleActivityComponent t) { //3
+        public RuleComponent addActivity(RuleActivityComponent t) { //3
           if (t == null)
             return this;
           if (this.activity == null)
-            this.activity = new ArrayList<ruleActivityComponent>();
+            this.activity = new ArrayList<RuleActivityComponent>();
           this.activity.add(t);
           return this;
         }
@@ -796,7 +796,7 @@ public class Permission extends DomainResource {
         /**
          * @return The first repetition of repeating field {@link #activity}, creating it if it does not already exist {3}
          */
-        public ruleActivityComponent getActivityFirstRep() { 
+        public RuleActivityComponent getActivityFirstRep() { 
           if (getActivity().isEmpty()) {
             addActivity();
           }
@@ -880,8 +880,8 @@ public class Permission extends DomainResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Enumeration<ConsentProvisionType>
-        case 3076010: /*data*/ return this.data == null ? new Base[0] : this.data.toArray(new Base[this.data.size()]); // ruleDataComponent
-        case -1655966961: /*activity*/ return this.activity == null ? new Base[0] : this.activity.toArray(new Base[this.activity.size()]); // ruleActivityComponent
+        case 3076010: /*data*/ return this.data == null ? new Base[0] : this.data.toArray(new Base[this.data.size()]); // RuleDataComponent
+        case -1655966961: /*activity*/ return this.activity == null ? new Base[0] : this.activity.toArray(new Base[this.activity.size()]); // RuleActivityComponent
         case 102976443: /*limit*/ return this.limit == null ? new Base[0] : this.limit.toArray(new Base[this.limit.size()]); // CodeableConcept
         default: return super.getProperty(hash, name, checkValid);
         }
@@ -896,10 +896,10 @@ public class Permission extends DomainResource {
           this.type = (Enumeration) value; // Enumeration<ConsentProvisionType>
           return value;
         case 3076010: // data
-          this.getData().add((ruleDataComponent) value); // ruleDataComponent
+          this.getData().add((RuleDataComponent) value); // RuleDataComponent
           return value;
         case -1655966961: // activity
-          this.getActivity().add((ruleActivityComponent) value); // ruleActivityComponent
+          this.getActivity().add((RuleActivityComponent) value); // RuleActivityComponent
           return value;
         case 102976443: // limit
           this.getLimit().add(TypeConvertor.castToCodeableConcept(value)); // CodeableConcept
@@ -915,9 +915,9 @@ public class Permission extends DomainResource {
           value = new ConsentProvisionTypeEnumFactory().fromType(TypeConvertor.castToCode(value));
           this.type = (Enumeration) value; // Enumeration<ConsentProvisionType>
         } else if (name.equals("data")) {
-          this.getData().add((ruleDataComponent) value);
+          this.getData().add((RuleDataComponent) value);
         } else if (name.equals("activity")) {
-          this.getActivity().add((ruleActivityComponent) value);
+          this.getActivity().add((RuleActivityComponent) value);
         } else if (name.equals("limit")) {
           this.getLimit().add(TypeConvertor.castToCodeableConcept(value));
         } else
@@ -977,13 +977,13 @@ public class Permission extends DomainResource {
         super.copyValues(dst);
         dst.type = type == null ? null : type.copy();
         if (data != null) {
-          dst.data = new ArrayList<ruleDataComponent>();
-          for (ruleDataComponent i : data)
+          dst.data = new ArrayList<RuleDataComponent>();
+          for (RuleDataComponent i : data)
             dst.data.add(i.copy());
         };
         if (activity != null) {
-          dst.activity = new ArrayList<ruleActivityComponent>();
-          for (ruleActivityComponent i : activity)
+          dst.activity = new ArrayList<RuleActivityComponent>();
+          for (RuleActivityComponent i : activity)
             dst.activity.add(i.copy());
         };
         if (limit != null) {
@@ -1033,7 +1033,7 @@ public class Permission extends DomainResource {
          */
         @Child(name = "resource", type = {}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
         @Description(shortDefinition="Explicit FHIR Resource references", formalDefinition="Explicit FHIR Resource references." )
-        protected List<ruleDataResourceComponent> resource;
+        protected List<RuleDataResourceComponent> resource;
 
         /**
          * The data in scope are those with the given codes present in that data .meta.security element.
@@ -1068,16 +1068,16 @@ public class Permission extends DomainResource {
         /**
          * @return {@link #resource} (Explicit FHIR Resource references.)
          */
-        public List<ruleDataResourceComponent> getResource() { 
+        public List<RuleDataResourceComponent> getResource() { 
           if (this.resource == null)
-            this.resource = new ArrayList<ruleDataResourceComponent>();
+            this.resource = new ArrayList<RuleDataResourceComponent>();
           return this.resource;
         }
 
         /**
          * @return Returns a reference to <code>this</code> for easy method chaining
          */
-        public RuleDataComponent setResource(List<ruleDataResourceComponent> theResource) { 
+        public RuleDataComponent setResource(List<RuleDataResourceComponent> theResource) { 
           this.resource = theResource;
           return this;
         }
@@ -1085,25 +1085,25 @@ public class Permission extends DomainResource {
         public boolean hasResource() { 
           if (this.resource == null)
             return false;
-          for (ruleDataResourceComponent item : this.resource)
+          for (RuleDataResourceComponent item : this.resource)
             if (!item.isEmpty())
               return true;
           return false;
         }
 
-        public ruleDataResourceComponent addResource() { //3
-          ruleDataResourceComponent t = new ruleDataResourceComponent();
+        public RuleDataResourceComponent addResource() { //3
+          RuleDataResourceComponent t = new RuleDataResourceComponent();
           if (this.resource == null)
-            this.resource = new ArrayList<ruleDataResourceComponent>();
+            this.resource = new ArrayList<RuleDataResourceComponent>();
           this.resource.add(t);
           return t;
         }
 
-        public RuleDataComponent addResource(ruleDataResourceComponent t) { //3
+        public RuleDataComponent addResource(RuleDataResourceComponent t) { //3
           if (t == null)
             return this;
           if (this.resource == null)
-            this.resource = new ArrayList<ruleDataResourceComponent>();
+            this.resource = new ArrayList<RuleDataResourceComponent>();
           this.resource.add(t);
           return this;
         }
@@ -1111,7 +1111,7 @@ public class Permission extends DomainResource {
         /**
          * @return The first repetition of repeating field {@link #resource}, creating it if it does not already exist {3}
          */
-        public ruleDataResourceComponent getResourceFirstRep() { 
+        public RuleDataResourceComponent getResourceFirstRep() { 
           if (getResource().isEmpty()) {
             addResource();
           }
@@ -1271,7 +1271,7 @@ public class Permission extends DomainResource {
       @Override
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
-        case -341064690: /*resource*/ return this.resource == null ? new Base[0] : this.resource.toArray(new Base[this.resource.size()]); // ruleDataResourceComponent
+        case -341064690: /*resource*/ return this.resource == null ? new Base[0] : this.resource.toArray(new Base[this.resource.size()]); // RuleDataResourceComponent
         case 949122880: /*security*/ return this.security == null ? new Base[0] : this.security.toArray(new Base[this.security.size()]); // Coding
         case -991726143: /*period*/ return this.period == null ? new Base[0] : this.period.toArray(new Base[this.period.size()]); // Period
         case -1795452264: /*expression*/ return this.expression == null ? new Base[0] : new Base[] {this.expression}; // Expression
@@ -1284,7 +1284,7 @@ public class Permission extends DomainResource {
       public Base setProperty(int hash, String name, Base value) throws FHIRException {
         switch (hash) {
         case -341064690: // resource
-          this.getResource().add((ruleDataResourceComponent) value); // ruleDataResourceComponent
+          this.getResource().add((RuleDataResourceComponent) value); // RuleDataResourceComponent
           return value;
         case 949122880: // security
           this.getSecurity().add(TypeConvertor.castToCoding(value)); // Coding
@@ -1303,7 +1303,7 @@ public class Permission extends DomainResource {
       @Override
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("resource")) {
-          this.getResource().add((ruleDataResourceComponent) value);
+          this.getResource().add((RuleDataResourceComponent) value);
         } else if (name.equals("security")) {
           this.getSecurity().add(TypeConvertor.castToCoding(value));
         } else if (name.equals("period")) {
@@ -1367,8 +1367,8 @@ public class Permission extends DomainResource {
       public void copyValues(RuleDataComponent dst) {
         super.copyValues(dst);
         if (resource != null) {
-          dst.resource = new ArrayList<ruleDataResourceComponent>();
-          for (ruleDataResourceComponent i : resource)
+          dst.resource = new ArrayList<RuleDataResourceComponent>();
+          for (RuleDataResourceComponent i : resource)
             dst.resource.add(i.copy());
         };
         if (security != null) {

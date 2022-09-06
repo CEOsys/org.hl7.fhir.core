@@ -19914,10 +19914,10 @@ public class RdfParser extends RdfParserBase {
       composeEnum(t, "RuleComponent", "type", element.getTypeElement(), -1);
     }
     for (int i = 0; i < element.getData().size(); i++) {
-      composePermissionruleDataComponent(t, "RuleComponent", "data", element.getData().get(i), i);
+      composePermissionRuleDataComponent(t, "RuleComponent", "data", element.getData().get(i), i);
     }
     for (int i = 0; i < element.getActivity().size(); i++) {
-      composePermissionruleActivityComponent(t, "RuleComponent", "activity", element.getActivity().get(i), i);
+      composePermissionRuleActivityComponent(t, "RuleComponent", "activity", element.getActivity().get(i), i);
     }
     for (int i = 0; i < element.getLimit().size(); i++) {
       composeCodeableConcept(t, "RuleComponent", "limit", element.getLimit().get(i), i);
@@ -19935,7 +19935,7 @@ public class RdfParser extends RdfParserBase {
     }
     composeBackboneElement(t, "data", name, element, index);
     for (int i = 0; i < element.getResource().size(); i++) {
-      composePermissionruleDataResourceComponent(t, "RuleDataComponent", "resource", element.getResource().get(i), i);
+      composePermissionRuleDataResourceComponent(t, "RuleDataComponent", "resource", element.getResource().get(i), i);
     }
     for (int i = 0; i < element.getSecurity().size(); i++) {
       composeCoding(t, "RuleDataComponent", "security", element.getSecurity().get(i), i);

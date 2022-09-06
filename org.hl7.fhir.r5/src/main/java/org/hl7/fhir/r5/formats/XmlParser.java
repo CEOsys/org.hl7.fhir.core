@@ -52698,12 +52698,12 @@ public class XmlParser extends XmlParserBase {
     if (element.hasTypeElement())
       composeEnumeration("type", element.getTypeElement(), new Enumerations.ConsentProvisionTypeEnumFactory());
     if (element.hasData()) { 
-      for (Permission.ruleDataComponent e : element.getData()) 
-          composePermissionruleDataComponent("data", e);
+      for (Permission.RuleDataComponent e : element.getData()) 
+          composePermissionRuleDataComponent("data", e);
     }
     if (element.hasActivity()) { 
-      for (Permission.ruleActivityComponent e : element.getActivity()) 
-          composePermissionruleActivityComponent("activity", e);
+      for (Permission.RuleActivityComponent e : element.getActivity()) 
+          composePermissionRuleActivityComponent("activity", e);
     }
     if (element.hasLimit()) { 
       for (CodeableConcept e : element.getLimit()) 
@@ -52724,8 +52724,8 @@ public class XmlParser extends XmlParserBase {
   protected void composePermissionRuleDataComponentElements(Permission.RuleDataComponent element) throws IOException {
     composeBackboneElementElements(element);
     if (element.hasResource()) { 
-      for (Permission.ruleDataResourceComponent e : element.getResource()) 
-          composePermissionruleDataResourceComponent("resource", e);
+      for (Permission.RuleDataResourceComponent e : element.getResource()) 
+          composePermissionRuleDataResourceComponent("resource", e);
     }
     if (element.hasSecurity()) { 
       for (Coding e : element.getSecurity()) 

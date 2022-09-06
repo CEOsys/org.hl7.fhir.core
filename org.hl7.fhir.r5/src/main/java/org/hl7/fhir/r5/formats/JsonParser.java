@@ -24694,13 +24694,13 @@ public class JsonParser extends JsonParserBase {
     if (json.has("data")) {
       JsonArray array = getJArray(json, "data");
       for (int i = 0; i < array.size(); i++) {
-        res.getData().add(parsePermissionruleDataComponent(array.get(i).getAsJsonObject()));
+        res.getData().add(parsePermissionRuleDataComponent(array.get(i).getAsJsonObject()));
       }
     };
     if (json.has("activity")) {
       JsonArray array = getJArray(json, "activity");
       for (int i = 0; i < array.size(); i++) {
-        res.getActivity().add(parsePermissionruleActivityComponent(array.get(i).getAsJsonObject()));
+        res.getActivity().add(parsePermissionRuleActivityComponent(array.get(i).getAsJsonObject()));
       }
     };
     if (json.has("limit")) {
@@ -24722,7 +24722,7 @@ public class JsonParser extends JsonParserBase {
     if (json.has("resource")) {
       JsonArray array = getJArray(json, "resource");
       for (int i = 0; i < array.size(); i++) {
-        res.getResource().add(parsePermissionruleDataResourceComponent(array.get(i).getAsJsonObject()));
+        res.getResource().add(parsePermissionRuleDataResourceComponent(array.get(i).getAsJsonObject()));
       }
     };
     if (json.has("security")) {
@@ -61130,14 +61130,14 @@ public class JsonParser extends JsonParserBase {
       }
       if (element.hasData()) {
         openArray("data");
-        for (Permission.ruleDataComponent e : element.getData()) 
-          composeruleDataComponent(null, e);
+        for (Permission.RuleDataComponent e : element.getData())
+          composeRuleDataComponent(null, e);
         closeArray();
       };
       if (element.hasActivity()) {
         openArray("activity");
-        for (Permission.ruleActivityComponent e : element.getActivity()) 
-          composeruleActivityComponent(null, e);
+        for (Permission.RuleActivityComponent e : element.getActivity())
+          composeRuleActivityComponent(null, e);
         closeArray();
       };
       if (element.hasLimit()) {
@@ -61160,8 +61160,8 @@ public class JsonParser extends JsonParserBase {
     composeBackboneElementProperties(element);
       if (element.hasResource()) {
         openArray("resource");
-        for (Permission.ruleDataResourceComponent e : element.getResource()) 
-          composeruleDataResourceComponent(null, e);
+        for (Permission.RuleDataResourceComponent e : element.getResource())
+          composeRuleDataResourceComponent(null, e);
         closeArray();
       };
       if (element.hasSecurity()) {

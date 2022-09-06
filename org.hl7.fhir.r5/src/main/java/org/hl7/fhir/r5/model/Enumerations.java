@@ -12675,14 +12675,6 @@ The primary difference between a medicationusage and a medicationadministration 
          */
         _5_0_0, 
         /**
-         * R5 Draft Ballot + Connectathon 27 (Virtual).
-         */
-        _5_0_0CIBUILD, 
-        /**
-         * R5 Draft Ballot + Connectathon 27 (Virtual).
-         */
-        _5_0_0CIBUILD, 
-        /**
          * R5 Interim tooling stage.
          */
         _5_0_0SNAPSHOT2, 
@@ -12856,8 +12848,6 @@ The primary difference between a medicationusage and a medicationadministration 
             case _5_0_0CIBUILD: return "5.0.0-cibuild";
             case _5_0: return "5.0";
             case _5_0_0: return "5.0.0";
-            case _5_0_0CIBUILD: return "5.0.0-cibuild";
-            case _5_0_0CIBUILD: return "5.0.0-cibuild";
             case _5_0_0SNAPSHOT2: return "5.0.0-snapshot2";
             case _5_0_0SNAPSHOT3: return "5.0.0-snapshot3";
             case NULL: return null;
@@ -12915,8 +12905,6 @@ The primary difference between a medicationusage and a medicationadministration 
             case _5_0_0CIBUILD: return "http://hl7.org/fhir/FHIR-version";
             case _5_0: return "http://hl7.org/fhir/FHIR-version";
             case _5_0_0: return "http://hl7.org/fhir/FHIR-version";
-            case _5_0_0CIBUILD: return "http://hl7.org/fhir/FHIR-version";
-            case _5_0_0CIBUILD: return "http://hl7.org/fhir/FHIR-version";
             case _5_0_0SNAPSHOT2: return "http://hl7.org/fhir/FHIR-version";
             case _5_0_0SNAPSHOT3: return "http://hl7.org/fhir/FHIR-version";
             case NULL: return null;
@@ -12974,8 +12962,6 @@ The primary difference between a medicationusage and a medicationadministration 
             case _5_0_0CIBUILD: return "R5 Draft Ballot + Connectathon 27 (Virtual).";
             case _5_0: return "R5 Versions.";
             case _5_0_0: return "R5 Final Version.";
-            case _5_0_0CIBUILD: return "R5 Draft Ballot + Connectathon 27 (Virtual).";
-            case _5_0_0CIBUILD: return "R5 Draft Ballot + Connectathon 27 (Virtual).";
             case _5_0_0SNAPSHOT2: return "R5 Interim tooling stage.";
             case _5_0_0SNAPSHOT3: return "R5 Ballot.";
             case NULL: return null;
@@ -13033,8 +13019,6 @@ The primary difference between a medicationusage and a medicationadministration 
             case _5_0_0CIBUILD: return "5.0.0-cibuild";
             case _5_0: return "5.0";
             case _5_0_0: return "5.0.0";
-            case _5_0_0CIBUILD: return "5.0.0-cibuild";
-            case _5_0_0CIBUILD: return "5.0.0-cibuild";
             case _5_0_0SNAPSHOT2: return "5.0.0-snapshot2";
             case _5_0_0SNAPSHOT3: return "5.0.0-snapshot3";
             case NULL: return null;
