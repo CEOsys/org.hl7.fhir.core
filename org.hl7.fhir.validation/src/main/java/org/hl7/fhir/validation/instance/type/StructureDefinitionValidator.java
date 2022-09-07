@@ -13,6 +13,7 @@ import org.hl7.fhir.convertors.conv14_50.VersionConvertor_14_50;
 import org.hl7.fhir.convertors.conv30_50.VersionConvertor_30_50;
 import org.hl7.fhir.convertors.factory.*;
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.r4b.model.Enumerations;
 import org.hl7.fhir.r5.conformance.ProfileUtilities;
 import org.hl7.fhir.r5.context.IWorkerContext;
 import org.hl7.fhir.r5.context.IWorkerContext.ValidationResult;
@@ -290,7 +291,10 @@ public class StructureDefinitionValidator extends BaseValidator {
     case "Element" :return  addCharacteristicsForType(set);
     case "BackboneElement" :return  addCharacteristicsForType(set);
     default:
-      throw new Error("Unhandled data type in addCharacterstics: "+tc);
+      // ALL fhir types must be included here ! see https://build.fhir.org/valueset-elementdefinition-types.html
+      // we just allow here ...
+      //throw new Error("Unhandled data type in addCharacterstics: "+tc);
+      return  addCharacteristicsForType(set);
     }
   }
 
