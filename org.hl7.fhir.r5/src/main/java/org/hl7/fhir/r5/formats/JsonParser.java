@@ -18266,7 +18266,13 @@ public class JsonParser extends JsonParserBase {
   protected void parseImplementationGuideDefinitionParameterComponentProperties(JsonObject json, ImplementationGuide.ImplementationGuideDefinitionParameterComponent res) throws IOException, FHIRFormatError {
     parseBackboneElementProperties(json, res);
     if (json.has("code"))
-      res.setCode(parseCoding(getJObject(json, "code")));
+      // ImplementationGuide now uses definition.parameter.code with type Coding (previously: code), but sushi
+      // generates the IG resources still with code (rather: "string"); so we'll just try both versions here
+      try {
+        res.setCode(parseCoding(getJObject(json, "code"))); // type: Coding (new version)
+      } catch (Exception e) {
+        res.setCode(new Coding(null, json.get("code").getAsString(), null)); // type: code (old version)
+      }
     if (json.has("value"))
       res.setValueElement(parseString(json.get("value").getAsString()));
     if (json.has("_value"))
